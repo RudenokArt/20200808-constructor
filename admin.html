@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>Панель управления</title>
+	<script src="jsfile.js"></script>
+	<link rel="stylesheet" href='cssfile.css' type="text/css" >
+</head>
+<body>
+	<div class="heder" id="header">
+		<div>
+			<button onclick="showPostPopUp('addPostPopUp')">Добавить пост</button>
+		</div>
+		<div>
+			<button onclick="showPopUp('addImagePopUp')">Загрузка изображения</button>
+		</div>
+		<div>
+			<button onclick="redirect('admin-categories-manager.html')">Управление таблицами</button>
+		</div>
+	</div>
+	<div class="wraperPage">
+		<div class="sidebar" id="sidebar">
+			<div class="filter">
+				<p>
+					Поиск по наименованию<br>
+					<input type="" id="searchInput"><br>
+					<button onclick="searchImage()">&#128269</button>
+					<button onclick="ajaxGallery()" title="Сброс">&#10006</button>
+				</p><br><br>
+				<p>ФИЛЬТР
+					<table>
+						<tr><td>Цена от</td><td><input size="10" type="text" id="priceFrom"></td></tr>
+						<tr><td>до</td><td><input size="10" type="text" id="priceTo"></td></tr>
+						<tr><td>Категория: </td><td id="sidebarCategorySelect"></td></tr>
+						<tr><td>Подкатегория: </td><td id="sidebarSubCategorySelect"></td></tr>
+					</table><button onclick="filterImage()">Применить</button>
+					<button onclick="ajaxGallery()" title="Сброс">&#10006</button>
+				</p>
+				<p>Выводить по:<br>
+					<input type="text" size="5" id='paginationPage'>
+					<button onclick="pagination()">&#10004</button>
+					<br>на страницу
+				</p>
+			</div>
+			<div class="postBloc" id=postBloc></div>
+		</div>
+		<div>
+			<div class="content" id="content"></div>
+			<div id='pageNavigation' class="pageNavigation"></div>
+		</div>
+	</div>
+	<div class="wrapPopUp" id="addImagePopUp">
+		<div class="popUp">
+			<div class="closePopUp">
+				<p>ЗАГРУЗКА ИЗОБРАЖЕНИЙ В ГАЛЛЕРЕЮ</p>
+				<button onclick="hidePopUp('addImagePopUp')">&#10006</button>
+			</div>
+			<label for="dropInput" style="cursor: pointer;">
+				Выберите файл
+				<img src="images/clip.png" class="icon">
+			</label>
+			<span id="inputShow"></span><br>
+			<form method="POST" enctype='multipart/form-data' id='imageForm' action="php-admin-upload.php">
+				<div class="dropZone">
+					<input type="file" name="filename" id="dropInput" 
+					class="dropInput" ondrop="showInput('dropInput','inputShow')">
+				</div>
+				<table>
+					<!-- <tr><td>Наименование:</td><td><input type="text" name="imageName"></td></tr> -->
+					<tr><td>Категория: </td><td id="popUpCategorySelect"></td></tr>
+					<tr><td>Подкатегория: </td><td id="popUpSubCategorySelect"></td></tr>
+					<tr><td>Шаблон: </td><td id="addTemplateSelect"></td></tr>
+				</table>
+				<table>
+					<!-- <tr><td>40x70</td><td><input type="text" name="40x70"></td></tr>
+					<tr><td>46x80</td><td><input type="text" name="46x80"></td></tr>
+					<tr><td>51x90</td><td><input type="text" name="51x90"></td></tr>
+					<tr><td>57x100</td><td><input type="text" name="57x100"></td></tr>
+					<tr><td>63x110</td><td><input type="text" name="63x110"></td></tr>
+					<tr><td>68x120</td><td><input type="text" name="68x120"></td></tr>
+					<tr><td>74x130</td><td><input type="text" name="74x130"></td></tr>
+					<tr><td>80x140</td><td><input type="text" name="80x140"></td></tr> -->
+					<tr><td>Скидка</td><td><input type="text" name="discount"></td></tr>
+				</table>
+			</form>
+			<button onclick="submitForm('imageForm')+getPageNumber()">Загрузить &#128190</button>
+		</div>
+	</div>
+	<div class="wrapPopUp" id="editPopUp">
+		<div class="popUp">
+			<div class="closePopUp" >
+				<p>РЕДАКТИРОВАНИЕ ЭЛЕМЕНТА</p>
+				<input type="text" id="editItemId" style="display: none">
+				<!-- <input type="text" id="editItemId"> -->
+				<button onclick="hidePopUp('editPopUp')">&#10006</button>
+			</div>
+			<p id="image"></p>
+			<p id="category"></p>
+			<p id="subcategory"></p>
+			<table>
+				<tr><th colspan="2">ИЗМЕНИТЬ ЭЛЕМЕНТ:</th></tr>
+				<tr><td>Наименование:</td><td id="imageName"></td></tr>
+				<tr><td>Категория: </td><td id="editPopUpCategorySelect"></td></tr>
+				<tr><td>Подкатегория: </td><td id="editPopUpSubCategorySelect"></td></tr>
+				<tr><td>Шаблон: </td><td id="editTemplateSelect"></td></tr>
+			</table>
+			<table>
+				<!-- <tr><td>40x70</td><td><input type="text" id="40x70"></td></tr>
+				<tr><td>46x80</td><td><input type="text" id="46x80"></td></tr>
+				<tr><td>51x90</td><td><input type="text" id="51x90"></td></tr>
+				<tr><td>57x100</td><td><input type="text" id="57x100"></td></tr>
+				<tr><td>63x110</td><td><input type="text" id="63x110"></td></tr>
+				<tr><td>68x120</td><td><input type="text" id="68x120"></td></tr>
+				<tr><td>74x130</td><td><input type="text" id="74x130"></td></tr>
+				<tr><td>80x140</td><td><input type="text" id="80x140"></td></tr> -->
+				<tr><td>Скидка</td><td><input type="text" id="discount"></td></tr>
+			</table>
+			<button onclick="editItem()">Сохранить изменения &#128190</button>
+			<button onclick="ajaxDelItem()">УДАЛИТЬ ЭЛЕМЕНТ &#10060</button>
+		</div>
+	</div>	
+	<div class="wrapPopUp" id="addPostPopUp">
+		<div class="popUp">
+			<div class="closePopUp">
+				<p>ДОБАВЛЕНИЕ ПОСТА</p>
+				<button onclick="divHide('addPostPopUp')">&#10006</button>
+			</div>
+			<label for="dropInputPost" style="cursor: pointer;">
+				Выберите файл
+				<img src="images/clip.png" class="icon">
+			</label>
+			<span id="inputShowPost"></span><br>
+			<form method="POST" enctype='multipart/form-data' id='postForm' action="php-add-post.php">
+				<div class="dropZone">
+					<input type="file" name="filename" id="dropInputPost" 
+					class="dropInput" ondrop="showInput('dropInputPost','inputShowPost')">
+				</div>
+				<textarea name="postText" id="postText" cols="40" rows="10">Текст поста</textarea>
+			</form>
+			<button onclick="submitForm('postForm')">Загрузить &#128190</button>
+		</div>
+	</div>	
+	<div class="wrapPopUp" id="editPostPopUp">
+		<div class="popUp">
+			<div class="closePopUp">
+				<p>РЕДАКТИРОВАНИЕ ПОСТА</p>
+				<button onclick="divHide('editPostPopUp')">&#10006</button>
+			</div>
+			<input type="text" id="postId" style="display: none">
+			<input type="text" id="postImageName" style="display: none;">
+			<textarea id="EditPostText" cols="40" rows="10">Текст поста</textarea>
+			<button onclick="editPost()">Сохранить изменения &#128190</button>
+			<button onclick="deletePost()">УДАЛИТЬ ПОСТ &#10060</button>
+		</div>
+	</div>
+	<script>
+		adminOnload();
+	</script>	
+</body>
+</html>

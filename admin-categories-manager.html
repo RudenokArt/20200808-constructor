@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>Панель управления</title>
+	<script src="jsfile.js"></script>
+	<link rel="stylesheet" href='cssfile.css' type="text/css" >
+</head>
+<body onload="managerOnload()">
+	<div class="heder">
+		<div>
+			<button onclick="redirect('admin.html')">&#9668 Назад</button>
+		</div>
+		<div>
+			Почта для заказов: 
+			<input type="text" id="admin-mail">
+			<button onclick="adminMail()">Изменить</button>
+		</div>
+	</div>
+	<div>
+		<div class="heder">
+			<button onclick="divShow('templates')+divHide('interiors')">Шаблоны &#9660</button>
+			<button onclick="divShow('interiors')+divHide('templates')+ajaxInteriors()">
+			Интерьеры &#9660
+		</button>
+		</div>
+		<div id="templates" style="display: none;">
+			<div class="heder">
+				<button onclick="divShow('addTemplatePopUp')">Добавить шаблон</button>
+				<button onclick="divHide('templates')">Свернуть &#9650</button>
+			</div>
+			<div id="tempalatesTab" class="tempalatesTab"></div>
+		</div>
+		<div id="interiors" style="display: none;">
+			<div class="heder">
+				<button onclick="divShow('addInteriorPopUp')">Добавить интерьер</button>
+				<button onclick="divHide('interiors')">Свернуть &#9650</button>
+			</div>
+			<div id="interior-tape" class="interior-tape"></div>
+		</div>
+	</div>
+	<div class="content-category">
+		<div>
+			<div>
+				Добавить категорию:<br> 
+				<input type="text" id="addCategory">
+				<button onclick="categoryAdd()">&#10004</button>
+			</div>
+			<div id="categoryTab"></div>
+		</div>
+		<div>
+			<div>
+				Добавить подкатегорию<br>
+				Категория: <span id="categorySelect"></span>
+				<button onclick="subCategoryAdd()">&#10004</button><br>
+				Подкатегория: <input type="text" id="addSubCategory">
+			</div>
+			<div id="subCategoryTab"></div>
+		</div>
+		<div>
+			<div>
+				Добавить материал:<br> 
+				<input type="text" id="addMaterial" placeholder="Наименование">
+				<input type="text" id="kofMaterial" style="width: 3em;" placeholder="%">
+				<button onclick="materialAdd()">&#10004</button>
+			</div>
+			<div id="materialTab"></div>
+		</div>
+		<div>
+			<div>
+				<span id="addTemplateSelect" style="display: none"></span>
+				Размер для шаблона: <span id="editTemplateSelect"></span><br>
+				<div style="display: flex">
+					<div>
+						выбрать:
+						<select id="sizeSelector"></select><br>
+						или добавить новый:<br>
+						<input type="text" id="addSize" placeholder="Размер">
+						<input type="text" id="kofSize" style="width: 3em;" placeholder="руб">
+					</div>
+					<div><button onclick="sizeAdd()">&#10004</button></div>
+				</div>
+				
+				
+				
+			</div>
+			<div id="sizeTab"></div>
+		</div>
+	</div>
+	<div class="wrapPopUp" id="addTemplatePopUp">
+		<div class="popUp">
+			<div class="closePopUp">
+				<p>ДОБАВЛЕНИЕ ШАБЛОНА</p>
+				<button onclick="divHide('addTemplatePopUp')">&#10006</button>
+			</div>
+			<label for="dropInputTemplate" style="cursor: pointer;">
+				Выберите файл
+				<img src="images/clip.png" class="icon">
+			</label>
+			<span id="inputShowTemplate"></span><br>
+			<form method="POST" enctype='multipart/form-data' id='templateForm' action="php-add-template.php">
+				<div class="dropZone">
+					<input type="file" name="filename" id="dropInputTemplate" 
+					class="dropInput" ondrop="showInput('dropInputTemplate','inputShowTemplate')">
+				</div>
+				<!-- Размер шаблона <br> -->
+				<!-- <input type="text" name="templateSize"> -->
+				<!-- <span id="sizeSelect"></span> -->
+				<!-- <br>Цена <br>
+				<input type="text" name="price"> -->
+			</form>
+			<button onclick="submitForm('templateForm')">Загрузить &#128190</button>
+		</div>
+	</div>	
+	<div class="wrapPopUp" id="editTemplatePopUp">
+		<div class="popUp">
+			<div class="closePopUp">
+				<p>РЕДАКТИРОВАНИЕ ШАБЛОНА</p>
+				<button onclick="divHide('editTemplatePopUp')">&#10006</button>
+			</div>
+			<input type="text" id="templateId" style="display: none;">
+			<!-- <input type="text" id="templateId" style="display: block;"> -->
+			<p id="templateName"></p>
+			Порядковый №: <br>
+			<input type="text" id="templateSize" style="display: none"><br>
+			<!-- <span id="sizeEditSelect"></span> -->
+			<input type="text" id="price"><br>
+			<button onclick="editTemplate()">СОХРАНИТЬ</button>
+			<button onclick="deleteTemplate()">УДАЛИТЬ ШАБЛОН &#10060</button>
+		</div>
+	</div>
+	<div class="wrapPopUp" id="addInteriorPopUp">
+		<div class="popUp">
+			<div class="closePopUp">
+				<p>ДОБАВЛЕНИЕ ИНТЕРЬЕРА</p>
+				<button onclick="divHide('addInteriorPopUp')">&#10006</button>
+			</div>
+			<label for="dropInputInterior" style="cursor: pointer;">
+				Выберите файл
+				<img src="images/clip.png" class="icon">
+			</label>
+			<span id="inputShowInterior"></span><br>
+			<form method="POST" enctype='multipart/form-data' id='interiorForm' action="php-add-interior.php">
+				<div class="dropZone">
+					<input type="file" name="filename" id="dropInputInterior" 
+					class="dropInput" ondrop="showInput('dropInputInterior','inputShowInterior')">
+				</div>
+			</form>
+			<button onclick="submitForm('interiorForm')">Загрузить &#128190</button>
+		</div>
+	</div>
+	<div class="wrapPopUp" id="editInteriorPopUp">
+		<div class="popUp">
+			<div class="closePopUp">
+				<p>УДАЛЕНИЕ ИНТЕРЬЕРА</p>
+			</div>
+			<!-- <input type="text" id="interiorId" style="display: none;"> -->
+			<input type="text" id="interiorId">
+			<p id="interiorName"></p>
+			<button onclick="divHide('editInteriorPopUp')">ОТМЕНА</button>
+			<button onclick="deleteInterior()">УДАЛИТЬ ИНТЕРЬЕР &#10060</button>
+		</div>
+	</div>
+</body>
+</html>

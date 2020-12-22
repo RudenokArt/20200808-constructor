@@ -1,0 +1,39 @@
+.button-pannel{
+	position: absolute;
+	left: 980px;
+	top:100px;
+	/*border: 1px solid grey;*/
+
+}
+.action-button{
+	font-family: "Times New Roman", Times, serif;
+	padding: 0.5em;
+	margin-top: 1em;
+	font-size: 1.2em;
+}
+
+.pre-veiw{
+	/*border: 1px solid grey;*/
+	position: absolute;
+}
+.wrapper-pre-view{
+	/*border: 1px solid grey;*/
+	position: relative;
+	display: flex;
+	justify-content: center;
+	height: 500px;
+	overflow: hidden;
+}
+.pre-view{
+	position: relative;
+	height: 400px;
+	margin-top: 100px;
+	overflow: hidden;
+}
+.pre-view-image2{
+	width: 600px;
+}
+.pre-view-image2{
+	width: 600px;
+	margin-top: -475px;
+}

@@ -1,0 +1,72 @@
+iframe{
+	/*border: 1px solid red;*/
+	height:225px;
+	width: 335px;
+}
+#interior{
+	margin-top: 0;
+}
+#interior-background{
+	height: 500px;
+	width: 600px;
+	/*border: 1px solid red;*/
+	background-repeat:no-repeat;
+	background-position: bottom;
+	background-size:cover;
+	display: flex;
+}
+.wrapper-interior-field{
+	display: flex;
+	position: relative;
+	margin:auto;
+	margin-top:0;
+	height:350px;
+	width:350px;
+	overflow:hidden;
+	border-radius: 50px;
+	/*border: 1px solid red;*/
+}
+#interior-field{
+	position: relative;
+	margin:50px;
+	height:250px;
+	width:250px;
+	overflow:hidden;
+	/*box-shadow: 0px 0px 25px 25px white;*/
+}
+#interior-image{
+	position: absolute;
+	/*border: 1px solid green;*/
+	background-repeat:no-repeat;
+	background-position: center;
+	background-size:contain;
+}
+#interior-template{
+	position: absolute;
+	height:250px;
+	width:250px;
+	/*border: 1px solid blue;*/
+	background-repeat:no-repeat;
+	background-position: center;
+	background-size:contain;
+}
+#interior-tape{
+	/*border: 1px solid red;*/
+	height:100px;
+	width: 600px;
+	display:flex;
+	overflow-y: hidden;
+	overflow-x:scroll;
+}
+.interior-tape-item{
+	/*border: 1px solid red;*/
+	height:90px;
+}
+#interior-download{
+	position: absolute;
+	top:0;
+	left:50px;
+}
+#svg_3{
+	background-color: blue;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<script src="jsfile-galery.js"></script>
+	<link rel="stylesheet" href="cssfile-galary.css">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<title>Юг Идеал - Модульные картины</title>
+</head>
+<body onload="indexOnload()">
+	<div class="header">
+		<div class="header-top">
+			<div class="drop-menu">
+				<button id="menuShowButton" onclick="showMenu()"><h3>&#8801</h3></button>
+			</div>
+			<div>
+				<h3>mail:info@ug-ideal.ru</h3>
+			</div>
+			<div class="header-item">
+				<input type="text" id="searchInput" placeholder="Поиск по галерее...">
+				<button onclick="searchImage()"><h3>&#128269</h3></button>
+			</div>
+			<!-- <div class="header-item" >
+				<button id="menuShowButton"><h3>&#8801</h3></button>
+			</div> -->
+		</div>
+		<div class="header-contacts">
+			<div class="logotip">
+				<div>
+					<img src="images/logotip.png" style="width: 150px" >
+				</div>
+				<div>
+					<span>Производственная компания</span>
+				</div>
+			</div>
+			<div class="header-item">
+				<div class="header-item-icon">&#9993</div>
+				<div class="header-item-text">
+					<h3><br>Краснодарский край <br> г. Новороссийск</h3> 
+					ул.Мысхакское шоссе 50/10
+				</div>
+			</div>
+			<div class="header-item">
+				<div class="header-item-icon">&#9742</div>
+				<div class="header-item-text">
+					<h3><br>+7(988) 769 69 66 <br>+7(988) 762 22 69 </h3>
+				</div>
+			</div>
+			<div class="header-item">
+				<div class="header-item-icon">&#8986</div>
+				<div class="header-item-text">
+					<h3><br>09:00 - 18:00</h3> 
+					Время работы
+				</div>
+			</div>
+		</div>
+		<div class="header-menu" id="header-menu">
+			<div><button id="hideMenuButton" onclick="hideMenu()"><h3>&#10006</h3></button></div>
+			<div class="header-menu-item"><a href="#"><h3>Главная</h3></a></div>
+			<div class="header-menu-item"><a href="#"><h3>Натяжные потолки</h3></a></div>
+			<div class="header-menu-item"><a href="#"><h3>Модульные картины</h3></a></div>
+			<div class="header-menu-item"><a href="#"><h3>Фото обои фрески</h3></a></div>
+			<div class="header-menu-item"><a href="#"><h3>Фото каталог</h3></a></div>
+			<div class="header-menu-item"><a href="#"><h3>Контакты</h3></a></div>
+		</div>
+	</div>
+	<!-- END HEADER=================== -->
+	<div class="wrapper-page">
+		<div class="sidebar">
+			<div class="filter">
+				ФИЛЬТР <br><br>
+				Категория: <br>
+				<div>
+					<select><option>Города</option></select>
+				</div>
+				<br><br>
+				Подкатегория:<br> 
+				<div>
+					<select><option>Большие города</option></select>
+				</div>
+				
+				<br><br>
+				<div class="header-item">
+					<button><h3>&#128269</h3></button>
+					<button><h3>&#10006</h3></button>
+				</div>
+				<br><br>Выводить по:<br> 
+				<div>
+					<input type="text" style="width: 5em;"><br>
+					на страницу
+				</div>
+			</div>
+			<div class="posts"><br><br><br>Здесь будут посты</div>
+		</div>
+		<div class="content" id="content"></div>
+	</div>
+
+	<!-- FOOTER======================= -->
+	<div class="footer"> 
+		<div class="header-menu-item">
+			<h3>Наши адреса</h3><br>
+			Краснодарский край г.Новороссийск<br><br>
+			пр-кт Ленина 22 а ,ост.комплекс<br>
+			тел +7(988)7622269 розница<br><br>
+			Т.Ц Южный павильон № 68<br>
+			тел +7(988)7655066 розница<br><br>
+			ул.Мысхакское шоссе 50/10<br>
+			тел +7(989)761333 дилерский
+		</div>
+		<div class="header-menu-item">
+			<h3>info@ug-ideal.ru</h3><br>
+			<br>График работы : 09.00-18.00<br>
+			Воскресенье выходной.
+		</div>
+		<div class="header-menu-item">
+			<input type="text" placeholder="Имя" class="feetback"><br>
+			<input type="text" placeholder="Email" class="feetback"><br>
+			<textarea placeholder=" Сообщение" class="feetback" rows="5"></textarea><br>
+			<button class="feetback">ОТПРАВИТЬ</button>
+		</div>
+	</div>
+</body>
+</html>

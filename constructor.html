@@ -1,0 +1,212 @@
+are<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="js-constructor.js"></script>
+	<script src="js-calculator.js"></script>
+	<script src="js-favorite.js"></script>
+	<script src="js-interior.js"></script>
+	<script src="js-mail.js"></script>
+	<script src="js-vidgets.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.js"></script>
+	<link rel="stylesheet" href="css-constructor.css">
+	<link rel="stylesheet" href="css-interior.css">
+	<link rel="stylesheet" href="css-runner.css">
+	<link rel="stylesheet" href="css-vidgets.css">
+	<title>Document</title>
+</head>
+<body>
+	<div class="header">
+		<div class="template-tape" id="template-tape"></div>
+	</div>
+	<div class="content">
+		<div class="field" id="field" onmousedown="takeItem()">
+			<div class="overlay-backing"></div>
+			<div class="backing" id="backing"></div>
+			<div class="item" id="item"></div>
+			<div id="template" class="template"></div>
+		</div>
+		<div class="sidebar">
+			<div class="wrap-option">
+				<div class="sign">
+					<span style="color:#3cb2e4">Артикул</span>
+					<span id="imageName"></span>
+				</div>
+				<div class="sign">Выбранный шаблон:
+					<span id="templateSize" style="color:#3cb2e4"></span>
+				</div>
+
+				<div class="sign">Выберите <span style="color:#3cb2e4">размер:</span></div>
+				<div class="option" id="size"></div>
+			</div>
+			<div class="wrap-option">
+				<div class="sign">Выберите <span style="color:#3cb2e4">материал:</span></div>
+				<div class="option" id="material"></div>
+			</div>
+			<div style="display: flex">
+				<div class="wrap-option">
+					<div class="sign-blue">
+						Стоимость: <span id="amount"></span><br>
+					</div>
+					<div class="sign-blue">
+						Итого со скидкой: <span id="discountAmount"></span>
+					</div>
+				</div>
+				<div id="discount"></div>
+			</div>
+		</div>
+	</div>	
+	<div class="input-range">
+		<div>увеличить -</div>
+		<div id="range-vidget">
+			<div id="range-slider"></div>
+			<input type="range" min="0" max="770" value="500" 
+			step="1" id="scaleInput" oninput="scale()"> 
+		</div>
+		<div>+ изображение</div>
+	</div>
+	<div class="transform">
+		<fieldset>
+			<legend>Поворот</legend>
+			<div class="transform">
+				<div class="transform-item">
+					<label for="360" class="radio-label" id="label360"><input type="radio" id='360' name="transform-rotate" value="360" checked></label> 0/360<sup>0</sup>
+				</div>
+				<div class="transform-item">
+					<label for="90" id="label90" class="radio-label"><input id="90" type="radio" name="transform-rotate" value="90"></label> 90<sup>0</sup>
+				</div>
+				<div class="transform-item">
+					<label for="180" id="label180" class="radio-label"><input id="180" type="radio" name="transform-rotate" value="180"></label> 180<sup>0</sup>
+				</div>
+				<div class="transform-item">
+					<label for="270" id="label270" class="radio-label"><input id="270" type="radio" name="transform-rotate" value="270"></label> 270<sup>0</sup>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Зеркальное отображение</legend>
+			<div class="transform">
+				<div class="transform-item">
+					<label class="radio-label" id="labelnone" for="none"><input id="none" type="radio" name="transform-mirror" value="1" checked></label> Нет
+				</div>
+				<div class="transform-item">
+					<label for="horizontal" id="labelhorizontal" class="radio-label"><input id="horizontal" type="radio" name="transform-mirror" value="-1,1"></label> По горизонтали
+				</div>
+				<div class="transform-item">
+					<label for="vertical" id="labelvertical" class="radio-label"><input id="vertical" type="radio" name="transform-mirror" value="1,-1"></label> По вертикали
+				</div>
+			</div>
+		</fieldset>
+		<div class="action-button" id="backButton" onclick="redirect('index.html')">
+			&#9668 Назад в галлерею
+		</div>
+	</div>
+	<div class="footer" id="footer">
+		<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('order','block')">
+			&#128203 Оформить <br> заказ
+		</div>
+		<div class="action-button" onclick="addFavorite()">&#10133 Добавить <br>в избранное</div>
+		<div class="action-button" onclick="mailStorage('customer')+downLoadImage()">
+			&#128233 Отправить <br> мне на почту
+		</div>
+		<div class="action-button" onclick="downLoadImage()">&#128190 <br> Скачать </div>
+		<div class="action-button" onclick="ajaxInteriors()">&#128248 Просмотреть<br> в интерьере</div>
+		<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('image-download','block')">
+			&#128229 Загрузить свое <br>изображение
+		</div>
+		<div class="action-button" onclick="getFavorite()">&#9733 <br> Избранное</div>
+	</div>
+	<div class="fog" id="fog">
+		<div class="popup" id="image-download">
+			<div style="display: flex;justify-content: right">
+				<div class="close-button" onclick="itemDisplay('fog','none')+itemDisplay('image-download','none')">
+					&#10060
+				</div>
+			</div>
+			<p>Выберите изображение</p>
+			<div class="drop-zone">
+				<form action="php-customer-image.php" enctype="multipart/form-data" method="post" id="image-form">
+					<input type="file" name="myfile" id="customer-image" class="drop-zone-input">
+				</form>
+			</div>
+			<div class="action-button" onclick="submitForm('image-form')">&#128229 Загрузить</div>			
+		</div>
+		<div class="popup" id="favorite">
+			<div style="display: flex;justify-content: right">
+				<div class="close-button" onclick="itemDisplay('fog','none')+itemDisplay('favorite','none')">
+					&#10060
+				</div>
+			</div>
+			<div style="text-align: center;"><p>ИЗБРАННОЕ</p></div>
+			<div id="favorite-list"></div>			
+		</div>
+		<div class="popup" id="interior">
+			<div style="display: flex;justify-content: space-between;margin-bottom: 5px;">
+				<div class="action-button" onclick="customerInterior()">
+					&#128229 Загрузить свой интерьер
+				</div>
+				<div class="close-button" onclick="itemDisplay('fog','none')+itemDisplay('interior','none')">
+					&#10060
+				</div>
+			</div>
+			<div id="interior-background">
+				<div class="wrapper-interior-field">
+					<div id="interior-field">
+						<div id="interior-image"></div>
+						<div id="interior-template"></div>
+					</div>
+				</div>	
+			</div>
+			<div id="interior-tape"></div>	
+			<div class="popup" id="interior-download">
+				<div style="display: flex;justify-content: right">
+					<div class="close-button" onclick="itemDisplay('interior-download','none')">
+						&#10060
+					</div>
+				</div>
+				<iframe src="interior-upload.html" frameborder="0"></iframe>
+				<div class="action-button" onclick="setCustomerInterior()">
+					&#128229 Загрузить
+				</div>	
+			</div>					
+		</div>
+		<div class="popup" id="order">
+			<div style="display: flex;justify-content: right">
+				<div class="close-button" onclick="itemDisplay('fog','none')+itemDisplay('order','none')">
+					&#10060
+				</div>
+			</div>
+			<p>ОФОРМЛЕНИЕ ЗАКАЗА</p>
+			<form action="mail/index.php" method="POST" id="customer-form">
+				<div class="data-form-item">
+					<input type="text"placeholder="Фамилия Имя Отчество"id="customer-name">
+				</div>	
+				<div class="data-form-item">
+					<input type="text"placeholder="e-mail"id="customer-mail">
+				</div>	
+				<div class="data-form-item">
+					<input type="text"placeholder="тел.:"id="customer-phone">
+				</div>	
+			</form>	
+			<div class="data-form-item">
+				<p id="warning" style="color: red"></p>
+			</div>
+			<div class="action-button" onclick="orderForm()">Сформировать заказ</div>
+		</div>
+	</div>
+	<div id="progress-backing">
+		<div id="progress-wrapper">
+			<div id="progress-wrapper">
+				<progress id="porgress-bar" value="0" max="100"></progress>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	mouseOn();
+	ajaxTemplates();
+	calculatorStart();
+</script>
+<script src="js-jquery.js"></script>
+</html>

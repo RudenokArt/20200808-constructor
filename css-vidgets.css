@@ -1,0 +1,33 @@
+input[type="radio"]{
+	opacity: 0;
+	box-sizing: border-box;
+	line-height: 0;
+	padding: 0;
+	margin:0;
+	/*margin:-5px;*/
+}
+.radio-label{
+	border:5px solid #3cb2e4;
+	border-radius: 100%;
+	box-sizing: border-box;
+	padding: 0;
+	margin:0;
+	font-size: 0.7em;
+}
+input[type="range"]{
+	margin:0;
+	opacity: 0;
+}
+#range-vidget{
+	position: relative;
+	border:2px solid #3cb2e4;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+#range-slider{
+	top:0;
+	height: 0;
+	position: absolute;
+	background-color: #3cb2e4;
+	height: 100%
+}

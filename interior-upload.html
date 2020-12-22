@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="js-constructor.js"></script>
+	<script src="js-calculator.js"></script>
+	<script src="js-photo-upload.js"></script>
+	<script src="js-favorite.js"></script>
+	<script src="js-interior.js"></script>
+	<link rel="stylesheet" href="css-constructor.css">
+	<link rel="stylesheet" href="css-interior.css">
+	<link rel="stylesheet" href="css-runner.css">
+	<title>Document</title>
+</head>
+<body>
+	<div id="upload-frame">
+		<p>
+			Выберите изображение: 
+			<span id="customer-interior-info"></span>
+		</p>
+		<div class="drop-zone">
+			<form action="php-customer-interior.php" enctype="multipart/form-data" method="post" id="interior-form">
+				<input type="file" name="myfile" id="customer-interior" class="drop-zone-input" onchange="submitForm('interior-form')" style="color: transparent;">
+			</form>
+		</div>	
+	</div>
+</body>
+<script>
+	document.getElementById('customer-interior-info').innerText=localStorage.getItem('interior');
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<script src="jsfile-galery.js"></script>
+	<link rel="stylesheet" href="cssfile-galary.css">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<title>Юг Идеал - Модульные картины</title>
+</head>
+<body>
+	<div class="header">
+		<div class="drop-menu" id="drop-menu">
+			<button onclick="showMenu()"><h1>&#8801</h1></button>
+		</div>
+		<div class="search">
+			<input type="text" id="searchInput" placeholder=" Поиск по галерее...">
+			<button onclick="searchImage()" class="button-search"><h3>&#128269</h3></button>
+			<!-- <button onclick="ajaxGallery();"><h3>&#10006</h3></button> -->
+		</div>
+	</div>
+	<!-- END HEADER=================== -->
+	<div class="wrapper-page">
+		<div class="sidebar" id="sidebar">
+			<div class="categories" id="resetCategory">&#160</div>
+			<div class="categories" id="categories"></div>
+			<div class="posts" id="posts"></div>
+		</div>
+		<div class="wrapper-content">
+			<div class="filter">
+				<div class="filter-item">
+					Фильтр по категориям:<br>
+					<div class="wrapper-select">
+						<span id="categorySelectArrow" class="rotate">&#10095</span>
+						<div class="item-selet">
+							<select id="categorySelect" 
+							onchange="selectCategory()"
+							onblur="selectArrowReset('categorySelectArrow')"
+							onclick="selectArrow('categorySelectArrow')">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="filter-item">
+				Фильтр по подкатегориям:<br>
+				<div class="wrapper-select">
+					<span id="subcategorySelectArrow" class="rotate">&#10095</span>
+					<div class="item-selet">
+						<select id="subCategorySelect" 
+						onchange="selectSubCategory()"
+						onblur="selectArrowReset('subcategorySelectArrow')"
+						onclick="selectArrow('subcategorySelectArrow')">
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="pagination-input" style="display: none">
+			<input type="text" id='paginationPage'>
+			<button onclick="pagination()">&#10004</button>
+		</div>
+	</div>
+	<div class="content" id="content"></div>
+	<div id='pageNavigation' class="pageNavigation">pagination</div>
+</div>
+</div>
+<script>
+	setTimeout(indexOnload, 100)
+</script>
+</body>
+</html>
