@@ -70,8 +70,10 @@ imagecopyresized($image,$image2,50, 0, 0, 0,500, 500,$inf2[0],$inf2[1]);
 $imageOrder=imagecreatetruecolor(600, 300);
 imagefill($imageOrder, 0, 0, $white); 
 //=============Отрисовка текста
-$path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';// путь к файлу со шрифтом
-$path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';// путь к файлу со шрифтом
+$path='D:\OpenServer\domains\localhost\20200808-constructor\fonts/arial-narrow.ttf';
+$path2='D:\OpenServer\domains\localhost\20200808-constructor\fonts/times-bold.ttf';
+// $path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';
+// $path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';
 //$path='/home/e/e25532i4/e25532i4.beget.tech/public_html/KWORK/20200808-constructor/fonts/arial-narrow.ttf';
 //$path2='/home/e/e25532i4/e25532i4.beget.tech/public_html/KWORK/20200808-constructor/fonts/times-bold.ttf';
 imageFtText($imageOrder, 15, 0, 20, 20, $black, $path,'ЗАКАЗ ОТ: ');

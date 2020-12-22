@@ -1,7 +1,7 @@
 let customer={};
 
 function addFavorite () {
-	//localStorage.clear();
+	divPosition('item',item);
 	localStorage.setItem(item.image+'#'+performance.now(),
 		[calculator.discount,
 		item.positionX,
