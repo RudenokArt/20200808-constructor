@@ -46,19 +46,41 @@ function favoriteTable () {
 	let table='';
 	for (var i = 0; i < favoriteArr.length; i++) {
 		table=table+
-		'<div class="constructor-item">'+
-		'<div class="image-item"'+
-		'style="background-image: url(miniatures/'+favoriteArr[i].image+');'+
-		'top:'+favoriteArr[i].top+'px;'+
-		'left:'+favoriteArr[i].left+'px;'+
-		'height:'+favoriteArr[i].height+'px;'+
-		'width:'+favoriteArr[i].width+'px">'+
+		'<div class="col-lg-6 col-sm-12">'+
+		'<div class="row">'+
+		favoriteImage(favoriteArr[i])+
+		'<div class="col-sm-4 description-item">'+
+		favoriteDescription(favoriteArr[i])+
 		'</div>'+
-		'<div>'+
-		'<img src="mini-templates/'+favoriteArr[i].template+'"'+
-		'width="200" height="200" alt=" ">'+
 		'</div>'+
 		'</div>';
 	}
 	$('.favorite-table').html(table);
+}
+function favoriteImage (item) {
+	let image=
+	'<div class="constructor-item col-sm-4">'+
+	'<div class="image-item"'+
+	'style="background-image: url(miniatures/'+item.image+');'+
+	'top:'+item.top+'px;'+
+	'left:'+item.left+'px;'+
+	'height:'+item.height+'px;'+
+	'width:'+item.width+'px">'+
+	'</div>'+
+	'<div>'+
+	'<img src="mini-templates/'+item.template+'"'+
+	'width="200" height="200" alt=" ">'+
+	'</div>'+
+	'</div>';
+	return image;
+}
+function favoriteDescription (item) {
+	let description=
+	'Артикул: '+item.image.split('.')[0]+'<br>'+
+	'Шаблон: '+item.template+'<br>'+
+	'Размер: '+item.sizeText+'<br>'+
+	'Материал: '+item.materialText+'<br>'+
+	'Стоимость: '+item.discountAmount+
+	'<br>';
+	return description;
 }

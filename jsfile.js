@@ -393,16 +393,20 @@ function filterImage()
 	if (priceTo=='')
 		{priceTo=1000000000}
 
-	if (subcategory=='')
-	{
-		where='empty'
-	}
-	else
-	{
-		where='WHERE `category`="'
+	// if (subcategory=='')
+	// {
+	// 	where='empty'
+	// }
+	// else
+	// {
+	// 	where='WHERE `category`="'
+	// 	+category+'" AND `40x70`>="'
+	// 	+priceFrom+'" AND `40x70`<="'+priceTo+'"';
+	// }
+	where='WHERE `category`="'
 		+category+'" AND `40x70`>="'
 		+priceFrom+'" AND `40x70`<="'+priceTo+'"';
-	}
+
 	page=1;
 	ajaxGallery(where);
 }
