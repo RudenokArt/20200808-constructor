@@ -28,7 +28,7 @@ function getFavorite () {
 	let arrVal=Object.values(localStorage);
 	let list='';
 	for(let i=0;i<arr.length;i++){
-		if (arr[i]!='mail'&&arr[i]!='elementor'){
+		if (arr[i]!='mail'&&arr[i]!='elementor'&&arr[i]!='editItem'){
 			// let item = arr[i].split(',');
 			let settingsArr = arrVal[i].split(',');
 			if (settingsArr[10]!='') {
@@ -226,5 +226,13 @@ function orderMail () {
 			document.getElementById('order-data').innerHTML=orderData;
 			document.getElementById('order-button').style.display='block';
 		}
+	}
+}
+function checkFavoriteChoise () {
+	let arrKey = Object.keys(localStorage);
+	let arrVal=Object.values(localStorage);
+	let key=localStorage.getItem('editItem');
+	for (var i = 0; i < arrKey.length; i++) {
+		if (arrKey[i]==key) {favoriteChoise(arrKey[i],arrVal[i]);}
 	}
 }

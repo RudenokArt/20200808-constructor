@@ -35,24 +35,23 @@ function getFavoriteData () {
 	let arrKey = Object.keys(localStorage);
 	let arrVal=Object.values(localStorage);
 	for (var i = 0; i < arrKey.length; i++) {
-		favoriteArr[i]=new favoriteItem (arrKey[i],arrVal[i]);
-		favoriteArr[i].setFeatures();
+		if(arrKey[i]!='mail'&&arrKey[i]!='elementor'&&arrKey[i]!='editItem'){
+			favoriteArr.push(new favoriteItem (arrKey[i],arrVal[i]));
+		}		
 	}
 	favoriteTable();
 }
 function favoriteTable () {
 	let table='';
 	for (var i = 0; i < favoriteArr.length; i++) {
+		favoriteArr[i].setFeatures();
 		table=table+
-		'<div class="col-lg-6 col-sm-12">'+
-		'<div class="row">'+
-		favoriteImage(favoriteArr[i])+
-		'<div class="description-item">'+
-		favoriteDescription(favoriteArr[i])+
-		'</div>'+
+		'<div class="flex-wrapper content-item">'+
+		'<div>'+favoriteImage(favoriteArr[i])+'</div>'+
+		'<div class="flex-wrapper">'+favoriteDescription(favoriteArr[i])+'</div>'+
 		'<div class="buttons-item">'+
-		favoriteButtons(favoriteArr[i])+
-		'</div>'+
+		favoriteChoise(favoriteArr[i])+
+		favoriteEdit(favoriteArr[i])+
 		'</div>'+
 		'</div>';
 	}
@@ -81,32 +80,43 @@ function imageStyle (item) {
 }
 function favoriteDescription (item) {
 	let description=
+	'<div class="margin-auto"><span>'+
 	'Артикул: '+item.image.split('.')[0]+'<br>'+
 	'Шаблон: '+item.template+'<br>'+
 	'Размер: '+item.sizeText+'<br>'+
 	'Материал: '+item.materialText+'<br>'+
 	'Стоимость: '+item.discountAmount+
-	'<br>';
+	'</span></div>';
 	return description;
 }
-function favoriteButtons (item) {
-	let buttons=
-	'<div>'+
+function favoriteChoise (item) {
+	let checkbox=
+	'<div class="flex-wrapper">'+
 	'<div><label for="'+item.image+'" name="'+item.image+'"></label></div>'+
-	'<div> В заказ</div>'+
 	'<div><input type="checkbox" id="'+item.image+'"></div>'+
+	'<div><span>В заказ</span></div>'+
 	'</div>';
-	return buttons;
+	return checkbox;
+}
+function favoriteEdit (item) {
+	let button=
+	'<div class="flex-wrapper">'+
+	'<div>'+
+	'<button name="'+item.image+'" class="edit-button">'+
+	iconPencillFill()+
+	'</button>'+
+	'</div>'+
+	'<div><span>&#160 ред.</span></div>'+
+	'</div>';
+	return button;
 }
 function checkboxLabel () {
-	let swg=
-	'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">'+
-	'<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>'+
-	'</svg>';
 	let label = $('label[name="'+this.id+'"');
-	if (this.checked) {label.html(swg);}
+	if (this.checked) {label.html(iconCheck2());}
 	else {label.html('');}
-	
-	console.log(label);
+}
+function setEditItem () {
+	localStorage.setItem('editItem', this.name);
+	document.location.href='constructor.html';
 }
 //console.log(favoriteArr)
