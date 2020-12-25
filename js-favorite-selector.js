@@ -1,0 +1,1 @@
+$('body').delegate('input[type="checkbox"]', 'change', checkboxLabel);
