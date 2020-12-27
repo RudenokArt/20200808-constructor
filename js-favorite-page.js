@@ -14,20 +14,12 @@ class favoriteItem {
 		this.size=arr[5];
 		this.discount=arr[6];
 		this.sizeText=arr[7];
-		this.materialText=arr[8]
+		this.materialText=arr[8];
 		this.amount=arr[9];
 		this.discountAmount=arr[10];
 		this.template=arr[11];
 		this.rotate=arr[12];
 		this.miror=String(arr[13]);
-		this.mainSizeSet();
-	}
-	mainSizeSet(){
-		if (this.height>this.width) {
-			this.mainSize=this.height;
-		}else{
-			this.mainSize=this.width;
-		}
 	}
 }
 getFavoriteData();
@@ -47,15 +39,29 @@ function favoriteTable () {
 		favoriteArr[i].setFeatures();
 		table=table+
 		'<div class="flex-wrapper content-item">'+
-		'<div>'+favoriteImage(favoriteArr[i])+'</div>'+
+		'<div class="flex-wrapper">'+favoriteImage(favoriteArr[i])+'</div>'+
+		'<div class="flex-wrapper">'+
 		'<div class="flex-wrapper">'+favoriteDescription(favoriteArr[i])+'</div>'+
 		'<div class="buttons-item">'+
 		favoriteChoise(favoriteArr[i])+
 		favoriteEdit(favoriteArr[i])+
+		favoriteDelete(favoriteArr[i])+
+		'</div>'+
 		'</div>'+
 		'</div>';
 	}
 	$('.favorite-table').html(table);
+	amountCalc();
+}
+function amountCalc (argument) {
+	let quantity = 0;
+	let total = 0;
+	for (var i = 0; i < favoriteArr.length; i++) {
+		total=total+Number(favoriteArr[i].discountAmount);
+		quantity=quantity+1;
+	}
+	$('.favorite-quantity').html('<h3>Всего ед.: '+quantity+'</h3>');
+	$('.favorite-total').html('<h3>Итого стоимость: '+total+'</h3>');
 }
 function favoriteImage (item) {
 	let image=
@@ -80,7 +86,7 @@ function imageStyle (item) {
 }
 function favoriteDescription (item) {
 	let description=
-	'<div class="margin-auto"><span>'+
+	'<div class="item-description"><span>'+
 	'Артикул: '+item.image.split('.')[0]+'<br>'+
 	'Шаблон: '+item.template+'<br>'+
 	'Размер: '+item.sizeText+'<br>'+
@@ -102,11 +108,23 @@ function favoriteEdit (item) {
 	let button=
 	'<div class="flex-wrapper">'+
 	'<div>'+
-	'<button name="'+item.image+'" class="edit-button">'+
+	'<button name="'+item.image+'" class="edit-button" title="редактировать">'+
 	iconPencillFill()+
 	'</button>'+
 	'</div>'+
 	'<div><span>&#160 ред.</span></div>'+
+	'</div>';
+	return button;
+}
+function favoriteDelete (item) {
+	let button=
+	'<div class="flex-wrapper">'+
+	'<div>'+
+	'<button name="'+item.image+'" class="delete-button" title="удалить">'+
+	iconTrashFill()+
+	'</button>'+
+	'</div>'+
+	'<div><span>&#160 удал.</span></div>'+
 	'</div>';
 	return button;
 }
@@ -115,8 +133,30 @@ function checkboxLabel () {
 	if (this.checked) {label.html(iconCheck2());}
 	else {label.html('');}
 }
-function setEditItem () {
+function editItem () {
 	localStorage.setItem('editItem', this.name);
 	document.location.href='constructor.html';
 }
+function deleteItem () {
+	$('.favorite-table').html('table');
+	localStorage.removeItem(this.name);
+	favoriteArr=[];
+	getFavoriteData();
+}
+function backPage () {
+	document.location.href='constructor.html';
+}
+function checkForm () {
+	let check=true;
+	let arr=$('input[type="text"]');
+	for (var i = 0; i < arr.length; i++) {
+		if(arr[i].value){check=false};
+	}
+	if(check){alert('Заполните все поля формы!');}
+	else{orderSettings();}
+}
+function orderSettings () {
+	console.log(favoriteArr);
+}
+
 //console.log(favoriteArr)

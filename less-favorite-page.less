@@ -1,37 +1,55 @@
-// div{
-// 	border:1px solid green;
-// }
-// .row{
-// 	border:1px solid blue;
-// }
-// .container{
-// 	border:1px solid red;
-// }
+div{
+	// border:1px solid green;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @lightBlue:#3cb2e4;
+@darkBlue: #0A97D3;
 html{
 	font-size: 10px;
 }
 button{
+	padding:1rem;
 	margin:0;
-	border:2px solid @lightBlue;
-	background-color: transparent;
-	color:@lightBlue;
+	border:none;
+	background-color: @lightBlue;
+	color:white;
 	border-radius: 5px;
+	font-size: 1.5rem;
+	line-height: 0px;
+}
+button:hover{
+	background-color:@darkBlue;
 }
 span{
 	color:@lightBlue;
 	font-size: 1.5em;
 }
+h3{color:@lightBlue;}
+.favorite-table{
+	display:flex;
+	flex-wrap: wrap;
+}
+input[type="text"]{
+	font-size: 1.5rem;
+	margin:1em;
+	width:300px;
+	padding:5px;
+	border-radius:5px;
+	border:1px solid @lightBlue;
+}
 .flex-wrapper{
 	margin:auto;
 	display:flex;
 	flex-wrap: wrap;
-	padding: 1rem;
+	padding: 1px;
 }
 .content-item{
-	width:100%;
+	width:500px;
 	border:1px solid @lightBlue;
 	margin-top: 1rem;
+}
+.content-item:hover{
+	box-shadow: 0px 0px 10px 0px #000000;
 }
 .constructor-item{
 	position:relative;
@@ -45,10 +63,18 @@ span{
 	position: absolute;
 	z-index: -1;
 }
+.item-description{
+	width:150px;
+}
 .buttons-item{
 	margin:auto;
+	button{
+		padding:5px;
+		margin-bottom: 5px;
+		margin-top: 5px;
+	}
 	input{
-		opacity: 0;		
+		opacity: 0;	
 	}
 	label{
 		margin:0;
@@ -58,4 +84,46 @@ span{
 		display: block;
 		border-radius: 5px;
 	}
+}
+.delete-button{
+	color: red;
+}
+.popup-wrapper{
+	display:flex;
+	position:fixed;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background-color:rgba(0,0,0,0.5);
+}
+.popup{
+	padding-top:2em;
+	padding-bottom:2em;
+	margin:auto;
+	min-height: 50%;
+	min-width: 50%;
+	background-color:white;
+	display:flex;
+	div{
+		margin:auto;
+	}
+	button{padding: 1em;}
+}
+.close-button{
+	margin-left: 80%;
+	padding-left:0px !important;
+	padding-right:0px !important;
+	transition-duration : 1s;
+	background-color:transparent;
+	color: red;
+	font-size: 20px;
+	span{margin:1rem;}
+}
+.close-button:hover{
+	border-radius:50%;
+	background-color:transparent;
+	transition-duration : 0.5s;
+	box-shadow: 0px 0px 10px 0px #000000;
+	transform: rotate(90deg);
 }

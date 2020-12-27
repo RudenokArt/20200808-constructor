@@ -399,4 +399,5 @@ function constructorTransition (imageName,discount) {
 	document.cookie='discount='+discount;
 	document.location.href='constructor.html';
 	console.log(document.cookie);
+	localStorage.removeItem('editItem');
 }
