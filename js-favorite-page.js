@@ -3,6 +3,7 @@ class favoriteItem {
 	constructor(image, features){
 		this.image=image;
 		this.features=features;
+		this.selected=false;
 	}
 	setFeatures(){
 		let arr=this.features.split(',');
@@ -132,6 +133,15 @@ function checkboxLabel () {
 	let label = $('label[name="'+this.id+'"');
 	if (this.checked) {label.html(iconCheck2());}
 	else {label.html('');}
+	selectedItems();
+}
+function selectedItems () {
+	for (var i = 0; i < favoriteArr.length; i++) {
+		let node=document.getElementById(favoriteArr[i].image);
+		if(node.checked){favoriteArr[i].selected=true}
+			else{favoriteArr[i].selected=false}
+	}
+	console.log(favoriteArr);
 }
 function editItem () {
 	localStorage.setItem('editItem', this.name);
@@ -153,16 +163,25 @@ function checkForm () {
 		if(arr[i].value){check=false};
 	}
 	if(check){alert('Заполните все поля формы!');}
-	else{orderSettings();}
+	else{orderFilter();}
 }
-function orderSettings () {
+function orderFilter () {
+	let selectedArr=[];
+	for (var i = 0; i < favoriteArr.length; i++) {
+		if(favoriteArr[i].selected){
+			selectedArr.push(favoriteArr[i])
+		}
+	}
+	orderSettings(selectedArr);
+}
+function orderSettings (selectedArr) {
 	let customerArr=$('.customer-data');
 	let customer={
 		name:customerArr[0].value,
 		email:customerArr[1].value,
 		phone:customerArr[2].value,
 	}
-	let arr=[customer,favoriteArr];
+	let arr=[customer,selectedArr];
 	let str=JSON.stringify(arr);
 	$.post('php-order-group-settings.php', {data:str}, 
 		(data)=>{console.log('data');});
