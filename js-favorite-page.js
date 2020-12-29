@@ -156,7 +156,16 @@ function checkForm () {
 	else{orderSettings();}
 }
 function orderSettings () {
-	console.log(favoriteArr);
+	let customerArr=$('.customer-data');
+	let customer={
+		name:customerArr[0].value,
+		email:customerArr[1].value,
+		phone:customerArr[2].value,
+	}
+	let arr=[customer,favoriteArr];
+	let str=JSON.stringify(arr);
+	$.post('php-order-group-settings.php', {data:str}, 
+		(data)=>{console.log('data');});
 }
 
 //console.log(favoriteArr)
