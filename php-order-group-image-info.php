@@ -11,6 +11,7 @@ for ($i=0; $i < sizeof($settings[1]) ; $i++) {
 	echo '<br><br>';
 }
 
-
+$imageSize=getImageSize('galery/'.$settings[1][0]->image);
+print_r($imageSize);
 
 ?>

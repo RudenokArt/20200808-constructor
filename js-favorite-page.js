@@ -7,6 +7,7 @@ class favoriteItem {
 	}
 	setFeatures(){
 		let arr=this.features.split(',');
+		if (arr[14]==''||arr[14]==undefined){arr[14]='1';}
 		this.discount=arr[0];
 		this.left=Math.round((Number(arr[1]-50))/5*2);
 		this.top=Math.round((Number(arr[2])-119-50)/5*2);
@@ -73,6 +74,7 @@ function favoriteImage (item) {
 	'width="200" height="200" alt=" ">'+
 	'</div>'+
 	'</div>';
+	console.log(imageStyle(item))
 	return image;
 }
 function imageStyle (item) {
