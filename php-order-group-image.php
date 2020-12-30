@@ -3,15 +3,43 @@
 $str=file_get_contents('order-group-settings.txt');
 $settings=json_decode($str);
 
-$imageBg = imageCreate(500,200);
-$white = imagecolorallocate($imageBg, 255, 255, 255); // цвет фона
-$imageImg = imageCreateFromJpeg('galery/'.$settings[1][0]->image);//загружаем картинку
-$imageSize=getImageSize('galery/'.$settings[1][0]->image);// размеры картинки
-imagecopyresampled($imageBg, $imageImg, 0, 0, 0, 0, 200, 200, $imageSize[0], $imageSize[1]);
+$imageBg = imagecreatetruecolor(500,200);//создание фона
+$white = imagecolorallocate($imageBg, 255, 255, 255); // белый цвет
+imagefill($imageBg, 0, 0, $white); // заливка фона
+$imageImg = imageCreateFromJpeg('galery/'.$settings[1][0]->image);//загрузка картины
+$imageTem = imageCreateFromPng('templates/'.$settings[1][0]->template);//загрузка шаблона
 
+//===============РАЗМЕР ИЗОБРАЖЕНИЯ
+$imageSize=getImageSize('galery/'.$settings[1][0]->image);// размеры исх. картины
+if ($imageSize[0]>=$imageSize[1]) {
+	$width=$settings[1][0]->width;
+	$height=round($imageSize[1]/$imageSize[0]*$settings[1][0]->width);
+}
+else{
+	$height=$settings[1][0]->height;
+	$width=round($imageSize[0]/$imageSize[0]*$settings[1][0]->height);
+}
+$templateSize=getImageSize('templates/'.$settings[1][0]->template);// размеры шаблона
+//===============ПОВОРОТ ИЗОБРАЖЕНИЯ
+$imageImg = imagerotate($imageImg, $settings[1][0]->rotate, $white);
+//===============ЗЕРКАЛЬНОЕ ОТОБРАЖЕНИЕ
+if ($settings[1][0]->miror=='-1,1') { // зеркало по горизонтали
+	Imageflip($imageImg, IMG_FLIP_HORIZONTAL);
+}
+if ($settings[1][0]->miror=='1,-1') { // зеркало по вертикали
+	Imageflip($imageImg, IMG_FLIP_VERTICAL);
+}
+//===============НАЛОЖЕНИЕ
+imagecopyresampled($imageBg, $imageImg, 
+$settings[1][0]->left,45, 0, 0, 
+$width, $height,	$imageSize[0], $imageSize[1]); // наложение картины на фон
+imagecopyresampled($imageBg, $imageTem, 0, 0, 0, 0, 200, 200,
+	$templateSize[0], $templateSize[1]); // наложение шаблона
+//===============
 
 header('Content-type: image/jpeg'); // вывод картинки 
 imageJPEG($imageBg);
+
 
 
 ?>

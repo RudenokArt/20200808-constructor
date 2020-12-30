@@ -20,7 +20,7 @@ class favoriteItem {
 		this.discountAmount=arr[10];
 		this.template=arr[11];
 		this.rotate=arr[12];
-		this.miror=String(arr[13]);
+		this.miror=String(arr[13])+','+String(arr[14]);
 	}
 }
 getFavoriteData();
@@ -169,10 +169,12 @@ function orderFilter () {
 	let selectedArr=[];
 	for (var i = 0; i < favoriteArr.length; i++) {
 		if(favoriteArr[i].selected){
-			selectedArr.push(favoriteArr[i])
+			selectedArr.push(favoriteArr[i]);
 		}
 	}
-	orderSettings(selectedArr);
+	if(selectedArr.length<1){alert('Ничего не выбрано! '+
+		'Заказ пустой! Выбирите хотябы один элемент');}
+	else {orderSettings(selectedArr);}
 }
 function orderSettings (selectedArr) {
 	let customerArr=$('.customer-data');

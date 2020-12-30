@@ -9,13 +9,13 @@ imagefill($image, 0, 0, $white);
 $black=imagecolorallocate($image, 0, 0, 0);
 $lightBlue=imagecolorallocate($image, 60, 178, 228);
 
-//========================Определяем формат файла изображения =======================
+//========================Определяем формат файла изображения ================
 $checkArr=explode('.',$arr[0]);
 if ($checkArr[1]=='jpg') {$image1 = imageCreateFromJpeg('galery/'.$arr[0]);}
 if ($checkArr[1]=='png') {$image1 = imageCreateFromPng('galery/'.$arr[0]);}
 if ($checkArr[1]=='webp') {$image1 = imageCreateFromWebp('galery/'.$arr[0]);}
 
-//=========================Компановка изображения======================================================= 
+//=========================Компановка изображения==============================
 $inf1 = getImageSize('galery/'.$arr[0]);// размеры рисунка (с полями)
 $height1=$inf1[1]/$inf1[0]*$arr[5];//Высота рисунка
 $top1=($arr[6]-$height1)/2;//разница между высотой блока и рисунка
@@ -33,7 +33,6 @@ if ($arr[16]=='-1,1') {
 }
 //==============================Зеркало по Вертикали=======================
 if ($arr[16]=='1,-1') {
-	$img = imagecreatetruecolor($inf1[0], $inf1[1]);// создаем новое изображение
 	$img = imagecreatetruecolor($inf1[0], $inf1[1]);// создаем новое изображение
 	 for ($y = 0; $y < $inf1[1]; $y++) {
     for ($x = 0; $x < $inf1[0]; $x++) {

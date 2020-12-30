@@ -10,9 +10,7 @@ for ($i=0; $i < sizeof($settings[1]) ; $i++) {
 	print_r($settings[1][$i]);
 	echo '<br><br>';
 }
-echo '<br><br>';
-$img=getImageSize('galery/'.$settings[1][0]->image);
-print_r($img) ;
+
 
 
 ?>
