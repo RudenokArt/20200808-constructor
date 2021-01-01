@@ -9,6 +9,7 @@
 	<script src="js-interior.js"></script>
 	<script src="js-mail.js"></script>
 	<script src="js-vidgets.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.js"></script>
 	<link rel="stylesheet" href="css-constructor.css">
 	<link rel="stylesheet" href="css-interior.css">
@@ -103,20 +104,31 @@
 		</div>
 	</div>
 	<div class="footer" id="footer">
-		<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('order','block')">
-			&#128203 Оформить <br> заказ
+		<div class="flex-wrapper">
+			<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('order','block')">
+				&#128203 Оформить <br> заказ
+			</div>
+			<div class="action-button" onclick="addFavorite()">&#10133 Добавить <br>в избранное</div>
+			<div class="action-button" onclick="mailStorage('customer')+downLoadImage()">
+				&#128233 Отправить <br> мне на почту
+			</div>
+			<div class="action-button" onclick="downLoadImage()">
+				&#128190 <br> Скачать 
+			</div>
 		</div>
-		<div class="action-button" onclick="addFavorite()">&#10133 Добавить <br>в избранное</div>
-		<div class="action-button" onclick="mailStorage('customer')+downLoadImage()">
-			&#128233 Отправить <br> мне на почту
+		<div class="flex-wrapper">
+			<div class="action-button" onclick="ajaxInteriors()">
+				&#128248 Просмотреть<br> в интерьере
+			</div>
+			<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('image-download','block')">
+				&#128229 Загрузить свое <br>изображение
+			</div>
+			<div class="action-button" onclick="getFavorite()">
+				&#9733 <br> Избранное
+			</div>
 		</div>
-		<div class="action-button" onclick="downLoadImage()">&#128190 <br> Скачать </div>
-		<div class="action-button" onclick="ajaxInteriors()">&#128248 Просмотреть<br> в интерьере</div>
-		<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('image-download','block')">
-			&#128229 Загрузить свое <br>изображение
-		</div>
-		<div class="action-button" onclick="getFavorite()">&#9733 <br> Избранное</div>
 	</div>
+	<div class="busket-anime"></div>
 	<div class="fog" id="fog">
 		<div class="popup" id="image-download">
 			<div style="display: flex;justify-content: right">
@@ -209,5 +221,5 @@
 	calculatorStart();
 	checkFavoriteChoise();
 </script>
-<script src="js-jquery.js"></script>
+<script src="js-constructor-animation.js"></script>
 </html>

@@ -154,10 +154,15 @@ input[type='text']{
 .footer{
 	width: 100%;
 	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	background-color:  #3cb2e4;
+}
+.flex-wrapper{
+	min-width:50%;
+	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	background-color:  #3cb2e4;
-	/*border: 1px solid red;*/
 }
 
 .action-button,.simple-button{
@@ -271,4 +276,18 @@ input[type='text']{
 }
 .data-form-item{
 	margin:1em;
+}
+.busket-anime{
+	display: none;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	height: 50%;
+	width: 25%;
+	background-image: url('images/busket-anime.webp');
+	background-size:contain;
+	background-position:top;
+	background-repeat:no-repeat;
+	background-color: transparent;
+
 }

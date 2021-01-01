@@ -73,8 +73,7 @@ $path='D:\OpenServer\domains\localhost\20200808-constructor\fonts/arial-narrow.t
 $path2='D:\OpenServer\domains\localhost\20200808-constructor\fonts/times-bold.ttf';
 // $path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';
 // $path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';
-//$path='/home/e/e25532i4/e25532i4.beget.tech/public_html/KWORK/20200808-constructor/fonts/arial-narrow.ttf';
-//$path2='/home/e/e25532i4/e25532i4.beget.tech/public_html/KWORK/20200808-constructor/fonts/times-bold.ttf';
+
 imageFtText($imageOrder, 15, 0, 20, 20, $black, $path,'ЗАКАЗ ОТ: ');
 imageFtText($imageOrder, 15, 0, 150, 20, $black, $path,date('Y:m:d'));
 imageFtText($imageOrder, 15, 0, 20, 40, $black, $path,'АРТИКУЛ: ');

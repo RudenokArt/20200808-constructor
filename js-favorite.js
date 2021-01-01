@@ -1,6 +1,7 @@
 let customer={};
 
 function addFavorite () {
+	busketAnime();
 	divPosition('item',item);
 	// localStorage.setItem(item.image+'#'+performance.now(),
 	localStorage.setItem(item.image,
@@ -20,6 +21,10 @@ function addFavorite () {
 		String(item.mirror),
 		]);
 	console.log(localStorage);
+}
+function busketAnime () {
+	$('.busket-anime').slideDown();
+	$('.busket-anime').slideUp();
 }
 function getFavorite () {
 	itemDisplay('fog','flex');
