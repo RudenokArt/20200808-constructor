@@ -9,6 +9,7 @@
 	<script src="js-interior.js"></script>
 	<script src="js-mail.js"></script>
 	<script src="js-vidgets.js"></script>
+	<script src="js-icons.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.js"></script>
 	<link rel="stylesheet" href="css-constructor.css">
@@ -105,27 +106,42 @@
 	</div>
 	<div class="footer" id="footer">
 		<div class="flex-wrapper">
-			<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('order','block')">
+			<!-- <div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('order','block')">
 				&#128203 Оформить <br> заказ
-			</div>
-			<div class="action-button" onclick="addFavorite()">&#10133 Добавить <br>в избранное</div>
+			</div> -->
 			<div class="action-button" onclick="mailStorage('customer')+downLoadImage()">
-				&#128233 Отправить <br> мне на почту
+				<!-- &#128233 -->
+				<script>document.write(iconEnvelope())</script> 
+				Отправить <br> мне на почту
 			</div>
 			<div class="action-button" onclick="downLoadImage()">
-				&#128190 <br> Скачать 
+				<!-- &#128190  -->
+				<script>document.write(iconDownload())</script>
+				<br> Скачать 
+			</div>
+			<div class="action-button" onclick="ajaxInteriors()">
+				<!-- &#128248  -->
+				<script>document.write(iconCameraFill())</script>
+				Просмотреть<br> в интерьере
 			</div>
 		</div>
 		<div class="flex-wrapper">
-			<div class="action-button" onclick="ajaxInteriors()">
-				&#128248 Просмотреть<br> в интерьере
-			</div>
 			<div class="action-button" onclick="itemDisplay('fog','flex')+itemDisplay('image-download','block')">
-				&#128229 Загрузить свое <br>изображение
+				<!-- &#128229  -->
+				<script>document.write(iconImageFill())</script>
+				Загрузить свое <br>изображение
 			</div>
-			<div class="action-button" onclick="getFavorite()">
+			<div class="action-button" onclick="addFavorite()">
+				<script>document.write(iconCartPlusFill())</script>
+				Добавить <br>в корзину
+			</div>
+			<div class="action-button" onclick="">
+				<script>document.write(iconCartCheckFill())</script>
+				<br> Корзина
+			</div>
+			<!-- <div class="action-button" onclick="getFavorite()">
 				&#9733 <br> Избранное
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div class="busket-anime"></div>

@@ -85,15 +85,15 @@ for ($i=0; $i < $quantity ; $i++) { // наложение элементов
 }
 //===============ТЕКСТ ЗАКАЗА========================
 $black=imagecolorallocate($image, 0, 0, 0);
-imageFtText($image, 15, 0, 100, $listLong-170, $black, $path2,
+imageFtText($image, 15, 0, 100, $listLong-175, $black, $path2,
 	'Всего ед.: '.$quantity);
-imageFtText($image, 15, 0, 250, $listLong-170, $black, $path2,
+imageFtText($image, 15, 0, 250, $listLong-175, $black, $path2,
 	'Итого стоимость: '.$amount);
-imageFtText($image, 15, 0, 125, $listLong-140, $black, $path,
+imageFtText($image, 15, 0, 100, $listLong-150, $black, $path,
 	'ЗАКАЗЧИК: '.$settings[0]->name);
-imageFtText($image, 15, 0, 100, $listLong-120, $black, $path,
+imageFtText($image, 15, 0, 100, $listLong-125, $black, $path,
 	'E-mail@: '.$settings[0]->email);
-imageFtText($image, 15, 0, 300, $listLong-120, $black, $path,
+imageFtText($image, 15, 0, 100, $listLong-100, $black, $path,
 	'Тел.: '.$settings[0]->phone);
 imageFtText($image, 15, 0, 50, $listLong-75, $black, $path,
 	'ИСПОЛНИТЕЛЬ: Производственная компания "Юг-Идеал"');
@@ -102,7 +102,7 @@ imageFtText($image, 15, 0, 25, $listLong-50, $black, $path,
 imageFtText($image, 15, 0, 25, $listLong-25, $black, $path,
 	'+7(988) 769 69 66 +7(988) 762 22 69 время работы 09.00-18.00');
 // imageJPEG($image);//вывод рисунка на экран
-imagejpeg($image, "order-group-image.jpg"); // Сохранение рисунка
+imagejpeg($image, "order-image.jpg"); // Сохранение рисунка
 imagedestroy($image);
 
 ?>

@@ -23,8 +23,8 @@ function addFavorite () {
 	console.log(localStorage);
 }
 function busketAnime () {
-	$('.busket-anime').slideDown();
-	$('.busket-anime').slideUp();
+	$('.busket-anime').show();
+	$('.busket-anime').slideUp(500);
 }
 function getFavorite () {
 	itemDisplay('fog','flex');

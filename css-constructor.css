@@ -280,11 +280,11 @@ input[type='text']{
 .busket-anime{
 	display: none;
 	position: fixed;
-	bottom: 0px;
+	bottom: 10%;
 	right: 0px;
 	height: 50%;
 	width: 25%;
-	background-image: url('images/busket-anime.webp');
+	background-image: url('images/busket-anime.png');
 	background-size:contain;
 	background-position:top;
 	background-repeat:no-repeat;
