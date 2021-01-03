@@ -19,28 +19,31 @@
 </head>
 <body>
 	<div class="favorite-table"></div>
-	<div class="flex-wrapper">
+	<div class="footer">
 		<div class="flex-wrapper">
-			<div class="favorite-quantity"></div>
+			<div class="flex-wrapper">
+				<div class="favorite-quantity"></div>
+			</div>
+			<div class="flex-wrapper">
+				<div class="favorite-total"></div>
+			</div>
 		</div>
 		<div class="flex-wrapper">
-			<div class="favorite-total"></div>
+			<div class="flex-wrapper">
+				<button class="button-back">
+					<script>document.write(iconCaretLeft())</script>
+					Назад
+				</button>
+			</div>
+			<div class="flex-wrapper">
+				<button class="button-order">
+					<script>document.write(iconClipboardСheck())</script>
+					Оформить заказ
+				</button>
+			</div>
 		</div>
 	</div>
-	<div class="flex-wrapper">
-		<div class="flex-wrapper">
-			<button class="button-back">
-				<script>document.write(iconCaretLeft())</script>
-				Назад
-			</button>
-		</div>
-		<div class="flex-wrapper">
-			<button class="button-order">
-				<script>document.write(iconClipboardСheck())</script>
-				Оформить заказ
-			</button>
-		</div>
-	</div>
+	
 	<div class="popup-wrapper">
 		<div class="popup">
 			<div>
@@ -66,6 +69,14 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="preloader-wrapper">
+		<div class="preloader">
+			<div></div><div></div><div></div>
+			<div class="preloader-item"></div>
+		</div>
+	</div>
+
 	<script src="js-favorite-page.js"></script>
 	<script src="js-favorite-selector.js"></script>
 </body>

@@ -167,6 +167,16 @@ function checkForm () {
 	if(check){alert('Заполните все поля формы!');}
 	else{orderFilter();}
 }
+function preloaderFunction () {
+	$('.preloader-wrapper').show();
+	let angle=0;
+	setInterval(preloaderRotation, 50);
+	function preloaderRotation () { 
+		$('.preloader').css('transform','rotate('+angle+'deg)');
+		angle=angle+10;
+	}
+	setTimeout(()=>{document.location.href='php-order-group-image.php';},2000);
+}
 function orderFilter () {
 	let selectedArr=[];
 	for (var i = 0; i < favoriteArr.length; i++) {
@@ -189,6 +199,7 @@ function orderSettings (selectedArr) {
 	let str=JSON.stringify(arr);
 	$.post('php-order-group-settings.php', {data:str}, 
 		(data)=>{console.log('data');});
+	$('.popup-wrapper').hide(preloaderFunction);
 }
 
 //console.log(favoriteArr)

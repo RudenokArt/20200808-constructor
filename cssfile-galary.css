@@ -76,7 +76,7 @@ span
 .header
 {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: space-around;
 	margin-top: 1em;
 	background-color: white;
@@ -87,7 +87,7 @@ span
 	overflow: hidden;
 	background-color: rgba(0,0,0,0.05);
 	padding-left: 1em;
-	/*padding-right: 1em;*/
+	min-width: 398px;
 }
 .button-search
 {
@@ -110,7 +110,8 @@ span
 {
 	background-color: white;
 	font-size: 1.2em;
-	width: 25%;
+	/*width: 25%;*/
+	min-width: 300px;
 }
 .post
 {
@@ -120,7 +121,7 @@ span
 }
 .postImage
 {
-	width: 15vw;
+	width: 200px;
 }
 .categories
 {
@@ -148,6 +149,7 @@ span
 	font-size: 1.2em;
 	display: flex;
 	justify-content: space-around;
+	flex-wrap: wrap;
 	margin-top:1em;
 	line-height: 1em;
 }
@@ -188,7 +190,8 @@ span
 }
 .wrapper-content
 {
-	width: 75%
+	/*width: 75%*/
+	min-width: 300px;
 }
 .content
 {
@@ -201,7 +204,8 @@ span
 .galeryItem
 {
 	margin-left: 25px;
-	width: 20vw;
+	/*width: 20vw;*/
+	width: 250px;
 	position: relative;
 	border:1px solid transparent;
 	cursor: pointer;
@@ -266,7 +270,7 @@ span
 {
 	margin:1em;
 }
-@media screen and (max-width: 800px)
+/*@media screen and (max-width: 800px)
 {
 	.sidebar
 	{
@@ -308,4 +312,4 @@ span
 	{
 		width: 80vw;
 	}
-}
+}*/

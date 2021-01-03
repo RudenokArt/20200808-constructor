@@ -1,19 +1,21 @@
 <?php //header('Content-type: text/html; charset=utf-8');
-header('Content-type: image/jpeg'); // вывод картинки 
-
+//header('Content-type: image/jpeg'); // вывод картинки 
+$path='D:\OpenServer\domains\localhost\20200808-constructor\fonts/arial-narrow.ttf';
+$path2='D:\OpenServer\domains\localhost\20200808-constructor\fonts/times-bold.ttf';
 $str=file_get_contents('order-group-settings.txt');
 $settings=json_decode($str);
-
+$amount=0;
 
 //=============== ФУНКЦИЯ ОТРИСОВКИ ЭЛЕМЕНТА====================
 function favoriteItem($n){
-	global $settings;
+	global $settings,$path,$path2,$amount;
 $imageBg = imagecreatetruecolor(500,200);//фон элемента
 $white = imagecolorallocate($imageBg, 255, 255, 255); // белый цвет
 $black=imagecolorallocate($imageBg, 0, 0, 0);
 imagefill($imageBg, 0, 0, $white); // заливка фона
 $imageImg = imageCreateFromJpeg('galery/'.$settings[1][$n]->image);//загрузка картины
 $imageTem = imageCreateFromPng('templates/'.$settings[1][$n]->template);//загрузка шаблона
+
 //===============РАЗМЕР ИЗОБРАЖЕНИЯ===============
 $imageSize=getImageSize('galery/'.$settings[1][$n]->image);// размеры исх. картины
 if ($imageSize[0]>=$imageSize[1]) {
@@ -29,8 +31,10 @@ else{
 $top=$settings[1][$n]->top;
 $left=$settings[1][$n]->left;
 $templateSize=getImageSize('templates/'.$settings[1][$n]->template);// размеры шаблона
+
 //===============ПОВОРОТ ИЗОБРАЖЕНИЯ================
 $imageImg = imagerotate($imageImg, -$settings[1][$n]->rotate, $white);
+
 //===============ЗЕРКАЛЬНОЕ ОТОБРАЖЕНИЕ=================
 if ($settings[1][$n]->miror=='-1,1') { // зеркало по горизонтали
 	Imageflip($imageImg, IMG_FLIP_HORIZONTAL);
@@ -48,10 +52,9 @@ if ($settings[1][$n]->rotate==0||$settings[1][$n]->rotate==180) {
 }
 imagecopyresampled($imageBg, $imageTem, 0, 0, 0, 0, 200, 200,
 	$templateSize[0], $templateSize[1]); // наложение шаблона
+
 //===============ОТРИСОВКА ТЕКСТА=====================
 $imageName=explode('.',$settings[1][$n]->image);// АРТИКУЛ
-$path='D:\OpenServer\domains\localhost\20200808-constructor\fonts/arial-narrow.ttf';
-$path2='D:\OpenServer\domains\localhost\20200808-constructor\fonts/times-bold.ttf';
 // $path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';
 // $path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';
 imageFtText($imageBg, 15, 0, 250, 40, $black, $path,
@@ -65,20 +68,42 @@ imageFtText($imageBg, 15, 0, 250, 130, $black, $path,
 imageFtText($imageBg, 15, 0, 250, 160, $black, $path,
 	'СТОИМОСТЬ: '.$settings[1][$n]->discountAmount);
 //====================================================
+$amount=$amount+$settings[1][$n]->discountAmount;
 return $imageBg;
 }
-//============================================================
 
-// imageJPEG(favoriteItem(1));
 
-$image = imagecreatetruecolor(590,840);//создание фона
-$grey = imagecolorallocate($image, 200, 200, 200); // белый цвет
-imagefill($image, 0, 0, $grey); // заливка фона
-imagecopyresampled($image, favoriteItem(0),
-50, 0, 0, 0, 500, 200,500, 200); // наложение элементов
-imagecopyresampled($image, favoriteItem(1),
-50, 200, 0, 0, 500, 200,500, 200); // наложение элементов
-
-imageJPEG($image);
+//===============ОТРИСОВКА ЗАКАЗА========================
+$quantity=sizeof($settings[1]);
+$listLong=($quantity+1)*200;
+$image = imagecreatetruecolor(590,$listLong);//создание формы заказа
+$white = imagecolorallocate($image, 255, 255, 255); // белый цвет
+imagefill($image, 0, 0, $white); // заливка фона заказа
+for ($i=0; $i < $quantity ; $i++) { // наложение элементов
+	imagecopyresampled($image, favoriteItem($i),
+50, $i*200, 0, 0, 500, 200,500, 200); 
+}
+//===============ТЕКСТ ЗАКАЗА========================
+$black=imagecolorallocate($image, 0, 0, 0);
+imageFtText($image, 15, 0, 100, $listLong-170, $black, $path2,
+	'Всего ед.: '.$quantity);
+imageFtText($image, 15, 0, 250, $listLong-170, $black, $path2,
+	'Итого стоимость: '.$amount);
+imageFtText($image, 15, 0, 125, $listLong-140, $black, $path,
+	'ЗАКАЗЧИК: '.$settings[0]->name);
+imageFtText($image, 15, 0, 100, $listLong-120, $black, $path,
+	'E-mail@: '.$settings[0]->email);
+imageFtText($image, 15, 0, 300, $listLong-120, $black, $path,
+	'Тел.: '.$settings[0]->phone);
+imageFtText($image, 15, 0, 50, $listLong-75, $black, $path,
+	'ИСПОЛНИТЕЛЬ: Производственная компания "Юг-Идеал"');
+imageFtText($image, 15, 0, 25, $listLong-50, $black, $path,
+	'Краснодарский край г.Новороссийск ул.Мысхакское шоссе 50/10');
+imageFtText($image, 15, 0, 25, $listLong-25, $black, $path,
+	'+7(988) 769 69 66 +7(988) 762 22 69 время работы 09.00-18.00');
+// imageJPEG($image);//вывод рисунка на экран
+imagejpeg($image, "order-group-image.jpg"); // Сохранение рисунка
+imagedestroy($image);
 
 ?>
+<script>document.location.href = "php-order-preview.php";</script>
