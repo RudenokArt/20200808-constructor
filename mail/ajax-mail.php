@@ -13,8 +13,8 @@ include_once('km_smtp_class.php');
 $SenderConfig = array(
     "SMTP_server"   =>  "smtp.yandex.ru",
     "SMTP_port"     =>  "465",
-    "SMTP_email"    =>  "postimap@yandex.ru",
-    "SMTP_pass"     =>  "imappost",
+    "SMTP_email"    =>  "zakazugideal",
+    "SMTP_pass"     =>  "Patvakanlala197306",
     "SMTP_type"     =>  "ssl"
 );
 $str=file_get_contents('../order-group-settings.txt');
@@ -22,6 +22,7 @@ $settings=json_decode($str);
 
 // Email получателя/Получателей
 $Receiver = $settings[0]->email;
+
 // Тема сообщения
 $Subject = "Юг-Идеал онлайн заявка";
 

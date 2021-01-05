@@ -10,69 +10,80 @@
 <body>
 	<div class="heder" id="header">
 		<div>
-			<button onclick="showPostPopUp('addPostPopUp')">Добавить пост</button>
+			<button onclick="showPostPopUp('addPostPopUp')">
+        Добавить пост
+      </button>
 		</div>
 		<div>
-			<button onclick="showPopUp('addImagePopUp')">Загрузка изображения</button>
+			<button onclick="showPopUp('addImagePopUp')">
+        Загрузка изображения
+      </button>
 		</div>
 		<div>
-			<button onclick="redirect('admin-categories-manager.html')">Управление таблицами</button>
-		</div> 
-	</div>
-	<div class="wraperPage">
-		<div class="sidebar" id="sidebar">
-			<div class="filter">
-				<p>
-					Поиск по наименованию<br>
-					<input type="" id="searchInput"><br>
-					<button onclick="searchImage()">&#128269</button>
-					<button onclick="ajaxGallery()" title="Сброс">&#10006</button>
-				</p><br><br>
-				<p>ФИЛЬТР
-					<table>
-						<tr><td>Цена от</td><td><input size="10" type="text" id="priceFrom"></td></tr>
-						<tr><td>до</td><td><input size="10" type="text" id="priceTo"></td></tr>
-						<tr><td>Категория: </td><td id="sidebarCategorySelect"></td></tr>
-						<tr><td>Подкатегория: </td><td id="sidebarSubCategorySelect"></td></tr>
-					</table><button onclick="filterImage()">Применить</button>
-					<button onclick="ajaxGallery()" title="Сброс">&#10006</button>
-				</p>
-				<p>Выводить по:<br>
-					<input type="text" size="5" id='paginationPage'>
-					<button onclick="pagination()">&#10004</button>
-					<br>на страницу
-				</p>
-			</div>
-			<div class="postBloc" id=postBloc></div>
-		</div>
-		<div>
-			<div class="content" id="content"></div>
-			<div id='pageNavigation' class="pageNavigation"></div>
-		</div>
-	</div>
-	<div class="wrapPopUp" id="addImagePopUp">
-		<div class="popUp">
-			<div class="closePopUp">
-				<p>ЗАГРУЗКА ИЗОБРАЖЕНИЙ В ГАЛЛЕРЕЮ</p>
-				<button onclick="hidePopUp('addImagePopUp')">&#10006</button>
-			</div>
-			<label for="dropInput" style="cursor: pointer;">
-				Выберите файл
-				<img src="images/clip.png" class="icon">
-			</label>
-			<span id="inputShow"></span><br>
-			<form method="POST" enctype='multipart/form-data' id='imageForm' action="php-admin-upload.php">
-				<div class="dropZone">
-					<input type="file" name="filename" id="dropInput" 
-					class="dropInput" ondrop="showInput('dropInput','inputShow')">
-				</div>
-				<table>
-					<!-- <tr><td>Наименование:</td><td><input type="text" name="imageName"></td></tr> -->
-					<tr><td>Категория: </td><td id="popUpCategorySelect"></td></tr>
-					<tr><td>Подкатегория: </td><td id="popUpSubCategorySelect"></td></tr>
-					<tr><td>Шаблон: </td><td id="addTemplateSelect"></td></tr>
-				</table>
-				<table>
+			<button onclick="redirect('admin-categories-manager.html')">
+        Управление таблицами
+      </button>
+    </div> 
+    <div>
+      <button onclick="redirect('profile/')">
+        Управление профилем
+      </button>
+    </div> 
+  </div>
+  <div class="wraperPage">
+    <div class="sidebar" id="sidebar">
+     <div class="filter">
+      <p>
+       Поиск по наименованию<br>
+       <input type="" id="searchInput"><br>
+       <button onclick="searchImage()">&#128269</button>
+       <button onclick="ajaxGallery()" title="Сброс">&#10006</button>
+     </p><br><br>
+     <p>ФИЛЬТР
+       <table>
+        <tr><td>Цена от</td><td><input size="10" type="text" id="priceFrom"></td></tr>
+        <tr><td>до</td><td><input size="10" type="text" id="priceTo"></td></tr>
+        <tr><td>Категория: </td><td id="sidebarCategorySelect"></td></tr>
+        <tr><td>Подкатегория: </td><td id="sidebarSubCategorySelect"></td></tr>
+      </table><button onclick="filterImage()">Применить</button>
+      <button onclick="ajaxGallery()" title="Сброс">&#10006</button>
+    </p>
+    <p>Выводить по:<br>
+     <input type="text" size="5" id='paginationPage'>
+     <button onclick="pagination()">&#10004</button>
+     <br>на страницу
+   </p>
+ </div>
+ <div class="postBloc" id=postBloc></div>
+</div>
+<div>
+ <div class="content" id="content"></div>
+ <div id='pageNavigation' class="pageNavigation"></div>
+</div>
+</div>
+<div class="wrapPopUp" id="addImagePopUp">
+  <div class="popUp">
+   <div class="closePopUp">
+    <p>ЗАГРУЗКА ИЗОБРАЖЕНИЙ В ГАЛЛЕРЕЮ</p>
+    <button onclick="hidePopUp('addImagePopUp')">&#10006</button>
+  </div>
+  <label for="dropInput" style="cursor: pointer;">
+    Выберите файл
+    <img src="images/clip.png" class="icon">
+  </label>
+  <span id="inputShow"></span><br>
+  <form method="POST" enctype='multipart/form-data' id='imageForm' action="php-admin-upload.php">
+    <div class="dropZone">
+     <input type="file" name="filename" id="dropInput" 
+     class="dropInput" ondrop="showInput('dropInput','inputShow')">
+   </div>
+   <table>
+     <!-- <tr><td>Наименование:</td><td><input type="text" name="imageName"></td></tr> -->
+     <tr><td>Категория: </td><td id="popUpCategorySelect"></td></tr>
+     <tr><td>Подкатегория: </td><td id="popUpSubCategorySelect"></td></tr>
+     <tr><td>Шаблон: </td><td id="addTemplateSelect"></td></tr>
+   </table>
+   <table>
 					<!-- <tr><td>40x70</td><td><input type="text" name="40x70"></td></tr>
 					<tr><td>46x80</td><td><input type="text" name="46x80"></td></tr>
 					<tr><td>51x90</td><td><input type="text" name="51x90"></td></tr>

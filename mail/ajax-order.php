@@ -13,13 +13,17 @@ include_once('km_smtp_class.php');
 $SenderConfig = array(
     "SMTP_server"   =>  "smtp.yandex.ru",
     "SMTP_port"     =>  "465",
-    "SMTP_email"    =>  "postimap@yandex.ru",
-    "SMTP_pass"     =>  "imappost",
+    "SMTP_email"    =>  "zakazugideal",
+    "SMTP_pass"     =>  "Patvakanlala197306",
     "SMTP_type"     =>  "ssl"
 );
 
 // Email получателя/Получателей
-$Receiver = file_get_contents('../admin-mail.txt');
+$Receiver = file_get_contents('../profile/admin-mail.txt');
+$Receiver = 'RudenokArt@yandex.ru';
+// echo $Receiver;
+// exit();
+
 // Тема сообщения
 $Subject = "Юг-Идеал онлайн заявка";
 

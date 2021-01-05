@@ -970,16 +970,3 @@ function deleteInterior () {
 		}
 	}
 }
-function adminMail () {
-	let mail= document.getElementById('admin-mail').value;
-	let req = new XMLHttpRequest();
-	req.open('POST','php-admin-post.php');
-	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	req.send('mail='+mail);
-	req.onreadystatechange=function (){
-		if (req.readyState == 4 && req.status == 200) {
-			document.getElementById('admin-mail').value=req.responseText;
-		}
-	}
-	alert('Изменен адрес почты!');
-}

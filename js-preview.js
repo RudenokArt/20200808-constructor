@@ -2,7 +2,7 @@ $('.button-back').click(()=>{document.location.href='favorite.html';});
 $('.button-mail').click(mailSend);
 $('.button-order').click(orderSend);
 setTimeout(()=>{$('.preloader-wrapper').slideUp();}, 50);
-$('.main-image').html('<img src="order-image.jpg?'+new Date().getTime()+'" alt="">');
+$('.main-image').html('<img src="order-image.jpg?'+new Date().getTime()+' " alt="">');
 
 function mailSend () {
 	preloaderFunction();
