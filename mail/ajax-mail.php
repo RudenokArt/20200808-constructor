@@ -13,8 +13,8 @@ include_once('km_smtp_class.php');
 $SenderConfig = array(
     "SMTP_server"   =>  "smtp.yandex.ru",
     "SMTP_port"     =>  "465",
-    "SMTP_email"    =>  "zakazugideal@yandex.ru",
-    "SMTP_pass"     =>  "Patvakanlala197306",
+    "SMTP_email"    =>  "postimap@yandex.ru",
+    "SMTP_pass"     =>  "imappost",
     "SMTP_type"     =>  "ssl"
 );
 $str=file_get_contents('../order-group-settings.txt');
@@ -54,11 +54,10 @@ if($mail->isLogin) {
     $mail->clearCC();
     $mail->clearBCC();
     $mail->clearAttachments();
+    echo "Сообщение отправлено";
 }
  else {
-    echo "Возникла ошибка во время подключения к SMTP-серверу<br />";
+    echo "Возникла ошибка во время подключения к SMTP-серверу";
  }
-echo "Сообщение отправлено";
     
-
 ?>

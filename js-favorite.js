@@ -1,5 +1,6 @@
 let customer={};
 
+
 function addFavorite () {
 	busketAnime();
 	divPosition('item',item);
@@ -24,7 +25,19 @@ function addFavorite () {
 }
 function busketAnime () {
 	$('.busket-anime').show();
-	$('.busket-anime').slideUp(500);
+	$('.busket-anime').slideUp(750);
+	setTimeout(busketCounter, 750)
+}
+function busketCounter () {
+	let arr=Object.keys(localStorage);
+	let counter=0;
+	for (var i = 0; i < arr.length; i++) {
+    let check=arr[i].split('.')
+		if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
+			counter=counter+1;
+		}
+	}
+	$('.busket-counter').html(counter);
 }
 function getFavorite () {
 	itemDisplay('fog','flex');
@@ -33,7 +46,8 @@ function getFavorite () {
 	let arrVal=Object.values(localStorage);
 	let list='';
 	for(let i=0;i<arr.length;i++){
-		if (arr[i]!='mail'&&arr[i]!='elementor'&&arr[i]!='editItem'){
+		let check=arrKey[i].split('.');
+    if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
 			// let item = arr[i].split(',');
 			let settingsArr = arrVal[i].split(',');
 			if (settingsArr[10]!='') {

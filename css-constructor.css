@@ -289,5 +289,7 @@ input[type='text']{
 	background-position:top;
 	background-repeat:no-repeat;
 	background-color: transparent;
-
+}
+.busket-counter{
+	color:red;
 }

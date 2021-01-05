@@ -1,7 +1,10 @@
 <?php //header('Content-type: text/html; charset=utf-8');
 //header('Content-type: image/jpeg'); // вывод картинки 
-$path='D:\OpenServer\domains\localhost\20200808-constructor\fonts/arial-narrow.ttf';
-$path2='D:\OpenServer\domains\localhost\20200808-constructor\fonts/times-bold.ttf';
+
+$path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';
+$path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';
+// $path='D:\OpenServer\domains\localhost\20200808-constructor\fonts/arial-narrow.ttf';
+// $path2='D:\OpenServer\domains\localhost\20200808-constructor\fonts/times-bold.ttf';
 $str=file_get_contents('order-group-settings.txt');
 $settings=json_decode($str);
 $amount=0;
@@ -13,8 +16,17 @@ $imageBg = imagecreatetruecolor(500,200);//фон элемента
 $white = imagecolorallocate($imageBg, 255, 255, 255); // белый цвет
 $black=imagecolorallocate($imageBg, 0, 0, 0);
 imagefill($imageBg, 0, 0, $white); // заливка фона
-$imageImg = imageCreateFromJpeg('galery/'.$settings[1][$n]->image);//загрузка картины
-$imageTem = imageCreateFromPng('templates/'.$settings[1][$n]->template);//загрузка шаблона
+$imageName=explode('.',$settings[1][$n]->image);// АРТИКУЛ
+//================Определение формата рисунка ================
+if ($imageName[1]=='jpg') 
+  {$imageImg = imageCreateFromJpeg('galery/'.$settings[1][$n]->image);}
+else if ($imageName[1]=='png') 
+  {$imageImg = imageCreateFromPng('galery/'.$settings[1][$n]->image);}
+else if ($imageName[1]=='webp') 
+  {$imageImg = imageCreateFromWebp('galery/'.$settings[1][$n]->image);}
+// $imageImg = imageCreateFromJpeg('galery/'.$settings[1][$n]->image);
+//================Загрузка шаблона ================
+$imageTem = imageCreateFromPng('templates/'.$settings[1][$n]->template);
 
 //===============РАЗМЕР ИЗОБРАЖЕНИЯ===============
 $imageSize=getImageSize('galery/'.$settings[1][$n]->image);// размеры исх. картины
@@ -54,9 +66,6 @@ imagecopyresampled($imageBg, $imageTem, 0, 0, 0, 0, 200, 200,
 	$templateSize[0], $templateSize[1]); // наложение шаблона
 
 //===============ОТРИСОВКА ТЕКСТА=====================
-$imageName=explode('.',$settings[1][$n]->image);// АРТИКУЛ
-// $path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';
-// $path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';
 imageFtText($imageBg, 15, 0, 250, 40, $black, $path,
 	'АРТИКУЛ: '.$imageName[0]);
 imageFtText($imageBg, 15, 0, 250, 70, $black, $path,

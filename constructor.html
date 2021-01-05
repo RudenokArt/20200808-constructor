@@ -135,8 +135,9 @@
 				<script>document.write(iconCartPlusFill())</script>
 				Добавить <br>в корзину
 			</div>
-			<div class="action-button" onclick="">
-				<script>document.write(iconCartCheckFill())</script>
+			<div class="action-button" onclick="redirect('favorite.html')">
+				<script>document.write(iconCartCheckFill())</script> / 
+				<span class="busket-counter">0</span>
 				<br> Корзина
 			</div>
 			<!-- <div class="action-button" onclick="getFavorite()">
@@ -236,6 +237,7 @@
 	ajaxTemplates();
 	calculatorStart();
 	checkFavoriteChoise();
+	busketCounter();
 </script>
 <script src="js-constructor-animation.js"></script>
 </html>

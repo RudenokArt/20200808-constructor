@@ -29,7 +29,8 @@ function getFavoriteData () {
 	let arrKey = Object.keys(localStorage);
 	let arrVal=Object.values(localStorage);
 	for (var i = 0; i < arrKey.length; i++) {
-		if(arrKey[i]!='mail'&&arrKey[i]!='elementor'&&arrKey[i]!='editItem'){
+    let check=arrKey[i].split('.');
+    if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
 			favoriteArr.push(new favoriteItem (arrKey[i],arrVal[i]));
 		}		
 	}
@@ -175,7 +176,7 @@ function preloaderFunction () {
 		$('.preloader').css('transform','rotate('+angle+'deg)');
 		angle=angle+10;
 	}
-	setTimeout(()=>{document.location.href='php-order-group-image.php';},2000);
+	// setTimeout(()=>{document.location.href='php-order-group-image.php';},2000);
 }
 function orderFilter () {
 	let selectedArr=[];
@@ -197,9 +198,11 @@ function orderSettings (selectedArr) {
 	}
 	let arr=[customer,selectedArr];
 	let str=JSON.stringify(arr);
-	$.post('php-order-group-settings.php', {data:str}, 
-		(data)=>{console.log('data');});
+	$.post('php-order-group-settings.php', {data:str},preview);
 	$('.popup-wrapper').hide(preloaderFunction);
+}
+function preview () {
+  document.location.href='php-order-group-image.php';
 }
 
 //console.log(favoriteArr)

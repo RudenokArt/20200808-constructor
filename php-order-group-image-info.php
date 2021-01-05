@@ -11,8 +11,8 @@ for ($i=0; $i < sizeof($settings[1]) ; $i++) {
 	echo '<br><br>';
 }
 
-$quantity=sizeof($settings[1]);
-echo $quantity;
+$imageName=explode('.',$settings[1][0]->image);
+echo $imageName[1];
 
 
 

@@ -172,7 +172,7 @@ function categoriesList (str)
 			'</td>'+
 			'<td id="quantity'+arr[i][1]+'"></td>'+
 			'<td id="expand'+arr[i][1]+'" onclick="expandCategory(\''+arr[i][1]+'\')">'+
-			'<span class="rotate">&#10095</span></td>'+
+			'<span class="rotate">&#8250</span></td>'+
 			'<tr>'+
 			'<tr><td  id="'+arr[i][1]+'" colspan="3"></td></tr>';
 			select=select+'<option>'+arr[i][1]+'</option>';
@@ -191,14 +191,14 @@ function expandCategory (category)
 		categoryExpander=true;
 		showExpandCategory(category);
 		document.getElementById('expand'+category).innerHTML=
-		'<span class="rotate"> &#10094</span>';
+		'<span class="rotate">&#8249</span>';
 	}
 	else
 	{
 		categoryExpander=false;
 		document.getElementById(category).innerHTML='';
 		document.getElementById('expand'+category).innerHTML=
-		'<span class="rotate"> &#10095</span>';
+		'<span class="rotate">&#8250</span>';
 	}
 }
 function showExpandCategory(category)
@@ -385,13 +385,13 @@ function selectSubCategory() {
 function selectArrow(argument){
 	if (selectCategoryDroper==false)
 	{
-		document.getElementById(argument).innerHTML='&#10094';
+		document.getElementById(argument).innerHTML='&#8249';
 		selectCategoryDroper=true;
 	}
 	else{selectArrowReset(argument)}
 }
 function selectArrowReset (argument) {
-	document.getElementById(argument).innerHTML='&#10095';
+	document.getElementById(argument).innerHTML='&#8250';
 	selectCategoryDroper=false;
 }
 function constructorTransition (imageName,discount) {

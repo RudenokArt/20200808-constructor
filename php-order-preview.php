@@ -23,7 +23,8 @@
 	<div class="favorite-table">
 		<div class="flex-wrapper">
 			<div class="flex-wrapper">
-				<img src="order-image.jpg" alt="">
+        <div class="main-image"></div>
+				<!-- <img src="order-image.jpg" alt=""> -->
 			</div>
 		</div>
 	</div>
