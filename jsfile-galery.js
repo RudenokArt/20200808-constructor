@@ -313,7 +313,20 @@ function pageNavigation(n)
 		' id="page'+i+'" class="pages">'+i+'</div>';		
 	}
 	pages=pages+'<div onclick="nextPage('+n+')" class="pages">&#9658</div>';
-	document.getElementById('pageNavigation').innerHTML=pages
+	document.getElementById('pageNavigation').innerHTML=pages;
+}
+function cutNavigation (page) {
+ let pages = document.getElementsByClassName('pages');
+ if (pages.length>10) {
+  for (let i = 1; i < page-5; i++) {
+    pages[i].style='display:none';
+  }
+  for (i = page+5; i < pages.length-2; i++) {
+    pages[i].style='display:none';
+  }
+  if (page-5>0) {pages[page-5].innerHTML='...'}
+  if (page+4<pages.length-2) {pages[page+4].innerHTML='...';}
+ }
 }
 function priviousPage()
 {
@@ -334,6 +347,7 @@ function pageNumber(i)
 	page=i;
 	pagination();
 	document.getElementById('page'+page).style.color='red';
+  cutNavigation(page)
 }
 // function SetCookie(items)
 // {

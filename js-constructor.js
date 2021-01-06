@@ -130,11 +130,25 @@ function displayTemplates () {
 		tape=tape+
 		'<div class="template-tape-item" id="'+key+'"'+
 		' onclick="setTemplate(\''+key+'\',\''+templateTape[key]+'\')">'+
-		'<img class="template-tape-item-image" src="mini-templates/'+key+'"></div>';
-		templateArr.push(key);
-	}
-	document.getElementById('template-tape').innerHTML=tape;
+		'<img class="template-tape-item-image" src="mini-templates/'+key+'">'+
+    '</div>';
+    templateArr.push(key);
+  }
+  document.getElementById('template-tape').innerHTML=tape;
+  slickSlider()
 }
+function slickSlider () {
+  $(document).ready(function(){
+    $('.template-tape').slick({ 
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      variableWidth: true
+    });
+  });
+}
+
 
 function setTemplate (template,price) { 
 	calculationResset();

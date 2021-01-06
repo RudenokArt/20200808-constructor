@@ -81,21 +81,29 @@ input[type='text']{
 }
 .header{
 	display:flex;
-	/*position: relative;*/
 	z-index: 1;
-	/*background-color:  #3cb2e4;*/
+  height: 119px;
+}
+.template-tape-wrapper{
+  height: 101px;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.2);
 }
 .template-tape{
+  margin:auto;
+  width: 90vw;
+}
+/*.template-tape{
 	display:flex;
 	width: 100%;
 	overflow-x: scroll;
 	border: 1px solid #3cb2e4;
-}
+}*/
 .template-tape-item{
 	display: inline-block;
 	cursor: pointer;
 	background-color:  #3cb2e4;
-	/*border: 1px solid blue;*/
+	/*width: 100px !important;*/
 }
 .template-tape-item-image{
 	margin: auto;
