@@ -1,3 +1,4 @@
+sessionCheck();
 getAdminMail();
 getAdminLogin();
 $('button[class="admin-mail"').click(mailChangeAsk);
@@ -7,6 +8,12 @@ $('.button-back').click(()=>{document.location.href='../admin.html'});
 
 
 //===========functions=================
+function sessionCheck () {
+  $.post('../login/session.php', {data:'check'}, loginDirect);
+}
+function loginDirect (data) {
+  if(data=='false'){document.location.href='../login/';}
+}
 function getAdminMail () {
   $.post('php-admin-mail.php', {data:''}, showAdminMail);
 }

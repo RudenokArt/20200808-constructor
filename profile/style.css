@@ -8,3 +8,6 @@ input{
 .wrapper{
   display: flex;
 }
+.message{
+  color: red;
+}
