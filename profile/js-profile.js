@@ -14,6 +14,7 @@ function sessionCheck () {
 function loginDirect (data) {
   if(data=='false'){document.location.href='../login/';}
 }
+
 function getAdminMail () {
   $.post('php-admin-mail.php', {data:''}, showAdminMail);
 }
@@ -48,6 +49,7 @@ function getAdminLogin () {
 }
 function showAdminLogin (data) {
   $('span[class="admin-login"]').html(data);
+  $('.login-info').html(data);
 }
 function savePassword () {
   let password1=$('input[class="admin-password"]')[0].value; 
