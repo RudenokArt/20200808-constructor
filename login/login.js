@@ -1,5 +1,5 @@
 $('.enter-button').click(sendData);
-
+$('.password-recovery').click(passwordRecovery);
 
 function sendData () {
   $.post('session.php', $('#login-form').serialize(), serverRespons);
@@ -12,4 +12,7 @@ function serverRespons (data) {
 }
 function redirect () {
   document.location.href='../admin.html';
+}
+function passwordRecovery () {
+  $.post('../mail/password-recovery.php', {data:''}, (data)=>{alert(data)});
 }

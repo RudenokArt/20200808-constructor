@@ -17,21 +17,30 @@ $SenderConfig = array(
     "SMTP_pass"     =>  "Patvakanlala197307",
     "SMTP_type"     =>  "ssl"
 );
+$newPassword='';
+for ($i=0; $i <4 ; $i++) { 
+  $passwordBite=rand(0,9);
+  // $newPassword=$newPassword.settype($passwordBite, 'string');
+  $newPassword=$newPassword.$passwordBite;
+}
+$hash = password_hash($newPassword, PASSWORD_BCRYPT);
+file_put_contents('../profile/admin-password.txt', $hash);
+$login=file_get_contents('../profile/admin-login.txt');
 
 // Email получателя/Получателей
 $Receiver = file_get_contents('../profile/admin-mail.txt');
-// echo $Receiver;
+// echo $login.' '.$newPassword;
 // exit();
 
 // Тема сообщения
-$Subject = "Юг-Идеал онлайн заявка";
+$Subject = "Юг-Идеал восстановление пароля";
 
 // Текст сообщения (в HTML)
 // $Text = "Привет!<br />
 // Сообщение отправлено из скрипта <strong>Mowshon</strong><br />
 // Сайт: http://live-code.ru";
 
-$Text = 'Заявка в прложенном файле';
+$Text = 'Логин: '.$login.'; Пароль: '.$newPassword;
 
 // Вложение в письме - адрес к файлу
 $Attachment = '../order-image.jpg';
@@ -55,7 +64,7 @@ if($mail->isLogin) {
     $mail->clearCC();
     $mail->clearBCC();
     $mail->clearAttachments();
-    echo "Заказ отправлен администратору";
+    echo 'На почту администратора: '.$Receiver.' отправлен временный пароль. После прохождения авторизации замените его в настройках профиля';
 }
  else {
     echo "Возникла ошибка во время подключения к SMTP-серверу";
