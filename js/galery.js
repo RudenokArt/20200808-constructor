@@ -86,16 +86,6 @@ function searchImage()
 }
 ajaxGallery(where);
 }
-function showMenu() 
-{
-	document.getElementById('header-menu').className='drop-menu';
-	// body... 
-}
-function hideMenu () 
-{
-	document.getElementById('header-menu').className='header-menu';
-	// body... 
-}
 function ajaxPosts()
 {
 	let req = new XMLHttpRequest();
@@ -269,20 +259,6 @@ function showSubCategory (argument)
 	ajaxGallery('WHERE `subcategory`="'+argument+'"')
 	// body... 
 }
-function showMenu(){
-	document.getElementById('sidebar').style.display='block';
-	document.getElementById('sidebar').style.position='absolute';
-	document.getElementById('sidebar').style.backgroundColor='rgb(200,200,200)';
-	document.getElementById('posts').style.display='none';
-	document.getElementById('sidebar').style.zIndex='5';
-	document.getElementById('drop-menu').innerHTML=
-	'<button onclick="hideMenu()"><h1>&#10006</h1></button>';
-}
-function hideMenu(){
-	document.getElementById('sidebar').style.display='none';
-	document.getElementById('drop-menu').innerHTML=
-	'<button onclick="showMenu()"><h1>&#8801</h1></button>';
-}
 
 function pagination()
 {
@@ -415,3 +391,11 @@ function constructorTransition (imageName,discount) {
 	console.log(document.cookie);
 	localStorage.removeItem('editItem');
 }
+
+
+$('.header-menu button').click(()=>{
+  $('.header-bottom').slideUp();
+})
+$('.header-menu_button button').click(()=>{
+  $('.header-bottom').slideDown();
+})
