@@ -1,6 +1,6 @@
 @keyframes move {
   from { 
-    margin-top:-500px;
+    margin-top:-1000px;
   }
   to {
     margin-top:0px;
@@ -28,17 +28,18 @@ button{
 	cursor: pointer;
 	padding: 0.2em;
 }
-input {
+input, textarea{
   transition-duration: 1s;
   font-size: 1.2em;
   border:none;
-  background-color: rgba(250,250,250,0.5);
+  background-color: rgba(255,255,255,0.8);
   width: 200px;
   height: 50px;
   outline: none;
   padding-left: 1em;
 }
-input:focus{
+input:focus,
+textarea:focus{
   transition-duration: 1s;
   background-color: rgb(250,250,250);
 }
@@ -141,7 +142,7 @@ span{
 }
 .social-block div{
   animation-name:move; 
-  animation-duration:5s;
+  animation-duration:7s;
 }
 .social-block a{
   transition-duration: 1s;
@@ -181,7 +182,7 @@ span{
   height: 100%;
   display:flex;
   animation-name:move; 
-  animation-duration:5s;
+  animation-duration:7s;
 }
 .logotip{
   margin:auto;
@@ -343,10 +344,95 @@ span{
 	cursor: pointer;
 	font-size:1.5em;
 	margin:1em;
-  margin-bottom: 250px;
+  margin-bottom: 50px;
 }
 .pages{
 	margin:1em;
+}
+.footer{
+  padding: 10px;
+  line-height: 1.2em;
+  color:white;
+  background: linear-gradient(to right, #3cb2e4, #6ec1e4);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.footer-item{
+  padding: 10px;
+  font-size: 16px;
+}
+.footer-item div{
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+.footer-item a{
+  color:white;
+  font-size: 24px;
+}
+.feedback-form{
+   margin:0;
+  padding: 0;
+  line-height: 0;
+}
+.feedback-form *{
+  font-size: 14px;
+  margin:0;
+  padding: 10px;
+  line-height: 1.2em;
+  width: 300px;
+  border-radius: 10px;
+}
+.feedback-form textarea{
+  height: 100px;
+  width: 280px;
+}
+.feedback-form input,
+.feedback-form button{
+  height: 40px;
+}
+.feedback-form button{
+  transition-duration: 1s;
+  background-color: rgba(0,0,0,0.1);
+  color: white;
+  font-weight: bold;
+}
+.feedback-form button:hover{
+  transition-duration: 1s;
+  background-color: rgba(0,0,0,0.2);
+}
+.feedback-form div{
+  margin:0;
+  padding: 5px;
+}
+@keyframes show {
+  from { 
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+.preloader-wrapper{
+  display:flex;
+  position:fixed;
+  top:0px;
+  left:0px;
+  height:100%;
+  width:100%;
+  background-color:rgba(0,0,0,0.5);
+}
+.preloader{
+  padding:0;
+  line-height: 0;
+  margin:auto;
+  color:#6ec1e4;
+  line-height: 1em;
+  font-size: 100px;
+  animation-name:show;
+  animation-duration:3s; 
+  animation-timing-function:linear;
+  animation-iteration-count:100;
 }
 @media screen and (max-width: 860px){
   .header-bottom{

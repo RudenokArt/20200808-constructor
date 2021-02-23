@@ -1,8 +1,8 @@
-let page=1;
-let itemArr=[];
-let categoryExpander=false;
-let selectCategoryDroper=false;
-let subCategorySelector=false;
+var page=1;
+var itemArr=[];
+var categoryExpander=false;
+var selectCategoryDroper=false;
+var subCategorySelector=false;
 
 function indexOnload () 
 {
@@ -14,7 +14,7 @@ function indexOnload ()
 }
 function ajaxGallery(where)
 {
-	let req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.open('POST','php-read-galery.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send('where='+where);
@@ -30,19 +30,19 @@ function displayGalery(str)
 {	
 	try 
 	{
-		let arr=JSON.parse(str);
-		let galery='';
+		var arr=JSON.parse(str);
+		var galery='';
 		itemArr=[];
 		for (i=0;i<arr.length;i++)
 		{
-			let imageName=(arr[i].image).split('.');
-			let category=(arr[i].category);
-			let subcategory=(arr[i].subcategory);
-			let price=(arr[i].price);
-			let id=(arr[i].id);
-			let discount=(arr[i].discount);
-			let template=(arr[i].template);
-			let discountPass=discount.split('%');
+			var imageName=(arr[i].image).split('.');
+			var category=(arr[i].category);
+			var subcategory=(arr[i].subcategory);
+			var price=(arr[i].price);
+			var id=(arr[i].id);
+			var discount=(arr[i].discount);
+			var template=(arr[i].template);
+			var discountPass=discount.split('%');
 			if (discount==0)
 			{
 				discount=''
@@ -88,7 +88,7 @@ ajaxGallery(where);
 }
 function ajaxPosts()
 {
-	let req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.open('POST','php-read-posts.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send();
@@ -97,9 +97,9 @@ function ajaxPosts()
 		if (req.readyState == 4 && req.status == 200){
 			try
 			{
-				let str=req.responseText;
-				let post=JSON.parse(str);
-				let postBloc='';
+				var str=req.responseText;
+				var post=JSON.parse(str);
+				var postBloc='';
 				for (i=0;i<post.length;i++)
 				{
 					postBloc=postBloc+'<div class="post">'+
@@ -116,14 +116,14 @@ function ajaxPosts()
 }
 function ajaxQuantity(category,field)
 {
-	let req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.open('POST','php-select-count.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send('category='+category+'&field='+field);
 	req.onreadystatechange=function ()
 	{
 		if (req.readyState == 4 && req.status == 200) {
-			let str=req.responseText;
+			var str=req.responseText;
 			document.getElementById('quantity'+category).innerHTML=str;
 		}
 		
@@ -131,14 +131,14 @@ function ajaxQuantity(category,field)
 }
 function ajaxCategory()
 {
-	let req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.open('POST','php-select-category.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send();
 	req.onreadystatechange=function ()
 	{
 		if (req.readyState == 4 && req.status == 200) {
-			let str=req.responseText;
+			var str=req.responseText;
 			categoriesList(str);
 		}
 		
@@ -148,10 +148,10 @@ function ajaxCategory()
 function categoriesList (str) 
 {
 	try 
-	{	let arr=JSON.parse(str);
-		let list='<table>';
-		let select='<option>Все...</option>';
-		for(let i=0; i<arr.length; i++)
+	{	var arr=JSON.parse(str);
+		var list='<table>';
+		var select='<option>Все...</option>';
+		for(var i=0; i<arr.length; i++)
 		{
 			list=list+
 			'<tr class="item-list">'+
@@ -193,7 +193,7 @@ function expandCategory (category)
 }
 function showExpandCategory(category)
 {
-	let req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.open('POST','php-select-subcategory.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send('category='+category);
@@ -208,7 +208,7 @@ function showExpandCategory(category)
 }
 function ajaxSubCategory(category){
 	page=1;
-	let req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.open('POST','php-select-subcategory.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send('category='+category);
@@ -225,7 +225,8 @@ function ajaxSubCategory(category){
 	}
 	ajaxGallery('WHERE `category`="'+category+'"')
 	document.getElementById('resetCategory').innerHTML=
-	'<span class="item-list" onclick="ajaxCategory()+ajaxGallery()">&#8666</span>';
+	'<span class="item-list" onclick="ajaxCategory()+ajaxGallery()">'+
+  '<i class="fa fa-home" aria-hidden="true"></i></span>';
 }
 function subCategoriesList (str,category) 
 {
@@ -262,10 +263,10 @@ function showSubCategory (argument)
 
 function pagination()
 {
-	let items=Number(document.getElementById('paginationPage').value);
-	let itemBegin=(page-1)*items+1;
-	let itemEnd=(itemBegin+items-1);
-	let n=Math.ceil((itemArr.length)/items);
+	var items=Number(document.getElementById('paginationPage').value);
+	var itemBegin=(page-1)*items+1;
+	var itemEnd=(itemBegin+items-1);
+	var n=Math.ceil((itemArr.length)/items);
 	for (i=0;i<itemArr.length;i++)
 		{document.getElementById(itemArr[i]).style.display = 'none'}
 	for (k=itemBegin-1;k<itemEnd;k++)
@@ -292,7 +293,7 @@ function pageNavigation(n)
 	document.getElementById('pageNavigation').innerHTML=pages;
 }
 function cutNavigation (page) {
- let pages = document.getElementsByClassName('pages');
+ var pages = document.getElementsByClassName('pages');
  if (pages.length>10) {
   for (let i = 1; i < page-5; i++) {
     pages[i].style='display:none';
@@ -338,14 +339,14 @@ function getCookie()
 	// if (arr[1]>1)
 	// 	{document.getElementById('paginationPage').value=Number(arr[1]);}
 	// else {document.getElementById('paginationPage').value=20;}
-	let req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.open('POST','php-pagination-get.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send();
 	req.onreadystatechange=function ()
 	{
 		if (req.readyState == 4 && req.status == 200){
-			let paginationPage=req.responseText;
+			var paginationPage=req.responseText;
 			if (paginationPage>1)
 				{document.getElementById('paginationPage').value=Number(paginationPage);}
 			else {document.getElementById('paginationPage').value=20}
@@ -356,7 +357,7 @@ function getCookie()
 function selectCategory() {
 	page=1;
 	subCategorySelector=false;
-	let category=document.getElementById('categorySelect').value;
+	var category=document.getElementById('categorySelect').value;
 	if (category=='Все...')
 	{
 		ajaxGallery();
@@ -368,7 +369,7 @@ function selectCategory() {
 }
 function selectSubCategory() { 
 	page=1;
-	let subcategory=document.getElementById('subCategorySelect').value;
+	var subcategory=document.getElementById('subCategorySelect').value;
 	if (subcategory=='Все...'){selectCategory()}
 		else{showSubCategory (subcategory);}
 }
@@ -392,10 +393,39 @@ function constructorTransition (imageName,discount) {
 	localStorage.removeItem('editItem');
 }
 
-
+// ===== ACTIONS =====
 $('.header-menu button').click(()=>{
   $('.header-bottom').slideUp();
 })
 $('.header-menu_button button').click(()=>{
   $('.header-bottom').slideDown();
 })
+$('.feedback-form button').click((e)=>{e.preventDefault()})
+$('.feedback-form button').click(feedBackFormCheck);
+setTimeout(()=>{$('.preloader-wrapper').slideUp();}, 500);
+
+
+// ===== FUNCTIONS =====
+function feedBackFormCheck () {
+  var feedbackArr = $('.feedback-form input, .feedback-form textarea');
+  var check=true;
+  for (var i = 0; i < feedbackArr.length; i++) {
+    if (feedbackArr[i].value=='') {check=false;}
+  }
+  if (check){
+    feedBackFormSend(feedbackArr);
+  }else{
+    alert('Заполните все поля формы обратной связи!');
+  }
+}
+function feedBackFormSend (feedbackArr) {
+  $('.preloader-wrapper').slideDown();
+  $.post('mail/feedback.php', $('.feedback-form').serialize(), feedBackFormAfer);
+}
+function feedBackFormAfer (data) {
+  $('.preloader-wrapper').slideUp();
+  feedBackFormMessage(data);
+}
+function feedBackFormMessage (data) {
+  alert(data);
+}

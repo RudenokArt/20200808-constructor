@@ -153,6 +153,7 @@ input[type='text']{
 .transform{
 	display: flex;
 	justify-content: flex-start;
+  flex-wrap: wrap;
 	line-height: 1em;
 	background-color:white;
 }

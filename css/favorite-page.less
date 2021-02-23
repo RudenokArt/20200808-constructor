@@ -111,26 +111,46 @@ input[type="text"]{
 	}
 	button{padding: 1em;}
 }
-.preloader{
-	margin:auto;
-	height:100px;
-	width:100px;
-	border-radius:100%;
-	background-color:transparent;
-	display:flex;
-	flex-wrap: wrap;
-	overflow:hidden;
-	div{
-		margin:auto;
-		height:50px;
-		width:50px;
-	}
-	.preloader-item{
-		background: linear-gradient(to top, @lightBlue, transparent);
-		border-left: 2px solid @darkBlue;
-
-	}
+@keyframes move {
+  from { // исходная позиция
+    transform:rotate(0deg);
+  }
+  to { // конечная позиция
+    transform:rotate(360deg);
+  }
 }
+.preloader{
+  padding:0;
+  line-height: 0;
+	margin:auto;
+  color:@lightBlue;
+  line-height: 1em;
+  font-size: 100px;
+  animation-name:move; // привязка анимации
+  animation-duration:3s; //время анимации
+  animation-timing-function:linear;
+  animation-iteration-count:100; // кол-во повторов
+
+
+	// height:100px;
+	// width:100px;
+	// border-radius:100%;
+	// background-color:transparent;
+	// display:flex;
+	// flex-wrap: wrap;
+	// overflow:hidden;
+	// div{
+	// 	margin:auto;
+	// 	height:50px;
+	// 	width:50px;
+	// }
+	// .preloader-item{
+	// 	background: linear-gradient(to top, @lightBlue, transparent);
+	// 	border-left: 2px solid @darkBlue;
+
+	// }
+}
+
 
 .close-button{
 	margin-left: 80%;

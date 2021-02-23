@@ -170,13 +170,6 @@ function checkForm () {
 }
 function preloaderFunction () {
 	$('.preloader-wrapper').show();
-	let angle=0;
-	setInterval(preloaderRotation, 50);
-	function preloaderRotation () { 
-		$('.preloader').css('transform','rotate('+angle+'deg)');
-		angle=angle+10;
-	}
-	// setTimeout(()=>{document.location.href='php-order-group-image.php';},2000);
 }
 function orderFilter () {
 	let selectedArr=[];
