@@ -402,7 +402,7 @@ $('.header-menu_button button').click(()=>{
 })
 $('.feedback-form button').click((e)=>{e.preventDefault()})
 $('.feedback-form button').click(feedBackFormCheck);
-setTimeout(()=>{$('.preloader-wrapper').slideUp();}, 500);
+setTimeout(()=>{$('.preloader-wrapper').slideUp();}, 5000);
 
 
 // ===== FUNCTIONS =====

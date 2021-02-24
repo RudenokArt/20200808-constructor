@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+	<meta name="viewport" content="width=device-width, initial-scale=0.6">
   <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
   <script src="js-constructor.js"></script>
   <script src="js-calculator.js"></script>
   <script src="js-favorite.js"></script>
   <script src="js-interior.js"></script>
   <script src="js-mail.js"></script>
-  <script src="js-vidgets.js"></script>
   <script src="js-icons.js"></script>
-  <link rel="stylesheet" href="css-constructor.css">
+  <link rel="stylesheet" href="css-constructor.css?2021-18">
   <link rel="stylesheet" href="css-interior.css">
   <link rel="stylesheet" href="css-runner.css">
-  <link rel="stylesheet" href="css-vidgets.css">
+  <link rel="stylesheet" href="css-vidgets.css?2021-17">
+  <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
   <!-- ================SlickSlider======================== -->
   <link rel="stylesheet" 
   href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
@@ -22,7 +22,9 @@
   href="http://kenwheeler.github.io/slick/slick/slick-theme.css">
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
   </script>
-  
+</head>
+  <body>
+    
   <div class="header">
     <div class="template-tape-wrapper">
       <div class="template-tape" id="template-tape"></div>
@@ -79,36 +81,50 @@
    <legend>Поворот</legend>
    <div class="transform">
     <div class="transform-item">
-     <label for="360" class="radio-label" id="label360"><input type="radio" id='360' name="transform-rotate" value="360" checked></label> 0/360<sup>0</sup>
-   </div>
-   <div class="transform-item">
-     <label for="90" id="label90" class="radio-label"><input id="90" type="radio" name="transform-rotate" value="90"></label> 90<sup>0</sup>
-   </div>
-   <div class="transform-item">
-     <label for="180" id="label180" class="radio-label"><input id="180" type="radio" name="transform-rotate" value="180"></label> 180<sup>0</sup>
-   </div>
-   <div class="transform-item">
-     <label for="270" id="label270" class="radio-label"><input id="270" type="radio" name="transform-rotate" value="270"></label> 270<sup>0</sup>
-   </div>
- </div>
+     <label for="360" class="radio-label" id="label360">
+      <input type="radio" id='360' name="transform-rotate" value="360" checked>
+    </label> 0/360<sup>0</sup>
+  </div>
+  <div class="transform-item">
+   <label for="90" id="label90" class="radio-label">
+    <input id="90" type="radio" name="transform-rotate" value="90">
+  </label> 90<sup>0</sup>
+</div>
+<div class="transform-item">
+ <label for="180" id="label180" class="radio-label">
+  <input id="180" type="radio" name="transform-rotate" value="180">
+</label>180<sup>0</sup>
+</div>
+<div class="transform-item">
+ <label for="270" id="label270" class="radio-label"><input id="270" type="radio" name="transform-rotate" value="270"></label> 270<sup>0</sup>
+</div>
+</div>
 </fieldset>
 <fieldset>
  <legend>Зеркальное отображение</legend>
  <div class="transform">
   <div class="transform-item">
-   <label class="radio-label" id="labelnone" for="none"><input id="none" type="radio" name="transform-mirror" value="1" checked></label> Нет
- </div>
- <div class="transform-item">
-   <label for="horizontal" id="labelhorizontal" class="radio-label"><input id="horizontal" type="radio" name="transform-mirror" value="-1,1"></label> По горизонтали
- </div>
- <div class="transform-item">
-   <label for="vertical" id="labelvertical" class="radio-label"><input id="vertical" type="radio" name="transform-mirror" value="1,-1"></label> По вертикали
- </div>
+   <label class="radio-label" id="labelnone" for="none">
+    <input id="none" type="radio" name="transform-mirror" value="1" checked>
+  </label> Нет
+</div>
+<div class="transform-item">
+ <label for="horizontal" id="labelhorizontal" class="radio-label">
+  <input id="horizontal" type="radio" name="transform-mirror" value="-1,1">
+</label> По горизонтали
+</div>
+<div class="transform-item">
+ <label for="vertical" id="labelvertical" class="radio-label">
+  <input id="vertical" type="radio" name="transform-mirror" value="1,-1">
+</label> По вертикали
+</div>
 </div>
 </fieldset>
-<div class="action-button" id="backButton" onclick="redirect('index.html')">
- &#9668 Назад в галлерею
 </div>
+<div class="action-button" id="backButton" onclick="redirect('index.html')">
+ <div>
+   &#9668 Назад в <br> галлерею
+ </div>
 </div>
 <div class="footer" id="footer">
   <div class="flex-wrapper">
@@ -151,6 +167,21 @@
 			</div> -->
 		</div>
 	</div>
+
+  <div class="swich-selector_block">
+    <label class="swich-selector swich-selector_active">
+      <i class="fa fa-wrench" aria-hidden="true"></i>
+      <input type="radio" name="swich-selector" checked="checked">
+    </label>
+    <label class="swich-selector">
+      <input type="radio" name="swich-selector">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+    </label>
+    <label class="swich-selector">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+      <input type="radio" name="swich-selector">
+    </label>
+  </div>
 
 </div>
 <div class="busket-anime"></div>
@@ -240,6 +271,7 @@
 </div>
 </div>
 </body>
+<script src="js-vidgets.js?2021-17"></script>
 <script>
 	mouseOn();
 	ajaxTemplates();

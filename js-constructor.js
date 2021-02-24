@@ -204,5 +204,4 @@ function transform () {
 }
 function redirect(adress){ 
 	document.location.href = adress;
-	//
 }

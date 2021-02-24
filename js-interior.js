@@ -1,5 +1,6 @@
 
 let interiorArr=[];
+
 function interiorView () {
 	itemDisplay('fog','flex');
 	itemDisplay('interior','block');

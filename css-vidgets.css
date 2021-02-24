@@ -4,15 +4,14 @@ input[type="radio"]{
 	line-height: 0;
 	padding: 0;
 	margin:0;
-	/*margin:-5px;*/
 }
 .radio-label{
 	border:5px solid #3cb2e4;
 	border-radius: 100%;
 	box-sizing: border-box;
-	padding: 0;
-	margin:0;
-	font-size: 0.7em;
+	display: inline-block;
+  width: 25px;
+  height: 25px;
 }
 input[type="range"]{
 	margin:0;
@@ -30,4 +29,27 @@ input[type="range"]{
 	position: absolute;
 	background-color: #3cb2e4;
 	height: 100%
+}
+.swich-selector_block{
+  margin-top:50px;
+  display: flex;
+  justify-content: flex-start;
+}
+.swich-selector input{
+  position: absolute;
+}
+.swich-selector{
+  transition-duration: 1s;
+  position: relative;
+  display: inline-block;
+  border:2px solid #3cb2e4;
+  padding: 30px;
+  font-size: 50px;
+  color:#3cb2e4;
+  margin-left: 20px;
+}
+.swich-selector_active{
+  transition-duration: 1s;
+  color:white;
+  background-color: #3cb2e4;
 }

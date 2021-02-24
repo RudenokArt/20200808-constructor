@@ -1,1 +1,1 @@
-["164725142.jpg","NEW2.png","0",151,498,500,500,0,316,null,null,null,null,null,null,"0","1"]
+["69796465.jpg","NEW2.png","0",0,0,0,0,0,0,null,null,null,null,null,null,"0","1"]
