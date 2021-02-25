@@ -4,17 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.6">
   <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
-  <script src="js-constructor.js"></script>
-  <script src="js-calculator.js"></script>
-  <script src="js-favorite.js"></script>
-  <script src="js-interior.js"></script>
-  <script src="js-mail.js"></script>
-  <script src="js-icons.js"></script>
-  <link rel="stylesheet" href="css-constructor.css?2021-18">
+  <link rel="stylesheet" href="css-constructor.css?2021-31">
   <link rel="stylesheet" href="css-interior.css">
   <link rel="stylesheet" href="css-runner.css">
-  <link rel="stylesheet" href="css-vidgets.css?2021-17">
   <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
+  <script src="js-icons.js"></script>
   <!-- ================SlickSlider======================== -->
   <link rel="stylesheet" 
   href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
@@ -68,15 +62,15 @@
 </div>
 </div>	
 <div class="input-range">
-  <div>увеличить -</div>
+  <div><span>увеличить</span> -</div>
   <div id="range-vidget">
    <div id="range-slider"></div>
    <input type="range" min="0" max="770" value="500" 
    step="1" id="scaleInput" oninput="scale()"> 
  </div>
- <div>+ изображение</div>
+ <div>+ <span>изображение</span></div>
 </div>
-<div class="transform">
+<div class="transform-block">
   <fieldset>
    <legend>Поворот</legend>
    <div class="transform">
@@ -174,8 +168,12 @@
       <input type="radio" name="swich-selector" checked="checked">
     </label>
     <label class="swich-selector">
-      <input type="radio" name="swich-selector">
       <i class="fa fa-cog" aria-hidden="true"></i>
+      <input type="radio" name="swich-selector">
+    </label>
+    <label class="swich-selector">
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <input type="radio" name="swich-selector">
     </label>
     <label class="swich-selector">
       <i class="fa fa-bars" aria-hidden="true"></i>
@@ -271,7 +269,12 @@
 </div>
 </div>
 </body>
-<script src="js-vidgets.js?2021-17"></script>
+<script src="js-constructor.js?2021-31"></script>
+  <script src="js-calculator.js"></script>
+  <script src="js-favorite.js"></script>
+  <script src="js-interior.js"></script>
+  <script src="js-mail.js"></script>
+<script src="js-vidgets.js?2021-31"></script>
 <script>
 	mouseOn();
 	ajaxTemplates();
@@ -279,5 +282,5 @@
 	checkFavoriteChoise();
 	busketCounter();
 </script>
-<script src="js-constructor-animation.js"></script>
+<!-- <script src="js-constructor-animation.js"></script> -->
 </html>

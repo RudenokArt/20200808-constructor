@@ -32,20 +32,26 @@ function rangeVidgetFunction () {
 $('input[name="swich-selector"]').change(swichSelector);
 
 function swichSelector () {
-  var tabArr=[];
-  tabArr.push($('.field,.input-range'));
-  tabArr.push($('.sidebar,.transform'));
-  tabArr.push($('.footer'));
-  console.log(tabArr);
   var labelArr=$('.swich-selector');
   var radioArr=$('input[name="swich-selector"]');
   for (var i = 0; i < radioArr.length; i++) {
     if (radioArr[i].checked){
       labelArr[i].className='swich-selector swich-selector_active';
-      tabArr[i].css({'opacity':'1','z-index':'10'});
     }else {
       labelArr[i].className='swich-selector';
-      tabArr[i].css({'opacity':'0','z-index':'-10'});
     }
   }
+  swichTab(radioArr);
+}
+function swichTab (radioArr) {
+  $('.transform-block').css({'top':'-1000px'});
+  $('.sidebar').css({'top':'-1000px'});
+  $('.footer').css({'top':'-1000px'});
+  var n=0;
+  for (var i = 0; i < radioArr.length; i++) {
+    if (radioArr[i].checked) {n=i;}
+  }
+  if (n==1) {$('.transform-block').css({'top':'0'})}
+  if (n==2) {$('.sidebar').css({'top':'0'})}
+  if (n==3) {$('.footer').css({'top':'0'})}  
 }
