@@ -209,11 +209,14 @@
 </div>
 <div class="popup" id="interior">
  <div style="display: flex;justify-content: space-between;margin-bottom: 5px;">
-  <div class="action-button" onclick="customerInterior()">
-   &#128229 Загрузить свой интерьер
- </div>
- <div class="close-button" onclick="itemDisplay('fog','none')+itemDisplay('interior','none')">
+  <div class="close-button" 
+  onclick="itemDisplay('fog','none')+itemDisplay('interior','none')">
    &#10060
+ </div>
+  <div class="action-button" style="max-width: 400px;"  
+  onclick="customerInterior()">
+   <i class="fa fa-download" aria-hidden="true"></i>
+   Загрузить свой интерьер
  </div>
 </div>
 <div id="interior-background">
@@ -224,7 +227,10 @@
   </div>
 </div>	
 </div>
-<div id="interior-tape"></div>	
+<div class="interior-tape_wrapper">
+  <div id="interior-tape"></div>  
+</div>
+
 <div class="popup" id="interior-download">
   <div style="display: flex;justify-content: right">
    <div class="close-button" onclick="itemDisplay('interior-download','none')">

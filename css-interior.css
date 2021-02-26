@@ -5,6 +5,7 @@ iframe{
 }
 #interior{
 	margin-top: 0;
+  max-width: 100vw;
 }
 #interior-background{
 	height: 500px;
@@ -50,17 +51,18 @@ iframe{
 	background-position: center;
 	background-size:contain;
 }
-#interior-tape{
-	/*border: 1px solid red;*/
-	height:100px;
-	width: 600px;
-	display:flex;
-	overflow-y: hidden;
-	overflow-x:scroll;
+.interior-tape_wrapper{
+  background-color:  #3cb2e4;
 }
-.interior-tape-item{
-	/*border: 1px solid red;*/
-	height:90px;
+#interior-tape{
+  height:100px;
+  width: 500px;
+
+  margin-left: 50px;
+  margin-right: 50px;
+}
+#interior-tape img{
+  height: 100px;
 }
 #interior-download{
 	position: absolute;

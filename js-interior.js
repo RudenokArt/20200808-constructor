@@ -45,6 +45,18 @@ function interiorTape () {
 		' onclick="setInteriorBackground(\''+interiorArr[i].interior+'\')">';
 	}
 	document.getElementById('interior-tape').innerHTML=tape;
+  interiorSlickSlider();
+}
+function interiorSlickSlider () {
+  $(document).ready(function(){
+    $('#interior-tape').slick({ 
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      variableWidth: true
+    });
+  });
 }
 function setInteriorBackground (imageName) {
 	document.getElementById('interior-background').style.backgroundImage='url(interiors/'+imageName+')';

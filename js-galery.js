@@ -12,8 +12,7 @@ function indexOnload ()
 	setTimeout(ajaxCategory, 300);
 	// setTimeout(pangination, 5000);
 }
-function ajaxGallery(where)
-{
+function ajaxGallery(where){
 	var req = new XMLHttpRequest();
 	req.open('POST','php-read-galery.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -21,13 +20,12 @@ function ajaxGallery(where)
 	req.onreadystatechange=function ()
 	{
 		if (req.readyState == 4 && req.status == 200) {
-			let str=req.responseText;
+			var str=req.responseText;
 			displayGalery(str);
 		}	
 	}
 }
-function displayGalery(str)
-{	
+function displayGalery(str){	
 	try 
 	{
 		var arr=JSON.parse(str);
@@ -75,19 +73,17 @@ function displayGalery(str)
 	} catch(e) {}
 	pageNumber(1);
 }
-function searchImage()
-{
-	let where=document.getElementById('searchInput').value;
+function searchImage(){
+	var where=document.getElementById('searchInput').value;
 	if (where=="")
 	{
-		where='empty'
+		where='empty';
 	}
-	else{where='WHERE `image` LIKE "%'+where+'%"'
+	else{where='WHERE `image` LIKE "###'+where+'%"';
 }
 ajaxGallery(where);
 }
-function ajaxPosts()
-{
+function ajaxPosts(){
 	var req = new XMLHttpRequest();
 	req.open('POST','php-read-posts.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -402,7 +398,7 @@ $('.header-menu_button button').click(()=>{
 })
 $('.feedback-form button').click((e)=>{e.preventDefault()})
 $('.feedback-form button').click(feedBackFormCheck);
-setTimeout(()=>{$('.preloader-wrapper').slideUp();}, 5000);
+$('.preloader-wrapper').slideUp();
 
 
 // ===== FUNCTIONS =====

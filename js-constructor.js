@@ -135,7 +135,7 @@ function displayTemplates () {
     templateArr.push(key);
   }
   document.getElementById('template-tape').innerHTML=tape;
-  slickSlider()
+  slickSlider();
 }
 function slickSlider () {
   $(document).ready(function(){

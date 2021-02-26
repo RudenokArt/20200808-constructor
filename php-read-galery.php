@@ -2,6 +2,9 @@
 header("Content-Type: text/html; charset=utf-8");
 require 'connectdb.php';
 if (isset($_POST['where'])){$where=$_POST['where'];}
+$where=str_replace('###', '%', $where);
+// echo $where;
+// exit();
 if ($where=='empty')
 	{$sqlText='SELECT * FROM `constructor_galеry`';}
 else{$sqlText='SELECT * FROM `constructor_galеry`'.$where;}
@@ -23,6 +26,5 @@ while ($result = mysqli_fetch_array($sql))
 }
 $json=json_encode($arr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 echo $json;
-//echo $where;
 
 ?>
