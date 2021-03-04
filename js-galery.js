@@ -375,7 +375,7 @@ function selectArrow(argument){
 		document.getElementById(argument).innerHTML='&#8249';
 		selectCategoryDroper=true;
 	}
-	else{selectArrowReset(argument)}
+	else{selectArrowReset(argument);}
 }
 function selectArrowReset (argument) {
 	document.getElementById(argument).innerHTML='&#8250';
@@ -398,7 +398,7 @@ $('.header-menu_button button').click(()=>{
 })
 $('.feedback-form button').click((e)=>{e.preventDefault()})
 $('.feedback-form button').click(feedBackFormCheck);
-$('.preloader-wrapper').slideUp();
+//$('.preloader-wrapper').slideUp();
 
 
 // ===== FUNCTIONS =====
@@ -415,11 +415,11 @@ function feedBackFormCheck () {
   }
 }
 function feedBackFormSend (feedbackArr) {
-  $('.preloader-wrapper').slideDown();
+  $('.preloader-wrapper')[0].style.display='flex';
   $.post('mail/feedback.php', $('.feedback-form').serialize(), feedBackFormAfer);
 }
 function feedBackFormAfer (data) {
-  $('.preloader-wrapper').slideUp();
+  $('.preloader-wrapper')[0].style.display='none';
   feedBackFormMessage(data);
 }
 function feedBackFormMessage (data) {

@@ -1,0 +1,12 @@
+.container{
+  text-align: center;
+}
+.section{
+  margin:20px;
+}
+.color-picker{
+  border:1px solid grey;
+}
+.color-picker:focus{
+  border:1px solid red;
+}

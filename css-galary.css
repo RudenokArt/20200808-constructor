@@ -2,14 +2,7 @@
 body,div,*,span,button,input,select,option,h1,h2,h3,td,tr,table{
   font-family:'Roboto', Arial, Helvetica, sans-serif;
 }
-@keyframes move {
-  from { 
-    margin-top:-1000px;
-  }
-  to {
-    margin-top:0px;
-  }
-}
+
 body,input,button{
 	margin:0px;
 	padding: 0px;
@@ -148,10 +141,10 @@ span{
   margin:auto;
   height: 40px;
 }
-.social-block div{
+/*.social-block div{
   animation-name:move; 
   animation-duration:7s;
-}
+}*/
 .social-block a{
   transition-duration: 1s;
   margin:0;
@@ -189,8 +182,8 @@ span{
 .logotip-link{
   height: 100%;
   display:flex;
-  animation-name:move; 
-  animation-duration:7s;
+  /*animation-name:move; 
+  animation-duration:7s;*/
 }
 .logotip{
   margin:auto;
@@ -429,7 +422,7 @@ span{
   }
 }
 .preloader-wrapper{
-  display:flex;
+  display:none;
   position:fixed;
   top:0px;
   left:0px;
