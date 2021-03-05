@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=0.5">
 	<link rel="stylesheet" href="css-constructor.css?<?php echo time() ?>">
 	<link rel="stylesheet" href="css-preview.css?<?php echo time() ?>">
+  <link rel="stylesheet" type="text/css" href="theme/css/data-style.css">
 	<script src="js-constructor.js"></script>
 	<script src="js-calculator.js"></script>
 	<script src="js-favorite.js"></script>
@@ -38,7 +39,7 @@
 						</form>
 					</div>
 					<div class="data-form-item">
-						<div class="action-button" onclick="customerMail()">
+						<div class="simple-button" onclick="customerMail()">
 							<i class="fa fa-envelope-o" aria-hidden="true"></i>
               Отправить
             </div>
@@ -67,7 +68,7 @@
     </div>
     <div id="order-data"></div>
     <div class="data-form-item">
-     <div class="action-button" onclick="submitForm('order-form');">
+     <div class="simple-button" onclick="submitForm('order-form');">
       <i class="fa fa-envelope-o" aria-hidden="true"></i>
       Отправить
     </div>
@@ -81,17 +82,20 @@
 <div class="button-pannel">
  <div>
   <a href="order-image.jpg"download style="text-decoration: none;">
-   <div class="action-button" >
+   <div class="simple-button" >
     <i class="fa fa-download" aria-hidden="true"></i>
     Скачать 
   </div>
 </a>
 </div>
 <div style="display: none;" id="order-button">
- <div class="action-button" onclick="orderSend()">Заказать </div>
+ <div class="simple-button" onclick="orderSend()">Заказать </div>
 </div>
 <div>
- <div onclick="cleanStorage()" class="action-button" >Назад</div>
+ <div onclick="cleanStorage()" class="simple-button" >
+  <i class="fa fa-step-backward" aria-hidden="true"></i>
+  Назад
+ </div>
 </div>
 </div>
 </div>

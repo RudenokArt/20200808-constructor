@@ -101,12 +101,12 @@ span{
   flex-wrap: wrap;
   justify-content: center;
   background-color:  #3cb2e4;
+  color:white;
 }
 .header-menu a{
   transition-duration: 1s;
   text-decoration:none;
   font-weight: bold;
-  color:white;
   padding: 10px;
   padding-top:20px;
   padding-bottom: 20px;
@@ -167,7 +167,7 @@ span{
 }
 .button-search{
   transition-duration: 1s;
-  background-color:  #3cb2e4;
+  background-color: rgba(0,0,0,0.1);
   height: 50px;
   width: 50px;
   color:white;
@@ -361,7 +361,7 @@ span{
   padding: 10px;
   line-height: 1.2em;
   color:white;
-  background: linear-gradient(to right, #3cb2e4, #6ec1e4);
+  background-color: #6ec1e4;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

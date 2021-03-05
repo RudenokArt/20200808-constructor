@@ -3,9 +3,11 @@ function radioVidget () {
 	for (var i = 0; i < arr.length; i++) {
 		if(arr[i].type=='radio' && arr[i].name!='swich-selector'){
 			let node=document.getElementById('label'+String(arr[i].id));
-			node.style.backgroundColor='white';
+			//node.style.backgroundColor='white';
+      node.className='radio-label';
 			if (arr[i].checked==true) {
-				node.style.backgroundColor='#3cb2e4';
+				//node.style.backgroundColor='#3cb2e4';
+        node.className='radio-label_active';
 			}		
 		}
 	}

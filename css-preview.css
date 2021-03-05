@@ -7,13 +7,11 @@ body,div,*,span,button,input,select,option,h1,h2,h3,td,tr,table{
 	left: 980px;
 	top:100px;
 	/*border: 1px solid grey;*/
+}
+.button-pannel div{
+  margin-bottom: 10px;
+}
 
-}
-.action-button{
-	padding: 0.5em;
-	margin-top: 1em;
-	font-size: 1.2em;
-}
 
 .pre-veiw{
 	/*border: 1px solid grey;*/

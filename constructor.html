@@ -6,7 +6,8 @@
   <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
   <link rel="stylesheet" href="css-constructor.css?2021-31">
   <link rel="stylesheet" href="css-interior.css">
-  <link rel="stylesheet" href="css-runner.css">
+  <!-- <link rel="stylesheet" href="css-runner.css"> -->
+  <link rel="stylesheet" href="theme/css/data-style.css">
   <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
   <script src="js-icons.js"></script>
   <!-- ================SlickSlider======================== -->
@@ -34,18 +35,18 @@
    <div class="sidebar">
      <div class="wrap-option">
       <div class="sign">
-       <span style="color:#3cb2e4">Артикул</span>
+       <span>Артикул:</span>
        <span id="imageName"></span>
      </div>
      <div class="sign">Выбранный шаблон:
-       <span id="templateSize" style="color:#3cb2e4"></span>
+       <span id="templateSize"></span>
      </div>
 
-     <div class="sign">Выберите <span style="color:#3cb2e4">размер:</span></div>
+     <div class="sign">Выберите <span>размер:</span></div>
      <div class="option" id="size"></div>
    </div>
    <div class="wrap-option">
-    <div class="sign">Выберите <span style="color:#3cb2e4">материал:</span></div>
+    <div class="sign">Выберите <span>материал:</span></div>
     <div class="option" id="material"></div>
   </div>
   <div style="display: flex">
@@ -196,7 +197,10 @@
    <input type="file" name="myfile" id="customer-image" class="drop-zone-input">
  </form>
 </div>
-<div class="action-button" onclick="submitForm('image-form')">&#128229 Загрузить</div>			
+<div class="simple-button" onclick="submitForm('image-form')">
+  <i class="fa fa-download" aria-hidden="true"></i>
+  Загрузить
+</div>			
 </div>
 <div class="popup" id="favorite">
  <div style="display: flex;justify-content: right">
@@ -213,7 +217,7 @@
   onclick="itemDisplay('fog','none')+itemDisplay('interior','none')">
    &#10060
  </div>
-  <div class="action-button" style="max-width: 400px;"  
+  <div class="simple-button" style="max-width: 400px;"  
   onclick="customerInterior()">
    <i class="fa fa-download" aria-hidden="true"></i>
    Загрузить свой интерьер
@@ -238,8 +242,9 @@
   </div>
 </div>
 <iframe src="interior-upload.html" frameborder="0"></iframe>
-<div class="action-button" onclick="setCustomerInterior()">
- &#128229 Загрузить
+<div class="simple-button" onclick="setCustomerInterior()">
+  <i class="fa fa-download" aria-hidden="true"></i>
+  Загрузить
 </div>	
 </div>					
 </div>

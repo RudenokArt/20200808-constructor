@@ -1,0 +1,11 @@
+
+  button{
+    background-color:#BBB87BFF;
+  }
+  span,h3,.preloader,button{
+    color:#4567FFFF;
+  }
+  .content-item,label,input[type="text"]{
+  border-color:#BBB87BFF !important;
+}
+
