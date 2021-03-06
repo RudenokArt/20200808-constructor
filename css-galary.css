@@ -392,8 +392,12 @@ span{
   border-radius: 10px;
 }
 .feedback-form textarea{
+  color:black;
   height: 100px;
   width: 280px;
+}
+.feedback-form input{
+  color:black;
 }
 .feedback-form input,
 .feedback-form button{

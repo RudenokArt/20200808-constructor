@@ -4,139 +4,144 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
   <link rel="stylesheet" href="css-galary.css?2021-21">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="theme/css/data-style.css">
-    <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
-    <title>Юг Идеал - Модульные картины</title>
-  </head>
-  <body>
-    <!-- ========== HEADER ========== -->
-    <div class="header-top">
-      <div class="company-name">
-        <a href="index.html">
-          <h1>Название компании</h1>
-        </a>
-      </div>
-      <div class="flex-wrapper">
-        <div class="social-block">
-          <div>
-            <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-odnoklassniki-square" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
-          </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="theme/css/data-style.css">
+  <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
+  <title>Модульные картины</title>
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+  <div class="header-top">
+    <div class="company-name">
+      <a href="index.html">
+        <h1 class="siteName"></h1>
+      </a>
+    </div>
+    <div class="flex-wrapper">
+      <div class="social-block">
+        <div>
+          <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-odnoklassniki-square" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
         </div>
       </div>
-      <div class="flex-wrapper">
-        <div class="search">
-         <input type="text" id="searchInput" placeholder=" Поиск по артикулу...">
-         <button onclick="searchImage()" class="button-search">
-          <h3>
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </h3>
-        </button>
-      </div>
+    </div>
+    <div class="flex-wrapper">
+      <div class="search">
+       <input type="text" id="searchInput" placeholder=" Поиск по артикулу...">
+       <button onclick="searchImage()" class="button-search">
+        <h3>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </h3>
+      </button>
     </div>
   </div>
-  <div class="flex-wrapper">
-    <div class="flex-wrapper_half">
-      <div class="logotip-wrapper">
-        <a href="index.html" class="logotip-link">
-          <img src="images/logotip.png" class="logotip" alt="">
-        </a>
-      </div>
-      <div class="flex-wrapper">
-        <div class="flex-wrapper header-info">
-          <div class="header-info_icon-large">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-          </div>
-          <div class="header-info_text">
-            <b>Краснодарский край <br> г.Новороссийск</b>
-            <br> ул.Мысхакское шоссе 50/10
-          </div>
-        </div>
-      </div>
+</div>
+<div class="flex-wrapper">
+  <div class="flex-wrapper_half">
+    <div class="logotip-wrapper">
+      <a href="index.html" class="logotip-link">
+        <img src="images/logotip.png" class="logotip" alt="">
+      </a>
     </div>
-
-    <div class="flex-wrapper_half">
-      <div class="flex-wrapper">
-        <div class="flex-wrapper header-info">
-          <div class="header-info_icon-large">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-          </div>
-          <div class="header-info_text">
-            <b>+7(988) 769 69 66 <br>+7(988) 762 22 69  </b>
-          </div>
+    <div class="flex-wrapper">
+      <div class="flex-wrapper header-info">
+        <div class="header-info_icon-large">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
         </div>
-      </div>
-      <div class="flex-wrapper">
-        <div class="header-info">
-          <div class="flex-wrapper_start">
-            <div class="header-info_icon">
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-            <div class="header-info_text">
-              info@ug-ideal.ru
-            </div>
-          </div>
-          <div class="flex-wrapper_start">
-            <div class="header-info_icon">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-            </div>
-            <div class="header-info_text">
-              09:00 - 18:00
-            </div>
-          </div>
+        <div class="header-info_text">
+          <b class="region"></b> 
+          <br>
+          <b class="city"></b>
+          <br>
+          <span class="adress"></span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="header-bottom">
-    <div class="header-menu">
-      <div>
-        <button>
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </button>
+  <div class="flex-wrapper_half">
+    <div class="flex-wrapper">
+      <div class="flex-wrapper header-info">
+        <div class="header-info_icon-large">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+        </div>
+        <div class="header-info_text">
+          <b class="phone1"></b> 
+          <br>
+          <b class="phone2"></b>
+        </div>
       </div>
-      <a href="#">Главная</a>
-      <a href="#">Натяжные потолки</a>
-      <a href="#">Модульные картины</a>
-      <a href="#">Фото обои фрески</a>
-      <a href="#">Фото каталог</a>
-      <a href="#">Контакты</a>
+    </div>
+    <div class="flex-wrapper">
+      <div class="header-info">
+        <div class="flex-wrapper_start">
+          <div class="header-info_icon">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          </div>
+          <div class="header-info_text">
+            <span class="email"></span>
+          </div>
+        </div>
+        <div class="flex-wrapper_start">
+          <div class="header-info_icon">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+          </div>
+          <div class="header-info_text">
+            <span class="timeTable"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="header-menu_button">
-    <button>
-      <i class="fa fa-bars" aria-hidden="true"></i>
-      <!-- <i class="fa fa-align-justify" aria-hidden="true"></i> -->
-    </button>
+</div>
+
+<div class="header-bottom">
+  <div class="header-menu">
+    <div>
+      <button>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <a href="#">Главная</a>
+    <a href="#">Натяжные потолки</a>
+    <a href="#">Модульные картины</a>
+    <a href="#">Фото обои фрески</a>
+    <a href="#">Фото каталог</a>
+    <a href="#">Контакты</a>
   </div>
-  <!-- ========== END HEADER ========= -->
-  <div class="wrapper-page">
-    <div class="sidebar" id="sidebar">
-     <div class="categories" id="resetCategory">&#160</div>
-     <div class="categories" id="categories"></div>
-     <div class="posts" id="posts"></div>
-   </div>
-   <div class="wrapper-content">
-     <div class="filter">
-      <div class="filter-item">
-       Фильтр по категориям:<br>
-       <div class="wrapper-select">
-        <span id="categorySelectArrow" class="rotate">&#8250</span>
-        <div class="item-selet">
-         <select id="categorySelect" 
-         onchange="selectCategory()"
-         onblur="selectArrowReset('categorySelectArrow')"
-         onclick="selectArrow('categorySelectArrow')">
-       </select>
-     </div>
+</div>
+<div class="header-menu_button">
+  <button>
+    <i class="fa fa-bars" aria-hidden="true"></i>
+    <!-- <i class="fa fa-align-justify" aria-hidden="true"></i> -->
+  </button>
+</div>
+<!-- ========== END HEADER ========= -->
+<div class="wrapper-page">
+  <div class="sidebar" id="sidebar">
+   <div class="categories" id="resetCategory">&#160</div>
+   <div class="categories" id="categories"></div>
+   <div class="posts" id="posts"></div>
+ </div>
+ <div class="wrapper-content">
+   <div class="filter">
+    <div class="filter-item">
+     Фильтр по категориям:<br>
+     <div class="wrapper-select">
+      <span id="categorySelectArrow" class="rotate">&#8250</span>
+      <div class="item-selet">
+       <select id="categorySelect" 
+       onchange="selectCategory()"
+       onblur="selectArrowReset('categorySelectArrow')"
+       onclick="selectArrow('categorySelectArrow')">
+     </select>
    </div>
  </div>
- <div class="filter-item">
+</div>
+<div class="filter-item">
   Фильтр по подкатегориям:<br>
   <div class="wrapper-select">
    <span id="subcategorySelectArrow" class="rotate">&#8250</span>
@@ -165,28 +170,32 @@
       <b>НАШИ АДРЕСА:</b>
     </div>
     <div>
-      <b>Краснодарский край <br> г.Новороссийск</b>
+      <b class="region"></b> 
+      <br>
+      <b class="city"></b>
     </div>
     <div>
-      пр-кт Ленина 22 а ,ост.комплекс <br>
-      тел +7(988)7622269 розница
+      <span class="footerAdres"></span>
+      <br>
+      <span class="footerAdres"></span>
     </div>
     <div>
-      Т.Ц Южный павильон № 68 <br>
-      тел +7(988)7655066 розница
+      <span class="footerAdres"></span>
+      <br>
+      <span class="footerAdres"></span>
     </div>
     <div>
-      ул.Мысхакское шоссе 50/10 <br>
-      тел +7(989)761333 дилерский
+      <span class="footerAdres"></span>
+      <br>
+      <span class="footerAdres"></span>
     </div>
   </div>
   <div class="footer-item">
     <div>
-      <b>info@ug-ideal.ru</b>
+      <b class="email"></b>
     </div>
     <div>
-      График работы : 09.00-18.00 <br>
-      Воскресенье выходной.
+      <span class="timeTable"></span>
     </div>
     <div class="flex-wrapper">
       <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
@@ -201,23 +210,24 @@
         <input type="text" name="name" placeholder="Имя">
       </div>
       <div>
-         <input type="text" name="email" placeholder="Email">
-      </div>
-      <div>
-        <textarea name="mesage" placeholder="Сообщение"></textarea>
-      </div>
-      <div>
-        <button>Отправить</button>
-      </div>
-    </form>
-  </div>
-  <div class="preloader-wrapper">
-    <div class="preloader">
-      <i class="fa fa-cog" aria-hidden="true"></i>
+       <input type="text" name="email" placeholder="Email">
+     </div>
+     <div>
+      <textarea name="mesage" placeholder="Сообщение"></textarea>
     </div>
+    <div>
+      <button>Отправить</button>
+    </div>
+  </form>
+</div>
+<div class="preloader-wrapper">
+  <div class="preloader">
+    <i class="fa fa-cog" aria-hidden="true"></i>
   </div>
+</div>
 
 </body>
+<script src="theme/js/index-data.js"></script>
 <script src="js-galery.js?2021-21"></script>
 <script>setTimeout(indexOnload, 100)</script>
 </html>

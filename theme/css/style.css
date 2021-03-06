@@ -25,18 +25,42 @@ button:active{
   border-style: inset;
   color: red;
 }
-input{
+input[type="text"]{
   transition-duration: 0.5s;
   padding: 10px;
   border:2px solid mediumaquamarine;
 }
-input:hover{
+input[type="text"]:hover{
   transition-duration: 0.5s;
   box-shadow: 0px 0px 2px 2px mediumaquamarine;
 }
-input:focus{
+input[type="text"]:focus{
   transition-duration: 0.5s;
   box-shadow: 0px 0px 2px 2px mediumaquamarine;
+}
+.file-upload{
+  position: relative;
+  display: block;
+  border:2px solid mediumaquamarine;
+  height: 100px;
+  width: 200px;
+}
+.file-upload i{
+  display: block;
+  font-size: 75px;
+  color: mediumaquamarine;
+}
+input[type="file"]{
+  position: absolute;
+  height: 100px;
+  width: 200px;
+  top:0;
+  left: 0;
+  opacity: 0;
+  border:1px solid red;
+}
+.header-info{
+  width: 500px;
 }
 .container{
   display: flex;
@@ -46,6 +70,9 @@ input:focus{
 .section{
   text-align: center;
   margin:20px;
+}
+.section div{
+  margin-top: 20px;
 }
 .color-picker{
   width: 100px;

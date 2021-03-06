@@ -1,11 +1,11 @@
 
   button{
-    background-color:#BBB87BFF;
+    background-color:#2FA2FFFF;
   }
   span,h3,.preloader,button{
-    color:#4567FFFF;
+    color:#FFFFFAFF;
   }
   .content-item,label,input[type="text"]{
-  border-color:#BBB87BFF !important;
+  border-color:#2FA2FFFF !important;
 }
 
