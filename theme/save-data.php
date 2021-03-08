@@ -3,7 +3,7 @@
 
 print_r($dataArr);
 $dataStyle='
-#backButton,#backButton:hover,.simple-button,
+#backButton,#backButton:hover,.simple-button,.header-menu_button,
 .template-tape-item,.sign-blue,.radio-label_active,
 .header-top,.header-menu,.footer {
   background-color:'.$dataArr["themeColor"].';
@@ -20,20 +20,17 @@ $dataStyle='
 .header-top a,.footer *,.header-menu a,#backButton,
 .simple-button,.sign-blue{
   color:'.$dataArr["fontColor"].';
-}
-';
+}';
 $favoriteStyle='
   button{
     background-color:'.$dataArr["themeColor"].';
   }
-  span,h3,.preloader,button{
+  button{
     color:'.$dataArr["fontColor"].';
   }
   .content-item,label,input[type="text"]{
   border-color:'.$dataArr["themeColor"].' !important;
-}
-
-';
+}';
 file_put_contents('css/data-style.css', $dataStyle);
 file_put_contents('css/favorite-style.css', $favoriteStyle);
 $json=json_encode($dataArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

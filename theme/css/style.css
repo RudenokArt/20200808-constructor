@@ -77,4 +77,17 @@ input[type="file"]{
 .color-picker{
   width: 100px;
 }
-
+.footerAdres,.mainMenu{
+  width: 225px;
+}
+.socialLink{
+  width: 450px;
+}
+span[class="socialIcon"]{
+  font-size: 20px;
+  margin-right: 10px;
+  color: mediumaquamarine;
+}
+input[class="socialIcon"]{
+  display: none;
+}

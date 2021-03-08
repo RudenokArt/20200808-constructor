@@ -1,8 +1,10 @@
 $.post('theme/set-data.php',{data:'data'}, setThemeData);
 $('.save-options').click((e)=>{
-  $.post('theme/get-data.php',$('form').serialize(),(data)=>{
-    console.log(data);
-  });
+  if (confirm('Прежние настройки будут удалены!')) {
+    $.post('theme/get-data.php',$('form').serialize(),(data)=>{
+      console.log(data);
+    });
+  }
 });
 $('.back-button').click(()=>{
   window.location='admin.html';
@@ -54,6 +56,29 @@ function setThemeData (data) {
   $('input[name="footerAdres3"]')[0].value=themeData.footerAdres3;
   $('input[name="footerAdres4"]')[0].value=themeData.footerAdres4;
   $('input[name="footerAdres5"]')[0].value=themeData.footerAdres5;
+  // Иконки соц. сетей
+  $('input[name="socialLink_0"]')[0].value=themeData.socialLink_0;
+  $('input[name="socialLink_1"]')[0].value=themeData.socialLink_1;
+  $('input[name="socialLink_2"]')[0].value=themeData.socialLink_2;
+  $('input[name="socialLink_3"]')[0].value=themeData.socialLink_3;
+  $('input[name="socialLink_4"]')[0].value=themeData.socialLink_4;
+  $('input[name="socialLink_5"]')[0].value=themeData.socialLink_5;
+  $('input[name="socialLink_6"]')[0].value=themeData.socialLink_6;
+  // Главное меню
+  $('input[name="menuLink_0"]')[0].value=themeData.menuLink_0;
+  $('input[name="menuItem_0"]')[0].value=themeData.menuItem_0;
+  $('input[name="menuLink_1"]')[0].value=themeData.menuLink_1;
+  $('input[name="menuItem_1"]')[0].value=themeData.menuItem_1;
+  $('input[name="menuLink_2"]')[0].value=themeData.menuLink_2;
+  $('input[name="menuItem_2"]')[0].value=themeData.menuItem_2;
+  $('input[name="menuLink_3"]')[0].value=themeData.menuLink_3;
+  $('input[name="menuItem_3"]')[0].value=themeData.menuItem_3;
+  $('input[name="menuLink_4"]')[0].value=themeData.menuLink_4;
+  $('input[name="menuItem_4"]')[0].value=themeData.menuItem_4;
+  $('input[name="menuLink_5"]')[0].value=themeData.menuLink_5;
+  $('input[name="menuItem_5"]')[0].value=themeData.menuItem_5;
+  $('input[name="menuLink_6"]')[0].value=themeData.menuLink_6;
+  $('input[name="menuItem_6"]')[0].value=themeData.menuItem_6;
 
   console.log(themeData);
 }

@@ -1,19 +1,19 @@
 
-#backButton,#backButton:hover,.simple-button,
+#backButton,#backButton:hover,.simple-button,.header-menu_button,
 .template-tape-item,.sign-blue,.radio-label_active,
 .header-top,.header-menu,.footer {
-  background-color:#2FA2FFFF;
+  background-color:#66CDAA;
 }
 .header-info_icon-large,.header-info_icon{
-  color:#2FA2FFFF;
+  color:#66CDAA;
 }
 #range-vidget,.radio-label,.radio-label_active{
-  border-color:#2FA2FFFF;
+  border-color:#66CDAA;
 }
 #range-slider{
-  background-color: #2FA2FFFF;
+  background-color: #66CDAA;
 }
 .header-top a,.footer *,.header-menu a,#backButton,
 .simple-button,.sign-blue{
-  color:#FFFFFAFF;
+  color:#FFFAF5;
 }

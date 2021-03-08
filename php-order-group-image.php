@@ -1,10 +1,10 @@
 <?php //header('Content-type: text/html; charset=utf-8');
 //header('Content-type: image/jpeg'); // вывод картинки 
 
-$path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';
-$path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';
 $path='D:\OpenServer\domains\localhost\20200808-constructor\fonts/arial-narrow.ttf';
 $path2='D:\OpenServer\domains\localhost\20200808-constructor\fonts/times-bold.ttf';
+$path='/home/c/cx57370/wordpress/public_html/modul/fonts/arial-narrow.ttf';
+$path2='/home/c/cx57370/wordpress/public_html/modul/fonts/times-bold.ttf';
 $str=file_get_contents('order-group-settings.txt');
 $settings=json_decode($str);
 $amount=0;
