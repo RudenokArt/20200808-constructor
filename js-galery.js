@@ -51,7 +51,6 @@ function displayGalery(str){
 			}
 			galery=galery+
 			'<div onclick="constructorTransition(\''+arr[i].image+'\',\''+discountPass[0]+'\')">'+
-			//'<div>'+
 			'<div class="galeryItem" id="'+id+'">'+
 			'<div class="galary-template-wrap" style="background-image: url(miniatures/'+arr[i].image+');">'+
 			'<div class="discount">'+discount+'</div>'+
@@ -152,22 +151,24 @@ function categoriesList (str)
 			list=list+
 			'<tr class="item-list">'+
 			'<td onclick="ajaxSubCategory(\''+arr[i][1]+'\')">'+
-			// '<td onclick="ajaxSubCategory(\''+arr[i][1]+'\')'+
-			// '+expandCategory(\''+arr[i][1]+'\')">'+
 			arr[i][1]+
 			'</td>'+
 			'<td id="quantity'+arr[i][1]+'"></td>'+
-			'<td id="expand'+arr[i][1]+'" onclick="expandCategory(\''+arr[i][1]+'\')">'+
+			'<td id="expand'+arr[i][1]+'" onclick="event.stopPropagation()+expandCategory(\''+arr[i][1]+'\')">'+
 			'<span class="rotate">&#8250</span></td>'+
 			'<tr>'+
 			'<tr><td  id="'+arr[i][1]+'" colspan="3"></td></tr>';
 			select=select+'<option>'+arr[i][1]+'</option>';
 			ajaxQuantity(arr[i][1],'category');
 		}
-		list=list+'</table>'
+		list=list+'</table>';
 		document.getElementById('categories').innerHTML=list;
 		document.getElementById('categorySelect').innerHTML=select;
 	} catch(e) {}
+   $('.item-list').click(expandCategoryHelper);
+}
+function expandCategoryHelper () {
+  this.children[2].click();
 }
 function expandCategory (category) 
 {
@@ -398,7 +399,6 @@ $('.header-menu_button button').click(()=>{
 })
 $('.feedback-form button').click((e)=>{e.preventDefault()})
 $('.feedback-form button').click(feedBackFormCheck);
-//$('.preloader-wrapper').slideUp();
 
 
 // ===== FUNCTIONS =====

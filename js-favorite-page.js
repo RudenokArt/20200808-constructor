@@ -54,8 +54,16 @@ function favoriteTable () {
 		'</div>';
 	}
 	$('.favorite-table').html(table);
+  setTimeout(checkboxChecked, 2000);
 	amountCalc();
 }
+function checkboxChecked () {
+  var checkboxArr=$('label');
+  for (var i = 0; i < checkboxArr.length; i++) {
+    checkboxArr[i].click();
+  }
+}
+
 function amountCalc (argument) {
 	let quantity = 0;
 	let total = 0;
@@ -75,7 +83,6 @@ function favoriteImage (item) {
 	'width="200" height="200" alt=" ">'+
 	'</div>'+
 	'</div>';
-	console.log(imageStyle(item))
 	return image;
 }
 function imageStyle (item) {
@@ -144,7 +151,6 @@ function selectedItems () {
 		if(node.checked){favoriteArr[i].selected=true}
 			else{favoriteArr[i].selected=false}
 	}
-	console.log(favoriteArr);
 }
 function editItem () {
 	localStorage.setItem('editItem', this.name);

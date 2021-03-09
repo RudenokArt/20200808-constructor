@@ -12,6 +12,8 @@ function mailSend () {
 	});
 }
 function orderSend () {
+  $.post('mail/ajax-mail.php', {data:''}, (data)=>{
+    console.log(data);});
 	preloaderFunction();
 	$.post('mail/ajax-order.php', {data:''}, (data)=>{
 		alert(data);
