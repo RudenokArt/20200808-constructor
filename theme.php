@@ -35,6 +35,11 @@
         class="color-picker" name="fontColor">
       </div>
       <div class="section">
+        <h3>Цвет эффекта при наведении</h3>
+        <input  data-jscolor="{}" type="text" 
+        class="color-picker" name="hoverColor">
+      </div>
+      <div class="section">
         <h3>Шапка сайта:</h3>
         <input type="text" name="siteName"  
         class="header-info" placeholder="Название сайта (компании)">

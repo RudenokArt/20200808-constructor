@@ -28,37 +28,37 @@ function setIndexData (data) {
   setMainMenu(mainMenu,themeData);
   console.log(mainMenu);
 
-  // console.log(themeData);
+  // иконки соц. сетей
 }
 function setSocialLink (socialLink,themeData) {
   if (themeData.socialLink_0!='') {
     socialLink[0].innerHTML=themeData.socialIcon_0;
     socialLink[0].setAttribute('href', themeData.socialLink_0);
-  }
+  }else{socialLink[0].style.display='none';}
   if (themeData.socialLink_1!='') {
     socialLink[1].innerHTML=themeData.socialIcon_1;
     socialLink[1].setAttribute('href', themeData.socialLink_1);
-  }
+  }else{socialLink[1].style.display='none';}
   if (themeData.socialLink_2!='') {
     socialLink[2].innerHTML=themeData.socialIcon_2;
     socialLink[2].setAttribute('href', themeData.socialLink_2);
-  }
+  }else{socialLink[2].style.display='none';}
   if (themeData.socialLink_3!='') {
     socialLink[3].innerHTML=themeData.socialIcon_3;
     socialLink[3].setAttribute('href', themeData.socialLink_3);
-  }
+  }else{socialLink[3].style.display='none';}
   if (themeData.socialLink_4!='') {
     socialLink[4].innerHTML=themeData.socialIcon_4;
     socialLink[4].setAttribute('href', themeData.socialLink_4);
-  }
+  }else{socialLink[4].style.display='none';}
   if (themeData.socialLink_5!='') {
     socialLink[5].innerHTML=themeData.socialIcon_5;
     socialLink[5].setAttribute('href', themeData.socialLink_5);
-  }
+  }else{socialLink[5].style.display='none';}
   if (themeData.socialLink_6!='') {
     socialLink[6].innerHTML=themeData.socialIcon_6;
     socialLink[6].setAttribute('href', themeData.socialLink_6);
-  }
+  }else{socialLink[6].style.display='none';}
 
 }
 function setMainMenu(mainMenu,themeData) {

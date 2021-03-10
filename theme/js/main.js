@@ -42,6 +42,7 @@ function setThemeData (data) {
   var themeData=JSON.parse(data);
   $('input[name="themeColor"]')[0].value=themeData.themeColor;
   $('input[name="fontColor"]')[0].value=themeData.fontColor;
+  $('input[name="hoverColor"]')[0].value=themeData.hoverColor;
   $('input[name="siteName"]')[0].value=themeData.siteName;
   $('input[name="region"]')[0].value=themeData.region;
   $('input[name="city"]')[0].value=themeData.city;

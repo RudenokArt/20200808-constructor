@@ -3,7 +3,7 @@
 
 print_r($dataArr);
 $dataStyle='
-#backButton,#backButton:hover,.simple-button,.header-menu_button,
+#backButton,.simple-button,.header-menu_button,
 .template-tape-item,.sign-blue,.radio-label_active,
 .header-top,.header-menu,.footer {
   background-color:'.$dataArr["themeColor"].';
@@ -12,23 +12,28 @@ $dataStyle='
   color:'.$dataArr["themeColor"].';
 }
 #range-vidget,.radio-label,.radio-label_active{
-  border-color:'.$dataArr["themeColor"].';
+border-color:'.$dataArr["themeColor"].';
 }
 #range-slider{
-  background-color: '.$dataArr["themeColor"].';
+background-color: '.$dataArr["themeColor"].';
 }
 .header-top a,.footer *,.header-menu a,#backButton,
 .simple-button,.sign-blue{
   color:'.$dataArr["fontColor"].';
+}
+#backButton:hover,.header-menu a:hover,.company-name:hover,
+.action-button:hover,.simple-button:hover,
+.button-search:hover,.item-list:hover{
+  background-color: '.$dataArr["hoverColor"].';
 }';
 $favoriteStyle='
-  button{
-    background-color:'.$dataArr["themeColor"].';
-  }
-  button{
-    color:'.$dataArr["fontColor"].';
-  }
-  .content-item,label,input[type="text"]{
+button{
+  background-color:'.$dataArr["themeColor"].';
+}
+button{
+  color:'.$dataArr["fontColor"].';
+}
+.content-item,label,input[type="text"]{
   border-color:'.$dataArr["themeColor"].' !important;
 }';
 file_put_contents('css/data-style.css', $dataStyle);

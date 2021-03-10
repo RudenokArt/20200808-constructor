@@ -123,8 +123,8 @@ span{
   display:flex;
 }
 .company-name h1{
-   font-size: 20px;
-   font-style: normal;
+ font-size: 20px;
+ font-style: normal;
 }
 .company-name:hover {
   transition-duration: 1s;
@@ -140,22 +140,45 @@ span{
 .social-block{
   margin:auto;
   height: 40px;
+  display: flex;
 }
-/*.social-block div{
-  animation-name:move; 
-  animation-duration:7s;
-}*/
 .social-block a{
+  line-height: 0;
+  transition-duration: 1s;
+  display: inline-block;
   transition-duration: 1s;
   margin:0;
   padding: 0;
   text-decoration: none;
   color:white;
-  font-size: 36px;
+  font-size: 24px;
+  padding:12px;
+  border-radius: 5px;
 }
 .social-block a:hover{
   transition-duration: 1s;
-  color:rgba(0,100,200,0.5);
+  box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.5);
+}
+#social-block_0{
+  background-color: RoyalBlue;
+}
+#social-block_1{
+  background-color: SteelBlue;
+}
+#social-block_2{
+  background-color: OrangeRed;
+}
+#social-block_3{
+  background-color: Orange;
+}
+#social-block_4{
+  background-color: MediumAquaMarine;
+}
+#social-block_5{
+  background-color: SeaGreen;
+}
+#social-block_6{
+  background-color: gold;
 }
 .search {
   display:flex;
@@ -174,16 +197,14 @@ span{
 }
 .button-search:hover{
   transition-duration: 1s;
-  color:red;
 }
 .logotip-wrapper{
-  height: 60px;
+  height: 100%;
 }
 .logotip-link{
   height: 100%;
   display:flex;
-  /*animation-name:move; 
-  animation-duration:7s;*/
+
 }
 .logotip{
   margin:auto;
@@ -214,32 +235,32 @@ span{
   color:#012c6d;
 }
 .wrapper-page{
-	display: flex;
+ display: flex;
 }
 .sidebar{
-	background-color: white;
-	font-size: 1.2em;
-	min-width: 300px;
+ background-color: white;
+ font-size: 1.2em;
+ min-width: 300px;
 }
 .post{
-	padding-bottom: 1em;
-	background-color:white;
-	margin-left: 2em;
+ padding-bottom: 1em;
+ background-color:white;
+ margin-left: 2em;
 }
 .postImage{
-	width: 200px;
+ width: 200px;
 }
 .categories{
-	line-height: 1em;
-	padding: 0;
-	background-color:white;
-	margin-left: 2em;
-	/*border:1px solid red;*/
+ line-height: 1em;
+ padding: 0;
+ background-color:white;
+ margin-left: 2em;
+ /*border:1px solid red;*/
 }
 .rotate {
-	display:inline-block;
-	writing-mode: vertical-rl;
-  font-size: 1.5em;
+ display:inline-block;
+ writing-mode: vertical-rl;
+ font-size: 1.5em;
 }
 .item-list{
   transition-duration: 1s;
@@ -379,9 +400,9 @@ span{
   font-size: 24px;
 }
 .feedback-form{
-   margin:0;
-  padding: 0;
-  line-height: 0;
+ margin:0;
+ padding: 0;
+ line-height: 0;
 }
 .feedback-form *{
   font-size: 14px;
@@ -486,10 +507,10 @@ span{
     background-color: #3cb2e4;
   }
   .header-menu_button button{
-     font-size: 36px;
-     color:white;
-  }
-  .sidebar{
-    display:none;
-  }
+   font-size: 36px;
+   color:white;
+ }
+ .sidebar{
+  display:none;
+}
 }

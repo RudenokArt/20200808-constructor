@@ -224,7 +224,6 @@ input[type='text']{
 }
 #backButton:hover{
   transition-duration: 0.5s;
-  color:black;
 }
 .close-button{
 	transition-duration: 0.5s;
@@ -246,11 +245,9 @@ input[type='text']{
 }
 .action-button:hover{
   transition-duration: 0.5s;
-	background-color:rgba(0,0,0,0.1);
 }
 .simple-button:hover{
   transition-duration: 0.5s;
-  color:black;
 }
 .icon{
 	color: #3cb2e4;

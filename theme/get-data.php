@@ -8,6 +8,9 @@ if (isset($_POST['themeColor'])) {
 if (isset($_POST['fontColor'])) {
   $dataArr['fontColor']=$_POST['fontColor'];
 }
+if (isset($_POST['hoverColor'])) {
+  $dataArr['hoverColor']=$_POST['hoverColor'];
+}
 // Реквизиты шапки
 if (isset($_POST['siteName'])) {
   $dataArr['siteName']=$_POST['siteName'];
