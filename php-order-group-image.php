@@ -54,6 +54,7 @@ if ($settings[1][$n]->miror=='-1,1') { // зеркало по горизонта
 if ($settings[1][$n]->miror=='1,-1') { // зеркало по вертикали
 	Imageflip($imageImg, IMG_FLIP_VERTICAL);
 }
+
 //===============НАЛОЖЕНИЕ ИЗОБРАЖЕНИЙ===============
 if ($settings[1][$n]->rotate==0||$settings[1][$n]->rotate==180) {
 	imagecopyresampled($imageBg, $imageImg, $left,$top+$offset, 0, 0,
@@ -64,6 +65,7 @@ if ($settings[1][$n]->rotate==0||$settings[1][$n]->rotate==180) {
 }
 imagecopyresampled($imageBg, $imageTem, 0, 0, 0, 0, 200, 200,
 	$templateSize[0], $templateSize[1]); // наложение шаблона
+imageFilledRectangle($imageBg, 200, 0, 500, 500, $white);// прямоугольник с заливкой
 
 //===============ОТРИСОВКА ТЕКСТА=====================
 imageFtText($imageBg, 15, 0, 250, 40, $black, $path,
@@ -110,7 +112,7 @@ imageFtText($image, 15, 0, 25, $listLong-50, $black, $path,
 	'Краснодарский край г.Новороссийск ул.Мысхакское шоссе 50/10');
 imageFtText($image, 15, 0, 25, $listLong-25, $black, $path,
 	'+7(988) 769 69 66 +7(988) 762 22 69 время работы 09.00-18.00');
-// imageJPEG($image);//вывод рисунка на экран
+//imageJPEG($image);//вывод рисунка на экран
 imagejpeg($image, "order-image.jpg"); // Сохранение рисунка
 imagedestroy($image);
 

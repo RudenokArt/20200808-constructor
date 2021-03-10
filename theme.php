@@ -84,12 +84,12 @@
         value='<i class="fa fa-facebook-square" aria-hidden="true"></i>'>
         <br><br>
         <span class="socialIcon">
-          <i class="fa fa-instagram" aria-hidden="true"></i>
+          <i class="fa fa-vk" aria-hidden="true"></i>
         </span>
         <input type="text" name="socialLink_1" 
         class="socialLink" placeholder="Ссылка">
         <input type="text" class="socialIcon" name="socialIcon_1"
-        value='<i class="fa fa-instagram" aria-hidden="true"></i>'>
+        value='<i class="fa fa-vk" aria-hidden="true"></i>'>
         <br><br>
         <span class="socialIcon">
           <i class="fa fa-odnoklassniki-square" aria-hidden="true"></i>
@@ -100,28 +100,28 @@
         value='<i class="fa fa-odnoklassniki-square" aria-hidden="true"></i>'>
         <br><br>
         <span class="socialIcon">
-          <i class="fa fa-telegram" aria-hidden="true"></i>
+          <i class="fa fa-instagram" aria-hidden="true"></i>
         </span>
         <input type="text" name="socialLink_3" 
         class="socialLink" placeholder="Ссылка">
         <input type="text" class="socialIcon" name="socialIcon_3"
+        value='<i class="fa fa-instagram" aria-hidden="true"></i>'>
+        <br><br>
+        <span class="socialIcon">
+          <i class="fa fa-telegram" aria-hidden="true"></i>
+        </span>
+        <input type="text" name="socialLink_4" 
+        class="socialLink" placeholder="Ссылка">
+        <input type="text" class="socialIcon" name="socialIcon_4"
         value='<i class="fa fa-telegram" aria-hidden="true"></i>'>
         <br><br>
         <span class="socialIcon">
           <i class="fa fa-twitter-square" aria-hidden="true"></i>
         </span>
-        <input type="text" name="socialLink_4" 
-        class="socialLink" placeholder="Ссылка">
-        <input type="text" class="socialIcon" name="socialIcon_4"
-        value='<i class="fa fa-twitter-square" aria-hidden="true"></i>'>
-        <br><br>
-        <span class="socialIcon">
-          <i class="fa fa-vk" aria-hidden="true"></i>
-        </span>
         <input type="text" name="socialLink_5" 
         class="socialLink" placeholder="Ссылка">
         <input type="text" class="socialIcon" name="socialIcon_5"
-        value='<i class="fa fa-vk" aria-hidden="true"></i>'>
+        value='<i class="fa fa-twitter-square" aria-hidden="true"></i>'>
         <br><br>
         <span class="socialIcon">
           <i class="fa fa-whatsapp" aria-hidden="true"></i>

@@ -156,7 +156,7 @@ function categoriesList (str)
 			'<td id="quantity'+arr[i][1]+'"></td>'+
 			'<td id="expand'+arr[i][1]+'" onclick="event.stopPropagation()+expandCategory(\''+arr[i][1]+'\')">'+
 			'<span class="rotate">&#8250</span></td>'+
-			'<tr>'+
+			'</tr>'+
 			'<tr><td  id="'+arr[i][1]+'" colspan="3"></td></tr>';
 			select=select+'<option>'+arr[i][1]+'</option>';
 			ajaxQuantity(arr[i][1],'category');

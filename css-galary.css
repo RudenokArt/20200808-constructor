@@ -107,9 +107,9 @@ span{
   transition-duration: 1s;
   text-decoration:none;
   font-weight: bold;
-  padding: 10px;
-  padding-top:20px;
-  padding-bottom: 20px;
+  padding: 20px;
+  padding-top:23px;
+  padding-bottom: 23px;
   font-size: 17px;
 }
 .header-menu button{
@@ -160,25 +160,25 @@ span{
   box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.5);
 }
 #social-block_0{
-  background-color: RoyalBlue;
+  background-color: #3b5998;
 }
 #social-block_1{
-  background-color: SteelBlue;
+  background-color: #45668e;
 }
 #social-block_2{
-  background-color: OrangeRed;
+  background-color: #f4731c;
 }
 #social-block_3{
-  background-color: Orange;
+  background-color: #ee590e;
 }
 #social-block_4{
-  background-color: MediumAquaMarine;
+  background-color: #0088cc;
 }
 #social-block_5{
-  background-color: SeaGreen;
+  background-color: #1DA1F2;
 }
 #social-block_6{
-  background-color: gold;
+  background-color: #43d854;
 }
 .search {
   display:flex;
