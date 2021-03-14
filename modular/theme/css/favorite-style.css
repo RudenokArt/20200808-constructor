@@ -1,0 +1,10 @@
+
+button{
+  background-color:#51C8FF;
+}
+button{
+  color:#FFFDF8;
+}
+.content-item,label,input[type="text"]{
+  border-color:#51C8FF !important;
+}

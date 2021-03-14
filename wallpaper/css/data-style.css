@@ -1,0 +1,15 @@
+
+.sidebar-category:hover,
+.sidebar-subcategory:hover{
+  background-color: #388BFF;
+}
+.wallpaper-galery_item-icon,.wallpaper-galery_image-name,
+.wallpaper-navigation{
+  color:#51C8FF;
+}
+.wallpaper-galery_item-icon:hover{
+  color: #388BFF;
+}
+.category-icon{
+  background-color: #51C8FF;
+}

@@ -36,8 +36,24 @@ button{
 .content-item,label,input[type="text"]{
   border-color:'.$dataArr["themeColor"].' !important;
 }';
+$wallpaperStyle='
+.sidebar-category:hover,
+.sidebar-subcategory:hover{
+  background-color: '.$dataArr["hoverColor"].';
+}
+.wallpaper-galery_item-icon,.wallpaper-galery_image-name,
+.wallpaper-navigation{
+  color:'.$dataArr["themeColor"].';
+}
+.wallpaper-galery_item-icon:hover{
+  color: '.$dataArr["hoverColor"].';
+}
+.category-icon{
+  background-color: '.$dataArr["themeColor"].';
+}';
 file_put_contents('css/data-style.css', $dataStyle);
 file_put_contents('css/favorite-style.css', $favoriteStyle);
+file_put_contents('../../wallpaper/css/data-style.css',$wallpaperStyle);
 $json=json_encode($dataArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 file_put_contents('database.txt',$json);
 

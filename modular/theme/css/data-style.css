@@ -2,23 +2,23 @@
 #backButton,.simple-button,.header-menu_button,
 .template-tape-item,.sign-blue,.radio-label_active,
 .header-top,.header-menu,.footer {
-  background-color:#35CCFF;
+  background-color:#51C8FF;
 }
 .header-info_icon-large,.header-info_icon{
-  color:#35CCFF;
+  color:#51C8FF;
 }
 #range-vidget,.radio-label,.radio-label_active{
-border-color:#35CCFF;
+border-color:#51C8FF;
 }
 #range-slider{
-background-color: #35CCFF;
+background-color: #51C8FF;
 }
 .header-top a,.footer *,.header-menu a,#backButton,
 .simple-button,.sign-blue{
-  color:#FFFAF3;
+  color:#FFFDF8;
 }
 #backButton:hover,.header-menu a:hover,.company-name:hover,
 .action-button:hover,.simple-button:hover,
 .button-search:hover,.item-list:hover{
-  background-color: #FF96E1;
+  background-color: #388BFF;
 }

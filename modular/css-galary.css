@@ -85,6 +85,7 @@ span{
 }
 .flex-wrapper_half{
   min-width:50%;
+  margin-bottom:1px;
 }
 .header-menu_button{
   display:none;
@@ -199,15 +200,9 @@ span{
   transition-duration: 1s;
 }
 .logotip-wrapper{
-  height: 100%;
-}
-.logotip-link{
-  height: 100%;
-  display:flex;
-
+  margin:auto;
 }
 .logotip{
-  margin:auto;
   height: 50px;
 }
 .header-info{
