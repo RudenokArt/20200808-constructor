@@ -1,4 +1,6 @@
-
+#searchInput{
+  padding-left: 10px;
+}
 .flex-block{
   display: flex;
   justify-content: center;
@@ -214,12 +216,7 @@
 .wallpaper-galery_item-category span{
   line-height: 1em;
 }
-.wallpaper-galery_item-category div{
-  cursor: pointer;
-}
-.wallpaper-galery_item-category div:hover{
-  text-decoration: underline;
-}
+
 .wallpaper-galery_item-discount{
   position: absolute;
   bottom:30%;
@@ -280,9 +277,17 @@
   line-height: 1em;
 }
 .wallpaper-pagination div{
+  width: 30px;
+  line-height: 30px;
+   transition-duration: 0.2s;
   border:1px solid rgba(0,0,0,0.1);
-  padding:10px;
+  text-align: center;
   cursor: pointer;
+}
+.wallpaper-pagination div:hover{
+  transition-duration: 0.2s;
+  background-color: rgba(0,0,0,0.1);
+  color: red;
 }
 @media screen and (max-width: 800px){
   .wallpaper-sidebar{
@@ -321,4 +326,3 @@
   font-size: 10px;
 }
 
-}

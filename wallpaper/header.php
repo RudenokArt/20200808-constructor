@@ -36,11 +36,9 @@
     </div>
     <div class="flex-wrapper">
       <div class="search">
-       <input type="text" id="searchInput" placeholder=" Поиск по артикулу...">
-       <button onclick="searchImage()" class="button-search">
-        <h3>
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </h3>
+       <input type="text" id="searchInput" placeholder=" Поиск по названию...">
+       <button class="button-search">
+        <h3><i class="fa fa-search" aria-hidden="true"></i></h3>
       </button>
     </div>
   </div>

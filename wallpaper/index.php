@@ -1,28 +1,29 @@
 <?php include_once 'header.php' ?>
+<?php include_once 'php/counter.php' ?>
 <div class="wallpaper-container">
 
   <div class="flex-block">
 
     <div class="wallpaper-sidebar">
       <?php 
-      for ($i=0; $i < 20; $i++) { ?>
+      for ($i=0; $i < $quantity['category']; $i++) { ?>
         <div class="sidebar-category">
           <div class="category-icon">
             <img src="img/icon/category-icon.svg" alt=" ">
           </div>
-          <div>Category name</div>
+          <div class="category-name">empty</div>
           <div>15</div>
           <div>
             <i class="fa fa-angle-down" aria-hidden="true"></i>
           </div>
         </div>
         <div class="sidebar-subcategory_list">
-          <?php for ($n=0; $n < 10; $n++) { ?>
+          <?php for ($n=0; $n < 25; $n++) { ?>
            <div class="sidebar-subcategory">
             <div>
               <i class="fa fa-caret-right" aria-hidden="true"></i>
             </div>
-            <div>subcategory</div>
+            <div class="subcategory-name">empty</div>
             <div>12</div>
           </div>
           <?} ?>
@@ -46,32 +47,39 @@
 
         <div class="wallpaper-content">
           <div class="wallpaper-navigation">
-            <span>Фотообои</span>
-            <span>
-             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-             Category name
-           </span>
-           <span>
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-            Subcategory name
-          </span>
+            <i></i>
+            <span class="navigation-root">Фотообои</span>
+            <i style="display: none" class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <span class="navigation-category" style="display: none">empty</span>
+           <i style="display: none" class="fa fa-long-arrow-right" aria-hidden="true"></i>
+           <span class="navigation-subcategory" style="display: none">empty</span>
         </div>
         <div class="filter-block">
           <div class="filter-block_half">
             <div>Фильтр по категориям:</div>
             <div class="filter-block_select-wrapper">
-              <select></select>
+              <select class="category-select">
+                <option value="all">Все...</option>
+                <?php for ($i=0; $i<$quantity['category']; $i++) { 
+                  ?><option class="category-select_option">empty</option><?
+                } ?>
+              </select>
             </div>
           </div>
           <div class="filter-block_half">
             <div>Фильтр по подкатегориям:</div>
             <div class="filter-block_select-wrapper">
-              <select></select>
+              <select class="subcategory-select">
+                <option value="all">Все...</option>
+                <?php for ($i=0; $i<100; $i++) { 
+                  ?><option class="subcategory-select_option">empty</option><?
+                } ?>
+              </select>
             </div>
           </div>
         </div>
         <div class="wallpaper-galery">
-          <?php for ($i=0; $i < 10; $i++) { 
+          <?php for ($i=0; $i < $quantity['wallpaper']; $i++) { 
             ?><div class="wallpaper-galery_item-wrapper">
               <div class="wallpaper-galery_item">
                 <div class="wallpaper-galery_item-wallpaper"></div>
@@ -81,7 +89,7 @@
                     <div class="flex-wrapper">
                       <div class="wallpaper-galery_item-article">
                         Артикул:
-                        <span>12345</span>
+                        <span class="wallpaper-article">12345</span>
                       </div>
                       <div class="wallpaper-galery_item-icon" 
                       title="Добавить в корзину">
@@ -106,8 +114,8 @@
                 </div>
               </div>
               <div class="wallpaper-galery_item-category">
-                <div>Category</div>/
-                <div>Subcategory</div>
+                <div class="wallpaper-category">Category</div>/
+                <div class="wallpaper-subcategory">Subcategory</div>
               </div>
             </div>
           </div>
@@ -120,21 +128,21 @@
     </div>
     <div class="wallpaper-pagination_wrapper">
       <div class="wallpaper-pagination">
-        <div>
+        <div class="first-page">
           <i class="fa fa-angle-double-left" aria-hidden="true"></i>
         </div>
-        <div>
+        <div class="back-page">
           <i class="fa fa-angle-left" aria-hidden="true"></i>
         </div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>
+        <div class="number-page">1</div>
+        <div class="number-page">2</div>
+        <div class="number-page">3</div>
+        <div class="number-page">4</div>
+        <div class="number-page">5</div>
+        <div class="next-page">
           <i class="fa fa-angle-right" aria-hidden="true"></i>
         </div>
-        <div>
+        <div class="last-page">
           <i class="fa fa-angle-double-right" aria-hidden="true"></i>
         </div>
       </div>
@@ -144,7 +152,7 @@
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
       </div>
       <div class="wallpaper-cart_counter">
-        10
+        0
       </div>
       <img src="../modular/images/busket-anime.png" 
       class="wallpaper-cart_image" alt="">
