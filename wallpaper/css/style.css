@@ -185,11 +185,24 @@
   color: grey;
   margin:auto;
 }
+.wallpaper-galery_item-cart{
+  /*border:1px solid yellow;*/
+  position: relative;
+}
+.wallpaper-galery_item-check{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top:0;
+  left: 0;
+  opacity: 0;
+}
 .wallpaper-galery_item-icon{
   transition-duration: 1s;
   font-size: 36px;
   margin:auto;
   cursor: pointer;
+  /*border:1px solid grey;*/
 }
 .wallpaper-galery_item-icon:hover{
   transition-duration: 1s;
