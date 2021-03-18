@@ -1,5 +1,8 @@
 
-.sidebar-category:hover,
+.wallpaper-galery_item-button{
+  color:#FFFDF8;
+}
+.sidebar-category:hover,.wallpaper-galery_item-button:hover,
 .sidebar-subcategory:hover{
   background-color: #388BFF;
 }
@@ -7,9 +10,6 @@
 .wallpaper-navigation{
   color:#51C8FF;
 }
-.wallpaper-galery_item-icon:hover{
-  color: #388BFF;
-}
-.category-icon{
+.category-icon,.wallpaper-galery_item-button{
   background-color: #51C8FF;
 }

@@ -4,10 +4,9 @@ var categoryExpander=false;
 var selectCategoryDroper=false;
 var subCategorySelector=false;
 
-function indexOnload () 
-{
+function indexOnload () {
 	getCookie();
-	setTimeout(ajaxGallery, 100);
+	setTimeout(ajaxGallery, 100,'empty');
 	setTimeout(ajaxPosts, 200);
 	setTimeout(ajaxCategory, 300);
 	// setTimeout(pangination, 5000);
@@ -43,11 +42,11 @@ function displayGalery(str){
 			var discountPass=discount.split('%');
 			if (discount==0)
 			{
-				discount=''
+				discount='';
 			}
 			else 
 			{
-				discount='-'+discount+'% '
+				discount='-'+discount+'% ';
 			}
 			galery=galery+
 			'<div onclick="constructorTransition(\''+arr[i].image+'\',\''+discountPass[0]+'\')">'+
@@ -357,7 +356,7 @@ function selectCategory() {
 	var category=document.getElementById('categorySelect').value;
 	if (category=='Все...')
 	{
-		ajaxGallery();
+		ajaxGallery('empty');
 		document.getElementById('subCategorySelect').innerHTML='';
 	}
 	else {

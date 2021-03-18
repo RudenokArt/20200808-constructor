@@ -7,7 +7,7 @@ $ob=json_decode($str);
 $id=$ob->id;
 $category=$ob->category;
 $subcategory=$ob->subcategory;
-// $i40x70=$ob->i40x70;
+$i40x70=$ob->i40x70;
 // $i46x80=$ob->i46x80;
 // $i51x90=$ob->i51x90;
 // $i57x100=$ob->i57x100;
@@ -19,7 +19,7 @@ $discount=$ob->discount;
 $template=$ob->template;
 
 $mysqli->query('UPDATE `constructor_galеry` SET `category`="'.$category.'",
-	`subcategory`="'.$subcategory.'", `discount`="'.$discount.'",
+	`subcategory`="'.$subcategory.'", `discount`="'.$discount.'",`40x70`="'.$i40x70.'",
 	`template`="'.$template.'" WHERE id='.$id);
 
 // $mysqli->query('UPDATE `constructor_galеry` SET `category`="'.$category.'",`subcategory`="'.$subcategory.'",

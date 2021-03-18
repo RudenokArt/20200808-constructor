@@ -5,9 +5,9 @@ if (isset($_POST['where'])){$where=$_POST['where'];}
 $where=str_replace('###', '%', $where);
 // echo $where;
 // exit();
-if ($where=='empty')
-	{$sqlText='SELECT * FROM `constructor_galеry`';}
-else{$sqlText='SELECT * FROM `constructor_galеry`'.$where;}
+if ($where=='empty'||$where='')
+	{$sqlText='SELECT * FROM `constructor_galеry` ORDER BY `40x70`';}
+else{$sqlText='SELECT * FROM `constructor_galеry`'.$where.'ORDER BY `40x70`';}
 $arr=[];
 $i=0;
 $sql = $mysqli->query($sqlText);
@@ -22,6 +22,7 @@ while ($result = mysqli_fetch_array($sql))
 	//$arr[$i]['price']=$result['40x70'];
 	$arr[$i]['discount']=$result['discount'];
 	$arr[$i]['template']=$result['template'];
+  $arr[$i]['order']=$result['40x70'];
 	$i++;
 }
 $json=json_encode($arr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

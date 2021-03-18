@@ -46,7 +46,8 @@
         </div>
 
         <div class="wallpaper-content">
-          <div class="wallpaper-navigation">
+          <div class="wallpaper-navigation_wrapper">
+            <div class="wallpaper-navigation">
             <i></i>
             <span class="navigation-root">Фотообои</span>
             <i style="display: none" class="fa fa-long-arrow-right" aria-hidden="true"></i>
@@ -54,6 +55,8 @@
             <i style="display: none" class="fa fa-long-arrow-right" aria-hidden="true"></i>
             <span class="navigation-subcategory" style="display: none">empty</span>
           </div>
+          </div>
+          
           <div class="filter-block">
             <div class="filter-block_half">
               <div>Фильтр по категориям:</div>
@@ -92,14 +95,14 @@
                           <span class="wallpaper-article">12345</span>
                         </div>
                         <div for="" class="wallpaper-galery_item-cart">
-                          <div class="wallpaper-galery_item-icon" 
-                          title="Добавить в корзину">
+                          <div class="wallpaper-galery_item-icon">
                           <i class="fa fa-cart-plus" aria-hidden="true"></i>
                         </div>
                         <div class="wallpaper-galery_item-icon                  wallpaper-galery_item-remove" title="Убрать из корзины">
                           <i class="fa fa-times" aria-hidden="true"></i>
                         </div>
-                        <input type="checkbox" class="wallpaper-galery_item-check">
+                        <input type="checkbox" title="Добавить в корзину"
+                        class="wallpaper-galery_item-check" >
                       </div>
                     </div>
                     <div class="flex-wrapper">
@@ -113,6 +116,10 @@
                   <div class="flex-wrapper">
                     <div class="wallpaper-galery_image-name">
                       Фотообои: 3D Абстракция
+                    </div>
+                    <div class="wallpaper-galery_item-button">
+                      <i class="fa fa-eye" aria-hidden="true"></i>
+                      Подробнее
                     </div>
                   </div>
                   <div class="wallpaper-galery_item-category">

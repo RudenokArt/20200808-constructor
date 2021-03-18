@@ -174,9 +174,9 @@ function deleteTemplate()
 }
 function deletePost()
 {
-	let id = document.getElementById('postId').value;
-	let image = document.getElementById('postImageName').value;
-	let req = new XMLHttpRequest();
+	var id = document.getElementById('postId').value;
+	var image = document.getElementById('postImageName').value;
+	var req = new XMLHttpRequest();
 	req.open('POST','php-del-post.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send('id='+id+'&image='+image);
@@ -198,17 +198,17 @@ function editPost()
 }
 function editTemplate()
 {
-	let templateEdit={};
+	var templateEdit={};
 	templateEdit.id=document.getElementById('templateId').value;
 	templateEdit.size=document.getElementById('templateSize').value;
 	templateEdit.price=document.getElementById('price').value;
-	let str=JSON.stringify(templateEdit)
+	var str=JSON.stringify(templateEdit);
 	ajaxEditTemplate(str);
 }
 function ajaxEditTemplate(str)
 {
-	let id = document.getElementById('templateId').value;
-	let req = new XMLHttpRequest();
+	var id = document.getElementById('templateId').value;
+	var req = new XMLHttpRequest();
 	req.open('POST','php-edit-template.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send('str='+str);
@@ -261,7 +261,7 @@ function showPopUp(div)
 	document.getElementById('popUpSubCategorySelect').innerHTML='<span id="subCategorySelect"></span>'
 	ajaxCategory();
 }
-function showEditPopUp(id,imageName,discount)
+function showEditPopUp(id,imageName,discount,order)
 { 
 	document.getElementById('editPopUp').style.display='block';
 	document.getElementById('sidebarCategorySelect').innerHTML='';
@@ -272,6 +272,7 @@ function showEditPopUp(id,imageName,discount)
 	'<span id="subCategorySelect"></span>'
 	document.getElementById('editItemId').value=id;
 	document.getElementById('imageName').innerHTML=imageName;
+  document.getElementById('40x70').value=order;
 	document.getElementById('discount').value=discount;
 	getEditData(id);
 	ajaxCategory();
@@ -281,7 +282,6 @@ function editCrutch(category,subcategory,template) {
 	crutchEdit.category=category;
 	crutchEdit.subcategory=subcategory;
 	crutchEdit.template=template;
-	console.log(crutchEdit);
 	templateSelect ();
 }
 function showPostPopUp(id)
@@ -331,13 +331,12 @@ function getEditData(id)
 		} catch(e) {}
 	}
 }
-function editItem()
-{
+function editItem(){
 	let itemEdit={};
 	itemEdit.id=document.getElementById('editItemId').value;
 	itemEdit.category=document.getElementById('selectCategory').value;
 	itemEdit.subcategory=document.getElementById('selectSubCategory').value;
-	// itemEdit.i40x70=document.getElementById('40x70').value;
+	itemEdit.i40x70=document.getElementById('40x70').value;
 	// itemEdit.i46x80=document.getElementById('46x80').value;
 	// itemEdit.i51x90=document.getElementById('51x90').value;
 	// itemEdit.i57x100=document.getElementById('57x100').value;
@@ -350,8 +349,7 @@ function editItem()
 	let str=JSON.stringify(itemEdit)
 	ajaxEditItem(str);
 }
-function ajaxEditItem(str)
-{
+function ajaxEditItem(str){
 	let id = document.getElementById('editItemId').value;
 	let req = new XMLHttpRequest();
 	req.open('POST','php-edit-item.php');
@@ -438,12 +436,13 @@ function displayGalery(str)
 			let id=(arr[i].id);
 			let discount=(arr[i].discount);
 			let template=(arr[i].template);
+      let order=(arr[i].order);
 			if (discount==0)
 				{discount=''}
 			else {discount='-'+discount+'% '}
 				galery=galery+
 			'<div class="galeryItem" id="'+id+'" '+
-			'onclick="showEditPopUp('+id+',\''+imageName[0]+'\',\''+discount+'\')+'+
+			'onclick="showEditPopUp('+id+',\''+imageName[0]+'\',\''+discount+'\',\''+order+'\')+'+
 			'editCrutch(\''+category+'\',\''+subcategory+'\',\''+template+'\')">'+
 			'<div class="galery-image" style="background-image: url(miniatures/'+arr[i].image+');">'+
 			'<div class="discount">'+discount+'</div>'+

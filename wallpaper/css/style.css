@@ -65,10 +65,13 @@
 .wallpaper-content{
   width: 900px;
 }
+.wallpaper-navigation_wrapper{
+  display: flex;
+  height: 40px;
+}
 .wallpaper-navigation{
-  padding-top:10px;
-  padding-bottom: 20px;
-  color: blue;
+  margin:auto;
+  margin-left: 0;
 }
 .wallpaper-navigation span{
   cursor: pointer;
@@ -190,6 +193,7 @@
   position: relative;
 }
 .wallpaper-galery_item-check{
+  cursor: pointer;
   width: 40px;
   height: 40px;
   position: absolute;
@@ -214,6 +218,17 @@
 .wallpaper-galery_new-price{
   font-size: 20px;
   line-height: 1.2em;
+}
+.wallpaper-galery_item-button{
+  transition-duration: 1s;
+  padding:10px;
+  cursor: pointer;
+  border-radius: 1px;
+  font-weight: bold;
+  border-radius: 5px;  
+}
+.wallpaper-galery_item-button:hover{
+  transition-duration: 1s;
 }
 .wallpaper-galery_old-price{
   color: grey;

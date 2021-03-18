@@ -7,6 +7,7 @@ if (isset($_POST['selectCategory'])){$category=$_POST['selectCategory'];}
 if (isset($_POST['selectSubCategory'])){$subcategory=$_POST['selectSubCategory'];}
 if (isset($_POST['discount'])){$discount=$_POST['discount'];}
 if (isset($_POST['template'])){$template=$_POST['template'];}
+if (isset($_POST['40x70'])){$i40x70=$_POST['40x70'];}
 
 if ($_FILES && $_FILES['filename']['error']== UPLOAD_ERR_OK)
 {
@@ -16,8 +17,9 @@ if ($_FILES && $_FILES['filename']['error']== UPLOAD_ERR_OK)
     echo ' ';
 }
 $mysqli->query('INSERT INTO `constructor_galеry`
-	(`image`, `category`, `subcategory`, `discount`, `template`)
-	VALUES ("'.$name.'", "'.$category.'", "'.$subcategory.'", "'.$discount.'", "'.$template.'")');
+	(`image`, `category`, `subcategory`, `discount`, `template`,`40x70`)
+	VALUES ("'.$name.'", "'.$category.'", "'.$subcategory.'", 
+  "'.$discount.'", "'.$template.'", "'.$i40x70.'")');
 
 include_once 'php-mini-image.php';
 

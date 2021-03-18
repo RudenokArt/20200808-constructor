@@ -34,6 +34,7 @@ $('.subcategory-select')[0].disabled=true;
 $('.sidebar-subcategory_list').slideUp();
 $('.sidebar-category').click(categoryExpand);
 $('.wallpaper-galery_item-check').change(cartItemChange);
+$('.wallpaper-galery_item-check').click((e)=>{e.stopPropagation();});
 $.post('php/select.php',{data:'SELECT * FROM `wallpaper_category`'},ajaxCategory);
 $('.category-select').change(subCategoriesFilterList);
 $('.sidebar-subcategory').click(subcategoryClick);
@@ -42,6 +43,8 @@ $('.wallpaper-navigation span').click(navigationClick); // frontend end
 $.post('php/select.php',{data:'SELECT * FROM `wallpaper_wallpaper`'},ajaxWallpaper);
 $('.wallpaper-pagination div').click(leafPage);
 $('.button-search').click(wallpaperSearch);
+$('.wallpaper-galery_item').click(constructorTransition);
+$('.wallpaper-cart').click(cartTransition);
 
 // =================FUNCTIONS=================
 function categoryExpand () {
@@ -331,4 +334,10 @@ function wallpaperSearch () {
     }
   }
   wallpaperSetData();
+}
+function constructorTransition () {
+  alert('Здесь будет переход в конструктор');
+}
+function cartTransition (argument) {
+  alert('Здесь будет переход в корзину');
 }

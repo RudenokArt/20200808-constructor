@@ -37,7 +37,10 @@ button{
   border-color:'.$dataArr["themeColor"].' !important;
 }';
 $wallpaperStyle='
-.sidebar-category:hover,
+.wallpaper-galery_item-button{
+  color:'.$dataArr["fontColor"].';
+}
+.sidebar-category:hover,.wallpaper-galery_item-button:hover,
 .sidebar-subcategory:hover{
   background-color: '.$dataArr["hoverColor"].';
 }
@@ -45,10 +48,7 @@ $wallpaperStyle='
 .wallpaper-navigation{
   color:'.$dataArr["themeColor"].';
 }
-.wallpaper-galery_item-icon:hover{
-  color: '.$dataArr["hoverColor"].';
-}
-.category-icon{
+.category-icon,.wallpaper-galery_item-button{
   background-color: '.$dataArr["themeColor"].';
 }';
 file_put_contents('css/data-style.css', $dataStyle);
