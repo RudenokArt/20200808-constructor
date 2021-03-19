@@ -8,4 +8,5 @@ $sql=$mysqli->query('SELECT * FROM `wallpaper_category` ');
 $quantity['category']=$sql->num_rows;
 
 
+
 ?>

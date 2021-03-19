@@ -11,6 +11,7 @@
 </head>
 <body>
   <script src="login.js"></script>
+  &#128101 <span class="login-info"></span>
   <div class="container">
     <div class="section">
       <h3>ЛОГОТИП:</h3>

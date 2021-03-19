@@ -4,7 +4,7 @@ getAdminLogin();
 $('button[class="admin-mail"').click(mailChangeAsk);
 $('button[class="admin-login"').click(loginChangeAsk);
 $('button[class="admin-password"').click(savePassword);
-$('.button-back').click(()=>{document.location.href='../admin.html'});
+$('.button-back').click(()=>{document.location.href='../../admin/'});
 
 
 //===========functions=================

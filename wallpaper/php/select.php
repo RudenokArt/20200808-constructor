@@ -2,6 +2,7 @@
 
 require_once '../../modular/connectdb.php';
 
+
 $sql = $mysqli->query($_POST['data']);
 $arr=[];
 $i=0;

@@ -11,7 +11,7 @@ function serverRespons (data) {
   }else{$('.message').html('Неверный логин или пароль!');}
 }
 function redirect () {
-  document.location.href='../admin.html';
+  document.location.href='../../admin/';
 }
 function passwordRecovery () {
   $.post('../mail/password-recovery.php', {data:''}, (data)=>{alert(data)});

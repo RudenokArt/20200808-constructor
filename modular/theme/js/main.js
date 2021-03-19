@@ -7,7 +7,7 @@ $('.save-options').click((e)=>{
   }
 });
 $('.back-button').click(()=>{
-  window.location='admin.html';
+  window.location='../admin/';
 });
 $('input[name="newLogo"]').change((e)=>{
   $('.logo-name').html(e.target.value);
