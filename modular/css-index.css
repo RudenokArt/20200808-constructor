@@ -1,0 +1,115 @@
+.test{
+  line-height: 1em;
+}
+.modular-container{
+  margin:10px;
+  display: flex;
+  justify-content: center;
+}
+
+/*===== SIDEBAR =====*/
+.modular-sidebar{
+  line-height: 1em;
+}
+.modular-sidebar_category,
+.modular-sidebar_subcategory{
+  padding:5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+}
+.modular-sidebar_category div{
+  margin:auto;
+  margin-left: 0;
+  margin-right: 20px;
+}
+.modular-sidebar_subcategory div{
+  margin-left: 20px;
+}
+.modular-sidebar_icon{
+  padding: 0;
+  line-height: 0;
+}
+.modular-sidebar_category-list{
+  display: none;
+}
+
+/*===== CONTENT =====*/
+
+/*----- navigation -----*/
+.modular-content{
+}
+.modular-navigation_wrapper{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 40px;
+}
+.modular-navigation{
+  line-height: 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+.modular-navigation div{
+  cursor: pointer;
+  margin:auto;
+  margin-left: 5px;
+}
+.modular-navigation span:hover{
+  text-decoration: underline;
+}
+.modular-navigation_category,
+.modular-navigation_subcategory{
+  display: none;
+}
+/*----- filter -----*/
+.filter-block{
+  padding:10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  line-height: 1em;
+}
+.filter-block_half{
+  padding:20px;
+  padding-top:0;
+  text-align: center;
+}
+.filter-block select{
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 5px;
+  height: 40px;
+  width: 200px;
+  color: black;
+  text-align: center;
+}
+.filter-block option{
+  padding: 5px;
+  color: black;
+  background-color: white;
+}
+.filter-block_select-wrapper{
+  position: relative;
+}
+.filter-block_select-wrapper::before{
+  position: absolute;
+  line-height: 0;
+  content: "\203A";
+  font-size: 36px;
+  transform: rotate(90deg);
+  top:20px;
+  left: 20px;
+  z-index: -1;
+  color: grey;
+}
+.wallpaper-galery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.wallpaper-galery_item-wrapper{
+  /*border:1px solid green;*/
+  width: 450px;
+  height: 450px;
+  display: flex;
+}

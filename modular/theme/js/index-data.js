@@ -26,7 +26,6 @@ function setIndexData (data) {
   // Главное меню
   var mainMenu=$('.header-menu').children('a');
   setMainMenu(mainMenu,themeData);
-  console.log(mainMenu);
 
   // иконки соц. сетей
 }

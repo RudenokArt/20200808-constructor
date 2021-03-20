@@ -3,11 +3,13 @@
 
 print_r($dataArr);
 $dataStyle='
+.modular-sidebar_icon,
 #backButton,.simple-button,.header-menu_button,
 .template-tape-item,.sign-blue,.radio-label_active,
 .header-top,.header-menu,.footer {
   background-color:'.$dataArr["themeColor"].';
 }
+.modular-navigation,
 .header-info_icon-large,.header-info_icon{
   color:'.$dataArr["themeColor"].';
 }
@@ -21,6 +23,7 @@ background-color: '.$dataArr["themeColor"].';
 .simple-button,.sign-blue{
   color:'.$dataArr["fontColor"].';
 }
+.modular-sidebar_category:hover,.modular-sidebar_subcategory:hover,
 #backButton:hover,.header-menu a:hover,.company-name:hover,
 .action-button:hover,.simple-button:hover,
 .button-search:hover,.item-list:hover{

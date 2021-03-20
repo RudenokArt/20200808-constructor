@@ -1,9 +1,11 @@
 
+.modular-sidebar_icon,
 #backButton,.simple-button,.header-menu_button,
 .template-tape-item,.sign-blue,.radio-label_active,
 .header-top,.header-menu,.footer {
   background-color:#51C8FF;
 }
+.modular-navigation,
 .header-info_icon-large,.header-info_icon{
   color:#51C8FF;
 }
@@ -17,6 +19,7 @@ background-color: #51C8FF;
 .simple-button,.sign-blue{
   color:#FFFDF8;
 }
+.modular-sidebar_category:hover,.modular-sidebar_subcategory:hover,
 #backButton:hover,.header-menu a:hover,.company-name:hover,
 .action-button:hover,.simple-button:hover,
 .button-search:hover,.item-list:hover{

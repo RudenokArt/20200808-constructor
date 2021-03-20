@@ -389,7 +389,7 @@ function constructorTransition (imageName,discount) {
 	localStorage.removeItem('editItem');
 }
 
-// ===== ACTIONS =====
+// ===== LISTENERS =====
 $('.header-menu button').click(()=>{
   $('.header-bottom').slideUp();
 })
