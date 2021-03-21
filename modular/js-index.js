@@ -1,9 +1,7 @@
-// ===== SIDEBAR =====
+// ===== GLOBALS =====
 var navigation={};
 
-// ----- globals -----
-
-// ----- listeners -----
+// ===== LISTENERS =====
 $('.modular-sidebar_category').click(categoryExpander);
 $('.modular-sidebar_subcategory').click(subcategorySet);
 $('.modular-navigation span').click(navigationClick);
@@ -11,11 +9,12 @@ $('.category-select').change(categorySelect);
 $('.subcategory-select').change(subcategorySelect);
 filterResset();
 
-// ----- functions -----
+// ===== FUNCTION =====
 function categoryExpander () {
-  categoryRollup();
   var list=$(this).next();
-  $(list).slideToggle();
+  var visible=list[0].style.display;
+  categoryRollup ();
+  if (visible!='block'){$(list).slideToggle();}
   navigation.category=this.children[1].innerHTML;
   navigation.subcategory='empty';
   navigationSet();
@@ -99,6 +98,8 @@ function navigationSet () {
     }
   }
 }
+
+
 // ===== FEEDBACK =====
 
 $('.header-menu button').click(()=>{

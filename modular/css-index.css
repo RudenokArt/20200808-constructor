@@ -38,6 +38,7 @@
 
 /*----- navigation -----*/
 .modular-content{
+  width: 900px;
 }
 .modular-navigation_wrapper{
   display: flex;
@@ -102,14 +103,119 @@
   z-index: -1;
   color: grey;
 }
-.wallpaper-galery{
+/*----- galery -----*/
+.modular-galery{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
 }
-.wallpaper-galery_item-wrapper{
+.modular-galery_item-wrapper{
   /*border:1px solid green;*/
-  width: 450px;
   height: 450px;
+  width: 450px;
   display: flex;
+}
+.modular-galery_item{
+  /*border:1px solid yellow;*/
+  transition-duration: 1s;
+  margin:auto;
+  width: 400px;
+  height: 400px;
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.1)
+}
+.modular-galery_item:hover{
+  transition-duration: 1s;
+  width: 425px;
+  height: 425px;
+   box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.2)
+}
+.modular-galery_item-interior{
+  /*border:1px solid grey;*/
+  height: 75%;
+  width: 100%;
+  background-image: url('../wallpaper/img/interior/interior-image_2.png');
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.modular-galery_item-image{
+  /*border:1px solid red;*/
+  margin:auto;
+  width: 50%;
+  height: 50%;
+  /*background-image: url('galery/100493404.jpg');*/
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.modular-galery_item-template{
+  width: 100%;
+  height: 100%;
+  /*background-image: url('templates/NEW2.png');*/
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.modular-galery_item-info{
+  position: relative;
+  /*border:1px solid yellow;*/
+  height: 25%;
+}
+.modular-galery_item-discount{
+  position: absolute;
+  bottom:100%;
+  left: -1px;
+  padding:15px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+}
+.modular-galery_item-category,
+.modular-galery_item-article{
+  line-height: 1em;
+  padding:10px;
+  color: grey;
+  font-size:12px;
+}
+.modular-galery_item-category{
+  padding:0;
+  margin-left: 20px;
+}
+.modular-galery_item-name{
+  margin:10px;
+  text-align: center;
+  font-weight: bold;
+}
+.modular-galery_item-button{
+  cursor: pointer;
+  padding:10px;
+  font-weight: bold;
+  margin:10px;
+  border-radius: 5px;
+}
+@media screen and (max-width: 1160px){
+  .modular-sidebar{
+    display: none;
+  }
+}
+@media screen and (max-width: 460px){
+  .modular-galery_item-wrapper{
+    width: 300px;
+    height: 320px;
+  }
+  .modular-galery_item{
+  width: 275px;
+  height:300px;
+}
+.modular-galery_item:hover{
+  width: 275px;
+  height: 300px;
+}
+.modular-galery_item-interior{
+  height: 60%;
+}
+.modular-galery_item-button{
+  margin:5px;
+}
 }
