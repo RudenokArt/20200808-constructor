@@ -9,6 +9,7 @@ $dataStyle='
 .header-top,.header-menu,.footer {
   background-color:'.$dataArr["themeColor"].';
 }
+.modulat-galery_item-cart,
 .modular-navigation,.modular-galery_item-name,
 .header-info_icon-large,.header-info_icon{
   color:'.$dataArr["themeColor"].';
@@ -19,7 +20,7 @@ border-color:'.$dataArr["themeColor"].';
 #range-slider{
 background-color: '.$dataArr["themeColor"].';
 }
-.header-top a,.footer *,.header-menu a,#backButton,
+.header-top a,.footer *,.header-menu a,#backButton,.modular-cart,
 .simple-button,.sign-blue,.modular-galery_item-button{
   color:'.$dataArr["fontColor"].';
 }

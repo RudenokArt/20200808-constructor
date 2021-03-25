@@ -134,7 +134,7 @@
   /*border:1px solid grey;*/
   height: 75%;
   width: 100%;
-  background-image: url('../wallpaper/img/interior/interior-image_2.png');
+  /*background-image: url('../wallpaper/img/interior/interior-image_2.png');*/
   background-position: bottom;
   background-size: contain;
   background-repeat: no-repeat;
@@ -183,17 +183,111 @@
   margin-left: 20px;
 }
 .modular-galery_item-name{
-  margin:10px;
+  margin:auto;
   text-align: center;
   font-weight: bold;
 }
 .modular-galery_item-button{
   cursor: pointer;
   padding:10px;
+  margin:auto;
   font-weight: bold;
-  margin:10px;
   border-radius: 5px;
 }
+
+.modulat-galery_item-cart{
+  position: relative;
+  font-size:36px;
+  height: 40px;
+  width:40px;
+  cursor:pointer;
+  /*border:1px solid green;*/
+}
+.modulat-galery_item-cart input{
+  /*border:1px solid red;*/
+  position: absolute;
+  height: 40px;
+  width:40px;
+  top:0;
+  left: 0;
+  opacity: 0;
+}
+.modulat-galery_item-cart i{
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.modular-cart{
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  position: fixed;
+  right: 0;
+  top:50%;
+  padding:5px;
+  background-color: orange;
+  line-height: 1em;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+}
+.modular-cart div{
+  margin:5px;
+}
+.modular-cart_icon{
+  padding:5px;
+  border-bottom: 2px solid white;
+}
+.modular-cart_image{
+  transition-duration: 1s;
+  position: absolute;
+  bottom:50px;
+  right: 25px;
+  height: 0%;
+}
+.modular-cart_image-show{
+  position: absolute;
+  bottom:0px;
+  right: 0px;
+  height: 500%;
+  opacity: 0.2;
+}
+.modular-pagination_wrapper{
+  display: flex;
+  margin: 30px;
+}
+.modular-pagination{
+  margin:auto;
+  display: flex;
+  justify-content: space-around;
+  line-height: 1em;
+}
+.modular-pagination div{
+  width: 30px;
+  line-height: 30px;
+   transition-duration: 0.2s;
+  border:1px solid rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+}
+.modular-pagination div:hover{
+  transition-duration: 0.2s;
+  background-color: rgba(0,0,0,0.1);
+  color: red;
+}
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 1160px){
   .modular-sidebar{
     display: none;

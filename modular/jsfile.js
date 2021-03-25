@@ -261,7 +261,7 @@ function showPopUp(div)
 	document.getElementById('popUpSubCategorySelect').innerHTML='<span id="subCategorySelect"></span>'
 	ajaxCategory();
 }
-function showEditPopUp(id,imageName,discount,order)
+function showEditPopUp(id,imageName,discount,order,galeryName)
 { 
 	document.getElementById('editPopUp').style.display='block';
 	document.getElementById('sidebarCategorySelect').innerHTML='';
@@ -274,6 +274,7 @@ function showEditPopUp(id,imageName,discount,order)
 	document.getElementById('imageName').innerHTML=imageName;
   document.getElementById('40x70').value=order;
 	document.getElementById('discount').value=discount;
+  document.getElementById('46x80').value=galeryName;
 	getEditData(id);
 	ajaxCategory();
 }
@@ -337,7 +338,7 @@ function editItem(){
 	itemEdit.category=document.getElementById('selectCategory').value;
 	itemEdit.subcategory=document.getElementById('selectSubCategory').value;
 	itemEdit.i40x70=document.getElementById('40x70').value;
-	// itemEdit.i46x80=document.getElementById('46x80').value;
+	itemEdit.i46x80=document.getElementById('46x80').value;
 	// itemEdit.i51x90=document.getElementById('51x90').value;
 	// itemEdit.i57x100=document.getElementById('57x100').value;
 	// itemEdit.i63x110=document.getElementById('63x110').value;
@@ -437,12 +438,14 @@ function displayGalery(str)
 			let discount=(arr[i].discount);
 			let template=(arr[i].template);
       let order=(arr[i].order);
+      let galeryName=(arr[i].galeryName);
 			if (discount==0)
 				{discount=''}
 			else {discount='-'+discount+'% '}
 				galery=galery+
 			'<div class="galeryItem" id="'+id+'" '+
-			'onclick="showEditPopUp('+id+',\''+imageName[0]+'\',\''+discount+'\',\''+order+'\')+'+
+			'onclick="showEditPopUp('+id+',\''+imageName[0]+'\',\''+
+      discount+'\',\''+order+'\',\''+galeryName+'\')+'+
 			'editCrutch(\''+category+'\',\''+subcategory+'\',\''+template+'\')">'+
 			'<div class="galery-image" style="background-image: url(miniatures/'+arr[i].image+');">'+
 			'<div class="discount">'+discount+'</div>'+
@@ -450,6 +453,7 @@ function displayGalery(str)
 			'</div>'+
 			'<div>'+
 			imageName[0]+' '+template+'<br>'+
+      galeryName+'<br>'+
 			category+' / '+
 			subcategory+
 			'</div>'+

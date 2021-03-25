@@ -13,3 +13,12 @@ td{
   font-size: 12px !important;
   text-align: center;
 }
+#accordion div{
+  line-height: 1em;
+  padding:20px;
+  height: 25vh;
+  margin-top: 0;
+}
+#accordion select{
+  margin:5px;
+}

@@ -2,6 +2,10 @@
 // ===== LISTENERS =====
 $('.file-uploder').change(interiorUpload);
 $('body').delegate('.interiorOrder','change',setInteriorNumber);
+$('.categorySelect').change(categorySelect);
+$('.modular-button_save').click(saveCategoryData);
+modularGetCategotryData();
+modularGetSubCategotryData();
 
 // ===== ACTIONST =====
 getInteriorData();
@@ -36,7 +40,6 @@ function interiorTable (data) {
     var tr=$('.interiorTable').children().children().last();
     interiorTr(tableArr[i],tr);
   }
-
 }
 function interiorTr (arr,tr) {
   var td=$(tr).children();
@@ -72,4 +75,56 @@ function setInteriorNumber () {
   this.value+' WHERE `id`='+this.name;
     $.post('php/update.php',{data:sql}, getInteriorData);
 }
-
+function categorySelect () {
+  var select=$(this).parent().parent().children('select');
+  $(select).prop('value',this.value);
+}
+function saveCategoryData () {
+  var ask=confirm('Данные будут изменены!');
+  if (ask) {
+    var categoryArr=$('.categorySelect');
+    for (var i = 0; i < categoryArr.length; i++) {
+      var sql=('UPDATE `constructor_category` SET `interior`="'+
+        categoryArr[i].value+'" WHERE `category`="'+
+        categoryArr[i].name+'"');
+      $.post('php/sql-ajax.php',{data:sql},(data)=>console.log(data));
+    }
+    saveSubCategoryData();
+  }
+}
+function saveSubCategoryData () {
+  var subcategoryArr=$('.subCategorySelect'); 
+ for (var i = 0; i < subcategoryArr.length; i++) {
+   var sql=('UPDATE `constructor_subcategory` SET `interior`="'+
+        subcategoryArr[i].value+'" WHERE `subcategory`="'+
+        subcategoryArr[i].name+'"');
+      $.post('php/sql-ajax.php',{data:sql},(data)=>console.log(data));
+ }
+}
+function modularGetCategotryData () {
+  var sql='SELECT * FROM `constructor_category`';
+  $.post('../wallpaper/php/select.php',{data:sql}, setCategoryInterior);
+}
+function setCategoryInterior (data) {
+  var dataArr=JSON.parse(data);
+  var nodeArr=$('.categorySelect');
+  for (var i = 0; i < dataArr.length; i++) {
+    nodeArr[i].value=dataArr[i].interior;
+  }
+}
+function modularGetSubCategotryData () {
+  var sql='SELECT * FROM `constructor_subcategory`';
+  $.post('../wallpaper/php/select.php',{data:sql}, setSubCategoryInterior);
+}
+function setSubCategoryInterior (data) {
+  var dataArr=JSON.parse(data);
+  var nodeArr=$('.subCategorySelect');
+  for (var i = 0; i < nodeArr.length; i++) {
+    for (var k = 0; k < dataArr.length; k++) {
+      if (nodeArr[i].name==dataArr[k].subcategory) {
+        nodeArr[i].value=dataArr[k].interior;
+        console.log(dataArr[k].subcategory,nodeArr[i].name);
+      }
+    }
+  }
+}

@@ -23,6 +23,7 @@ while ($result = mysqli_fetch_array($sql))
 	$arr[$i]['discount']=$result['discount'];
 	$arr[$i]['template']=$result['template'];
   $arr[$i]['order']=$result['40x70'];
+  $arr[$i]['galeryName']=$result['46x80'];
 	$i++;
 }
 $json=json_encode($arr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

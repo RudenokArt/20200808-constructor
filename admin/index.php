@@ -23,6 +23,11 @@
       <button>Управление профилем</button>
     </a>
   </div>
+  <div class="section">
+    <a href="interior.php">
+      <button>Управление интерьерами</button>
+    </a>
+  </div>
 </div>
   
 

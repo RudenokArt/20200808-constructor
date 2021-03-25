@@ -163,7 +163,7 @@ function deleteItem () {
 	getFavoriteData();
 }
 function backPage () {
-	document.location.href='constructor.html';
+	document.location.href='index.php';
 }
 function checkForm () {
 	let check=true;

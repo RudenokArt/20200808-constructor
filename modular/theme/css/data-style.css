@@ -5,6 +5,7 @@
 .header-top,.header-menu,.footer {
   background-color:#51C8FF;
 }
+.modulat-galery_item-cart,
 .modular-navigation,.modular-galery_item-name,
 .header-info_icon-large,.header-info_icon{
   color:#51C8FF;
@@ -15,7 +16,7 @@ border-color:#51C8FF;
 #range-slider{
 background-color: #51C8FF;
 }
-.header-top a,.footer *,.header-menu a,#backButton,
+.header-top a,.footer *,.header-menu a,#backButton,.modular-cart,
 .simple-button,.sign-blue,.modular-galery_item-button{
   color:#FFFDF8;
 }
