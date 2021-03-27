@@ -29,12 +29,14 @@ function getFavoriteData () {
 	let arrKey = Object.keys(localStorage);
 	let arrVal=Object.values(localStorage);
 	for (var i = 0; i < arrKey.length; i++) {
-    let check=arrKey[i].split('.');
-    if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
-			favoriteArr.push(new favoriteItem (arrKey[i],arrVal[i]));
-		}		
-	}
-	favoriteTable();
+    if (arrKey[i]!='wallpaper') {
+      let check=arrKey[i].split('.');
+      if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
+        favoriteArr.push(new favoriteItem (arrKey[i],arrVal[i]));
+      }   
+    }
+  }
+  favoriteTable();
 }
 function favoriteTable () {
 	let table='';
@@ -55,7 +57,7 @@ function favoriteTable () {
 	}
 	$('.favorite-table').html(table);
   setTimeout(checkboxChecked, 2000);
-	amountCalc();
+  amountCalc();
 }
 function checkboxChecked () {
   var checkboxArr=$('label');
@@ -150,7 +152,7 @@ function selectedItems () {
 		let node=document.getElementById(favoriteArr[i].image);
 		if(node.checked){favoriteArr[i].selected=true}
 			else{favoriteArr[i].selected=false}
-	}
+   }
 }
 function editItem () {
 	localStorage.setItem('editItem', this.name);
@@ -186,7 +188,7 @@ function orderFilter () {
 	}
 	if(selectedArr.length<1){alert('Ничего не выбрано! '+
 		'Заказ пустой! Выбирите хотябы один элемент');}
-	else {orderSettings(selectedArr);}
+   else {orderSettings(selectedArr);}
 }
 function orderSettings (selectedArr) {
 	let customerArr=$('.customer-data');

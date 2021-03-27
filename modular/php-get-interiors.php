@@ -3,7 +3,8 @@ header("Content-Type: text/html; charset=utf-8");
 require 'connectdb.php';
 $arr=[];
 $i=0;
-$sql = $mysqli->query('SELECT * FROM constructor_interiors');
+//$sql = $mysqli->query('SELECT * FROM constructor_interiors');
+$sql = $mysqli->query('SELECT * FROM wallpaper_interior');
 while ($result = mysqli_fetch_array($sql))
 {
 	$arr[$i]=[];

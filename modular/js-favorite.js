@@ -71,19 +71,19 @@ function getFavorite () {
 	setFavoriteDeletFunction();
 }
 function setFavoriteDeletFunction () {
-	let arr=document.getElementsByClassName('favorite-delete');
+	var arr=document.getElementsByClassName('favorite-delete');
 	for (var i = 0; i < arr.length; i++) {
 		arr[i].addEventListener('click', favoriteDeletFunction);
 	}
 }
 function favoriteDeletFunction (e) {
-	let node=e.target;
+	var node=e.target;
 	e.stopPropagation();
 	localStorage.removeItem(node.id);
 	getFavorite();
 }
 function favoriteChoise (image,settings) {
-	let arr=settings.split(',')
+	var arr=settings.split(',');
 	itemDisplay('fog','none');
 	itemDisplay('favorite','none');
 	document.cookie='imageName='+image;
@@ -95,7 +95,7 @@ function favoriteChoise (image,settings) {
 	//setTemplateSettings(arr);
 }
 function setTemplateSettings (settingsArr) {
-	let inputArr=document.getElementsByTagName('input');
+	var inputArr=document.getElementsByTagName('input');
 	for (var i = 0; i < inputArr.length; i++) {
 		if (inputArr[i].type=='radio') {
 			if (inputArr[i].value==settingsArr[7]) {

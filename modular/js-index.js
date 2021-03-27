@@ -176,7 +176,7 @@ function cartCounter () {
   var arr=Object.keys(localStorage);
   var counter=0;
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i]!='editItem') {
+    if (arr[i]!='editItem'&&arr[i]!='wallpaper') {
       counter++;
     }
   }

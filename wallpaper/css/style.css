@@ -36,6 +36,9 @@
   margin-left: 20px;
   margin-right: 0;
 }
+.sidebar-subcategory_list{
+  display: none;
+}
 .sidebar-subcategory{
   transition-duration: 0.5s;
   cursor: pointer;
@@ -189,7 +192,8 @@
   margin:auto;
 }
 .wallpaper-galery_item-cart{
-  /*border:1px solid yellow;*/
+  width: 40px;
+  height: 40px;
   position: relative;
 }
 .wallpaper-galery_item-check{

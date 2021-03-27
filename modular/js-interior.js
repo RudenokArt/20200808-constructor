@@ -1,11 +1,12 @@
-
-let interiorArr=[];
+var interiorTapeChecker=true;
+var interiorArr=[];
 
 function interiorView () {
 	itemDisplay('fog','flex');
 	itemDisplay('interior','block');
 	document.getElementById('interior-background').style.backgroundImage=
-	'url(interiors/'+interiorArr[0].interior+')';
+  'url(../wallpaper/img/interior/'+interiorArr[0].interior+')';
+	//'url(interiors/'+interiorArr[0].interior+')';
 	setInteriorImage();
 }
 function setInteriorImage (id) {
@@ -18,7 +19,7 @@ function setInteriorImage (id) {
 	interiorImageTransform();
 }
 function interiorImageTransform () {
-	let node=document.getElementById('interior-image');
+	var node=document.getElementById('interior-image');
 	node.style.transform='scale('+item.mirror+') rotate('+item.rotate+'deg)';
 }
 function ajaxInteriors () {
@@ -27,8 +28,8 @@ function ajaxInteriors () {
 		if (ajax.readyState == 4 && ajax.status == 200) {
 			var response = ajax.responseText;
 			interiorArr=JSON.parse(response);
-			interiorTape();
-			interiorView ()
+			if (interiorTapeChecker) {interiorTape();}
+			interiorView ();
 		}
 	};
 	ajax.open('POST', 'php-get-interiors.php', true);
@@ -36,16 +37,18 @@ function ajaxInteriors () {
 	ajax.send();
 }
 function interiorTape () {
+  console.log('tape');
 	let tape = '';
 	for(let i=0;i<interiorArr.length;i++){
 		tape=tape+
-		//'<div class="interior-tape-item">'+i+'</div>';
-		'<img src="interiors/'+interiorArr[i].interior+'"'+
+		//'<img src="interiors/'+interiorArr[i].interior+'"'+
+    '<img src="../wallpaper/img/interior/'+interiorArr[i].interior+'"'+
 		' class="interior-tape-item"'+
 		' onclick="setInteriorBackground(\''+interiorArr[i].interior+'\')">';
 	}
 	document.getElementById('interior-tape').innerHTML=tape;
   interiorSlickSlider();
+  interiorTapeChecker=false;
 }
 function interiorSlickSlider () {
   $(document).ready(function(){
@@ -59,7 +62,9 @@ function interiorSlickSlider () {
   });
 }
 function setInteriorBackground (imageName) {
-	document.getElementById('interior-background').style.backgroundImage='url(interiors/'+imageName+')';
+	document.getElementById('interior-background').style.backgroundImage=
+  'url(../wallpaper/img/interior/'+imageName+')';
+  //'url(interiors/'+imageName+')';
 }
 function customerInterior () {
 	itemDisplay('interior-download','block')
