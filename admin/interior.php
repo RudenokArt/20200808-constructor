@@ -12,7 +12,6 @@
   </a>
   <div>
 
-   <script>$( function() {$( "#tabs" ).tabs();});</script>
    <div id="tabs">
     <ul>
       <li><a href="#tabs-1">Загрузка(удаление)</a></li>

@@ -1,6 +1,7 @@
 <?php include_once 'header.php' ?>
 <?php include_once '../admin/php/select-simple.php' ?>
-<?php $wallpaperArr=selectSimple('SELECT * FROM `wallpaper_wallpaper`');?>
+<?php $wallpaperArr=selectSimple('SELECT * FROM `wallpaper_wallpaper` 
+ORDER BY `number`');?>
 <?php $categoryArr=selectSimple('SELECT * FROM `wallpaper_category`');?>
 
 <div class="wallpaper-container">
@@ -116,8 +117,15 @@
                     $wallpaperArr[$i]['interior'].'|'.
                     $wallpaperArr[$i]['discount'] ?>">
                     <div class="wallpaper-galery_item">
-                      <div class="wallpaper-galery_item-wallpaper"></div>
-                      <div class="wallpaper-galery_item-interior"></div>
+                      <div class="wallpaper-galery_item-wallpaper" 
+                      style="background-image: 
+                      url(img/wallpaper/<?php echo $wallpaperArr[$i]['article'] ?>);">
+                        
+                      </div>
+                      <div class="wallpaper-galery_item-interior"
+                      style="background-image: 
+                      url(img/interior/<?php echo $wallpaperArr[$i]['interior'] ?>);">
+                      </div>
                       <div class="wallpaper-galery_item-info">
                         <div class="wallpaper-galery_item-container">
                           <div class="flex-wrapper">

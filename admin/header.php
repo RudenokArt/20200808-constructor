@@ -8,8 +8,11 @@
   <link rel="stylesheet" 
   href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
+  <script src="js/jquery_ui.js"></script>
   <link rel="stylesheet" href="../modular/theme/css/style.css?<?php echo time()?>">
   <link rel="stylesheet" href="css/style.css?<?php echo time()?>">
+  <link rel="stylesheet" href="css/jquery_ui.css">
+
   <title>Document</title>
 </head>
 <body>

@@ -154,7 +154,7 @@
   left: 0;
   height: 70%;
   width: 100%;
-  background-image: url('../img/wallpaper/wallpaper-image.jpg');
+  /*background-image: url('../img/wallpaper/wallpaper-image.jpg');*/
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top;
@@ -166,7 +166,7 @@
   left: 0;
   height: 70%;
   width: 100%;
-  background-image: url('../img/interior/interior-image.png');
+  /*background-image: url('../img/interior/interior-image.png');*/
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
