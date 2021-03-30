@@ -13,15 +13,18 @@ td{
   font-size: 12px !important;
   text-align: center;
 }
+.edit-popup_wrapper,
 .popup-wrapper{
   display: none;
   background-color: rgba(0,0,0,0.5);
   position: fixed;
+  margin:0 !important;
   top:0;
   left: 0;
   width: 100%;
   height: 100%;
 }
+.edit-popup,
 .popup{
   position: relative;
   background-color: white;
@@ -30,22 +33,23 @@ td{
   padding: 20px;
   vertical-align: middle;
 }
+.edit-popup input,
 .popup input {
   width: 250px;
 }
-.popup fieldset{
-  padding: 0;
-}
+.edit-popup div,
 .popup div{
   padding: 0;
   margin-top:10px;
 }
+.edit_popup-button_hide,
 .popup-button_hide{
   margin-right: -1px;
   position: absolute;
   top:0;
   right: 0;
 }
+.edit-popup select,
 .popup select{
   height: 40px;
    width: 250px;
@@ -73,4 +77,45 @@ td{
   right: 20px;
   top: 5px;
   color: mediumaquamarine;
+}
+.wallpaper-admin_galery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 900px;
+
+}
+.wallpaper-galery_item{
+  padding: 0;
+  position: relative;
+  height: 400px;
+  width: 400px;
+  border:1px solid rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+.wallpaper-galery_item:hover{
+  box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.2);
+}
+.wallpaper-galery_image,
+.wallpaper-galery_interior{
+  margin:0 !important;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 400px;
+  height:300px;
+  background-image: url(../../wallpaper/img/wallpaper/02864.jpg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.wallpaper-galery_interior{
+  background-image: url(../../wallpaper/img/interior/interior-image.png);
+  background-position: bottom;
+}
+.wallpaper-gallery_info{
+  position: absolute;
+  height: 100px;
+  width: 400px;
+  bottom:0;
 }

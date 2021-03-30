@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 27 2021 г., 22:02
+-- Время создания: Мар 29 2021 г., 22:18
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.1.33
 
@@ -471,7 +471,7 @@ INSERT INTO `wallpaper_interior` (`id`, `interior`, `order_number`) VALUES
 (5, 'interior-image_3.png', 3),
 (6, 'interior-image_4.png', 4),
 (7, 'interior-image_5.png', 999),
-(9, 'interior-image.png', 0),
+(9, 'interior-image.png', 10),
 (10, 'interior-image_1.png', 1),
 (11, 'interior-image_2.png', 2),
 (12, 'interior-image_6.png', 999);
@@ -669,84 +669,19 @@ CREATE TABLE `wallpaper_wallpaper` (
   `category` varchar(200) NOT NULL,
   `subcategory` varchar(200) NOT NULL,
   `interior` varchar(200) NOT NULL,
-  `discount` int(3) NOT NULL
+  `discount` int(3) NOT NULL,
+  `number` int(10) NOT NULL DEFAULT '99'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `wallpaper_wallpaper`
 --
 
-INSERT INTO `wallpaper_wallpaper` (`id`, `article`, `wallpaper`, `category`, `subcategory`, `interior`, `discount`) VALUES
-(1, '01615831815', 'Абстракция0', 'категория_1', 'subcategory_1_2', 'interior_1', 20),
-(2, '11615831815', 'Абстракция1', 'категория_1', 'subcategory_1_2', 'interior_1', 0),
-(3, '21615831815', 'Абстракция2', 'категория_1', 'subcategory_1_2', 'interior_1', 0),
-(4, '31615831815', 'Абстракция3', 'категория_1', 'subcategory_1_2', 'interior_1', 0),
-(5, '41615831815', 'Абстракция4', 'категория_1', 'subcategory_1_2', 'interior_1', 0),
-(6, '01615831836', 'Абстракция0', 'категория_1', 'subcategory_1_3', 'interior_1', 0),
-(7, '11615831836', 'Абстракция1', 'категория_1', 'subcategory_1_3', 'interior_1', 0),
-(8, '21615831836', 'Абстракция2', 'категория_1', 'subcategory_1_3', 'interior_1', 0),
-(9, '31615831836', 'Абстракция3', 'категория_1', 'subcategory_1_3', 'interior_1', 0),
-(10, '41615831836', 'Абстракция4', 'категория_1', 'subcategory_1_3', 'interior_1', 0),
-(11, '01615831856', 'Абстракция0', 'category_2', 'subcategory_2_2', 'interior_1', 0),
-(12, '11615831856', 'Абстракция1', 'category_2', 'subcategory_2_2', 'interior_1', 0),
-(13, '21615831856', 'Абстракция2', 'category_2', 'subcategory_2_2', 'interior_1', 0),
-(14, '31615831856', 'Абстракция3', 'category_2', 'subcategory_2_2', 'interior_1', 0),
-(15, '41615831856', 'Абстракция4', 'category_2', 'subcategory_2_2', 'interior_1', 0),
-(16, '01615831863', 'Абстракция0', 'category_2', 'subcategory_2_3', 'interior_1', 0),
-(17, '11615831863', 'Абстракция1', 'category_2', 'subcategory_2_3', 'interior_1', 0),
-(18, '21615831863', 'Абстракция2', 'category_2', 'subcategory_2_3', 'interior_1', 0),
-(19, '31615831863', 'Абстракция3', 'category_2', 'subcategory_2_3', 'interior_1', 0),
-(20, '41615831863', 'Абстракция4', 'category_2', 'subcategory_2_3', 'interior_1', 0),
-(21, '01615831929', 'Абстракция0', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(22, '11615831929', 'Абстракция1', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(23, '21615831929', 'Абстракция2', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(24, '31615831929', 'Абстракция3', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(25, '41615831929', 'Абстракция4', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(26, '51615831929', 'Абстракция5', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(27, '61615831929', 'Абстракция6', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(28, '71615831929', 'Абстракция7', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(29, '81615831929', 'Абстракция8', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(30, '91615831929', 'Абстракция9', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(31, '101615831929', 'Абстракция10', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(32, '111615831929', 'Абстракция11', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(33, '121615831929', 'Абстракция12', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(34, '131615831929', 'Абстракция13', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(35, '141615831929', 'Абстракция14', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(36, '151615831929', 'Абстракция15', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(37, '161615831929', 'Абстракция16', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(38, '171615831929', 'Абстракция17', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(39, '181615831929', 'Абстракция18', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(40, '191615831929', 'Абстракция19', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(41, '201615831929', 'Абстракция20', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(42, '211615831929', 'Абстракция21', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(43, '221615831929', 'Абстракция22', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(44, '231615831929', 'Абстракция23', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(45, '241615831929', 'Абстракция24', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(46, '251615831929', 'Абстракция25', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(47, '261615831929', 'Абстракция26', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(48, '271615831929', 'Абстракция27', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(49, '281615831929', 'Абстракция28', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(50, '291615831929', 'Абстракция29', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(51, '301615831929', 'Абстракция30', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(52, '311615831929', 'Абстракция31', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(53, '321615831929', 'Абстракция32', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(54, '331615831929', 'Абстракция33', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(55, '341615831929', 'Абстракция34', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(56, '351615831929', 'Абстракция35', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(57, '361615831929', 'Абстракция36', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(58, '371615831929', 'Абстракция37', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(59, '381615831929', 'Абстракция38', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(60, '391615831929', 'Абстракция39', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(61, '401615831929', 'Абстракция40', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(62, '411615831929', 'Абстракция41', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(63, '421615831929', 'Абстракция42', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(64, '431615831929', 'Абстракция43', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(65, '441615831929', 'Абстракция44', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(66, '451615831929', 'Абстракция45', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(67, '461615831929', 'Абстракция46', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(68, '471615831929', 'Абстракция47', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(69, '481615831929', 'Абстракция48', 'category_3', 'subcategory_3_3', 'interior_1', 0),
-(70, '491615831929', 'Абстракция49', 'category_3', 'subcategory_3_3', 'interior_1', 0);
+INSERT INTO `wallpaper_wallpaper` (`id`, `article`, `wallpaper`, `category`, `subcategory`, `interior`, `discount`, `number`) VALUES
+(75, '06194.jpg', 'рис.1', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 20, 1),
+(76, '19987.jpg', 'рис2', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 5, 2),
+(77, '02864.jpg', 'рис3', 'категория_1', 'subcategory_1_1', 'interior-image_6.png', 5, 2),
+(78, '04468.jpg', 'рис4', 'категория_1', 'subcategory_1_1', 'interior-image_5.png', 5, 2);
 
 --
 -- Индексы сохранённых таблиц
@@ -905,7 +840,7 @@ ALTER TABLE `wallpaper_subcategory`
 -- AUTO_INCREMENT для таблицы `wallpaper_wallpaper`
 --
 ALTER TABLE `wallpaper_wallpaper`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
