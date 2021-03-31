@@ -1,8 +1,5 @@
 <?php include_once 'header.php' ?>
 <?php include_once '../admin/php/select-simple.php' ?>
-<?php $wallpaperArr=selectSimple('SELECT * FROM `wallpaper_wallpaper` 
-ORDER BY `article` ASC ');?>
-<?php $categoryArr=selectSimple('SELECT * FROM `wallpaper_category`');?>
 <?php $interiorArr=selectSimple('SELECT * FROM `wallpaper_interior`');?>
 
 <div class="section">
@@ -19,7 +16,8 @@ ORDER BY `article` ASC ');?>
       <ul>
         <li><a href="#tabs-1">Фотообои</a></li>
         <li><a href="#tabs-2">Управление категориями</a></li>
-        <li><a href="#tabs-3">Статьи</a></li>
+        <li><a href="#tabs-3">Управление подкатегориями</a></li>
+        <li><a href="#tabs-4">Статьи (посты)</a></li>
       </ul>
       <div id="tabs-1">
         <div class="section">
@@ -37,8 +35,41 @@ ORDER BY `article` ASC ');?>
           </div>
         </div>
       </div>
-      <div id="tabs-2">content 2</div>
-      <div id="tabs-3">content 3</div>
+      <div id="tabs-2">
+        <div>
+          <button class="category-manager_add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Добавить категорию
+          </button>
+        </div>
+        <div>
+          <table class="category-manager_table">
+            <tr class="category-manager_item">
+              <td class="category-manager_id"></td>
+              <td>
+                <input type="text" name="category-manager_input">
+              </td>
+              <td>
+                <button name="category-manager_edit" title="редактировать">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </button>
+              </td>
+              <td>
+                <button name="category-manager_save" title="сохранить">
+                  <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                </button>
+              </td>
+              <td>
+                <button name="category-manager_delete" title="сохранить">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="tabs-3">under construction</div>
+      <div id="tabs-4">under construction</div>
     </div>
 
     <div class="popup-wrapper">
@@ -82,11 +113,7 @@ ORDER BY `article` ASC ');?>
           Категория: <br>
           <div class="select-wrapper">
             <select name="wallpaperCategory">
-              <?php for ($i=0; $i<sizeof($categoryArr); $i++){?>
-                <option>
-                  <?php echo $categoryArr[$i]['category'] ?>
-                </option>
-              <?php } ?>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </select>
           </div>
         </div>
@@ -121,11 +148,7 @@ ORDER BY `article` ASC ');?>
         Категория: <br>
         <div class="select-wrapper">
           <select name="editPopupCategory" value="">
-            <?php for ($i=0; $i<sizeof($categoryArr); $i++){?>
-              <option value="<?php echo $categoryArr[$i]['category'] ?>">
-                <?php echo $categoryArr[$i]['category'] ?>
-              </option>
-            <?php } ?>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </select>
         </div>
         Подкатегория: <br>

@@ -1,9 +1,11 @@
 
 // ===== GLOBALS =====
 SQL='SELECT * FROM `wallpaper_wallpaper`';
+popupData={};
+categoryManager={};
 
 // ===== ACTIONS =====
-subCategorySelectGetData();
+сategorySelectGetData();
 getGaleryData(SQL);
 
 
@@ -26,9 +28,55 @@ $('.edit_popup-button_hide').click(function () {
 $('select[name="editPopupCategory"]').change(editPopupSubCategoryGetData);
 $('.edit-popup_save-button').click(saveEditPopUpData);
 $('.edit-popup_delete-button').click(itemGaleryDelete);
+$('body').delegate('button[name="category-manager_edit"]','click',function(){
+  $('input[name="category-manager_input"]').prop('disabled',true);
+  $(this).parent().siblings().children('input').prop('disabled',false);
+  categoryManager.category=
+  $(this).parent().siblings().children('input').prop('value');
+});
+$('body').delegate('button[name="category-manager_save"]','click',categoryEditData);
+$('.category-manager_add').click(function(){
+  var category=prompt('Название категории:');
+  if(category!=''&&category!=null){
+    category=category.trim();
+    var sql='INSERT INTO `wallpaper_category`(`category`)VALUES("'+category+'")';
+    $.post('php/update.php',{data:sql}, сategorySelectGetData);
+  }
+});
+$('body').delegate('button[name="category-manager_delete"]','click',function(){
+  categoryManager.category=this.value;
+  var sql='SELECT * FROM `wallpaper_subcategory` WHERE `category`="'+this.value+'"';
+  $.post('../wallpaper/php/select.php',{data:sql}, function (data) {
+   var arr=JSON.parse(data);
+   if (arr.length>0) {
+    alert('Объект содержит вложенные элементы. Удаление невозможно!');
+  }else{
+    var ask=confirm('Категория '+categoryManager.category+' будет удалена!');
+    if (ask) {
+      var sql='DELETE FROM `wallpaper_category` WHERE `category`="'+
+      categoryManager.category+'"';
+      $.post('php/update.php',{data:sql}, сategorySelectGetData);
+    }
+  }});
+});
 
 // ===== FUNCTIONS =====
-
+function сategorySelectGetData () {
+ var sql='SELECT * FROM `wallpaper_category`';
+ $.post('../wallpaper/php/select.php',{data:sql}, categorySelectForm);
+}
+function categorySelectForm (data) {
+  var arr=JSON.parse(data);
+  var list='';
+  for (var i = 0; i < arr.length; i++) {
+   list=list+'<option>'+
+   arr[i].category+'</option>';
+ }
+ $('select[name="wallpaperCategory"]').html(list);
+ $('select[name="editPopupCategory"]').html(list);
+ subCategorySelectGetData();
+ categoryManagerList(arr);
+}
 function subCategorySelectGetData () {
   var category=
   $('select[name="wallpaperCategory"]')[0].value.trim();
@@ -41,7 +89,7 @@ function subCategorySelectForm (data) {
   var list='';
   for (var i = 0; i < arr.length; i++) {
    list=list+'<option>'+
-   arr[i]['subcategory']+'</option>';
+   arr[i].subcategory+'</option>';
  }
  $('select[name="wallpaperSubCategory"]').html(list);
 }
@@ -134,17 +182,18 @@ function editPopUpGetData () {
 }
 function editPopUpSetData (data) {
   data = JSON.parse(data)[0];
-  var id=$('input[name="editPopupId"]').prop('value',data.id);
-  var article=$('input[name="editPopupArticle"]').prop('value',data.article);
-  var number=$('input[name="editPopupNumber"]').prop('value',data.number);
-  var wallpaper=$('input[name="editPopupWallpaper"]').prop('value',data.wallpaper);
-  var discount=$('input[name="editPopupDiscount"').prop('value',data.discount);
-  var category=$('select[name="editPopupCategory"').prop('value',data.category);
-  editPopupSubCategoryGetData(data.category);
+  $('input[name="editPopupId"]').prop('value',data.id);
+  $('input[name="editPopupArticle"]').prop('value',data.article);
+  $('input[name="editPopupNumber"]').prop('value',data.number);
+  $('input[name="editPopupWallpaper"]').prop('value',data.wallpaper);
+  $('input[name="editPopupDiscount"').prop('value',data.discount);
+  $('select[name="editPopupCategory"').prop('value',data.category);
+  popupData.subcategory=data.subcategory;
+  editPopupSubCategoryGetData();
 }
 function editPopupSubCategoryGetData () {
-  category=$('select[name="editPopupCategory"').prop('value');
-  sql='SELECT * FROM `wallpaper_subcategory` WHERE `category`="'+category+'"';
+  var category=$('select[name="editPopupCategory"').prop('value');
+  var sql='SELECT * FROM `wallpaper_subcategory` WHERE `category`="'+category+'"';
   $.post('../wallpaper/php/select.php',{data:sql},editPopupSubCategorySetData);
 }
 function editPopupSubCategorySetData (data) {
@@ -155,6 +204,7 @@ function editPopupSubCategorySetData (data) {
     '<option>'+arr[i].subcategory+'</option>';
   }
   $('select[name="editPopupSubCategory"]').html(option);
+  $('select[name="editPopupSubCategory"').prop('value',popupData.subcategory);
 }
 function saveEditPopUpData () {
  var arr=$('.edit-popup input, .edit-popup select');
@@ -165,9 +215,11 @@ function saveEditPopUpData () {
   '`category`="'+arr[3].value.trim()+'",`subcategory`="'+arr[4].value.trim()+'",'+
   '`interior`="'+arr[5].value.trim()+'",`discount`='+arr[6].value.trim()+','+
   '`number`='+arr[7].value.trim()+' WHERE `id`='+arr[0].value.trim();
-  $.post('php/update.php',{data:sql}, (data)=>{console.log(data);});
+  $.post('php/update.php',{data:sql}, function () {
+    getGaleryData(SQL)
+  });
   $('.edit-popup_wrapper').fadeOut();
-  getGaleryData(SQL);}
+}
 }
 function itemGaleryDelete () {
   var ask=confirm('Элемент будет удален!');
@@ -186,4 +238,39 @@ function itemGaleryDelete () {
       getGaleryData(SQL);
     });
   }
+}
+function categoryManagerList (arr) {
+  $('.category-manager_item:gt(0)').remove();
+  for (var i = 1; i < arr.length; i++) {
+    var tr=$('.category-manager_item');
+    var cloneTr=tr[0].cloneNode(true);
+    var table=$('.category-manager_table');
+    table[0].appendChild(cloneTr);
+  }
+  categoryManagerListData(arr);
+}
+function categoryManagerListData (arr) {
+  var idArr=$('.category-manager_id');
+  var categoryArr=$('input[name="category-manager_input"]'); 
+  var saveArr=$('button[name="category-manager_save"]');
+  var delArr=$('button[name="category-manager_delete"]');
+  for (var i = 0; i < arr.length; i++) {
+    $(idArr[i]).html(arr[i].id);
+    $(categoryArr[i]).prop('value',arr[i].category);
+    $(categoryArr[i]).prop('disabled',true);
+    $(saveArr[i]).prop('value',arr[i].category);
+    $(delArr[i]).prop('value',arr[i].category);
+  }
+}
+function categoryEditData () {
+  var category=$(this).parent().siblings().children('input').prop('value').trim();
+  sql='UPDATE `wallpaper_category` SET `category`="'+
+  category+'" WHERE `category`="'+categoryManager.category+'"';
+  $.post('php/update.php',{data:sql});
+  sql='UPDATE `wallpaper_subcategory` SET `category`="'+
+  category+'" WHERE `category`="'+categoryManager.category+'"';
+  $.post('php/update.php',{data:sql});
+  sql='UPDATE `wallpaper_wallpaper` SET `category`="'+
+  category+'" WHERE `category`="'+categoryManager.category+'"';
+  $.post('php/update.php',{data:sql}, сategorySelectGetData);
 }
