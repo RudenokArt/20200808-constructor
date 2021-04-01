@@ -1,10 +1,16 @@
-table{
-
-}
+table{}
 td{
   border:1px solid rgba(0,0,0,0.1);
   padding-left:  10px;
   padding-right: 10px;
+}
+.flex-wrapper{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.flex-wrapper div{
+  margin:0;
 }
 .interiorOrder{
   width: 50px;
@@ -49,6 +55,8 @@ td{
   top:0;
   right: 0;
 }
+.search-select,
+select[name="subcategory-manager_select"],
 .edit-popup select,
 .popup select{
   height: 40px;
@@ -59,6 +67,7 @@ td{
   appearance: none;
 }
 .select-wrapper{
+  width:250px;
   position: relative;
   background-color: transparent;
 }

@@ -5,7 +5,7 @@ require_once '../../modular/connectdb.php';
 
 $data=$_POST['data'];
 echo $data;
-//exit();
+// exit();
 $sql = $mysqli->query($data);
 
 
