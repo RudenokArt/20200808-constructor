@@ -7,8 +7,9 @@
   <link rel="shortcut icon" href="../modular/images/favicon.ico?v2" 
   type="image/x-icon">
   <link rel="stylesheet" href="../modular/theme/css/data-style.css">
-  <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
-  <link rel="stylesheet" href="css/data-style.css?<?php echo time() ?>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/data-style.css">
+  <link rel="stylesheet" href="css/pagination.css">
   <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <title>Фотообои</title>

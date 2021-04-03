@@ -12,7 +12,6 @@ div
 button
 {
 	cursor: pointer;
-	margin:0.5em;
 	background-color: rgba(0,0,0,0.1);
 	border-radius: 0.5em;
 	padding: 0.5em;
@@ -172,4 +171,16 @@ table
 .interior-tape-item{
 	width: 80px;
 	margin:1em;
+}
+#templates{
+  width:50%;
+}
+.template-size_block{
+  margin:auto;
+}
+.category-icon_image{
+  background-color: grey;
+}
+.category-icon_image img{
+  width:25px;
 }

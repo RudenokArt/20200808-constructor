@@ -11,6 +11,7 @@
   <script src="js/jquery_ui.js"></script>
   <link rel="stylesheet" href="../modular/theme/css/style.css?<?php echo time()?>">
   <link rel="stylesheet" href="css/style.css?<?php echo time()?>">
+  <link rel="stylesheet" href="../wallpaper/css/pagination.css">
   <link rel="stylesheet" href="css/jquery_ui.css">
 
   <title>Document</title>

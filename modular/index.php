@@ -7,14 +7,15 @@
 <div class="modular-container">
 
   <div class="modular-sidebar">
-    <?php $categoryArr=indexSelect('SELECT * FROM `constructor_category`');
+    <?php $categoryArr=indexSelect('SELECT * FROM `constructor_category` 
+      ORDER BY `category`');
     for($i=0;$i<sizeof($categoryArr);$i++){ 
       $subcategoryArr=indexSelect('SELECT * FROM `constructor_subcategory`
       WHERE `category`="'.$categoryArr[$i]['category'].'"');?>
 
       <div class="modular-sidebar_category">
         <div class="modular-sidebar_icon">
-          <img src="icon/category-icon.svg" alt=" ">
+          <img src="icon/<?php echo $categoryArr[$i]['id'] ?>.svg" alt=" ">
         </div>
         <div><?php echo $categoryArr[$i]['category']?></div>
         <div>

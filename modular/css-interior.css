@@ -9,7 +9,7 @@ iframe{
   background-color: white;
 }
 #interior-background{
-	height: 500px;
+	height: 400px;
 	width: 600px;
 	/*border: 1px solid red;*/
 	background-repeat:no-repeat;
@@ -22,7 +22,7 @@ iframe{
 	position: relative;
 	margin:auto;
 	margin-top:0;
-	height:350px;
+	height:250px;
 	width:350px;
 	overflow:hidden;
 	border-radius: 50px;
@@ -30,6 +30,8 @@ iframe{
 #interior-field{
 	position: relative;
 	margin:50px;
+  margin-top: 0;
+  margin-bottom: 0;
 	height:250px;
 	width:250px;
 	overflow:hidden;

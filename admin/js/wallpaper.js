@@ -1,13 +1,17 @@
 
 // ===== GLOBALS =====
-SQL='SELECT * FROM `wallpaper_wallpaper`';
-popupData={};
-categoryManager={};
-subcategoryManager={};
+var SQL='SELECT * FROM `wallpaper_wallpaper`';
+var popupData={};
+var categoryManager={};
+var subcategoryManager={};
+var page={
+  items:2,
+  number:1,
+};
 
 // ===== ACTIONS =====
 сategorySelectGetData();
-
+postDataGet();
 
 // ===== LISTENERS =====
 
@@ -49,24 +53,23 @@ $('body').delegate('button[name="category-manager_delete"]','click',function(){
   $.post('../wallpaper/php/select.php',{data:sql}, function (data) {
    var arr=JSON.parse(data);
    if (arr.length>0) {
-    alert('Объект содержит вложенные элементы. Удаление невозможно!');
-  }else{
-    var sql='SELECT * FROM `wallpaper_wallpaper` WHERE `category`="'+
-    categoryManager.category+'"';
-    $.post('../wallpaper/php/select.php',{data:sql},function (data) {
-      var arr=JSON.parse(data);
-      if (arr.length>0) {
-        alert('Объект содержит вложенные элементы. Удаление невозможно!');
-      }else{
-        var ask=confirm('Категория '+categoryManager.category+' будет удалена!');
-        if (ask) {
-          var sql='DELETE FROM `wallpaper_category` WHERE `category`="'+
-          categoryManager.category+'"';
-          $.post('php/update.php',{data:sql}, сategorySelectGetData);
+    alert('Объект содержит вложенные элементы. Удаление невозможно!');  }else{
+      var sql='SELECT * FROM `wallpaper_wallpaper` WHERE `category`="'+
+      categoryManager.category+'"';
+      $.post('../wallpaper/php/select.php',{data:sql},function (data) {
+        var arr=JSON.parse(data);
+        if (arr.length>0) {
+          alert('Объект содержит вложенные элементы. Удаление невозможно!');
+        }else{
+          var ask=confirm('Категория '+categoryManager.category+' будет удалена!');
+          if (ask) {
+            var sql='DELETE FROM `wallpaper_category` WHERE `category`="'+
+            categoryManager.category+'"';
+            $.post('php/update.php',{data:sql}, сategorySelectGetData);
+          }
         }
-      }
-    });
-  }});
+      });
+    }});
 });
 $('select[name="subcategory-manager_select"]').change(subCategoryManagerGetData);
 $('body').delegate('button[name="subcategory-manager_edit"]','click',function(){
@@ -125,8 +128,119 @@ $('button[name="search-button"]').click(function () {
 $('button[name="search-resset"]').click(function () {
   $('input[name="search-input"]').prop('value','');
   getGaleryData(SQL);
+  $('select[name="admin-category_filter"]').prop('value','all');
+  $('select[name="admin-subcategory_filter"]').prop('value','all');
 });
-
+$('.number-page').click(function () {
+  page.number=Number($(this).html().trim());
+  getPaginationData();
+});
+$('.next-page').click(function () {
+  page.number=page.number+1;
+  if (page.number>page.quantity) {page.number=page.quantity;}
+  getPaginationData();
+});
+$('.back-page').click(function () {
+  page.number=page.number-1;
+  if (page.number<1){page.number=1;}
+  getPaginationData();
+});
+$('.first-page').click(function () {
+  page.number=1;
+  getPaginationData();
+});
+$('.last-page').click(function () {
+  page.number=page.quantity;
+  getPaginationData();
+});
+$('select[name="pagination-manager"]').change(function () {
+  $.post('php/pagination.php',{quantity:this.value.trim()}, getPaginationData);
+});
+$('body').delegate('input[name="category-icon"]','change',function () {
+  var category=
+  $(this).parent().parent().siblings('.category-manager_id').html().trim();
+  var formData = new FormData();
+  this.name=category;
+  formData.append(this.name,this.files[0]);
+  var request = new XMLHttpRequest();
+  request.open('POST','php/category_icon.php');
+  request.send(formData);
+  var node=document.createElement('input');
+  node.setAttribute('type', 'file');
+  node.setAttribute('name', 'category-icon');
+  node.setAttribute('multiple', 'multiple');
+  var parent=this.parentNode;
+  parent.replaceChild(node,this);
+  request.onreadystatechange=function (){
+    if (request.readyState==4 && request.status==200){
+      сategorySelectGetData();
+    } 
+  };
+});
+$('.post-add').click(function () {
+  $('.post-popup_wrapper').fadeIn();
+});
+$('.post-popup_button-hide').click(function () {
+  $('.post-popup_wrapper').fadeOut();
+});
+$('button[name="post-save_add"]').click(function () {
+  var title=$('input[name="post-title_add"]').prop('value').trim();
+  var text=$('textarea[name="post-text_add"]').prop('value').trim();
+  if (title==''||text=='') {alert('Не заполнен заголовок или текст');}
+  else {
+    var sql='INSERT INTO `wallpaper_post`(`title`, `text`)'+
+    'VALUES ("'+title+'","'+text+'")';
+    $.post('php/sql-ajax.php',{data:sql},postDataGet);
+    $('.post-popup_wrapper').fadeOut();
+  }
+});
+$('body').delegate('button[name="post-edit"]','click',function() {
+  $(this).siblings('input').prop('disabled',false);
+  $(this).siblings('textarea').prop('disabled',false);
+});
+$('body').delegate('button[name="post-edit_cancel"]','click',function() {
+  $(this).siblings('input').prop('disabled',true);
+  $(this).siblings('textarea').prop('disabled',true);
+  postDataGet();
+});
+$('body').delegate('button[name="post-edit_save"]','click',function () {
+  var postId=$(this).parent().siblings('.post-item_id').html().trim();
+  var title=$(this).siblings('input').prop('value').trim();
+  var text=$(this).siblings('textarea').prop('value').trim();
+  var sql='UPDATE `wallpaper_post`'+
+  'SET `title`="'+title+'",`text`="'+text+'" WHERE `id`='+postId;
+  $.post('php/sql-ajax.php',{data:sql}, postDataGet);
+});
+$('body').delegate('button[name="post-edit_delete"]','click',function () {
+  var arr=JSON.parse(this.value);
+  var item={
+    file:arr[1],
+    id:arr[0],
+    path:'../../wallpaper/img/post/',
+    table:'wallpaper_post'
+  };
+  var json=JSON.stringify(item);
+  if(confirm('Элемент будет удален!')){
+    $.post('php/delete_item.php',{data:json}, function(data) {
+      console.log(data);
+      postDataGet();
+    });
+  }
+});
+$('body').delegate('input[name="post-image"]','change',function() {
+  var itemId=$(this).parent().parent().siblings('.post-item_id').html().trim();
+  var formData = new FormData();
+  formData.append(Number(itemId),this.files[0]);
+  var request = new XMLHttpRequest();
+  request.open('POST','php/post_image.php');
+  request.send(formData);
+  request.onreadystatechange=function (){
+    if (request.readyState==4 && request.status==200){
+      console.log(request.responseText);
+      postDataGet();
+    } 
+  }; 
+});
 
 // ===== FUNCTIONS =====
 function сategorySelectGetData () {
@@ -249,6 +363,7 @@ function fillGaleryData (arr) {
     $(itemArr[i]).prop('id',arr[i].id);
     $(itemArr[i]).click(editPopUpGetData);
   }
+  getPaginationData();
 }
 function editPopUpGetData () {
   sql='SELECT * FROM `wallpaper_wallpaper` WHERE `id`='+this.id;
@@ -328,12 +443,14 @@ function categoryManagerFormData (arr) {
   var categoryArr=$('input[name="category-manager_input"]'); 
   var saveArr=$('button[name="category-manager_save"]');
   var delArr=$('button[name="category-manager_delete"]');
+  var iconArr$=$('.category-icon img');
   for (var i = 0; i < arr.length; i++) {
     $(idArr[i]).html(arr[i].id);
     $(categoryArr[i]).prop('value',arr[i].category);
     $(categoryArr[i]).prop('disabled',true);
     $(saveArr[i]).prop('value',arr[i].category);
     $(delArr[i]).prop('value',arr[i].category);
+    $(iconArr$[i]).attr('src','../wallpaper/img/icon/'+arr[i].id+'.svg?'+Math.random());
   }
 }
 function categoryEditData () {
@@ -419,7 +536,6 @@ function filterGalery () {
   var sql='SELECT * FROM `wallpaper_wallpaper`';
   var category=$('select[name="admin-category_filter"]').prop('value');
   var subcategory=$('select[name="admin-subcategory_filter"]').prop('value');
-  console.log(category,subcategory);
   if (category!='all'){
     sql=    'SELECT * FROM `wallpaper_wallpaper`'+
     'WHERE `category`="'+category+'"';
@@ -429,4 +545,67 @@ function filterGalery () {
     'WHERE `category`="'+category+'" AND `subcategory`="'+subcategory+'"';
   }
   getGaleryData(sql);
+}
+function getPaginationData () {
+ $.post('php/pagination.php',{data:'data'}, pagination);
+}
+function pagination (data) {
+  $('select[name="pagination-manager"]').prop('value',data);
+  var arr=$('.wallpaper-galery_item');
+  $(arr).css({'display':'none'});
+  page.quantity=Math.ceil(arr.length/data);
+  var lastItem=page.number*data;
+  var firsItem=lastItem-data;
+  for (var i = firsItem; i < lastItem; i++) {
+    $(arr[i]).fadeIn();
+  }
+  pageNumeration();
+}
+function pageNumeration () {
+ var arr=$('.number-page');
+ $(arr).css({'display':'block'});
+ for (var i = 0; i < arr.length; i++) {
+  var number=page.number+i-2;
+  arr[i].innerHTML=number;
+  if (number<1||number>page.quantity) {arr[i].style.display='none';}
+}
+activePage(arr);
+}
+function activePage (arr) {
+  $(arr).css({'color':'black'});
+  for (var i = 0; i < arr.length; i++) {
+    if ($(arr[i]).html().trim()==page.number) {
+      arr[i].style.color='red';
+    }
+  }
+}
+function postDataGet () {
+  $('.post-item_edit:gt(0)').remove();
+  var sql='SELECT * FROM `wallpaper_post` ORDER BY `id` DESC';
+  $.post('../wallpaper/php/select.php',{data:sql},function (data) {
+    var arr=JSON.parse(data);
+    for (var i = 0; i < arr.length; i++) {
+      var node=$('.post-item_edit')[0];
+      var copy=node.cloneNode(true);
+      copy.style.display='block';
+      node.parentNode.appendChild(copy);
+    }
+    postDataSet(arr);
+  });
+}
+function postDataSet (arr) {
+  var idArr=$('.post-item_id');
+  var titleArr=$('input[name="post-title_edit"]');
+  var textArr=$('textarea[name="post-text_edit"]');
+  var imageArr=$('.post-image_picture img');
+  var delArr=$('button[name="post-edit_delete"]');
+  for (var i = 0; i < arr.length; i++) {
+    $(idArr[i+1]).html(arr[i].id);
+    $(titleArr[i+1]).prop('value',arr[i].title);
+    $(textArr[i+1]).prop('value',arr[i].text);
+    $(titleArr[i+1]).prop('disabled',true);
+    $(textArr[i+1]).prop('disabled',true);
+    $(imageArr[i+1]).attr('src','../wallpaper/img/post/'+arr[i].image);
+    $(delArr[i+1]).prop('value',JSON.stringify([arr[i].id,arr[i].image]));
+  }
 }

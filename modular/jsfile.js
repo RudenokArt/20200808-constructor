@@ -1,8 +1,21 @@
-let crutchEdit={};
-let interiorArr=[];
+var crutchEdit={};
+var interiorArr=[];
 
-function divShow(div)
-{
+
+function categoryIconUpload () {
+  console.log(this.name);
+  var formData = new FormData();
+  formData.append(this.name,this.files[0]);
+  var request = new XMLHttpRequest();
+  request.open('POST','php-category_icon.php');
+  request.send(formData);
+  request.onreadystatechange=function (){
+    if (request.readyState==4 && request.status==200){
+        console.log(request.responseText);} 
+        getCategories();
+      }; 
+}
+function divShow(div){
 	document.getElementById(div).style.display='block';
 	//
 }
@@ -54,8 +67,7 @@ function getCookie()
 		else {document.getElementById('paginationPage').value=20}
 	}
 }
-function managerOnload()
-{
+function managerOnload(){
 	getCategories();
 	getMaterials();
 	getSize();
@@ -273,10 +285,10 @@ function showEditPopUp(id,imageName,discount,order,galeryName)
 	document.getElementById('editItemId').value=id;
 	document.getElementById('imageName').innerHTML=imageName;
   document.getElementById('40x70').value=order;
-	document.getElementById('discount').value=discount;
+  document.getElementById('discount').value=discount;
   document.getElementById('46x80').value=galeryName;
-	getEditData(id);
-	ajaxCategory();
+  getEditData(id);
+  ajaxCategory();
 }
 function editCrutch(category,subcategory,template) {
 
@@ -403,11 +415,11 @@ function filterImage()
 	// 	+priceFrom+'" AND `40x70`<="'+priceTo+'"';
 	// }
 	where='WHERE `category`="'
-		+category+'" AND `40x70`>="'
-		+priceFrom+'" AND `40x70`<="'+priceTo+'"';
+  +category+'" AND `40x70`>="'
+  +priceFrom+'" AND `40x70`<="'+priceTo+'"';
 
-	page=1;
-	ajaxGallery(where);
+  page=1;
+  ajaxGallery(where);
 }
 function ajaxGallery(where)
 {
@@ -439,30 +451,30 @@ function displayGalery(str)
 			let template=(arr[i].template);
       let order=(arr[i].order);
       let galeryName=(arr[i].galeryName);
-			if (discount==0)
-				{discount=''}
-			else {discount='-'+discount+'% '}
-				galery=galery+
-			'<div class="galeryItem" id="'+id+'" '+
-			'onclick="showEditPopUp('+id+',\''+imageName[0]+'\',\''+
+      if (discount==0)
+        {discount=''}
+      else {discount='-'+discount+'% '}
+        galery=galery+
+      '<div class="galeryItem" id="'+id+'" '+
+      'onclick="showEditPopUp('+id+',\''+imageName[0]+'\',\''+
       discount+'\',\''+order+'\',\''+galeryName+'\')+'+
-			'editCrutch(\''+category+'\',\''+subcategory+'\',\''+template+'\')">'+
-			'<div class="galery-image" style="background-image: url(miniatures/'+arr[i].image+');">'+
-			'<div class="discount">'+discount+'</div>'+
-			'<img src="mini-templates/'+template+'" class="galary-template">'+
-			'</div>'+
-			'<div>'+
-			imageName[0]+' '+template+'<br>'+
+      'editCrutch(\''+category+'\',\''+subcategory+'\',\''+template+'\')">'+
+      '<div class="galery-image" style="background-image: url(miniatures/'+arr[i].image+');">'+
+      '<div class="discount">'+discount+'</div>'+
+      '<img src="mini-templates/'+template+'" class="galary-template">'+
+      '</div>'+
+      '<div>'+
+      imageName[0]+' '+template+'<br>'+
       galeryName+'<br>'+
-			category+' / '+
-			subcategory+
-			'</div>'+
-			'</div>';
-			itemArr[i]=id;
-		}
-		document.getElementById('content').innerHTML=galery;
-		pagination();
-	} catch(e) {}
+      category+' / '+
+      subcategory+
+      '</div>'+
+      '</div>';
+      itemArr[i]=id;
+    }
+    document.getElementById('content').innerHTML=galery;
+    pagination();
+  } catch(e) {}
 }
 let page=1;
 function getPageNumber () {
@@ -600,41 +612,44 @@ function selectSubCategory(str)
 		document.getElementById('subCategorySelect').innerHTML=select;
 	} catch(e){}
 }
-function getCategories()
-{
+function getCategories(){
 	let req = new XMLHttpRequest();
 	req.open('POST','php-select-category.php');
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	req.send();
-	req.onreadystatechange=function ()
-	{
-		categories=req.responseText;
-		categoriesTab(categories);
-	}
+	req.onreadystatechange=function (){
+    if (req.readyState == 4 && req.status == 200) {
+      categories=req.responseText;
+      categoriesTab(categories);
+    }
+
+  }
 }
-function categoriesTab(categories)
-{
-	try 
-	{	
+function categoriesTab(categories){
+	try 	{	
 		let select='<select onchange="getSubCategories()"'+
 		' id="selectCategory" name="selectCategory">';
 		let table='<table><tr><th>Категории<th><tr>';
 		let arr=JSON.parse(categories);
-		for(i=0;i<arr.length;i++)
-		{
-			table=table+'<tr><td>'+arr[i][1]+
-			'</td><td><button title="удалить" id="'+arr[i][0]+
-			'" onclick="delCategory('+arr[i][0]+')">&#10060</button></td></tr>';
-			select=select+'<option>';
-			select=select+arr[i][1];
-			select=select+'</option>';
-		}
-		table=table+'</table>';
-		select=select+'</select>';
-		document.getElementById('categorySelect').innerHTML=select;
-		document.getElementById('categoryTab').innerHTML=table;
-		getSubCategories();
-	} catch(e) {}
+		for(i=0;i<arr.length;i++){
+			table=table+'<tr><td>'+arr[i][1]+'</td>'+
+      '<td class="category-icon_image">'+
+      '<img src="icon/'+arr[i][0]+'.svg" alt=" "></td>'+
+      '<td><input type="file" name="'+arr[i][0]+'" multiple="multiple"'+
+      'class="category-icon_upload"></td>'+
+      '<td><button title="удалить" id="'+arr[i][0]+
+      '" onclick="delCategory('+arr[i][0]+')">&#10060</button></td></tr>';
+      select=select+'<option>';
+      select=select+arr[i][1];
+      select=select+'</option>';
+    }
+    table=table+'</table>';
+    select=select+'</select>';
+    document.getElementById('categorySelect').innerHTML=select;
+    document.getElementById('categoryTab').innerHTML=table;
+    getSubCategories();
+  } catch(e) {}
+  $('body').delegate('.category-icon_upload','change',categoryIconUpload);
 }
 function getSubCategories()
 {
@@ -797,7 +812,7 @@ function sizeSelector (arr) {
 		}
 		if (check==true){newArr.push(arr[i])}
 	}
-	sizeSelectorForm(newArr);
+sizeSelectorForm(newArr);
 }
 function sizeSelectorForm (arr) {
 	let select='<option></option>';

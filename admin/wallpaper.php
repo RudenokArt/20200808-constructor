@@ -19,6 +19,7 @@
         <li><a href="#tabs-3">Управление подкатегориями</a></li>
         <li><a href="#tabs-4">Статьи (посты)</a></li>
       </ul>
+
       <div id="tabs-1">
         <div class="flex-wrapper">
           <div>
@@ -54,17 +55,29 @@
            </select>
          </div>
        </div>
-     </div>
-
-
-     <div class="wallpaper-admin_galery">
+       <div>
+        <div>Количество на странице</div>
+        <div class="select-wrapper">
+          <select class="search-select" name="pagination-manager">
+            <?php for ($i=2; $i <= 20; $i++) { ?>
+              <option value="<?php echo $i; ?>">
+                <?php echo $i ?>
+              </option>
+            <?php }  ?>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="wallpaper-admin_galery">
       <div class="wallpaper-galery_item">
         <div class="wallpaper-galery_image"></div>
         <div class="wallpaper-galery_interior"></div>
         <div class="wallpaper-gallery_info"></div>
       </div>
     </div>
+    <?php include_once '../wallpaper/pagination.php' ?>
   </div>
+
   <div id="tabs-2">
     <div>
       <button class="category-manager_add">
@@ -93,6 +106,16 @@
             <button name="category-manager_delete" title="удалить">
               <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
+          </td>
+          <td>
+            <div class="icon-upload">
+              <span> Загрузить иконку</span>
+              <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+              <input type="file" name="category-icon" multiple="multiple" >
+            </div>
+          </td>
+          <td class="category-icon">
+            <img src="../wallpaper/img/icon/category-icon.svg" alt=" ">
           </td>
         </tr>
       </table>
@@ -139,7 +162,50 @@
     </div>
 
   </div>
-  <div id="tabs-4">under construction</div>
+  <div id="tabs-4">
+    <div>
+      <button class="post-add">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Добавить пост
+      </button>
+    </div>
+    <div>
+      <table>
+        <tr class="post-item_edit">
+          <td class="post-item_id">id</td>
+          <td>
+            <input type="text" name="post-title_edit" placeholder="Заголовок поста">
+            <button name="post-edit" title="редактировать">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+              <button name="post-edit_cancel" title="Отмена">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            <button name="post-edit_save" title="Сохранить">
+             <i class="fa fa-floppy-o" aria-hidden="true"></i>
+           </button>
+           <button name="post-edit_delete" title="Удалить">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+          <br>
+          <textarea name="post-text_edit" cols="50" rows="3" 
+          name="post-text" placeholder="Текст поста"></textarea>
+        </td>
+        <td>
+          <div class="post-image_upload">
+            <span> Загрузить <br> изображение</span>
+            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+            <input type="file" name="post-image" multiple="multiple" >
+          </div>
+        </td>
+        <td class="post-image_picture">
+          <img src="" alt=" ">
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
 </div>
 
 <div class="popup-wrapper">
@@ -255,6 +321,28 @@
       <button class="edit-popup_delete-button">
         УДАЛИТЬ
         <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="post-popup_wrapper">
+  <div class="post-popup">
+    <button class="post-popup_button-hide">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <p>ДОБАВЛЕНИЕ ПОСТА</p>
+    <div>
+      <input type="text" name="post-title_add"
+      placeholder="Заголовок поста">
+    </div>
+    <div>
+      <textarea name="post-text_add" cols="30" rows="10"
+      placeholder="Текст поста"></textarea>
+    </div>
+    <div>
+      <button name="post-save_add" title="сохранить">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        Сохранить
       </button>
     </div>
   </div>

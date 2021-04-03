@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 29 2021 г., 22:18
+-- Время создания: Апр 03 2021 г., 22:31
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.1.33
 
@@ -479,6 +479,28 @@ INSERT INTO `wallpaper_interior` (`id`, `interior`, `order_number`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `wallpaper_post`
+--
+
+CREATE TABLE `wallpaper_post` (
+  `id` int(10) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `text` text NOT NULL,
+  `image` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wallpaper_post`
+--
+
+INSERT INTO `wallpaper_post` (`id`, `title`, `text`, `image`) VALUES
+(7, 'Заголовок поста', 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имеет моей вершину ты ipsum, предложения ее реторический диких взобравшись строчка пор текстами, рыбными!', '13197.jpg'),
+(8, 'Заголовок поста', 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имеет моей вершину ты ipsum, предложения ее реторический диких взобравшись строчка пор текстами, рыбными!', '07207.jpg'),
+(9, 'Заголовок поста', 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имеет моей вершину ты ipsum, предложения ее реторический диких взобравшись строчка пор текстами, рыбными!', '04544.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `wallpaper_subcategory`
 --
 
@@ -501,7 +523,6 @@ INSERT INTO `wallpaper_subcategory` (`id`, `category`, `subcategory`) VALUES
 (177, 'категория_1', 'subcategory_1_6'),
 (178, 'категория_1', 'subcategory_1_7'),
 (179, 'категория_1', 'subcategory_1_8'),
-(180, 'категория_1', 'subcategory_1_9'),
 (181, 'category_2', 'subcategory_2_1'),
 (182, 'category_2', 'subcategory_2_2'),
 (183, 'category_2', 'subcategory_2_3'),
@@ -510,7 +531,6 @@ INSERT INTO `wallpaper_subcategory` (`id`, `category`, `subcategory`) VALUES
 (186, 'category_2', 'subcategory_2_6'),
 (187, 'category_2', 'subcategory_2_7'),
 (188, 'category_2', 'subcategory_2_8'),
-(189, 'category_2', 'subcategory_2_9'),
 (190, 'category_3', 'subcategory_3_1'),
 (191, 'category_3', 'subcategory_3_2'),
 (192, 'category_3', 'subcategory_3_3'),
@@ -519,7 +539,6 @@ INSERT INTO `wallpaper_subcategory` (`id`, `category`, `subcategory`) VALUES
 (195, 'category_3', 'subcategory_3_6'),
 (196, 'category_3', 'subcategory_3_7'),
 (197, 'category_3', 'subcategory_3_8'),
-(198, 'category_3', 'subcategory_3_9'),
 (208, 'category_5', 'subcategory_5_1'),
 (209, 'category_5', 'subcategory_5_2'),
 (210, 'category_5', 'subcategory_5_3'),
@@ -678,10 +697,19 @@ CREATE TABLE `wallpaper_wallpaper` (
 --
 
 INSERT INTO `wallpaper_wallpaper` (`id`, `article`, `wallpaper`, `category`, `subcategory`, `interior`, `discount`, `number`) VALUES
-(75, '06194.jpg', 'рис.1', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 20, 1),
-(76, '19987.jpg', 'рис2', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 5, 2),
-(77, '02864.jpg', 'рис3', 'категория_1', 'subcategory_1_1', 'interior-image_6.png', 5, 2),
-(78, '04468.jpg', 'рис4', 'категория_1', 'subcategory_1_1', 'interior-image_5.png', 5, 2);
+(87, '06194.jpg', 'рис3', 'category_2', 'subcategory_2_3', 'interior-image_3.png', 2, 2),
+(88, '02864.jpg', 'рис2', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 2, 2),
+(89, '04468.jpg', 'рис2', 'категория_1', 'subcategory_1_2', 'interior-image_3.png', 2, 2),
+(91, '19987.jpg', 'рис2', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 2, 2),
+(92, '06821.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
+(93, '07207.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
+(94, '00319.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
+(95, '15393.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
+(96, '05570.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
+(97, '13197.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
+(98, '04544.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
+(99, '20224.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
+(100, '06338.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -752,6 +780,12 @@ ALTER TABLE `wallpaper_category`
 -- Индексы таблицы `wallpaper_interior`
 --
 ALTER TABLE `wallpaper_interior`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `wallpaper_post`
+--
+ALTER TABLE `wallpaper_post`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -831,6 +865,12 @@ ALTER TABLE `wallpaper_interior`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT для таблицы `wallpaper_post`
+--
+ALTER TABLE `wallpaper_post`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT для таблицы `wallpaper_subcategory`
 --
 ALTER TABLE `wallpaper_subcategory`
@@ -840,7 +880,7 @@ ALTER TABLE `wallpaper_subcategory`
 -- AUTO_INCREMENT для таблицы `wallpaper_wallpaper`
 --
 ALTER TABLE `wallpaper_wallpaper`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

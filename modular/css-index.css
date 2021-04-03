@@ -29,6 +29,10 @@
 .modular-sidebar_icon{
   padding: 0;
   line-height: 0;
+  width:20px;
+}
+.modular-sidebar_icon img{
+  width:20px;
 }
 .modular-sidebar_category-list{
   display: none;

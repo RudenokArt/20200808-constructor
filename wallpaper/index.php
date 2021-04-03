@@ -13,7 +13,7 @@ ORDER BY `number`');?>
       for ($i=0; $i < sizeof($categoryArr); $i++) { ?>
         <div class="sidebar-category">
           <div class="category-icon">
-            <img src="img/icon/category-icon.svg" alt=" ">
+            <img src="img/icon/<?php echo $categoryArr[$i]['id'] ?>.svg" alt=" ">
           </div>
           <div class="category-name">
             <?php echo $categoryArr[$i]['category']; ?>
@@ -52,16 +52,17 @@ ORDER BY `number`');?>
                 <?} ?>
               </div>
               <?}?>
+              <?php $postArr=selectSimple('SELECT * FROM `wallpaper_post`');?>
               <div class="wallpaper-posts">
-                <?php for ($i=0; $i < 5; $i++) { 
+                <?php for ($i=0; $i < sizeof($postArr); $i++) { 
                   ?><div class="wallpaper-posts_item">
                     <div class="wallpaper-posts_title">
-                      Спец. предложение! Два рулона обоев по цене трех!
+                      <?php echo $postArr[$i]['title'] ?>
                     </div>
-                    <img src="img/post/post-image.jpg" 
+                    <img src="img/post/<?php echo $postArr[$i]['image'] ?>" 
                     class="wallpaper-posts_image" alt=" ">
                     <div class="wallpaper-posts_text">
-                      Далеко-далеко за словесными горами в стране гласных и согласных живут, рыбные тексты. Дороге, заглавных. Дал океана до рекламных повстречался переулка рукописи. Свой использовало, злых? Ведущими правилами предложения обеспечивает дороге мир предупредила даже сбить вопроса языком текстов деревни от всех вскоре рекламных, грустный бросил безопасную возвращайся составитель ему рукопись за меня что? Коварных, последний.
+                      <?php echo $postArr[$i]['text'] ?>
                     </div>
                     </div><?
                   } ?>
@@ -192,27 +193,7 @@ ORDER BY `number`');?>
                   </div><?
                 } ?>
               </div>
-              <div class="wallpaper-pagination_wrapper">
-                <div class="wallpaper-pagination">
-                  <div class="first-page">
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                  </div>
-                  <div class="back-page">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  </div>
-                  <div class="number-page">1</div>
-                  <div class="number-page">2</div>
-                  <div class="number-page">3</div>
-                  <div class="number-page">4</div>
-                  <div class="number-page">5</div>
-                  <div class="next-page">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                  </div>
-                  <div class="last-page">
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
+              <?php include_once 'pagination.php' ?>
               <div class="wallpaper-cart">
                 <div class="wallpaper-cart_icon">
                   <i class="fa fa-shopping-cart" aria-hidden="true"></i>

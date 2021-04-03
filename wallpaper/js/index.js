@@ -35,6 +35,7 @@ filterReset();
 navigation.navSet();
 checkboxSetData();
 itemCart();
+subCategorySelectGetData();
 
 
 // ===== LISTENERS =====
@@ -51,27 +52,27 @@ $('.wallpaper-galery_item-check').change(itemCart);
 $('.wallpaper-galery_item-check').change(cartAnime);
 $('.number-page').click(function () {
   pagination.page=this.innerHTML.trim();
-  filterGalery();
+  pageSet();
 });
 $('.first-page').click(function () {
   pagination.page=1;
-  filterGalery();
+  pageSet();
 });
 $('.back-page').click(function () {
   pagination.page=pagination.page-1;
   if (pagination.page<1) {pagination.page=1;}
-  filterGalery();
+  pageSet();
 });
 $('.next-page').click(function () {
   pagination.page=pagination.page+1;
-   if (pagination.page>pagination.pages) {
+  if (pagination.page>pagination.pages) {
     pagination.page=pagination.pages;
-   }
-  filterGalery();
+  }
+  pageSet();
 });
 $('.last-page').click(function () {
   pagination.page=pagination.pages;
-  filterGalery();
+  pageSet();
 });
 
 
@@ -170,7 +171,17 @@ function filterGalery () {
       }
     }
   }
-  pageSet();
+  $.post('../admin/php/pagination.php',{data:'data'}, function (data) {
+    pagination.items=data;
+    var baseArr=$('.wallpaper-galery_item-wrapper');
+    pagination.arr=[];
+    for (var i = 0; i < baseArr.length; i++) {
+      if (baseArr[i].style.display=='block') {
+        pagination.arr.push(baseArr[i]);
+      }
+    }
+    pageSet();
+  });
 }
 function imageSearch () {
  var arr=$('.wallpaper-galery_item-wrapper');
@@ -231,21 +242,14 @@ function checkboxSetData () {
   }
 }
 function pageSet () {
-  var baseArr=$('.wallpaper-galery_item-wrapper')
-  var itemArr=[];
-  for (var i = 0; i < baseArr.length; i++) {
-    if (baseArr[i].style.display=='block') {
-      itemArr.push(baseArr[i]);
-    }
-  }
-  $(itemArr).css({'display':'none'});
-  if (itemArr.length>0) {
-    pagination.pages=Math.ceil(itemArr.length/pagination.items);
+  $(pagination.arr).css({'display':'none'});
+  if (pagination.arr.length>0) {
+    pagination.pages=Math.ceil(pagination.arr.length/pagination.items);
     var lastItem=pagination.page*pagination.items;
     var firstItem=lastItem-pagination.items;
-    if (lastItem>itemArr.length) {lastItem=itemArr.length;}
+    if (lastItem>pagination.arr.length) {lastItem=pagination.arr.length;}
     for (var n = firstItem; n < lastItem; n++) {
-      itemArr[n].style.display='block';
+      pagination.arr[n].style.display='block';
     }
   }
   pageNavigation();

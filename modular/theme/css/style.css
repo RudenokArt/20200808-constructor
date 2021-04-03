@@ -25,16 +25,16 @@ button:active{
   border-style: inset;
   color: red;
 }
-input[type="text"]{
+input[type="text"],textarea{
   transition-duration: 0.5s;
   padding: 10px;
   border:2px solid mediumaquamarine;
 }
-input[type="text"]:hover{
+input[type="text"]:hover,textarea:hover{
   transition-duration: 0.5s;
   box-shadow: 0px 0px 2px 2px mediumaquamarine;
 }
-input[type="text"]:focus{
+input[type="text"]:focus,,textarea:focus{
   transition-duration: 0.5s;
   box-shadow: 0px 0px 2px 2px mediumaquamarine;
 }

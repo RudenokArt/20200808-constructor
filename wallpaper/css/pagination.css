@@ -1,0 +1,23 @@
+.wallpaper-pagination_wrapper{
+  display: flex;
+  margin: 30px;
+}
+.wallpaper-pagination{
+  margin:auto;
+  display: flex;
+  justify-content: space-around;
+  line-height: 1em;
+}
+.wallpaper-pagination div{
+  width: 30px;
+  line-height: 30px;
+   transition-duration: 0.2s;
+  border:1px solid rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+}
+.wallpaper-pagination div:hover{
+  transition-duration: 0.2s;
+  background-color: rgba(0,0,0,0.1);
+  color: red;
+}
