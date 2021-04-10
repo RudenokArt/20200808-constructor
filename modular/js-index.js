@@ -5,7 +5,9 @@ var navigation={
 };
 var modular={};
 var page={};
-
+var buscket={};
+localStorage.setItem('modular', '{}');
+buscket=JSON.parse(localStorage.modular);
 
 // ===== LISTENERS & ACTIONS =====
 $('.modular-sidebar_category').click(categoryExpander);
@@ -165,15 +167,23 @@ function busketAnime () {
 }
 function favoriteRemove (imageValue) {
   var arr=imageValue.split('|');
-  localStorage.removeItem(arr[0]);
+  var image=arr[0];
+  var obj=JSON.parse(localStorage.modular);
+  delete obj[image];
+  var json=JSON.stringify(obj);
+  localStorage.setItem('modular', json);
 }
 function favoritAdd (imageValue) {
   var arr=imageValue.split('|');
-  localStorage.setItem(arr[0],
-    [0,50,150,500,500,'',0,'','','','',arr[2],0,1]);
+  buscket[arr[0]]=[0,50,150,500,500,'',0,'','','','',arr[2],0,1];
+  var json=JSON.stringify(buscket);
+  localStorage.setItem('modular', json);
+  // localStorage.setItem(arr[0],
+  //   [0,50,150,500,500,'',0,'','','','',arr[2],0,1]);
 }
 function cartCounter () {
-  var arr=Object.keys(localStorage);
+  var obj=JSON.parse(localStorage.modular);
+  var arr=Object.keys(obj);
   var counter=0;
   for (var i = 0; i < arr.length; i++) {
     if (arr[i]!='editItem'&&arr[i]!='wallpaper') {
@@ -183,7 +193,8 @@ function cartCounter () {
   $('.modular-cart_counter').html(counter);
 }
 function setCheckbokses () {
-  var imageArr=Object.keys(localStorage);
+  var obj=JSON.parse(localStorage.modular);
+  var imageArr=Object.keys(obj);
   var checkboxArr=$('.modulat-galery_item-cart input');
   for (var i = 0; i < checkboxArr.length; i++) {
    for (var n=0; n<imageArr.length; n++) {

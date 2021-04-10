@@ -1,0 +1,86 @@
+input[type="radio"],
+input[name="wallSize"] {
+  margin:0;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+.construcror-container{
+  display: flex;
+}
+.constractor-content{
+  width: 800px;
+}
+.constructor-sidebar{
+  border:1px solid yellow;
+}
+.wall{
+  background-image: url(../img/wallpaper/12087.jpg);
+  background-size: cover;
+  border:1px solid grey;
+  height: 600px;
+  width:100%;
+}
+.wallpaper-roll{
+  height: 100%;
+  border-right: 2px dashed white;
+}
+.constractor-navigation_wrapper{
+  padding: 10px;
+  width:100%;
+}
+.constractor-navigation span{
+  cursor: pointer;
+}
+.constractor-navigation span:hover{
+  text-decoration: underline;
+}
+
+/*===== SIDEBAR =====*/
+.sidebar-item{
+  width: 200px;
+  padding: 10px;
+}
+.sidebar-item_title{
+  color:grey;
+  font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
+}
+.sidebar-item_content{
+  padding: 10px;
+}
+.sidebar-item_content input{
+  opacity: 0;
+}
+.size-label{
+  transition-duration: 1s;
+  border: 5px solid grey;
+  border-radius: 50%;
+}
+.size-label_active{
+  transition-duration: 1s;
+}
+.wall-size_wrapper{
+  border:2px solid grey;
+  padding: 0;
+  margin:0;
+  position: relative;
+  width: 150px;
+}
+input[name="wallSize"] {
+  padding: 0;
+  margin:0;
+  line-height: 0;
+  width: 150px;
+}
+.wall-size_slider{
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  left: 0;
+  top:0;
+}
+.wall-size_text{
+  line-height: 1em;
+}

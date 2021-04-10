@@ -1,4 +1,4 @@
-favoriteArr=[];
+var favoriteArr=[];
 class favoriteItem {
 	constructor(image, features){
 		this.image=image;
@@ -6,7 +6,8 @@ class favoriteItem {
 		this.selected=false;
 	}
 	setFeatures(){
-		let arr=this.features.split(',');
+		//var arr=this.features.split(',');
+    var arr=this.features;
 		if (arr[14]==''||arr[14]==undefined){arr[14]='1';}
 		this.discount=arr[0];
 		this.left=Math.round((Number(arr[1]-50))/5*2);
@@ -26,11 +27,12 @@ class favoriteItem {
 }
 getFavoriteData();
 function getFavoriteData () {
-	let arrKey = Object.keys(localStorage);
-	let arrVal=Object.values(localStorage);
+  var obj=JSON.parse(localStorage.modular);
+	var arrKey = Object.keys(obj);
+	var arrVal=Object.values(obj);
 	for (var i = 0; i < arrKey.length; i++) {
     if (arrKey[i]!='wallpaper') {
-      let check=arrKey[i].split('.');
+      var check=arrKey[i].split('.');
       if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
         favoriteArr.push(new favoriteItem (arrKey[i],arrVal[i]));
       }   
@@ -39,7 +41,7 @@ function getFavoriteData () {
   favoriteTable();
 }
 function favoriteTable () {
-	let table='';
+	var table='';
 	for (var i = 0; i < favoriteArr.length; i++) {
 		favoriteArr[i].setFeatures();
 		table=table+
@@ -160,7 +162,11 @@ function editItem () {
 }
 function deleteItem () {
 	$('.favorite-table').html('table');
-	localStorage.removeItem(this.name);
+  var image=this.name;
+  var obj=JSON.parse(localStorage.modular);
+	delete obj[image];
+ var json=JSON.stringify(obj);
+  localStorage.setItem('modular', json);
 	favoriteArr=[];
 	getFavoriteData();
 }

@@ -8,6 +8,7 @@
   type="image/x-icon">
   <link rel="stylesheet" href="../modular/theme/css/data-style.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/constructor.css?<?php echo time() ?>">
   <link rel="stylesheet" href="css/data-style.css">
   <link rel="stylesheet" href="css/pagination.css">
   <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>

@@ -49,11 +49,15 @@ $wallpaperStyle='
   background-color: '.$dataArr["hoverColor"].';
 }
 .wallpaper-galery_item-icon,.wallpaper-galery_image-name,
-.wallpaper-navigation{
+.wallpaper-navigation,.constractor-navigation{
   color:'.$dataArr["themeColor"].';
 }
-.category-icon,.wallpaper-galery_item-button{
+.category-icon,.wallpaper-galery_item-button,
+.size-label_actve,.wall-size_slider{
   background-color: '.$dataArr["themeColor"].';
+}
+.size-label,.wall-size_wrapper{
+ border-color:'.$dataArr["themeColor"].';
 }';
 file_put_contents('css/data-style.css', $dataStyle);
 file_put_contents('css/favorite-style.css', $favoriteStyle);

@@ -1,27 +1,49 @@
-let customer={};
+var customer={};
+var buscket={};
+localStorage.setItem('modular', '');
+localStorage.setItem('modular', '{}');
+buscket=JSON.parse(localStorage.modular);
 
 
 function addFavorite () {
-	busketAnime();
 	divPosition('item',item);
-	// localStorage.setItem(item.image+'#'+performance.now(),
-	localStorage.setItem(item.image,
-		[calculator.discount,
-		item.positionX,
-		item.positionY,
-		item.height,
-		item.width,
-		calculator.size,
-		calculator.discount,
-		calculator.sizeText,
-		calculator.materialText,
-		calculator.amount,
-		calculator.discountAmount,
-		calculator.template,
-		item.rotate,
-		String(item.mirror),
-		]);
-	console.log(localStorage);
+  var currentImage=item.image;
+  buscket[currentImage]=[
+  calculator.discount,
+   item.positionX,
+   item.positionY,
+   item.height,
+   item.width,
+   calculator.size,
+   calculator.discount,
+   calculator.sizeText,
+   calculator.materialText,
+   calculator.amount,
+   calculator.discountAmount,
+   calculator.template,
+   item.rotate,
+   String(item.mirror),  ];
+   var json=JSON.stringify(buscket);
+  localStorage.setItem('modular', json);
+  busketAnime();
+	
+	// localStorage.setItem(item.image,
+	// 	[calculator.discount,
+	// 	item.positionX,
+	// 	item.positionY,
+	// 	item.height,
+	// 	item.width,
+	// 	calculator.size,
+	// 	calculator.discount,
+	// 	calculator.sizeText,
+	// 	calculator.materialText,
+	// 	calculator.amount,
+	// 	calculator.discountAmount,
+	// 	calculator.template,
+	// 	item.rotate,
+	// 	String(item.mirror),
+	// 	]);
+
 }
 function busketAnime () {
 	$('.busket-anime').show();
@@ -29,10 +51,11 @@ function busketAnime () {
 	setTimeout(busketCounter, 750)
 }
 function busketCounter () {
-	let arr=Object.keys(localStorage);
-	let counter=0;
+  var obj=JSON.parse(localStorage.modular);
+	var arr=Object.keys(obj);
+	var counter=0;
 	for (var i = 0; i < arr.length; i++) {
-    let check=arr[i].split('.')
+    var check=arr[i].split('.')
 		if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
 			counter=counter+1;
 		}
@@ -42,14 +65,14 @@ function busketCounter () {
 function getFavorite () {
 	itemDisplay('fog','flex');
 	itemDisplay('favorite','block');
-	let arr = Object.keys(localStorage);
-	let arrVal=Object.values(localStorage);
-	let list='';
-	for(let i=0;i<arr.length;i++){
-		let check=arrKey[i].split('.');
+	var arr = Object.keys(localStorage);
+	var arrVal=Object.values(localStorage);
+	var list='';
+	for(var i=0;i<arr.length;i++){
+		var check=arrKey[i].split('.');
     if (check[1]=='jpg'||check[1]=='png'||check[1]=='webp') {
 			// let item = arr[i].split(',');
-			let settingsArr = arrVal[i].split(',');
+			var settingsArr = arrVal[i].split(',');
 			if (settingsArr[10]!='') {
 				settingsArr[10]=settingsArr[10]+' руб.';
 			}
@@ -83,7 +106,8 @@ function favoriteDeletFunction (e) {
 	getFavorite();
 }
 function favoriteChoise (image,settings) {
-	var arr=settings.split(',');
+	// var arr=settings.split(',');
+  var arr=settings;
 	itemDisplay('fog','none');
 	itemDisplay('favorite','none');
 	document.cookie='imageName='+image;
@@ -117,7 +141,7 @@ function setImagePosition (arr) {
 	item.width=arr[4];
 	item.rotate=arr[12];
 	item.mirror=arr[13];
-	let node=document.getElementById('item');
+	var node=document.getElementById('item');
 	node.style.top=Number(item.positionY)+'px';
 	node.style.left=Number(item.positionX)+'px';
 	node.style.width=item.width+'px';
@@ -129,7 +153,7 @@ function setImageTransform (arr) {
 	setTransformSettings('transform-mirror',arr);
 }
 function setTransformSettings (name,arr) {
-	let settingsArr=document.getElementsByName(name);
+	var settingsArr=document.getElementsByName(name);
 	for (var i = 0; i < settingsArr.length; i++) {
 		if (settingsArr[i].value==arr[12]) {
 			settingsArr[i].click();
@@ -142,7 +166,7 @@ function setTransformSettings (name,arr) {
 function downLoadImage() {
 	divPosition('field',field);
 	divPosition('item',item);
-	let settings=[
+	var settings=[
 	item.image,
 	calculator.template,
 	calculator.discount,
@@ -161,7 +185,7 @@ function downLoadImage() {
 	item.rotate,
 	String(item.mirror),
 	];
-	let jsonData=JSON.stringify(settings);
+	var jsonData=JSON.stringify(settings);
 	var ajax = new XMLHttpRequest();
 	ajax.open('POST','php-order-settings.php');
 	ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -170,7 +194,7 @@ function downLoadImage() {
 		if (ajax.readyState == 4 && ajax.status == 200) {
 			var response = ajax.responseText;
 		}
-	}
+	};
 	console.log(settings);
 	progression ();
 }
@@ -204,7 +228,7 @@ function orderSend () {
 }
 function cleanStorage() {
 	localStorage.removeItem('mail');
-	document.location='constructor.html'
+	document.location='constructor.html';
 }
 function customerMail () {
 	let mail = document.getElementById('customer-mail').value;
@@ -245,12 +269,16 @@ function orderMail () {
 			document.getElementById('order-data').innerHTML=orderData;
 			document.getElementById('order-button').style.display='block';
 		}
-	}
+	};
 }
 function checkFavoriteChoise () {
-	let arrKey = Object.keys(localStorage);
-	let arrVal=Object.values(localStorage);
-	let key=localStorage.getItem('editItem');
+  var obj=JSON.parse(localStorage.modular);
+  var arrKey = Object.keys(obj);
+  var arrVal=Object.values(obj);
+	// var arrKey = Object.keys(localStorage);
+	// var arrVal=Object.values(localStorage);
+	var key=localStorage.getItem('editItem');
+  console.log(key);
 	for (var i = 0; i < arrKey.length; i++) {
 		if (arrKey[i]==key) {favoriteChoise(arrKey[i],arrVal[i]);}
 	}

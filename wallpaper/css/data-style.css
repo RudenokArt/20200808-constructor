@@ -7,9 +7,13 @@
   background-color: #388BFF;
 }
 .wallpaper-galery_item-icon,.wallpaper-galery_image-name,
-.wallpaper-navigation{
+.wallpaper-navigation,.constractor-navigation{
   color:#51C8FF;
 }
-.category-icon,.wallpaper-galery_item-button{
+.category-icon,.wallpaper-galery_item-button,
+.size-label_actve,.wall-size_slider{
   background-color: #51C8FF;
+}
+.size-label,.wall-size_wrapper{
+ border-color:#51C8FF;
 }
