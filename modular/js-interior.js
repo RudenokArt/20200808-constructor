@@ -4,7 +4,7 @@ var interiorArr=[];
 function interiorView () {
 	itemDisplay('fog','flex');
 	itemDisplay('interior','block');
-	document.getElementById('interior-background').style.backgroundImage=
+	document.getElementById('interior-foreground').style.backgroundImage=
   'url(../wallpaper/img/interior/'+interiorArr[0].interior+')';
 	//'url(interiors/'+interiorArr[0].interior+')';
 	setInteriorImage();
@@ -62,7 +62,7 @@ function interiorSlickSlider () {
   });
 }
 function setInteriorBackground (imageName) {
-	document.getElementById('interior-background').style.backgroundImage=
+	document.getElementById('interior-foreground').style.backgroundImage=
   'url(../wallpaper/img/interior/'+imageName+')';
   //'url(interiors/'+imageName+')';
 }
@@ -73,6 +73,6 @@ function setCustomerInterior () {
 	setInteriorBackground ();
 	let interior = localStorage.getItem('interior');
 	itemDisplay('interior-download','none');
-	document.getElementById('interior-background').style.backgroundImage=
+	document.getElementById('interior-foreground').style.backgroundImage=
 	'url(interiors/customer-interior/'+interior+')';
 }

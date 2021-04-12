@@ -1,5 +1,6 @@
 input[type="radio"],
-input[name="wallSize"] {
+input[name="wallSize"],
+input[type="checkbox"] {
   margin:0;
   padding: 0;
   width: auto;
@@ -9,21 +10,38 @@ input[name="wallSize"] {
   display: flex;
 }
 .constractor-content{
-  width: 800px;
 }
 .constructor-sidebar{
-  border:1px solid yellow;
+  /*border:1px solid yellow;*/
 }
-.wall{
+.wall_wrapper{
+  position: relative;
+  height: 600px;
+  width: 800px;
+  display: flex;
+}
+
+.wallpaper{
+  margin:auto;
+  height: 100%;
+  width: 100%;
   background-image: url(../img/wallpaper/12087.jpg);
   background-size: cover;
-  border:1px solid grey;
-  height: 600px;
-  width:100%;
+}
+.wall{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 .wallpaper-roll{
   height: 100%;
-  border-right: 2px dashed white;
+  border-right: 2px dashed transparent;
+  border
 }
 .constractor-navigation_wrapper{
   padding: 10px;
@@ -53,12 +71,18 @@ input[name="wallSize"] {
 .sidebar-item_content input{
   opacity: 0;
 }
-.size-label{
+.checkbox-label,
+.radio-label{
   transition-duration: 1s;
   border: 5px solid grey;
   border-radius: 50%;
 }
-.size-label_active{
+.checkbox-label{
+  border-radius: 0;
+  display: inline-block;
+}
+.checkbox-label_active,
+.radio-label_active{
   transition-duration: 1s;
 }
 .wall-size_wrapper{

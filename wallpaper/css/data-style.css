@@ -11,9 +11,9 @@
   color:#51C8FF;
 }
 .category-icon,.wallpaper-galery_item-button,
-.size-label_actve,.wall-size_slider{
+.radio-label_actve,.wall-size_slider,.checkbox-label_active{
   background-color: #51C8FF;
 }
-.size-label,.wall-size_wrapper{
+.radio-label,.wall-size_wrapper,.checkbox-label{
  border-color:#51C8FF;
 }

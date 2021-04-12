@@ -53,10 +53,10 @@ $wallpaperStyle='
   color:'.$dataArr["themeColor"].';
 }
 .category-icon,.wallpaper-galery_item-button,
-.size-label_actve,.wall-size_slider{
+.radio-label_actve,.wall-size_slider,.checkbox-label_active{
   background-color: '.$dataArr["themeColor"].';
 }
-.size-label,.wall-size_wrapper{
+.radio-label,.wall-size_wrapper,.checkbox-label{
  border-color:'.$dataArr["themeColor"].';
 }';
 file_put_contents('css/data-style.css', $dataStyle);
