@@ -2,18 +2,20 @@
 .wallpaper-galery_item-button{
   color:#FFFDF8;
 }
+.wallpaper_constructor-calc button:hover,
 .sidebar-category:hover,.wallpaper-galery_item-button:hover,
 .sidebar-subcategory:hover{
-  background-color: #388BFF;
+  background-color: #56B3FF;
 }
 .wallpaper-galery_item-icon,.wallpaper-galery_image-name,
 .wallpaper-navigation,.constractor-navigation{
   color:#51C8FF;
 }
+.wallpaper_constructor-calc, .wallpaper_constructor-calc button,
 .category-icon,.wallpaper-galery_item-button,
-.radio-label_actve,.wall-size_slider,.checkbox-label_active{
+.radio-label_actve,.checkbox-label_active{
   background-color: #51C8FF;
 }
-.radio-label,.wall-size_wrapper,.checkbox-label{
+.radio-label,.checkbox-label{
  border-color:#51C8FF;
 }

@@ -68,6 +68,4 @@
 </body>
 <script src="js/index-data.js"></script>
 <script src="js/footer-mail.js"></script>
-<script src="js/index.js"></script>
-<script src="js/constructor.js?<?php echo time() ?>"></script>
 </html>

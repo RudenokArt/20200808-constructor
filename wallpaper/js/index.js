@@ -1,5 +1,4 @@
 // ===== GLOBALS =====
-
 var navigation={
   category:'empty',
   subcategory:'empty',
@@ -144,7 +143,8 @@ function navigationClick () {
   filterReset();
 }
 function consructorTrznzit () {
-  console.log(this.id);
+  document.location.href='constructor.php';
+  localStorage.setItem('wallpaper_constructor', this.id);
 }
 function galeryGetData (arr) {
   $(arr).css({'display':'block'});

@@ -8,11 +8,15 @@
   type="image/x-icon">
   <link rel="stylesheet" href="../modular/theme/css/data-style.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/constructor.css?<?php echo time() ?>">
   <link rel="stylesheet" href="css/data-style.css">
   <link rel="stylesheet" href="css/pagination.css">
   <script src="https://use.fontawesome.com/e8a42d7e14.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link rel="stylesheet" href="http://kenwheeler.github.io/slick/slick/slick-theme.css">
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
+  </script>
+  <script type="text/javascript" src="js/slider.js"></script>
   <title>Фотообои</title>
 </head>
 <body>

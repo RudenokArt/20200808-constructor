@@ -1,3 +1,4 @@
+
 <?php include_once 'header.php' ?>
 <?php include_once '../admin/php/select-simple.php' ?>
 <?php $wallpaperArr=selectSimple('SELECT * FROM `wallpaper_wallpaper` 
@@ -121,93 +122,84 @@ ORDER BY `number`');?>
                       <div class="wallpaper-galery_item-wallpaper" 
                       style="background-image: 
                       url(img/wallpaper/<?php echo $wallpaperArr[$i]['article'] ?>);">
-                        
+                      
+                    </div>
+                    <div class="wallpaper-galery_item-interior"
+                    style="background-image: 
+                    url(img/interior/<?php echo $wallpaperArr[$i]['interior'] ?>);">
+                  </div>
+                  <div class="wallpaper-galery_item-info">
+                    <div class="wallpaper-galery_item-container">
+                      <div class="flex-wrapper">
+                        <div class="wallpaper-galery_item-article">
+                          Артикул:
+                          <span class="wallpaper-article">
+                            <?php echo $wallpaperArr[$i]['article'] ?>
+                          </span>
+                        </div>
+                        <div for="" class="wallpaper-galery_item-cart">
+                          <div class="wallpaper-galery_item-icon">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                          </div>
+                          <div class="wallpaper-galery_item-icon                  wallpaper-galery_item-remove" title="Убрать из корзины">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                          </div>
+                          <input type="checkbox" title="Добавить в корзину"
+                          class="wallpaper-galery_item-check" 
+                          value="<?php echo $wallpaperArr[$i]['id'].'|'. 
+                          $wallpaperArr[$i]['article'].'|'.
+                          $wallpaperArr[$i]['wallpaper'].'|'.
+                          $wallpaperArr[$i]['category'].'|'.
+                          $wallpaperArr[$i]['subcategory'].'|'.
+                          $wallpaperArr[$i]['interior'].'|'.
+                          $wallpaperArr[$i]['discount'] ?>">
+                        </div>
                       </div>
-                      <div class="wallpaper-galery_item-interior"
-                      style="background-image: 
-                      url(img/interior/<?php echo $wallpaperArr[$i]['interior'] ?>);">
-                      </div>
-                      <div class="wallpaper-galery_item-info">
-                        <div class="wallpaper-galery_item-container">
-                          <div class="flex-wrapper">
-                            <div class="wallpaper-galery_item-article">
-                              Артикул:
-                              <span class="wallpaper-article">
-                                <?php echo $wallpaperArr[$i]['article'] ?>
-                              </span>
-                            </div>
-                            <div for="" class="wallpaper-galery_item-cart">
-                              <div class="wallpaper-galery_item-icon">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                              </div>
-                              <div class="wallpaper-galery_item-icon                  wallpaper-galery_item-remove" title="Убрать из корзины">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                              </div>
-                              <input type="checkbox" title="Добавить в корзину"
-                              class="wallpaper-galery_item-check" 
-                              value="<?php echo $wallpaperArr[$i]['id'].'|'. 
-                              $wallpaperArr[$i]['article'].'|'.
-                              $wallpaperArr[$i]['wallpaper'].'|'.
-                              $wallpaperArr[$i]['category'].'|'.
-                              $wallpaperArr[$i]['subcategory'].'|'.
-                              $wallpaperArr[$i]['interior'].'|'.
-                              $wallpaperArr[$i]['discount'] ?>">
-                            </div>
-                          </div>
-                          <div class="flex-wrapper">
-                            <div class="wallpaper-galery_new-price">
-                             от 300 р/м <sup>2</sup>
-                           </div>
-                           <div class="wallpaper-galery_old-price">
-                            от 400 р/м <sup>2</sup>
-                          </div>
-                        </div>
-                        <div class="flex-wrapper">
-                          <div class="wallpaper-galery_image-name">
-                            <span>Фотообои: </span>
-                            <span><?php echo $wallpaperArr[$i]['wallpaper']; ?></span>
-                          </div>
-                          <div class="wallpaper-galery_item-button">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Подробнее
-                          </div>
-                        </div>
-                        <div class="wallpaper-galery_item-category">
-                          <div class="wallpaper-category">
-                            <?php echo $wallpaperArr[$i]['category'] ?>
-                          </div>/
-                          <div class="wallpaper-subcategory">
-                            <?php echo $wallpaperArr[$i]['subcategory'] ?>
-                          </div>
-                        </div>
+                      <div class="flex-wrapper">
+                        <div class="wallpaper-galery_new-price">
+                         от 300 р/м <sup>2</sup>
+                       </div>
+                       <div class="wallpaper-galery_old-price">
+                        от 400 р/м <sup>2</sup>
                       </div>
                     </div>
-                    <div class="wallpaper-galery_item-discount">
-                      <span> - </span>
-                      <span>
-                        <?php echo $wallpaperArr[$i]['discount'] ?>
-                      </span>
-                      <span> % </span>
+                    <div class="flex-wrapper">
+                      <div class="wallpaper-galery_image-name">
+                        <span>Фотообои: </span>
+                        <span><?php echo $wallpaperArr[$i]['wallpaper']; ?></span>
+                      </div>
+                      <div class="wallpaper-galery_item-button">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        Подробнее
+                      </div>
+                    </div>
+                    <div class="wallpaper-galery_item-category">
+                      <div class="wallpaper-category">
+                        <?php echo $wallpaperArr[$i]['category'] ?>
+                      </div>/
+                      <div class="wallpaper-subcategory">
+                        <?php echo $wallpaperArr[$i]['subcategory'] ?>
+                      </div>
                     </div>
                   </div>
-                  </div><?
-                } ?>
-              </div>
-              <?php include_once 'pagination.php' ?>
-              <div class="wallpaper-cart">
-                <div class="wallpaper-cart_icon">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </div>
-                <div class="wallpaper-cart_counter">
-                  0
+                <div class="wallpaper-galery_item-discount">
+                  <span> - </span>
+                  <span>
+                    <?php echo $wallpaperArr[$i]['discount'] ?>
+                  </span>
+                  <span> % </span>
                 </div>
-                <img src="../modular/images/busket-anime.png" 
-                class="wallpaper-cart_image" alt="">
               </div>
-            </div>
-
+              </div><?
+            } ?>
           </div>
+          <?php include_once 'pagination.php' ?>
+          <?php include_once 'cart.php' ?>
         </div>
 
+      </div>
+    </div>
 
-        <?php include_once 'footer.php' ?>
+    <script src="js/index.js"></script>
+    <?php include_once 'footer.php' ?>

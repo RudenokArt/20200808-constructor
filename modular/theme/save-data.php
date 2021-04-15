@@ -44,6 +44,7 @@ $wallpaperStyle='
 .wallpaper-galery_item-button{
   color:'.$dataArr["fontColor"].';
 }
+.wallpaper_constructor-calc button:hover,
 .sidebar-category:hover,.wallpaper-galery_item-button:hover,
 .sidebar-subcategory:hover{
   background-color: '.$dataArr["hoverColor"].';
@@ -52,11 +53,12 @@ $wallpaperStyle='
 .wallpaper-navigation,.constractor-navigation{
   color:'.$dataArr["themeColor"].';
 }
+.wallpaper_constructor-calc, .wallpaper_constructor-calc button,
 .category-icon,.wallpaper-galery_item-button,
-.radio-label_actve,.wall-size_slider,.checkbox-label_active{
+.radio-label_actve,.checkbox-label_active{
   background-color: '.$dataArr["themeColor"].';
 }
-.radio-label,.wall-size_wrapper,.checkbox-label{
+.radio-label,.checkbox-label{
  border-color:'.$dataArr["themeColor"].';
 }';
 file_put_contents('css/data-style.css', $dataStyle);
