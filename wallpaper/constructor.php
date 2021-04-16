@@ -1,6 +1,5 @@
 
 
-
 <link rel="stylesheet" href="css/constructor.css?<?php echo time() ?>">
 <?php include_once 'header.php' ?>
 <?php include_once '../admin/php/select-simple.php' ?>
@@ -84,7 +83,7 @@
 <div class="constructor-sidebar">
   <div class="sidebar-item">
     <div class="sidebar-item_title">
-      Ширина обоев:
+      Ширина рулона:
     </div>
     <?php $rollArr=['105','137','150','160','260'];
     foreach ($rollArr as $key => $value) {?>
@@ -98,23 +97,44 @@
       </div>
     <?php } ?>
   </div>
+
   <div class="sidebar-item">
     <div class="sidebar-item_title">
-      Обрезка:
+      Размеры стены:
     </div>
     <div class="sidebar-item_content">
       <label class="radio-label">
         <input type="radio" checked="checked" name="wallpaperTrimm">
       </label>
-      <span>по горизонтали</span>
+      <input type="text" name="wallpaperSize" value="420" placeholder="420">
+      Высота(см)
     </div>
     <div class="sidebar-item_content">
       <label class="radio-label">
         <input type="radio" name="wallpaperTrimm">
       </label>
-      <span>по вертикали</span>
+      <input type="text" name="wallpaperSize" value="315" placeholder="315"> 
+      Ширина (см)
     </div>
   </div>
+
+
+<div class="sidebar-item">
+  <div class="sidebar-item_title">
+      Компановка:
+    </div>
+    <div class="sidebar-item_content">
+      <label class="radio-label">
+        <input type="radio" checked="checked" name="wallpaperContainer">
+      </label> <span> Обрезать</span>
+    </div>
+    <div class="sidebar-item_content">
+      <label class="radio-label">
+        <input type="radio" name="wallpaperContainer">
+      </label> <span> Вписать</span>
+    </div>
+  </div>
+
   <div class="sidebar-item">
     <div class="sidebar-item_title">
       Поворот:
@@ -180,6 +200,9 @@
 </div>
 
 <div class="test"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script>$("input[name='wallpaperSize'").mask("99?9");</script>
 
 <script>
   // Карусель интерьеров

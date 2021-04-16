@@ -1,13 +1,15 @@
 // ===== GLOBALS =====
-settings={
+var settings={
   scale:'scale(1)',
   rotate:'rotate(0deg)',
   trim:[0,50,0,50],
 };
-favoriteArr=[];
+
+var favoriteArr=[];
 // ===== ACTIONS =====
 inputActivate();
-rangeSettings();
+verticalTrim();
+horisontalTrim();
 
 // ===== LISTENERS =====
 $('input[type="radio"]').change(inputActivate);
@@ -24,8 +26,27 @@ $('select[name="wallpaperTexture"]').change(function(){
   });
 });
 $('input[name="wallSize"]').bind('input',wallSizeInput);
+//$('input[name="wallSize"]').change(wallSizeInput);
 $('input[name="wallpaperTrimm"').change(rangeSettings);
-
+$('input[name="wallpaperSize"]').focus(function () {
+  var radio=$(this).siblings('label').children();
+  $(radio).prop('checked',true);
+  inputActivate();
+  rangeSettings();
+});
+$('input[name="wallpaperSize"]').change(function () {
+  var max=Number($(this).attr('placeholder'));
+  if(Number(this.value)>max){
+    this.value=max;
+  }
+  var size=(100-Number(this.value)/max*100)/2;
+  var slider=$('input[name="wallSize"]');
+  slider[0].value=size;
+  slider[1].value=50-size;
+  console.log(this.value);
+  wallSizeInput();
+});
+$('input[name="wallpaperContainer"]').change(imageContainer);
 
 // ===== FUNCTIONS =====
 function inputActivate() {
@@ -43,11 +64,11 @@ function inputActivate() {
       checkboxArr[n].parentNode.className='checkbox-label checkbox-label_active';
     }
   }
-  // rollSizeBorder();
   rotateImage();
   mirorImage();
   getCartData();
   getImageData();
+  rangeSettings();
 }
 function getImageData () {
   var data=localStorage.getItem('wallpaper_constructor');
@@ -56,7 +77,6 @@ function getImageData () {
   settings.str=data;
   //$('.wallpaper')[0].style.backgroundImage='url(img/wallpaper/'+settings.image+')';
   $('.wallpaper').attr('src','img/wallpaper/'+settings.image);
-
 }
 function getCartData () {
   var str=localStorage.getItem('wallpaper');
@@ -77,7 +97,7 @@ function rotateImage () {
           'width':wallHeight+'px',
           'height':'auto',
           // 'height':wallWidth+'px',
-          // 'margin-top':-(Number(wallWidth)-Number(wallHeight))/2,
+          'margin-top':(Number(wallWidth)-Number(wallHeight))/2,
         });
       }else{
         $(wallpaper).css({
@@ -85,7 +105,7 @@ function rotateImage () {
           // 'height':wallHeight+'px',
           'width':'100%',
           'height':'auto',
-          'margin-top':'auto'
+          'margin-top':'0'
         });
       }
     }
@@ -168,8 +188,10 @@ function horisontalTrim () {
   arrowArr[1].style.width=value1*2+1+'%';
   $('.wallpaper_section-center').css({
     'width':100-value0-value1+'%'
-  }); 
-  console.log(settings.trim);
+  });
+  var max=$('input[name="wallpaperSize"]')[0].getAttribute('placeholder');
+  var size=Math.ceil((100-value0-value1)/100*max);
+  $('input[name="wallpaperSize"]')[0].value=size;
 }
 function verticalTrim () {
   var valueArr=$('input[name="wallSize"]');
@@ -191,5 +213,21 @@ function verticalTrim () {
   $('.wallpaper_section-middle').css({
     'height':100-value0-value1+'%'
   }); 
-  console.log(settings.trim);
+  var max=$('input[name="wallpaperSize"]')[1].getAttribute('placeholder');
+  var size=Math.ceil((100-value0-value1)/100*max);
+  $('input[name="wallpaperSize"]')[1].value=size;
+}
+function imageContainer() {
+ var radio=$('input[name="wallpaperContainer"]');
+ if (radio[1].checked) {
+  $('.wallpaper_section-middle').html('<img src="img/wallpaper/'+settings.image+'">');
+  $('.wallpaper_section-wrapper').css({
+    'background-color':'white',
+  });
+}else { 
+  $('.wallpaper_section-middle').html('');
+  $('.wallpaper_section-wrapper').css({
+    'background-color':'transparent',
+  });
+}
 }
