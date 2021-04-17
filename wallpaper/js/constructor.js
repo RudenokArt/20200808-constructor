@@ -4,12 +4,21 @@ var settings={
   rotate:'rotate(0deg)',
   trim:[0,50,0,50],
 };
+var priceList={
+  '105':1000,
+  '137':1000,
+  '150':1000,
+  '160':1000,
+  '260':1000,
+};
 
 var favoriteArr=[];
 // ===== ACTIONS =====
 inputActivate();
 verticalTrim();
 horisontalTrim();
+rollSizeBorder();
+inputSizeSettings();
 
 // ===== LISTENERS =====
 $('input[type="radio"]').change(inputActivate);
@@ -26,7 +35,23 @@ $('select[name="wallpaperTexture"]').change(function(){
   });
 });
 $('input[name="wallSize"]').bind('input',wallSizeInput);
-//$('input[name="wallSize"]').change(wallSizeInput);
+$('input[name="wallSize"]').change(function () {
+  var radioArr=$('input[name="wallpaperTrimm"');
+  var inputArr=$('input[name="wallpaperSize"]');
+  if (radioArr[0].checked) {
+    var wallpaperWidth=Number($('.wallpaper_section-middle').css('width').split('px')[0]);
+    var wallWidth=Number($('.wall_wrapper').css('width').split('px')[0]);
+    var maxWidth=Number(inputArr[0].getAttribute('placeholder'));
+    var width=Math.ceil(wallpaperWidth/wallWidth*maxWidth);
+    inputArr[0].value=width;
+  }else {
+    var wallpaperHeight=Number($('.wallpaper_section-middle').css('height').split('px')[0]);
+    var wallHeight=Number($('.wall_wrapper').css('height').split('px')[0]);
+    var maxHeight=Number(inputArr[1].getAttribute('placeholder'));
+    var height=Math.ceil(wallpaperHeight/wallHeight*maxHeight);
+    inputArr[1].value=height;
+  }
+});
 $('input[name="wallpaperTrimm"').change(rangeSettings);
 $('input[name="wallpaperSize"]').focus(function () {
   var radio=$(this).siblings('label').children();
@@ -43,11 +68,19 @@ $('input[name="wallpaperSize"]').change(function () {
   var slider=$('input[name="wallSize"]');
   slider[0].value=size;
   slider[1].value=50-size;
-  console.log(this.value);
   wallSizeInput();
 });
 $('input[name="wallpaperContainer"]').change(imageContainer);
-
+$('input[name="rollSize"]').change(rollSizeBorder);
+$('input[name="wallpaperSize"],input[name="wallSize"]').change(function(){
+  var arr=$('input[name="wallpaperSize"]');
+  var priceNode=$('.wallpaper_constructor-calc span');
+  var square=Number(arr[0].value)/100*Number(arr[1].value/100);
+  price=Math.ceil(square*1000);
+  discountPrice=Math.ceil(square*1000*((100-settings.discount)/100));
+  $(priceNode[0]).html(price);
+  $(priceNode[1]).html(discountPrice);
+});
 // ===== FUNCTIONS =====
 function inputActivate() {
   var radioArr=$('input[type="radio"]');
@@ -70,11 +103,21 @@ function inputActivate() {
   getImageData();
   rangeSettings();
 }
+function inputSizeSettings () {
+  var arr=$('input[name="wallpaperSize"]');
+  for (var i = 0; i < arr.length; i++) {
+    arr[i].value=arr[i].getAttribute('placeholder');
+  }
+}
 function getImageData () {
   var data=localStorage.getItem('wallpaper_constructor');
-  var arr=data.split('|');
+  var arr=[];
+  if (data!=''&&data!=null&&data!=undefined) {
+    arr=data.split('|');
+  }
   settings.image=arr[1];
-  settings.str=data;
+  settings.discount=Number(arr[6]);
+  console.log(settings);
   //$('.wallpaper')[0].style.backgroundImage='url(img/wallpaper/'+settings.image+')';
   $('.wallpaper').attr('src','img/wallpaper/'+settings.image);
 }
@@ -129,7 +172,7 @@ function mirorImage () {
     'transform':settings.rotate+' '+settings.scale,
   });
 }
-function rangeSettings (argument) {
+function rangeSettings () {
   var input=$('input[name="wallSize"]');
   var radio=$('input[name="wallpaperTrimm"]');
   if (radio[0].checked) {
@@ -189,9 +232,6 @@ function horisontalTrim () {
   $('.wallpaper_section-center').css({
     'width':100-value0-value1+'%'
   });
-  var max=$('input[name="wallpaperSize"]')[0].getAttribute('placeholder');
-  var size=Math.ceil((100-value0-value1)/100*max);
-  $('input[name="wallpaperSize"]')[0].value=size;
 }
 function verticalTrim () {
   var valueArr=$('input[name="wallSize"]');
@@ -213,21 +253,28 @@ function verticalTrim () {
   $('.wallpaper_section-middle').css({
     'height':100-value0-value1+'%'
   }); 
-  var max=$('input[name="wallpaperSize"]')[1].getAttribute('placeholder');
-  var size=Math.ceil((100-value0-value1)/100*max);
-  $('input[name="wallpaperSize"]')[1].value=size;
 }
 function imageContainer() {
  var radio=$('input[name="wallpaperContainer"]');
  if (radio[1].checked) {
   $('.wallpaper_section-middle').html('<img src="img/wallpaper/'+settings.image+'">');
   $('.wallpaper_section-wrapper').css({
-    'background-color':'white',
-  });
-}else { 
-  $('.wallpaper_section-middle').html('');
-  $('.wallpaper_section-wrapper').css({
-    'background-color':'transparent',
-  });
+    'background-color':'white',});}else { 
+    $('.wallpaper_section-middle').html('');
+    $('.wallpaper_section-wrapper').css({
+      'background-color':'transparent',  });
+  }
 }
+function rollSizeBorder () {
+  var arr=$('input[name="rollSize"]');
+  var absoluteWallSize=Number($('input[name="wallpaperSize"]').attr('placeholder'));
+  var relativeWallSize=Number($('.wall_wrapper').css('width').split('px')[0]);
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].checked) {
+      var rollSize=Number(arr[i].value)/absoluteWallSize*relativeWallSize;
+      $('.wallpaper-roll').css({
+        'width':rollSize+'px',
+      });
+    }
+  }
 }

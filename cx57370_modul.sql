@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 03 2021 г., 22:31
+-- Время создания: Апр 16 2021 г., 18:47
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.1.33
 
@@ -678,6 +678,32 @@ INSERT INTO `wallpaper_subcategory` (`id`, `category`, `subcategory`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `wallpaper_texture`
+--
+
+CREATE TABLE `wallpaper_texture` (
+  `id` int(10) NOT NULL,
+  `texture` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wallpaper_texture`
+--
+
+INSERT INTO `wallpaper_texture` (`id`, `texture`) VALUES
+(1, 'quarzo.jpg'),
+(2, 'provance.jpg'),
+(3, 'modeno.jpg'),
+(4, 'lombardi.jpg'),
+(5, 'latte.jpg'),
+(6, 'fresco.jpg'),
+(7, 'florentino.jpg'),
+(8, 'arctic.jpg'),
+(9, 'antico.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `wallpaper_wallpaper`
 --
 
@@ -697,19 +723,13 @@ CREATE TABLE `wallpaper_wallpaper` (
 --
 
 INSERT INTO `wallpaper_wallpaper` (`id`, `article`, `wallpaper`, `category`, `subcategory`, `interior`, `discount`, `number`) VALUES
-(87, '06194.jpg', 'рис3', 'category_2', 'subcategory_2_3', 'interior-image_3.png', 2, 2),
-(88, '02864.jpg', 'рис2', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 2, 2),
-(89, '04468.jpg', 'рис2', 'категория_1', 'subcategory_1_2', 'interior-image_3.png', 2, 2),
-(91, '19987.jpg', 'рис2', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 2, 2),
-(92, '06821.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
-(93, '07207.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
-(94, '00319.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
-(95, '15393.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
-(96, '05570.jpg', 'обои', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
-(97, '13197.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
-(98, '04544.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
-(99, '20224.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
-(100, '06338.jpg', 'обои', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0);
+(101, '12087.jpg', 'рис55', 'категория_1', 'subcategory_1_1', 'interior-image_1.png', 0, 0),
+(102, '14165.jpg', 'рис1', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
+(103, '14351.jpg', 'рис2', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
+(104, '07939.jpg', 'рис3', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
+(105, '05570.jpg', 'рис4', 'category_2', 'subcategory_2_2', 'interior-image_3.png', 0, 0),
+(106, '04185.jpg', 'рис5', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
+(107, '07126.jpg', 'рис6', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -795,6 +815,12 @@ ALTER TABLE `wallpaper_subcategory`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `wallpaper_texture`
+--
+ALTER TABLE `wallpaper_texture`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `wallpaper_wallpaper`
 --
 ALTER TABLE `wallpaper_wallpaper`
@@ -868,7 +894,7 @@ ALTER TABLE `wallpaper_interior`
 -- AUTO_INCREMENT для таблицы `wallpaper_post`
 --
 ALTER TABLE `wallpaper_post`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `wallpaper_subcategory`
@@ -877,10 +903,16 @@ ALTER TABLE `wallpaper_subcategory`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
 
 --
+-- AUTO_INCREMENT для таблицы `wallpaper_texture`
+--
+ALTER TABLE `wallpaper_texture`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT для таблицы `wallpaper_wallpaper`
 --
 ALTER TABLE `wallpaper_wallpaper`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

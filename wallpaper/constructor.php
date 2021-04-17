@@ -26,18 +26,19 @@
       <img src="img/wallpaper/04185.jpg" class="wallpaper">
       <div class="wallpaper-texture" style="background-image: 
       url(img/texture/<?php echo $textureArr[0]['texture'] ?>);"></div>
-      <div class="wall">
-        <!-- <div class="wallpaper-roll"></div>
-        <div class="wallpaper-roll"></div>
-        <div class="wallpaper-roll"></div>
-        <div class="wallpaper-roll"></div>
-        <div class="wallpaper-roll"></div> -->
-      </div>
       <div class="wallpaper_section-wrapper">
         <div class="wallpaper_section"></div>
         <div class="wallpaper_section-center">
           <div class="wallpaper_section-top"></div>
-          <div class="wallpaper_section-middle"></div>
+          <div class="wallpaper_section-middle">
+            <div class="wall">
+              <div class="wallpaper-roll"></div>
+              <div class="wallpaper-roll"></div>
+              <div class="wallpaper-roll"></div>
+              <div class="wallpaper-roll"></div>
+              <div class="wallpaper-roll"></div>
+            </div>
+          </div>
           <div class="wallpaper_section-bottom"></div>
         </div>
         <div class="wallpaper_section"></div>
@@ -106,22 +107,15 @@
       <label class="radio-label">
         <input type="radio" checked="checked" name="wallpaperTrimm">
       </label>
-      <input type="text" name="wallpaperSize" value="420" placeholder="420">
-      Высота(см)
+      <input type="text" name="wallpaperSize" placeholder="400">
+      Ширина (см)
     </div>
     <div class="sidebar-item_content">
       <label class="radio-label">
         <input type="radio" name="wallpaperTrimm">
       </label>
-      <input type="text" name="wallpaperSize" value="315" placeholder="315"> 
-      Ширина (см)
-    </div>
-  </div>
-
-
-<div class="sidebar-item">
-  <div class="sidebar-item_title">
-      Компановка:
+      <input type="text" name="wallpaperSize" placeholder="300"> 
+      Высота (см)
     </div>
     <div class="sidebar-item_content">
       <label class="radio-label">
@@ -185,8 +179,8 @@
   </div>
   <div class="sidebar-item">
     <div class="wallpaper_constructor-calc">
-      <div>Стоимость: 1000 руб.</div>
-      <div>Сo скидкой: 1000 руб. </div>
+      <div>Стоимость: <span>1000</span> руб.</div>
+      <div>Сo скидкой: <span>1000</span> руб. </div>
       <div>
         <button>
           <i class="fa fa-cart-plus" aria-hidden="true"></i>

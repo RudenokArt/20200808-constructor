@@ -61,6 +61,7 @@ input[type="checkbox"] {
   position: relative;
 }
 .wallpaper_section-middle{
+  position: relative;
   border:1px solid white;
   width: 100%;
 }
@@ -129,7 +130,6 @@ input[name="wallSize"]{
 .wallpaper-roll{
   height: 100%;
   border-right: 2px dashed white;
-  border
 }
 .constractor-navigation_wrapper{
   padding: 10px;
