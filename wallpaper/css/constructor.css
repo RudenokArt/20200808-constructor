@@ -1,139 +1,35 @@
-.test{
-  line-height: 1em;
+table{
+  margin:auto;
 }
-input[type="range"],
-input[type="radio"],
-input[type="checkbox"] {
-  opacity: 0;
-  margin:0;
+input[type="range"]{
+  opacity: 0.5;
   padding: 0;
-  width: auto;
-  height: auto;
+}
+input[type="radio"]{
+  padding: 0;
+  height: 0;
+  width: 0;
+  margin:0;
+}
+td{
+  /*border:1px solid grey;*/
+  padding: 0;
+  padding-bottom: 5px;
+  width: 50px;
+}
+.wallpaper_constructor-container{
+  padding: 10px;
+  display: flex;
 }
 
-.construcror-container{
-  display: flex;
-  padding: 20px;
-}
-.constractor-content{
-}
-.constructor-sidebar{
-  /*border:1px solid yellow;*/
-}
-.wall_wrapper{
-  position: relative;
-  height: 600px;
-  width: 800px;
-  display: flex;
-  overflow: hidden;
-}
-.wallpaper-texture{
-  position: absolute;
-  top:0;
-  left: 0;
-  margin:auto;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  opacity: 0.2;
-}
-.wallpaper{
-  margin:auto;
-  margin-top: 0;
-  width: 100%;
-}
-.wallpaper_section-wrapper{
-  position: absolute;
-  top:0;
-  left: 0;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-}
-.wallpaper_section,
-.wallpaper_section-top,
-.wallpaper_section-bottom{
-  background-color: rgba(250,250,250,0.5);
-}
-.wallpaper_section-center{
-  position: relative;
-}
-.wallpaper_section-middle{
-  position: relative;
-  border:1px solid white;
-  width: 100%;
-}
-.wallpaper_section-middle img{
-  width: 100%;
-  height: 100%;
-}
-.wallpaper_range-block_wrapper{
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-.wallpaper_range-block{
-  margin:auto;
-  display: flex;
-}
-.wallpaper_range-wrapper{
-  width: 100%;
-  margin:auto;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-.wallpaper_range-half{
-  position: relative;
-  width:49%;
-}
-input[name="wallSize"]{
-  opacity: 0;
-  width: 100% !important;
-}
-.wallpaper_range-slider{
-  position: absolute;
-  top:0;
-  width: 50%;
-  height: 100%;
-  font-size:18px;
-  border-radius: 10px;
-  color: orange;
-  padding: 1px;
-}
-.wallpaper_range-slider_left{
-  left: 0;
-  background: linear-gradient(90deg, transparent, white);
-  text-align: right;
-}
-.wallpaper_range-slider_right{
-  right: 0;
-  background: linear-gradient(270deg, transparent, white);
-  text-align: left;
-}
+/*========= CONTENT ==========*/
 
-.wall{
-  position: absolute;
-  top:0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  overflow: hidden;
-}
-.wallpaper-roll{
-  height: 100%;
-  border-right: 2px dashed white;
+.wallpaper_constructor-content{
+  /*border:1px solid lime;*/
+  padding: 10px;
 }
 .constractor-navigation_wrapper{
   padding: 10px;
-  width:100%;
 }
 .constractor-navigation span{
   cursor: pointer;
@@ -141,154 +37,111 @@ input[name="wallSize"]{
 .constractor-navigation span:hover{
   text-decoration: underline;
 }
-.wallpaper_interior-tape_wrapper{
-  box-sizing: border-box;
-  background-color: rgba(0,0,0,0.4);
+.constructor_wall{
+  /*border:1px solid lightseagreen;*/
+  position: relative;
+  height: 500px;
+  width: 750px;
+}
+.wall-vertical_section{
+  height: 33.33%;
   display: flex;
-  width: 800px;
 }
-.wallpaper_interior-tape{
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  margin:auto;
-  width: 80%;
-  height: 100px;
+.wall-horizontal_section{
+  position: relative;
 }
-.wallpaper_interior-tape_item{
-  color:rgba(0,0,0,0.1);
-  width: 100px;
-  height: 100px !important;
-  border-left:1px solid white;
-  line-height: 1em;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
+.constructor_curtain{
+  position: relative;
+  display: none;
+  background:rgba(250,250,250,0.5);
 }
-.wallpaper-interior{
+.constructor-wallpaper{
   position: absolute;
   top:0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
+  border:1px solid lightslategrey;
+  box-sizing: border-box;
 }
-
-/*===== SIDEBAR =====*/
-.constructor-sidebar{
-  display: flex;
-  flex-wrap: wrap;
-}
-.sidebar-item{
-  width: 200px;
-  padding: 10px;
-}
-.sidebar-item_title{
-  color:grey;
-  font-size: 18px;
-  padding: 10px;
-  font-weight: bold;
-}
-.sidebar-item_content{
-  padding: 10px;
-}
-.checkbox-label,
-.radio-label{
-  transition-duration: 1s;
-  border: 5px solid grey;
-  border-radius: 50%;
-}
-.checkbox-label{
-  border-radius: 0;
-  display: inline-block;
-}
-.checkbox-label_active,
-.radio-label_active{
-  transition-duration: 1s;
-}
-.wall-size_wrapper{
-  border:2px solid grey;
-  padding: 0;
-  margin:0;
-  position: relative;
-  width: 150px;
-}
-input[name="wallSize"] {
-  padding: 0;
-  margin:0;
-  line-height: 0;
-  width: 150px;
-}
-.wall-size_slider{
+.constructor-wallpaper img{
   height: 100%;
-  width: 50%;
+  width: 100%;
+}
+.range_vertical-wrapper{
+  /*border:1px solid red;*/
   position: absolute;
-  left: 0;
   top:0;
+  left: 50%;
+  height: 100%;
 }
-.wall-size_text{
-  line-height: 1em;
+.range_size{
+  display: none;
 }
-.wallpaper_constructor-select{
-  position: relative;
-  display: inline-block;
+#range_vertical{
+  height: 100% !important;
 }
-.wallpaper_constructor-select select{
-  width: 150px;
-  background-color: rgba(0,0,0,0.1);
-}
-.wallpaper_constructor-select option{
-  padding: 5px;
-  line-height: 0;
-  margin:0;
-
-}
-.wallpaper_constructor-select::after{
-  position: absolute;
-  line-height: 0;
-  content: "\203A";
+#range_vertical span::after{
+  content:'\21D5';
   font-size: 36px;
-  transform: rotate(90deg);
+  position: absolute;
+  top:40px;
+  left: 10px;
+  color:orange;
+}
+.range_horisontal-wrapper{
+ /*border:1px solid blue;*/
+ position: absolute;
+ top:50%;
+ left: 0;
+ width: 100%;
+}
+#range_horisontal{
+  width: 100% !important;
+  height: 10px !important;
+}
+#range_horisontal span::after{
+  content:'\21D4';
+  font-size: 36px;
+  position: absolute;
   top:20px;
   right: 20px;
-  z-index: -1;
-  color: grey;
+  color:orange;
+  background: red;
 }
-.wallpaper_constructor-calc{
-  color:white;
-  border-radius: 10px;
+.ui-slider{
+  border:none !important;
+  background: transparent !important;
+}
+.ui-slider-range{
+  background: transparent !important;
+}
+.ui-slider-handle{
+  height: 40px !important;
+  width:  40px !important;
+  border:none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  outline: none !important;
+}
+
+
+
+/*========= SIDEBAR ==========*/
+.wallpaper_constructor-sidebar{
+  /*border:1px solid yellow;*/
   padding: 10px;
-  width: 250px;
+  min-width: 300px;
 }
-.wallpaper_constructor-calc div{
-  line-height: 1em;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-}
-.wallpaper_constructor-calc button{
-  transition-duration: 1s;
-  color: white;
-  border:1px solid white;
-  border-radius: 5px;
-  margin:auto;
-  padding: 5px;
-  font-weight: bold;
-  font-size: 18px;
-}
-.wallpaper_constructor-calc button:hover{
-  transition-duration: 1s;
-}
-input[name="wallpaperSize"]{
-  padding-left: 10px;
-  height: 20px;
+
+input[name="input_size"]{
   width: 50px;
-  border-bottom: 1px solid grey;
-  margin-left: 10px;
-  background-color: rgba(0,0,0,0.1);
+  height: 20px;
+  padding: 0;
+  text-align: center;
+  background: rgba(0,0,0,0.1);
 }
-input[name="wallpaperSize"]:focus{
-  background-color: rgba(0,0,0,0)!important;
+input[name="input_size"]:focus{
+  background: rgba(0,0,0,0);
+
 }
