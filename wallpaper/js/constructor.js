@@ -1,4 +1,6 @@
-var wallpaper={};
+var wallpaper={
+  scale:'scale(1,1)',
+};
 
 
 // ========= ACTIONS =========
@@ -13,7 +15,8 @@ $(function imageGetData () {
   wallpaper.image=arr[1];
   wallpaper.discount=Number(arr[6]);
   $('.constructor-wallpaper img')[0].setAttribute('src','img/wallpaper/'+wallpaper.image);
-})
+});
+$('input[type="radio"], input[type="checkbox"]').prop('checked',false);
 
 
 // ========= LISTENERS =========
@@ -55,7 +58,56 @@ $('input[name="image_container"]').change(function () {
     container[1].setAttribute('src','img/wallpaper/'+wallpaper.image);
     container[0].setAttribute('src','');
   }
-})
+});
+$('input[type="radio"], input[type="checkbox"]').change(function(){
+  var radioArr=$('input[type="radio"]');
+  $(radioArr).parent().attr('class','radio-label');
+  for (var i = 0; i < radioArr.length; i++) {
+    if (radioArr[i].checked==true) {
+      radioArr[i].parentNode.className='radio-label checkbox-label_active';
+    }
+  }
+  var checkboxArr=$('input[type="checkbox"]');
+  $(checkboxArr).parent().attr('class','checkbox-label');
+  for (var n = 0; n < checkboxArr.length; n++) {
+    if (checkboxArr[n].checked==true) {
+      checkboxArr[n].parentNode.className='checkbox-label checkbox-label_active';
+    }
+  }
+});
+$('input[name="image_miror"]').change(function () {
+  var arr=$('input[name="image_miror"]');
+  if (arr[0].checked&&arr[1].checked){
+    wallpaper.scale='scale(-1)';
+  }else if (arr[0].checked) {
+    wallpaper.scale='scale(-1,1)';
+  }else if (arr[1].checked) {
+    wallpaper.scale='scale(1,-1)';
+  }else {
+    wallpaper.scale='scale(1)';
+  }
+  $('.constructor-wallpaper').css({
+    'transform':wallpaper.scale,
+  });
+});
+$('input[name="image_rotate"]').change(function () {
+  $('.constructor-wallpaper img').css({
+    'transform':'rotate('+this.value+'deg)',
+  });
+});
+$('input[name="wallpaper_roll"]').change(function () {
+  var absoluteSize=$('input[name="input_size"]')[0].value;
+  var relativeSize=$('.constructor-wallpaper')[1].offsetWidth;
+  var roll=$('.wallpaper_roll-item');
+  if (Number(absoluteSize)<Number(this.value)) {
+    $(roll).css({'display':'none',});
+  }else {
+    $(roll).css({'display':'block',});
+  }
+  var rollSize=this.value*relativeSize/absoluteSize;
+  $(roll).css({'width':rollSize+'px',});
+});
+
 
 // ========= FUNCTIONS =========
 
@@ -64,6 +116,12 @@ function wallpaperWidth (values) {
   section[0].style.width=(values[0]/10)+'%';
   section[1].style.width=((values[1]-values[0])/10)+'%';
   section[2].style.width=((1000-values[1])/10)+'%';
+  rollSizeResset();
+}
+function rollSizeResset () {
+ $('.wallpaper_roll-item').css({'display':'none',});
+ $('input[name="wallpaper_roll"]').prop('checked',false);
+ $('input[name="wallpaper_roll"]').parent().prop('className','radio-label');
 }
 function wallpaperHeight (values) {
   var section=$('.wall-vertical_section');
@@ -82,7 +140,8 @@ function inputHeightValue(values) {
   $('input[name="input_size"]')[1].value=Math.ceil(width);
 }
 
-// ========= UI SLIDER =========
+
+// ========= JQUERY UI SLIDER =========
 
 $( function() {
   $( "#range_horisontal" ).slider({

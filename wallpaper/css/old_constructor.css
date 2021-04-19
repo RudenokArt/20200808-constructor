@@ -242,7 +242,6 @@ input[name="wallSize"] {
   padding: 5px;
   line-height: 0;
   margin:0;
-
 }
 .wallpaper_constructor-select::after{
   position: absolute;
