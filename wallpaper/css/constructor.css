@@ -21,7 +21,7 @@ input[type="radio"]{
 }
 td{
   /*border:1px solid grey;*/
-  height: 20px;
+  height: 30px;
   line-height: 1em;
   min-width:50px;
   border-bottom: 2px solid rgba(0,0,0,0.1);
@@ -84,7 +84,7 @@ td{
   display: none;
   background:rgba(250,250,250,0.5);
 }
-.constructor-wallpaper{
+.constructor_wallpaper{
   position: absolute;
   top:0;
   left: 0;
@@ -93,9 +93,30 @@ td{
   box-sizing: border-box;
   overflow: hidden;
 }
-.constructor-wallpaper img{
+.constructor_wallpaper img{
   height: 100%;
   width: 100%;
+}
+.constructor_wallpaper-interior{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+.constructor_wallpaper-texture{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .range_vertical-wrapper{
   /*border:1px solid red;*/
@@ -161,9 +182,11 @@ td{
   /*border:1px solid yellow;*/
   padding: 10px;
   min-width: 300px;
-  display: flex;
 }
-
+.wallpaper_constructor-sidebar_options{
+  display: flex;
+  /*flex-wrap: wrap;*/
+}
 input[name="input_size"]{
   width: 50px;
   height: 20px;
@@ -180,6 +203,8 @@ input[name="input_size"]:focus{
   border: 5px solid grey;
   border-radius: 50%;
   display: inline-block;
+  height: 10px;
+  width: 10px;
 }
 .checkbox-label{
   border-radius: 0;
@@ -189,20 +214,10 @@ input[name="input_size"]:focus{
 .radio-label_active{
   transition-duration: 1s;
 }
-
-
-
-/*========= FOOTER ==========*/
-
-.wallpaper_constructor-footer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 5px;
-}
 .wallpaper_constructor-select{
   position: relative;
   display: inline-block;
+  margin: 10px;
 }
 .wallpaper_constructor-select select{
   width: 150px;
@@ -229,6 +244,7 @@ input[name="input_size"]:focus{
   border-radius: 10px;
   padding: 10px;
   width: 250px;
+  margin: 10px;
 }
 .wallpaper_constructor-calc div{
   line-height: 1em;
@@ -249,4 +265,47 @@ input[name="input_size"]:focus{
 }
 .wallpaper_constructor-calc button:hover{
   transition-duration: 1s;
+}
+
+
+/*========= FOOTER ==========*/
+
+.wallpaper_constructor-footer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px;
+}
+.wallpaper_interior-tape_wrapper{
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  width: 750px;
+  border:2px solid rgba(0,0,0,0.1);
+}
+.wallpaper_interior-tape{
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  margin:auto;
+  width: 80%;
+  height: 100px;
+}
+.wallpaper_interior-tape_item{
+  color:rgba(0,0,0,0.1);
+  width: 100px;
+  height: 100px !important;
+  border-left:1px solid white;
+  line-height: 1em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+.wallpaper-interior{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
 }

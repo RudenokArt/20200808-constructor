@@ -14,9 +14,17 @@ $(function imageGetData () {
   }
   wallpaper.image=arr[1];
   wallpaper.discount=Number(arr[6]);
-  $('.constructor-wallpaper img')[0].setAttribute('src','img/wallpaper/'+wallpaper.image);
+  $('.constructor_wallpaper img').attr('src','img/wallpaper/'+wallpaper.image);
+  //$('.constructor_wallpaper img')[0].setAttribute('src','img/wallpaper/'+wallpaper.image);
+});
+$(function getCartData () {
+  var str=localStorage.getItem('wallpaper');
+  favoriteArr=JSON.parse(str);
+  $('.wallpaper-cart_counter').html(favoriteArr.length);
 });
 $('input[type="radio"], input[type="checkbox"]').prop('checked',false);
+$('select[name="wallpaperTexture"]').prop('value','empty');
+
 
 
 // ========= LISTENERS =========
@@ -50,13 +58,15 @@ $('input[name="input_size"]').change(function () {
 });
 $('input[name="image_container"]').change(function () {
   var radio=$('input[name="image_container"]');
-  var container=$('.constructor-wallpaper img');
+  var container=$('.constructor_wallpaper img');
   if (radio[0].checked) {
-    container[0].setAttribute('src','img/wallpaper/'+wallpaper.image);
-    container[1].setAttribute('src','');
+    container[0].style.display='block';
+    container[1].style.display='none';
+    // container[0].setAttribute('src','img/wallpaper/'+wallpaper.image);
+    // container[1].setAttribute('src','');
   }else{
-    container[1].setAttribute('src','img/wallpaper/'+wallpaper.image);
-    container[0].setAttribute('src','');
+    container[0].style.display='none';
+    container[1].style.display='block';
   }
 });
 $('input[type="radio"], input[type="checkbox"]').change(function(){
@@ -86,18 +96,18 @@ $('input[name="image_miror"]').change(function () {
   }else {
     wallpaper.scale='scale(1)';
   }
-  $('.constructor-wallpaper').css({
+  $('.constructor_wallpaper').css({
     'transform':wallpaper.scale,
   });
 });
 $('input[name="image_rotate"]').change(function () {
-  $('.constructor-wallpaper img').css({
+  $('.constructor_wallpaper img').css({
     'transform':'rotate('+this.value+'deg)',
   });
 });
 $('input[name="wallpaper_roll"]').change(function () {
   var absoluteSize=$('input[name="input_size"]')[0].value;
-  var relativeSize=$('.constructor-wallpaper')[1].offsetWidth;
+  var relativeSize=$('.constructor_wallpaper')[1].offsetWidth;
   var roll=$('.wallpaper_roll-item');
   if (Number(absoluteSize)<Number(this.value)) {
     $(roll).css({'display':'none',});
@@ -107,16 +117,36 @@ $('input[name="wallpaper_roll"]').change(function () {
   var rollSize=this.value*relativeSize/absoluteSize;
   $(roll).css({'width':rollSize+'px',});
 });
-
+$('.wallpaper_interior-tape_item').click(function () {
+  var img=this.innerHTML.trim();
+  $('.constructor_wallpaper-interior').css({
+    'background-image':'url(img/interior/'+img+')',
+  });
+});
+$('select[name="wallpaperTexture"]').change(function(){
+  $('.constructor_wallpaper-texture').css({
+    'background-image':'url(img/texture/'+this.value.trim()+')'
+  });
+});
 
 // ========= FUNCTIONS =========
 
+function calculation () {
+  var arr=$('input[name="input_size"]');
+  var width=Number(arr[0].value);
+  var height=Number(arr[1].value);
+  var cost=Math.round((height/100)*(width/100)*1000);
+  var nodeArr=$('.wallpaper_constructor-calc span');
+  nodeArr[0].innerHTML=cost;
+  nodeArr[1].innerHTML=Math.ceil(cost*(100-wallpaper.discount)/100);
+}
 function wallpaperWidth (values) {
   var section=$('.wall-horizontal_section');
   section[0].style.width=(values[0]/10)+'%';
   section[1].style.width=((values[1]-values[0])/10)+'%';
   section[2].style.width=((1000-values[1])/10)+'%';
   rollSizeResset();
+  calculation();
 }
 function rollSizeResset () {
  $('.wallpaper_roll-item').css({'display':'none',});
@@ -128,6 +158,7 @@ function wallpaperHeight (values) {
   section[0].style.height=((1000-values[1])/10)+'%';
   section[1].style.height=((values[1]-values[0])/10)+'%';
   section[2].style.height=(values[0]/10)+'%';
+  calculation();
 }
 function iputWidthValue(values) {
   var relation=wallpaper.relativeSize[0]/wallpaper.absoluteSize[0];
@@ -142,7 +173,6 @@ function inputHeightValue(values) {
 
 
 // ========= JQUERY UI SLIDER =========
-
 $( function() {
   $( "#range_horisontal" ).slider({
     orientation: "horizontal",
@@ -184,3 +214,15 @@ $( function () {
 // ========= MASK INPUT =========
 
 $("input[name='input_size']").mask("?999");
+
+
+// ========= SLICK UI SLIDER =========
+
+// Карусель интерьеров
+  $(document).ready(function(){
+    $('.wallpaper_interior-tape').slick({ 
+      //dots: true, 
+      slidesToShow: 5, 
+      slidesToScroll: 1, 
+    });
+  });

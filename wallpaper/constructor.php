@@ -4,6 +4,8 @@
 <?php include_once '../admin/php/select-simple.php' ?>
 <?php $interiorArr=selectSimple('SELECT * FROM `wallpaper_interior`');?>
 <?php $textureArr=selectSimple('SELECT * FROM `wallpaper_texture`');?>
+<?php $rollArr=['105','137','150','160','260']; ?>
+<?php $rotateArr=[0,90,180,270] ?>
 <link rel="stylesheet" href="css/constructor.css?<?php echo time() ?>">
 <link rel="stylesheet" href="css/data-style.css?<?php echo time() ?>">
 <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
@@ -22,15 +24,17 @@
       </div>
     </div>
     <div class="constructor_wall">
-      <div class="constructor-wallpaper">
-        <img src="" alt=" ">
+      <div class="constructor_wallpaper">
+        <img src=" " alt=" ">
       </div>
+      <div class="constructor_wallpaper-texture"></div>
+      <div class="constructor_wallpaper-interior"></div>
       <div class="wall-vertical_section constructor_curtain"></div>
       <div class="wall-vertical_section">
         <div class="wall-horizontal_section constructor_curtain"></div>
         <div class="wall-horizontal_section">
-          <div class="constructor-wallpaper">
-            <img src="" alt=" ">
+          <div class="constructor_wallpaper">
+            <img src=" " alt=" ">
             <div class="wallpaper_roll-wrapper">
               <div class="wallpaper_roll">
                 <?php for ($i=0; $i < 10; $i++) {?>
@@ -50,115 +54,127 @@
         <div id="range_horisontal" class="range_size"></div>
       </div>
     </div>
+     <div class="wallpaper_interior-tape_wrapper">
+    <div class="wallpaper_interior-tape">
+      <?php foreach ($interiorArr as $key => $value) {?>
+        <div class="wallpaper_interior-tape_item" 
+        style="background-image: url(img/interior/<?php echo $value['interior'] ?>);">
+        <?php echo $value['interior'] ?>
+      </div>
+    <?php } ?>
+  </div>
+</div>
   </div>
 
   <div class="wallpaper_constructor-sidebar">
-    <table>
-      <tr>
-        <td>Ширина:</td>
-        <td><input type="text" name="input_size" placeholder="0"></td>
-        <td>см.</td>
-      </tr>
-      <tr>
-        <td>Высота:</td>
-        <td><input type="text" name="input_size" placeholder="0"></td>
-        <td>см.</td>
-      </tr>
-      <tr>
-        <td>Обрезать</td>
-        <td>
-          <label class="radio-label">
-            <input type="radio" name="image_container">
-          </label>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Вместить</td>
-        <td>
-          <label class="radio-label">
-            <input type="radio" name="image_container">
-          </label>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Зеркало по <br>горизонтали </td>
-        <td>
-          <label class="checkbox-label">
-            <input type="checkbox" name="image_miror">
-          </label>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Зеркало по <br> вертикали</td>
-        <td>
-          <label class="checkbox-label">
-            <input type="checkbox" name="image_miror">
-          </label>
-        </td>
-        <td></td>
-      </tr>
-      <?php $rotateArr=[0,90,180,270] ?>
-      <?php for ($i=0; $i < sizeof($rotateArr); $i++) {  ?>
-        <tr>
-          <td>
-            Поворот -
-            <?php echo $rotateArr[$i] ?><sup>0</sup>
-          </td>
-          <td>
-            <label class="radio-label">
-              <input type="radio" name="image_rotate" 
-              value="<?php echo $rotateArr[$i] ?>">
-            </label>
-          </td>
-          <td>
-          </td>
-        </tr>
-      <?php } ?>
-    </table>
+    <div class="wallpaper_constructor-sidebar_options">
+      <div>
+        <table>
+          <?php for ($i=0; $i < count($rollArr); $i++) {  ?>
+            <tr>
+              <td>Рулон:</td>
+              <td>
+                <label class="radio-label">
+                  <input type="radio" name="wallpaper_roll" 
+                  value="<?php echo $rollArr[$i] ?>">
+                </label>
+              </td>
+              <td><?php echo $rollArr[$i] ?> см.</td>
+            </tr>
+          <?php } ?>
+          <tr>
+            <td>Ширина:</td>
+            <td><input type="text" name="input_size" placeholder="0"></td>
+            <td>см.</td>
+          </tr>
+          <tr>
+            <td>Высота:</td>
+            <td><input type="text" name="input_size" placeholder="0"></td>
+            <td>см.</td>
+          </tr>
+          <tr>
+            <td colspan="2">Текстура:</td>
+          </tr>
+        </table>
+        <div class="wallpaper_constructor-select">
+          <select name="wallpaperTexture">
+             <option value="empty"></option>
+            <?php foreach ($textureArr as $key => $value) {?>
+              <option value="<?php echo $value['texture']; ?>">
+                <?php echo explode('.',$value['texture'])[0]; ?>
+              </option>
+            <?php }  ?>
+          </select>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <td>Обрезать</td>
+            <td>
+              <label class="radio-label">
+                <input type="radio" name="image_container">
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Вместить</td>
+            <td>
+              <label class="radio-label">
+                <input type="radio" name="image_container">
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Зеркало по <br>горизонтали </td>
+            <td>
+              <label class="checkbox-label">
+                <input type="checkbox" name="image_miror">
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Зеркало по <br> вертикали</td>
+            <td>
+              <label class="checkbox-label">
+                <input type="checkbox" name="image_miror">
+              </label>
+            </td>
+          </tr>
+          <?php for ($i=0; $i < sizeof($rotateArr); $i++) {  ?>
+            <tr>
+              <td>
+                Поворот 
+                <?php echo $rotateArr[$i] ?><sup>0</sup>
+              </td>
+              <td>
+                <label class="radio-label">
+                  <input type="radio" name="image_rotate" 
+                  value="<?php echo $rotateArr[$i] ?>">
+                </label>
+              </td>
+            </tr>
+          <?php } ?>
+        </table>
+      </div>
+    </div>
+
+    <div class="wallpaper_constructor-calc">
+      <div>Стоимость: <span>0</span> руб.</div>
+      <div>Сo скидкой: <span>0</span> руб. </div>
+      <div>
+        <button>
+          <i class="fa fa-cart-plus" aria-hidden="true"></i>
+          Добавить
+        </button>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="wallpaper_constructor-footer">
-  <div>
-    <?php $rollArr=['105','137','150','160','260']; ?>
-    <table>
-      <?php for ($i=0; $i < count($rollArr); $i++) {  ?>
-        <tr>
-          <td>Рулон:</td>
-          <td>
-            <label class="radio-label">
-              <input type="radio" name="wallpaper_roll" 
-              value="<?php echo $rollArr[$i] ?>">
-            </label>
-          </td>
-          <td><?php echo $rollArr[$i] ?> см.</td>
-        </tr>
-      <?php } ?>
-    </table>
-  </div>
-  <div class="wallpaper_constructor-calc">
-    <div>Стоимость: <span>1000</span> руб.</div>
-    <div>Сo скидкой: <span>1000</span> руб. </div>
-    <div>
-      <button>
-        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-        Добавить
-      </button>
-    </div>
-  </div>
-  <div class="wallpaper_constructor-select">
-    <select name="wallpaperTexture">
-      <?php foreach ($textureArr as $key => $value) {?>
-        <option value="<?php echo $value['texture']; ?>">
-          <?php echo explode('.',$value['texture'])[0]; ?>
-        </option>
-      <?php }  ?>
-    </select>
-  </div>
-</div>
+<div class="wallpaper_constructor-footer"></div>
+
 </div>
 
 <div class="test"></div>
