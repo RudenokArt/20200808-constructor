@@ -1,5 +1,4 @@
 table{
-  margin:auto;
 }
 input[type="range"]{
   opacity: 0;
@@ -20,11 +19,17 @@ input[type="radio"]{
   line-height: 0;
 }
 td{
-  /*border:1px solid grey;*/
-  height: 30px;
   line-height: 1em;
-  min-width:50px;
   border-bottom: 2px solid rgba(0,0,0,0.1);
+  height: 40px;
+  padding: 0;
+  min-width:30px;
+}
+th{
+  line-height: 1em;
+  color:grey;
+  height: 40px !important;
+  /*border-bottom: 2px solid rgba(0,0,0,0.5);*/
 }
 .wallpaper_constructor-container{
   padding: 10px;
@@ -48,11 +53,13 @@ td{
   text-decoration: underline;
 }
 .constructor_wall{
-  border:2px solid rgba(0,0,0,0.1);
+  /*border:2px solid rgba(0,0,0,0.1);*/
   position: relative;
   height: 500px;
   width: 750px;
+  /*overflow: hidden;*/
 }
+.constructor_wallpaper-size_sensor,
 .wallpaper_roll-wrapper{
   position: absolute;
   width: 100%;
@@ -95,12 +102,16 @@ td{
 }
 .constructor_wallpaper img{
   height: 100%;
+  /*width: 100%;*/
+}
+.constructor_wallpaper-interior_wrapper{
+  position: absolute;
+  top:12%;
+  left: 0;
+  height: 100%;
   width: 100%;
 }
 .constructor_wallpaper-interior{
-  position: absolute;
-  top:0;
-  left: 0;
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
@@ -187,6 +198,9 @@ td{
   display: flex;
   /*flex-wrap: wrap;*/
 }
+.wallpaper_constructor-sidebar_options div{
+  padding: 5px;
+}
 input[name="input_size"]{
   width: 50px;
   height: 20px;
@@ -217,7 +231,6 @@ input[name="input_size"]:focus{
 .wallpaper_constructor-select{
   position: relative;
   display: inline-block;
-  margin: 10px;
 }
 .wallpaper_constructor-select select{
   width: 150px;
@@ -234,7 +247,7 @@ input[name="input_size"]:focus{
   content: "\203A";
   font-size: 36px;
   transform: rotate(90deg);
-  top:20px;
+  top:25px;
   right: 20px;
   z-index: -1;
   color: grey;
@@ -280,7 +293,7 @@ input[name="input_size"]:focus{
   background-color: rgba(0,0,0,0.4);
   display: flex;
   width: 750px;
-  border:2px solid rgba(0,0,0,0.1);
+  /*border:2px solid rgba(0,0,0,0.1);*/
 }
 .wallpaper_interior-tape{
   border-left: 1px solid white;

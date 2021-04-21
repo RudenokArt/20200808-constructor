@@ -4,7 +4,9 @@ var wallpaper={
 
 
 // ========= ACTIONS =========
-$('input[name="input_size"]').prop('value','0');
+
+$('.constructor_wallpaper img')[1].style.display='none';
+$('input[name="input_size"]').prop('value','');
 $('input[name="image_container"]')[0].checked=true;
 $(function imageGetData () {
   var data=localStorage.getItem('wallpaper_constructor');
@@ -15,16 +17,21 @@ $(function imageGetData () {
   wallpaper.image=arr[1];
   wallpaper.discount=Number(arr[6]);
   $('.constructor_wallpaper img').attr('src','img/wallpaper/'+wallpaper.image);
-  //$('.constructor_wallpaper img')[0].setAttribute('src','img/wallpaper/'+wallpaper.image);
+  wallpaper.category=arr[3];
+  wallpaper.subcategory=arr[4];
+  wallpaper.image=arr[2];
+  var navigation = $('.constractor-navigation span');
+  navigation[1].innerHTML=wallpaper.category;
+  navigation[2].innerHTML=wallpaper.subcategory;
+  navigation[3].innerHTML=wallpaper.image;
 });
-$(function getCartData () {
-  var str=localStorage.getItem('wallpaper');
-  favoriteArr=JSON.parse(str);
-  $('.wallpaper-cart_counter').html(favoriteArr.length);
-});
+getCartData();
 $('input[type="radio"], input[type="checkbox"]').prop('checked',false);
 $('select[name="wallpaperTexture"]').prop('value','empty');
-
+setTimeout(function () {
+  $('.wallpaper_interior-tape_item')[0].click();
+  $('input[name="wallpaper_roll"]').parent()[0].click();
+}, 2000);
 
 
 // ========= LISTENERS =========
@@ -55,6 +62,7 @@ $('input[name="input_size"]').change(function () {
     $('.range_size').css({'display':'block'});
     $('.constructor_curtain').css({'display':'block'});
   }
+  rollSizeBorder();
 });
 $('input[name="image_container"]').change(function () {
   var radio=$('input[name="image_container"]');
@@ -105,18 +113,7 @@ $('input[name="image_rotate"]').change(function () {
     'transform':'rotate('+this.value+'deg)',
   });
 });
-$('input[name="wallpaper_roll"]').change(function () {
-  var absoluteSize=$('input[name="input_size"]')[0].value;
-  var relativeSize=$('.constructor_wallpaper')[1].offsetWidth;
-  var roll=$('.wallpaper_roll-item');
-  if (Number(absoluteSize)<Number(this.value)) {
-    $(roll).css({'display':'none',});
-  }else {
-    $(roll).css({'display':'block',});
-  }
-  var rollSize=this.value*relativeSize/absoluteSize;
-  $(roll).css({'width':rollSize+'px',});
-});
+$('input[name="wallpaper_roll"]').change(rollSizeBorder);
 $('.wallpaper_interior-tape_item').click(function () {
   var img=this.innerHTML.trim();
   $('.constructor_wallpaper-interior').css({
@@ -128,9 +125,45 @@ $('select[name="wallpaperTexture"]').change(function(){
     'background-image':'url(img/texture/'+this.value.trim()+')'
   });
 });
+$('button[name="wallpaper_constructor-favorite_add"]').click(function () {
+  var node=$('.wallpaper-cart_image');
+  $(node).prop('className','wallpaper-cart_image-active');
+    setTimeout(function(){$(node).prop('className','wallpaper-cart_image');}, 100);
+    var item=localStorage.getItem('wallpaper_constructor');
+    var str=localStorage.getItem('wallpaper');
+    var arr=JSON.parse(str);
+    if (!arr.includes(item,0)) {arr.push(item);}
+    var json = JSON.stringify(arr);
+    localStorage.setItem('wallpaper', json);
+    getCartData();
+});
+$('.constractor-navigation span').click(function () {
+  var navigation={};
+  if (this.className=='constractor-root'){
+    navigation.category='empty';
+    navigation.subcategory='empty';
+  }else if (this.className=='constractor-category'){
+    navigation.category=wallpaper.category;
+    navigation.subcategory='empty';
+  }else if (this.className=='constractor-subcategory'){
+    navigation.category=wallpaper.category;
+    navigation.subcategory=wallpaper.subcategory;
+  }
+  var str=JSON.stringify(navigation);
+  localStorage.setItem('wallpaper_navigation', str);
+  if (this.className!='constractor-image') {
+    document.location.href='index.php';
+  }
+});
+
 
 // ========= FUNCTIONS =========
 
+function getCartData () {
+  var str=localStorage.getItem('wallpaper');
+  favoriteArr=JSON.parse(str);
+  $('.wallpaper-cart_counter').html(favoriteArr.length);
+}
 function calculation () {
   var arr=$('input[name="input_size"]');
   var width=Number(arr[0].value);
@@ -147,11 +180,29 @@ function wallpaperWidth (values) {
   section[2].style.width=((1000-values[1])/10)+'%';
   rollSizeResset();
   calculation();
+  //rollSizeBorder();
+}
+function rollSizeBorder () {
+  var rollWidth=0;
+  var radio=$('input[name="wallpaper_roll"]');
+  for (var i = 0; i < radio.length; i++) {
+    if (radio[i].checked) {rollWidth=radio[i].value;}
+  }
+  var absoluteSize=$('input[name="input_size"]')[0].value;
+  var relativeSize=$('.constructor_wallpaper-size_sensor')[0].offsetWidth;
+  var roll=$('.wallpaper_roll-item');
+  if (Number(absoluteSize)<Number(rollWidth)) {
+    $(roll).css({'display':'none',});
+  }else {
+    $(roll).css({'display':'block',});
+  }
+  var rollSize=rollWidth*relativeSize/absoluteSize;
+  $(roll).css({'width':rollSize+'px',});
 }
 function rollSizeResset () {
- $('.wallpaper_roll-item').css({'display':'none',});
- $('input[name="wallpaper_roll"]').prop('checked',false);
- $('input[name="wallpaper_roll"]').parent().prop('className','radio-label');
+ // $('.wallpaper_roll-item').css({'display':'none',});
+ // $('input[name="wallpaper_roll"]').prop('checked',false);
+ // $('input[name="wallpaper_roll"]').parent().prop('className','radio-label');
 }
 function wallpaperHeight (values) {
   var section=$('.wall-vertical_section');

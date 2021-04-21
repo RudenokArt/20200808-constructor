@@ -30,6 +30,17 @@ var pagination={
 };
 
 // ===== ACTIONS =====
+$(function () {
+  var str=localStorage.getItem('wallpaper_navigation');
+  if (str!=null&&str!=''&&str!=undefined) {
+    var data=JSON.parse(str);
+    navigation.category=data.category;
+    navigation.subcategory=data.subcategory;
+  }
+  navigation.navSet();
+  filterReset();
+
+});
 filterReset();
 navigation.navSet();
 checkboxSetData();
@@ -52,6 +63,7 @@ $('.wallpaper-galery_item-check').change(cartAnime);
 $('.number-page').click(function () {
   pagination.page=this.innerHTML.trim();
   pageSet();
+  subcategorySet();
 });
 $('.first-page').click(function () {
   pagination.page=1;
