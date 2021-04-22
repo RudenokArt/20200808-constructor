@@ -44,7 +44,7 @@ $wallpaperStyle='
 .wallpaper-galery_item-button{
   color:'.$dataArr["fontColor"].';
 }
-.wallpaper_constructor-calc button:hover,
+.wallpaper_constructor-button:hover,
 .sidebar-category:hover,.wallpaper-galery_item-button:hover,
 .sidebar-subcategory:hover{
   background-color: '.$dataArr["hoverColor"].';
@@ -53,7 +53,7 @@ $wallpaperStyle='
 .wallpaper-navigation,.constractor-navigation{
   color:'.$dataArr["themeColor"].';
 }
-.wallpaper_constructor-calc, .wallpaper_constructor-calc button,
+.wallpaper_constructor-calc, .wallpaper_constructor-button,
 .category-icon,.wallpaper-galery_item-button,
 .radio-label_actve,.checkbox-label_active{
   background-color: '.$dataArr["themeColor"].';

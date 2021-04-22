@@ -5,4 +5,5 @@ if (isset($_POST['id']))
 	{$id=$_POST['id'];}
 echo $id;
 $mysqli->query('DELETE FROM `constructor_category` WHERE `id`="'.$id.'"');
+unlink('icon/'.$id.'.svg');
 ?>

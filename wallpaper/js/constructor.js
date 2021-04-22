@@ -27,7 +27,6 @@ $(function imageGetData () {
 });
 getCartData();
 $('input[type="radio"], input[type="checkbox"]').prop('checked',false);
-$('select[name="wallpaperTexture"]').prop('value','empty');
 setTimeout(function () {
   $('.wallpaper_interior-tape_item')[0].click();
   $('input[name="wallpaper_roll"]').parent()[0].click();
@@ -78,7 +77,7 @@ $('input[name="image_container"]').change(function () {
   }
 });
 $('input[type="radio"], input[type="checkbox"]').change(function(){
-  var radioArr=$('input[type="radio"]');
+  var radioArr=$('input[class="round_radio"]');
   $(radioArr).parent().attr('class','radio-label');
   for (var i = 0; i < radioArr.length; i++) {
     if (radioArr[i].checked==true) {
@@ -120,11 +119,6 @@ $('.wallpaper_interior-tape_item').click(function () {
     'background-image':'url(img/interior/'+img+')',
   });
 });
-$('select[name="wallpaperTexture"]').change(function(){
-  $('.constructor_wallpaper-texture').css({
-    'background-image':'url(img/texture/'+this.value.trim()+')'
-  });
-});
 $('button[name="wallpaper_constructor-favorite_add"]').click(function () {
   var node=$('.wallpaper-cart_image');
   $(node).prop('className','wallpaper-cart_image-active');
@@ -155,7 +149,31 @@ $('.constractor-navigation span').click(function () {
     document.location.href='index.php';
   }
 });
-
+$('input[name="texture_radio"]').change(function () {
+  var color=$('.wallpaper_constructor-calc').css('background-color');
+  var arr=$('input[name="texture_radio"]');
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].checked) {$(arr[i]).parent().css({'border-color':color});}
+    else {$(arr[i]).parent().css({'border-color':'white'});}
+  }
+  $('.constructor_wallpaper-texture').css({
+    'background-image':'url(img/texture/'+this.value.trim()+')'
+  });
+});
+$('.wallpaper_texture-block_item i').click(function () {
+  $('.wallpaper_constructor-popup_wrapper').css({
+    'display':'flex',
+  });
+});
+$('button[name="video_button"]').click(function () {
+  $('.wallpaper_constructor-video_block').fadeIn();
+});
+$('button[name="video_button-close"]').click(function () {
+  $('.wallpaper_constructor-video_block').fadeOut();
+});
+$('button[name="wallpaper_constructor-popup_close"]').click(function () {
+  $('.wallpaper_constructor-popup_wrapper').fadeOut();
+});
 
 // ========= FUNCTIONS =========
 

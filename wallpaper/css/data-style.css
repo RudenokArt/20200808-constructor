@@ -2,7 +2,7 @@
 .wallpaper-galery_item-button{
   color:#FFFDF8;
 }
-.wallpaper_constructor-calc button:hover,
+.wallpaper_constructor-button:hover,
 .sidebar-category:hover,.wallpaper-galery_item-button:hover,
 .sidebar-subcategory:hover{
   background-color: #56B3FF;
@@ -11,7 +11,7 @@
 .wallpaper-navigation,.constractor-navigation{
   color:#51C8FF;
 }
-.wallpaper_constructor-calc, .wallpaper_constructor-calc button,
+.wallpaper_constructor-calc, .wallpaper_constructor-button,
 .category-icon,.wallpaper-galery_item-button,
 .radio-label_actve,.checkbox-label_active{
   background-color: #51C8FF;

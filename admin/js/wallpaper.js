@@ -49,6 +49,8 @@ $('.category-manager_add').click(function(){
 });
 $('body').delegate('button[name="category-manager_delete"]','click',function(){
   categoryManager.category=this.value;
+  categoryManager.id=
+  $(this).parent().parent().children('.category-manager_id').html().trim();
   var sql='SELECT * FROM `wallpaper_subcategory` WHERE `category`="'+this.value+'"';
   $.post('../wallpaper/php/select.php',{data:sql}, function (data) {
    var arr=JSON.parse(data);
@@ -63,9 +65,13 @@ $('body').delegate('button[name="category-manager_delete"]','click',function(){
         }else{
           var ask=confirm('Категория '+categoryManager.category+' будет удалена!');
           if (ask) {
-            var sql='DELETE FROM `wallpaper_category` WHERE `category`="'+
-            categoryManager.category+'"';
-            $.post('php/update.php',{data:sql}, сategorySelectGetData);
+            var sql={};
+            sql.table='wallpaper_category';
+            sql.id=categoryManager.id;
+            sql.path='../../wallpaper/img/icon/';
+            sql.file=categoryManager.id+'.svg';
+            var str=JSON.stringify(sql);
+            $.post('php/delete_item.php',{data:str},сategorySelectGetData);
           }
         }
       });

@@ -185,7 +185,35 @@ th{
   cursor: pointer !important;
   outline: none !important;
 }
-
+.wallpaper_constructor-footer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px;
+}
+.wallpaper_interior-tape_wrapper{
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  width: 750px;
+  /*border:2px solid rgba(0,0,0,0.1);*/
+}
+.wallpaper_interior-tape{
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  margin:auto;
+  width: 80%;
+  height: 100px;
+}
+.wallpaper_interior-tape_item{
+  color:rgba(0,0,0,0.1);
+  width: 100px;
+  height: 100px !important;
+  border-left:1px solid white;
+  line-height: 1em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
 
 
 /*========= SIDEBAR ==========*/
@@ -279,46 +307,123 @@ input[name="input_size"]:focus{
 .wallpaper_constructor-calc button:hover{
   transition-duration: 1s;
 }
+input[name="texture_radio"]{
+  opacity: 0;
+  
+}
+.wallpaper_texture-block{
+  display: flex;
+  flex-wrap: wrap;
+}
+.wallpaper_texture-block_item{
+  position: relative;
+  width: 75px;
+  height: 75px;
+  display: block;
+  line-height: 1em !important;
+  border:2px solid white;
+  cursor: pointer;
+}
+.wallpaper_texture-block_item i{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 20px;
+  color:grey;
+  cursor: help;
+}
+.wallpaper_texture-block span{
+  position: absolute;
+  top:10px;
+  left:10px;
+}
 
 
 /*========= FOOTER ==========*/
 
-.wallpaper_constructor-footer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 5px;
-}
-.wallpaper_interior-tape_wrapper{
-  background-color: rgba(0,0,0,0.4);
-  display: flex;
-  width: 750px;
-  /*border:2px solid rgba(0,0,0,0.1);*/
-}
-.wallpaper_interior-tape{
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  margin:auto;
-  width: 80%;
-  height: 100px;
-}
-.wallpaper_interior-tape_item{
-  color:rgba(0,0,0,0.1);
-  width: 100px;
-  height: 100px !important;
-  border-left:1px solid white;
-  line-height: 1em;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
-}
-.wallpaper-interior{
-  position: absolute;
+
+
+
+.wallpaper_constructor-popup_wrapper{
+  position: fixed;
   top:0;
   left: 0;
   height: 100%;
   width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+}
+.wallpaper_constructor-popup{
+  position: relative;
+  margin:auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 0;
+}
+.wallpaper_constructor-popup_title{
+  padding: 10px !important;
+  font-weight: bold;
+  font-size: 20px;
+  color: grey;
+}
+.wallpaper_constructor-popup div{
+  padding: 0;
+  margin:0;
+  width: 300px;
+  line-height: 1em;
+  text-align: center;
+  position: relative;
+  background-color:transparent;
+}
+.wallpaper_constructor-popup table{
+  margin:auto;
+}
+.wallpaper_constructor-popup td,
+.wallpaper_constructor-popup th{
+  padding: 5px;
+  height: 0 !important;
+  text-align: left;
+}
+.wallpaper_constructor-popup button{
+  font-weight: bold;
+  color: white;
+  margin:auto;
+}
+.wallpaper_constructor-popup_img{
+  margin:0;
+  width: 300px;
+  height: 300px;
+  background-image: url(../img/wallpaper/04185.jpg);
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
+  background-size: cover;
+}
+.wallpaper_constructor-popup_info{
+  position: absolute !important;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.wallpaper_constructor-popup_textute{
+  position: absolute !important;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url(../img/texture/antico.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.2;
+}
+.wallpaper_constructor-video_block{
+  position: absolute !important;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color:grey !important;
+  display: none;
 }
