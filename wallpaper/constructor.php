@@ -11,159 +11,194 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
 
 <div class="wallpaper_constructor-container">
-  <div class="wallpaper_constructor-content">
+  <div class="option_button">
+    <button class="wallpaper_constructor-button">
+     <i class="fa fa-cog" aria-hidden="true"></i> 
+   </button>
+   <button class="wallpaper_constructor-button" style="display: none">
+     <i class="fa fa-times" aria-hidden="true"></i> 
+   </button>
+ </div>
+ <div class="wallpaper_constructor-content">
 
-    <div class="constractor-navigation_wrapper">
-      <div class="constractor-navigation">
-        <span class="constractor-root">Фотообои</span>
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        <span class="constractor-category">category</span>
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        <span class="constractor-subcategory">subcategory</span>
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        <span class="constractor-image">image_name</span>
-      </div>
+  <div class="constractor-navigation_wrapper">
+    <div class="constractor-navigation">
+      <span class="constractor-root">Фотообои</span>
+      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+      <span class="constractor-category">category</span>
+      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+      <span class="constractor-subcategory">subcategory</span>
+      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+      <span class="constractor-image">image_name</span>
     </div>
+  </div>
 
-    <div class="constructor_wall">
-      <div class="constructor_wallpaper">
-        <img src=" " alt=" ">
-      </div>
-      <div class="constructor_wallpaper-texture"></div>
-      <div class="wall-vertical_section constructor_curtain"></div>
-      <div class="wall-vertical_section">
-        <div class="wall-horizontal_section constructor_curtain"></div>
-        <div class="wall-horizontal_section">
-          <div class="constructor_wallpaper">
-            <img src=" " alt=" ">
-            <div class="constructor_wallpaper-size_sensor">
-              <div class="wallpaper_roll-wrapper">
-                <div class="wallpaper_roll">
-                  <?php for ($i=0; $i < 10; $i++) {?>
-                    <div class="wallpaper_roll-item"></div>
-                  <?php } ?>
-                </div>
+  <div class="constructor_wall">
+    <div class="constructor_wallpaper">
+      <img src=" " alt=" ">
+    </div>
+    <div class="constructor_wallpaper-texture"></div>
+    <div class="wall-vertical_section constructor_curtain"></div>
+    <div class="wall-vertical_section">
+      <div class="wall-horizontal_section constructor_curtain"></div>
+      <div class="wall-horizontal_section">
+        <div class="constructor_wallpaper">
+          <img src=" " alt=" ">
+          <div class="constructor_wallpaper-size_sensor">
+            <div class="wallpaper_roll-wrapper">
+              <div class="wallpaper_roll">
+                <?php for ($i=0; $i < 10; $i++) {?>
+                  <div class="wallpaper_roll-item"></div>
+                <?php } ?>
               </div>
             </div>
           </div>
         </div>
-        <div class="wall-horizontal_section  constructor_curtain"></div>
       </div>
-      <div class="constructor_wallpaper-interior_wrapper">
-        <div class="constructor_wallpaper-interior"></div>
-        <div class="wallpaper_interior-tape_wrapper">
-          <div class="wallpaper_interior-tape">
-            <?php foreach ($interiorArr as $key => $value) {?>
-              <div class="wallpaper_interior-tape_item" 
-              style="background-image: url(img/interior/<?php echo $value['interior'] ?>);">
-              <?php echo $value['interior'] ?>
-            </div>
-          <?php } ?>
-        </div>
+      <div class="wall-horizontal_section  constructor_curtain"></div>
+    </div>
+    <div class="constructor_wallpaper-interior_wrapper">
+      <div class="constructor_wallpaper-interior"></div>
+      <div class="wallpaper_interior-tape_wrapper">
+        <div class="wallpaper_interior-tape">
+          <?php foreach ($interiorArr as $key => $value) {?>
+            <div class="wallpaper_interior-tape_item" 
+            style="background-image: url(img/interior/<?php echo $value['interior'] ?>);">
+            <?php echo $value['interior'] ?>
+          </div>
+        <?php } ?>
       </div>
-    </div>
-    <div class="wall-vertical_section constructor_curtain"></div>
-    <div class="range_vertical-wrapper">
-      <div id="range_vertical" class="range_size"></div>
-    </div>
-    <div class="range_horisontal-wrapper">
-      <div id="range_horisontal" class="range_size"></div>
     </div>
   </div>
-
+  <div class="wall-vertical_section constructor_curtain"></div>
+  <div class="range_vertical-wrapper">
+    <div id="range_vertical" class="range_size"></div>
+  </div>
+  <div class="range_horisontal-wrapper">
+    <div id="range_horisontal" class="range_size"></div>
+  </div>
+</div>
+<div class="wallpaper_constructor-button_block">
+  <div>
+    <button name="image_save"
+    class="wallpaper_constructor-button">
+      <i class="fa fa-download" aria-hidden="true"></i>
+      Сохранить <br> изображение
+    </button>
+  </div>
+</div>
 </div>
 
 <div class="wallpaper_constructor-sidebar">
-  <div class="wallpaper_constructor-sidebar_options">
-    <div>
-      <table>
-        <tr>
-          <th colspan="3">Размеры:</th>
-        </tr>
-        <tr>
-          <td>Ширина:</td>
-          <td><input type="text" name="input_size" placeholder=""></td>
-          <td>см.</td>
-        </tr>
-        <tr>
-          <td>Высота:</td>
-          <td><input type="text" name="input_size" placeholder=""></td>
-          <td>см.</td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <th colspan="2">Ширина рулона:</th>
-        </tr>
-        <?php for ($i=0; $i < count($rollArr); $i++) {  ?>
+
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">Опции</a></li>
+      <li><a href="#tabs-2">Фактуры</a></li>
+    </ul>
+    <div id="tabs-1">
+      <div class="wallpaper_constructor-sidebar_options">
+        <div>
+          <table>
+            <tr>
+              <th colspan="3">Размеры:</th>
+            </tr>
+            <tr>
+              <td>Ширина: </td>
+              <td><input type="text" name="input_size" placeholder=""></td>
+              <td>см.</td>
+            </tr>
+            <tr>
+              <td>Высота: </td>
+              <td><input type="text" name="input_size" placeholder=""></td>
+              <td>см.</td>
+            </tr>
+            <tr>
+              <td colspan="2">Сброс размеров</td>
+              <td>
+                <button name="size_resset" 
+                class="wallpaper_constructor-button">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th colspan="2">Ширина рулона:</th>
+          </tr>
+          <?php for ($i=0; $i < count($rollArr); $i++) {  ?>
+            <tr>
+              <td>
+                <label class="radio-label">
+                  <input type="radio" name="wallpaper_roll" class="round_radio"
+                  value="<?php echo $rollArr[$i] ?>">
+                </label>
+              </td>
+              <td><?php echo $rollArr[$i] ?> см.</td>
+            </tr>
+          <?php } ?>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Редактировать:</th></tr>
           <tr>
             <td>
               <label class="radio-label">
-                <input type="radio" name="wallpaper_roll" class="round_radio"
-                value="<?php echo $rollArr[$i] ?>">
+                <input type="radio" class="round_radio" name="image_container">
               </label>
             </td>
-            <td><?php echo $rollArr[$i] ?> см.</td>
+            <td>Обрезать</td>
           </tr>
-        <?php } ?>
-      </table>
-    </div>
-    <div>
-      <table>
-        <tr><th colspan="2">Редактировать:</th></tr>
-        <tr>
-          <td>
-            <label class="radio-label">
-              <input type="radio" class="round_radio" name="image_container">
-            </label>
-          </td>
-          <td>Обрезать</td>
-        </tr>
-        <tr>
-          <td>
-            <label class="radio-label">
-              <input type="radio" name="image_container" class="round_radio">
-            </label>
-          </td>
-          <td>Вместить</td>
-        </tr>
-        <tr>
-          <th colspan="2">Поворот:</th>
-        </tr>
-        <?php for ($i=0; $i < sizeof($rotateArr); $i++) {  ?>
           <tr>
             <td>
               <label class="radio-label">
-                <input type="radio" name="image_rotate" class="round_radio"
-                value="<?php echo $rotateArr[$i] ?>">
+                <input type="radio" name="image_container" class="round_radio">
               </label>
             </td>
-            <td>
-              <?php echo $rotateArr[$i] ?><sup>0</sup>
-            </td>
+            <td>Вместить</td>
           </tr>
-        <?php } ?>
-        <tr>
-          <th colspan="2">Отражение:</th>
-        </tr>
-        <tr>
-          <td>
-            <label class="checkbox-label">
-              <input type="checkbox" name="image_miror">
-            </label>
-          </td>
-          <td>по горизонтали </td>
-        </tr>
-        <tr>
-          <td>
-            <label class="checkbox-label">
-              <input type="checkbox" name="image_miror">
-            </label>
-          </td>
-          <td>по вертикали</td>
-        </tr>
-      </table>
+          <tr>
+            <th colspan="2">Поворот:</th>
+          </tr>
+          <?php for ($i=0; $i < sizeof($rotateArr); $i++) {  ?>
+            <tr>
+              <td>
+                <label class="radio-label">
+                  <input type="radio" name="image_rotate" class="round_radio"
+                  value="<?php echo $rotateArr[$i] ?>">
+                </label>
+              </td>
+              <td>
+                <?php echo $rotateArr[$i] ?><sup>0</sup>
+              </td>
+            </tr>
+          <?php } ?>
+          <tr>
+            <th colspan="2">Отражение:</th>
+          </tr>
+          <tr>
+            <td>
+              <label class="checkbox-label">
+                <input type="checkbox" name="image_miror">
+              </label>
+            </td>
+            <td>по горизонтали </td>
+          </tr>
+          <tr>
+            <td>
+              <label class="checkbox-label">
+                <input type="checkbox" name="image_miror">
+              </label>
+            </td>
+            <td>по вертикали</td>
+          </tr>
+        </table>
+      </div>
     </div>
+  </div>
+  <div id="tabs-2">
     <div class="wallpaper_texture-block_wrapper">
       <div class="wallpaper_texture-block">
         <?php foreach ($textureArr as $key => $value) {?>
@@ -180,8 +215,10 @@
      <?php }  ?>
    </div>
  </div>
-
 </div>
+</div>
+
+
 
 <div class="wallpaper_constructor-calc">
   <div>Стоимость: <span>0</span> руб.</div>
@@ -189,16 +226,14 @@
   <div>
     <button name="wallpaper_constructor-favorite_add" 
     class="wallpaper_constructor-button">
-      <i class="fa fa-cart-plus" aria-hidden="true"></i>
-      Добавить
-    </button>
-  </div>
-</div>
-
+    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+    Добавить
+  </button>
 </div>
 </div>
 
-<div class="wallpaper_constructor-footer"></div>
+</div>
+</div>
 
 
 <div class="wallpaper_constructor-popup_wrapper">
@@ -212,55 +247,55 @@
         <div style="text-align: right;">
           <button name="wallpaper_constructor-popup_close"
           class="wallpaper_constructor-button">
-            <i class="fa fa-times" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div class="wallpaper_constructor-popup_title">
-          latte (винил)
-        </div>
-        <button name="video_button" class="wallpaper_constructor-button">
-          <i class="fa fa-video-camera" aria-hidden="true"></i>
-          Смотреть видео
+          <i class="fa fa-times" aria-hidden="true"></i>
         </button>
-        <table>
-          <tr>
-            <th>Размеры</th>
-            <td>любые</td>
-          </tr>
-          <tr>
-            <th>Ширина рулона</th>
-            <td>любая</td>
-          </tr>
-          <tr>
-            <th>Длинна рулона</th>
-            <td>любая</td>
-          </tr>
-          <tr>
-            <th>Плотность</th>
-            <td>100 гр/м</td>
-          </tr>
-          <tr>
-            <th>Цветопередач</th>
-            <td>8 из 10</td>
-          </tr>
-          <tr>
-            <th>Основа</th>
-            <td>виниловая</td>
-          </tr>
-          <tr>
-            <th>Покрытие лаком</th>
-            <td>возможно</td>
-          </tr>
-        </table>
       </div>
-    </div>
-    <div class="wallpaper_constructor-video_block">
-      <button name="video_button-close">
-        <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="wallpaper_constructor-popup_title">
+        latte (винил)
+      </div>
+      <button name="video_button" class="wallpaper_constructor-button">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        Смотреть видео
       </button>
-      <iframe width="300" height="200" src="https://www.youtube.com/embed/SsFI40bXROs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <table>
+        <tr>
+          <th>Размеры</th>
+          <td>любые</td>
+        </tr>
+        <tr>
+          <th>Ширина рулона</th>
+          <td>любая</td>
+        </tr>
+        <tr>
+          <th>Длинна рулона</th>
+          <td>любая</td>
+        </tr>
+        <tr>
+          <th>Плотность</th>
+          <td>100 гр/м</td>
+        </tr>
+        <tr>
+          <th>Цветопередач</th>
+          <td>8 из 10</td>
+        </tr>
+        <tr>
+          <th>Основа</th>
+          <td>виниловая</td>
+        </tr>
+        <tr>
+          <th>Покрытие лаком</th>
+          <td>возможно</td>
+        </tr>
+      </table>
     </div>
   </div>
+  <div class="wallpaper_constructor-video_block">
+    <button name="video_button-close">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/SsFI40bXROs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
 </div>
 <?php include_once 'cart.php' ?>
 <script src="js/constructor.js?<?php echo time() ?>"></script>

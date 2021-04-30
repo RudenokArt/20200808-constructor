@@ -26,19 +26,34 @@ td{
   min-width:30px;
 }
 th{
+  /*vertical-align: bottom;*/
   line-height: 1em;
   color:grey;
   height: 40px !important;
   /*border-bottom: 2px solid rgba(0,0,0,0.5);*/
 }
+button{
+  color:white;
+}
 .wallpaper_constructor-container{
-  padding: 10px;
+  padding: 5px;
   display: flex;
+  position: relative;
+}
+.option_button{
+ position: absolute;
+ z-index: 10;
+ top:0px;
+ right: 0;
+ padding: 10px;
+ display: none;
+}
+.option_button button{
+ font-size: 36px;
+ padding: 10px;
 }
 
-
 /*========= CONTENT ==========*/
-
 .wallpaper_constructor-content{
   /*border:1px solid lime;*/
   padding: 10px;
@@ -217,10 +232,29 @@ th{
 
 
 /*========= SIDEBAR ==========*/
+
+#tabs{
+  min-height: 600px;
+}
+.ui-tabs-tab{
+  background: rgba(0,0,0,0.1) !important;
+  border-color:rgba(0,0,0,0.2) !important;
+}
+.ui-tabs-tab a{
+  color: grey !important;
+}
+.ui-tabs-active{
+  background: white !important;
+  color:black !important;
+}
+.ui-tabs-active a{
+  color: black !important;
+}
 .wallpaper_constructor-sidebar{
   /*border:1px solid yellow;*/
   padding: 10px;
-  min-width: 300px;
+  width: 300px;
+  background-color: white;
 }
 .wallpaper_constructor-sidebar_options{
   display: flex;
@@ -296,7 +330,6 @@ input[name="input_size"]:focus{
 }
 .wallpaper_constructor-calc button{
   transition-duration: 1s;
-  color: white;
   border:1px solid white;
   border-radius: 5px;
   margin:auto;
@@ -337,12 +370,29 @@ input[name="texture_radio"]{
   top:10px;
   left:10px;
 }
+.wallpaper_constructor-button{
+  transition-duration: 1s;
+}
+.wallpaper_constructor-button:hover{
+  transition-duration: 1s;
+}
+
+.wallpaper_constructor-button_block{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top:200px;
+}
+.wallpaper_constructor-button_block button{
+  padding: 10px;
+  font-weight: bold;
+  line-height: 1em;
+  font-size: 16px;
+  border-radius: 5px;
+}
 
 
-/*========= FOOTER ==========*/
-
-
-
+/*========= POPUP ==========*/
 
 .wallpaper_constructor-popup_wrapper{
   position: fixed;
@@ -387,7 +437,6 @@ input[name="texture_radio"]{
 }
 .wallpaper_constructor-popup button{
   font-weight: bold;
-  color: white;
   margin:auto;
 }
 .wallpaper_constructor-popup_img{
@@ -426,4 +475,50 @@ input[name="texture_radio"]{
   width: 100%;
   background-color:grey !important;
   display: none;
+}
+
+
+@media screen and (max-width: 1100px){
+  .option_button{
+    display: block;
+  }
+  .wallpaper_constructor-sidebar{
+    position: absolute;
+    top:0;
+    right: 0;
+    display: none;
+  }
+}
+@media screen and (max-width: 750px){
+.constructor_wall{
+    width: 600px;
+    height: 400px;
+  }
+  .wallpaper_interior-tape_wrapper{
+    width: 600px;
+  }
+   #range_vertical span::after{
+    content: '';
+  }
+  #range_horisontal span::after{
+    content: '';
+  }
+}
+@media screen and (max-width: 600px){
+.constructor_wall{
+    width: 450px;
+    height: 300px;
+  }
+  .wallpaper_interior-tape_wrapper{
+    width: 450px;
+  }
+}
+@media screen and (max-width: 450px){
+.constructor_wall{
+    width: 300px;
+    height: 200px;
+  }
+  .wallpaper_interior-tape_wrapper{
+    width: 300px;
+  }
 }

@@ -1,6 +1,8 @@
 var wallpaper={
   scale:'scale(1,1)',
+  imagePosition:[],
 };
+var sidebarStatus=false;
 
 
 // ========= ACTIONS =========
@@ -31,6 +33,12 @@ setTimeout(function () {
   $('.wallpaper_interior-tape_item')[0].click();
   $('input[name="wallpaper_roll"]').parent()[0].click();
 }, 2000);
+$('button[name="size_resset"]').click(function () {
+  $('input[name="input_size"]').prop('value','');
+  $('.range_size').css({'display':'none'});
+  $('.constructor_curtain').css({'display':'none'});
+  $('.wallpaper_roll-item').css({'display':'none'});
+});
 
 
 // ========= LISTENERS =========
@@ -122,14 +130,14 @@ $('.wallpaper_interior-tape_item').click(function () {
 $('button[name="wallpaper_constructor-favorite_add"]').click(function () {
   var node=$('.wallpaper-cart_image');
   $(node).prop('className','wallpaper-cart_image-active');
-    setTimeout(function(){$(node).prop('className','wallpaper-cart_image');}, 100);
-    var item=localStorage.getItem('wallpaper_constructor');
-    var str=localStorage.getItem('wallpaper');
-    var arr=JSON.parse(str);
-    if (!arr.includes(item,0)) {arr.push(item);}
-    var json = JSON.stringify(arr);
-    localStorage.setItem('wallpaper', json);
-    getCartData();
+  setTimeout(function(){$(node).prop('className','wallpaper-cart_image');}, 100);
+  var item=localStorage.getItem('wallpaper_constructor');
+  var str=localStorage.getItem('wallpaper');
+  var arr=JSON.parse(str);
+  if (!arr.includes(item,0)) {arr.push(item);}
+  var json = JSON.stringify(arr);
+  localStorage.setItem('wallpaper', json);
+  getCartData();
 });
 $('.constractor-navigation span').click(function () {
   var navigation={};
@@ -159,6 +167,7 @@ $('input[name="texture_radio"]').change(function () {
   $('.constructor_wallpaper-texture').css({
     'background-image':'url(img/texture/'+this.value.trim()+')'
   });
+  wallpaper.texture=this.value.trim();
 });
 $('.wallpaper_texture-block_item i').click(function () {
   $('.wallpaper_constructor-popup_wrapper').css({
@@ -173,6 +182,36 @@ $('button[name="video_button-close"]').click(function () {
 });
 $('button[name="wallpaper_constructor-popup_close"]').click(function () {
   $('.wallpaper_constructor-popup_wrapper').fadeOut();
+});
+$('.option_button button').click(function(){
+  $('.wallpaper_constructor-sidebar').fadeToggle();
+  var button=$('.option_button button');
+  if (button[0].style.display=='none') {
+    button[0].style.display='block';
+    button[1].style.display='none';
+  }else{
+    button[0].style.display='none';
+    button[1].style.display='block';
+  }
+});
+$('button[name="image_save"]').click(function(){
+  var image=$('.constructor_wallpaper');
+  var image_0=image[0].getBoundingClientRect();
+  var image_1=image[1].getBoundingClientRect();
+  wallpaper.imagePosition=[
+  image_0.left+pageYOffset,
+  image_0.top+pageYOffset,
+  image_1.left+pageYOffset,
+  image_1.top+pageYOffset,];
+  var wall=$('.constructor_wall');
+  var wall_0=image[0].getBoundingClientRect();
+  var wall_1=image[1].getBoundingClientRect();
+  wallpaper.wallPosition=[
+  wall_0.left+pageYOffset,
+  wall_0.top+pageYOffset,
+  wall_1.left+pageYOffset,
+  wall_1.top+pageYOffset,];
+  console.log(wallpaper);
 });
 
 // ========= FUNCTIONS =========
@@ -287,11 +326,36 @@ $("input[name='input_size']").mask("?999");
 
 // ========= SLICK UI SLIDER =========
 
-// Карусель интерьеров
-  $(document).ready(function(){
-    $('.wallpaper_interior-tape').slick({ 
+$(document).ready(function(){
+  $('.wallpaper_interior-tape').slick({ 
       //dots: true, 
       slidesToShow: 5, 
       slidesToScroll: 1, 
+      responsive:[
+      {
+        breakpoint:750,
+        settings:{
+          slidesToShow:4,
+        }
+      },
+      {
+        breakpoint:600,
+        settings:{
+          slidesToShow:3,
+        }
+      },
+      {
+        breakpoint:450,
+        settings:{
+          slidesToShow:2,
+        }
+      },
+      ],
     });
-  });
+});
+
+// ========= TABS =========
+
+$( function() {
+  $( "#tabs" ).tabs();
+} );
