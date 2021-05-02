@@ -59,6 +59,7 @@ button{
   padding: 10px;
 }
 .constractor-navigation_wrapper{
+
   padding: 10px;
 }
 .constractor-navigation span{
@@ -83,6 +84,11 @@ button{
   left: 0;
   overflow: hidden;
 }
+.constructor_wallpaper-size_sensor{
+  border:2px solid rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
 .wallpaper_roll{
   position: absolute;
   height: 100%;

@@ -1,6 +1,8 @@
 var wallpaper={
   scale:'scale(1,1)',
-  imagePosition:[],
+  container:0,
+  rotate:0,
+  miror:'n',
 };
 var sidebarStatus=false;
 
@@ -17,15 +19,16 @@ $(function imageGetData () {
     arr=data.split('|');
   }
   wallpaper.image=arr[1];
+  wallpaper.imageName=arr[2];
   wallpaper.discount=Number(arr[6]);
   $('.constructor_wallpaper img').attr('src','img/wallpaper/'+wallpaper.image);
   wallpaper.category=arr[3];
   wallpaper.subcategory=arr[4];
-  wallpaper.image=arr[2];
+  //wallpaper.image=arr[2];
   var navigation = $('.constractor-navigation span');
   navigation[1].innerHTML=wallpaper.category;
   navigation[2].innerHTML=wallpaper.subcategory;
-  navigation[3].innerHTML=wallpaper.image;
+  navigation[3].innerHTML=wallpaper.imageName;
 });
 getCartData();
 $('input[type="radio"], input[type="checkbox"]').prop('checked',false);
@@ -77,11 +80,11 @@ $('input[name="image_container"]').change(function () {
   if (radio[0].checked) {
     container[0].style.display='block';
     container[1].style.display='none';
-    // container[0].setAttribute('src','img/wallpaper/'+wallpaper.image);
-    // container[1].setAttribute('src','');
+    wallpaper.container=0;
   }else{
     container[0].style.display='none';
     container[1].style.display='block';
+    wallpaper.container=1;
   }
 });
 $('input[type="radio"], input[type="checkbox"]').change(function(){
@@ -104,12 +107,16 @@ $('input[name="image_miror"]').change(function () {
   var arr=$('input[name="image_miror"]');
   if (arr[0].checked&&arr[1].checked){
     wallpaper.scale='scale(-1)';
+    wallpaper.miror='b';
   }else if (arr[0].checked) {
     wallpaper.scale='scale(-1,1)';
+    wallpaper.miror='h';
   }else if (arr[1].checked) {
     wallpaper.scale='scale(1,-1)';
+     wallpaper.miror='v';
   }else {
     wallpaper.scale='scale(1)';
+     wallpaper.miror='n';
   }
   $('.constructor_wallpaper').css({
     'transform':wallpaper.scale,
@@ -119,6 +126,7 @@ $('input[name="image_rotate"]').change(function () {
   $('.constructor_wallpaper img').css({
     'transform':'rotate('+this.value+'deg)',
   });
+  wallpaper.rotate=this.value;
 });
 $('input[name="wallpaper_roll"]').change(rollSizeBorder);
 $('.wallpaper_interior-tape_item').click(function () {
@@ -195,23 +203,35 @@ $('.option_button button').click(function(){
   }
 });
 $('button[name="image_save"]').click(function(){
-  var image=$('.constructor_wallpaper');
-  var image_0=image[0].getBoundingClientRect();
-  var image_1=image[1].getBoundingClientRect();
-  wallpaper.imagePosition=[
-  image_0.left+pageYOffset,
-  image_0.top+pageYOffset,
-  image_1.left+pageYOffset,
-  image_1.top+pageYOffset,];
-  var wall=$('.constructor_wall');
-  var wall_0=image[0].getBoundingClientRect();
-  var wall_1=image[1].getBoundingClientRect();
-  wallpaper.wallPosition=[
-  wall_0.left+pageYOffset,
-  wall_0.top+pageYOffset,
-  wall_1.left+pageYOffset,
-  wall_1.top+pageYOffset,];
-  console.log(wallpaper);
+  var data={};
+  var wall=$('.constructor_wall')[0];
+  var image=$('.constructor_wallpaper img');
+  var mask=$('.constructor_wallpaper-size_sensor')[0];
+  if (wallpaper.container==0) {
+    image=image[0];
+  }else{
+    image=image[1];
+  }
+  data.position=[
+  wall.getBoundingClientRect().left+pageYOffset,
+  wall.getBoundingClientRect().top+pageYOffset, 
+  image.getBoundingClientRect().left+pageYOffset,
+  image.getBoundingClientRect().top+pageYOffset, 
+  mask.getBoundingClientRect().left+pageYOffset,
+  mask.getBoundingClientRect().top+pageYOffset,];
+  data.size=[
+  wall.offsetWidth,
+  wall.offsetHeight,
+  image.offsetWidth,
+  image.offsetHeight,
+  mask.offsetWidth,
+  mask.offsetHeight,];
+  data.image=wallpaper.image;
+  data.rotate=wallpaper.rotate;
+  data.miror=wallpaper.miror;
+  data.container=wallpaper.container;
+  var str=JSON.stringify(data);
+  $.post('php/image.php',{data:str}, function(data){console.log(data);});
 });
 
 // ========= FUNCTIONS =========

@@ -57,7 +57,8 @@
       </div>
       <div class="wall-horizontal_section  constructor_curtain"></div>
     </div>
-    <div class="constructor_wallpaper-interior_wrapper">
+  <div class="wall-vertical_section constructor_curtain"></div>
+  <div class="constructor_wallpaper-interior_wrapper">
       <div class="constructor_wallpaper-interior"></div>
       <div class="wallpaper_interior-tape_wrapper">
         <div class="wallpaper_interior-tape">
@@ -70,7 +71,6 @@
       </div>
     </div>
   </div>
-  <div class="wall-vertical_section constructor_curtain"></div>
   <div class="range_vertical-wrapper">
     <div id="range_vertical" class="range_size"></div>
   </div>
