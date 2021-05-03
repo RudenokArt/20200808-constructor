@@ -57,8 +57,8 @@
       </div>
       <div class="wall-horizontal_section  constructor_curtain"></div>
     </div>
-  <div class="wall-vertical_section constructor_curtain"></div>
-  <div class="constructor_wallpaper-interior_wrapper">
+    <div class="wall-vertical_section constructor_curtain"></div>
+    <div class="constructor_wallpaper-interior_wrapper">
       <div class="constructor_wallpaper-interior"></div>
       <div class="wallpaper_interior-tape_wrapper">
         <div class="wallpaper_interior-tape">
@@ -82,10 +82,18 @@
   <div>
     <button name="image_save"
     class="wallpaper_constructor-button">
-      <i class="fa fa-download" aria-hidden="true"></i>
-      Сохранить <br> изображение
-    </button>
-  </div>
+    <i class="fa fa-download" aria-hidden="true"></i>
+    Сохранить <br> изображение
+  </button>
+  <a href="user_download/design.jpg" download="download" class="download_image-link">
+    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    Cкачать
+  </a>
+  <span class="download_image-loader">
+    <i class="fa fa-cog" aria-hidden="true"></i>
+  </span>
+
+</div>
 </div>
 </div>
 

@@ -41,6 +41,7 @@ $('button[name="size_resset"]').click(function () {
   $('.range_size').css({'display':'none'});
   $('.constructor_curtain').css({'display':'none'});
   $('.wallpaper_roll-item').css({'display':'none'});
+  $('.constructor_wallpaper-texture').css({'background-image':''});
 });
 
 
@@ -86,6 +87,7 @@ $('input[name="image_container"]').change(function () {
     container[1].style.display='block';
     wallpaper.container=1;
   }
+  rollSizeBorder();
 });
 $('input[type="radio"], input[type="checkbox"]').change(function(){
   var radioArr=$('input[class="round_radio"]');
@@ -113,10 +115,10 @@ $('input[name="image_miror"]').change(function () {
     wallpaper.miror='h';
   }else if (arr[1].checked) {
     wallpaper.scale='scale(1,-1)';
-     wallpaper.miror='v';
+    wallpaper.miror='v';
   }else {
     wallpaper.scale='scale(1)';
-     wallpaper.miror='n';
+    wallpaper.miror='n';
   }
   $('.constructor_wallpaper').css({
     'transform':wallpaper.scale,
@@ -230,8 +232,22 @@ $('button[name="image_save"]').click(function(){
   data.rotate=wallpaper.rotate;
   data.miror=wallpaper.miror;
   data.container=wallpaper.container;
+  data.rollSize=wallpaper.rollSize;
+  data.imageName=wallpaper.imageName;
+  data.rollAbsSize=wallpaper.rollAbsSize;
+  data.texture=wallpaper.texture;
+  data.amount=wallpaper.amount;
+  data.amountDiscount=wallpaper.amountDiscount;
   var str=JSON.stringify(data);
-  $.post('php/image.php',{data:str}, function(data){console.log(data);});
+  $('.download_image-link').css({'display':'none'});
+  $('.download_image-loader').css({'display':'inline-block'});
+  $.post('php/image.php',{data:str}, function(data){
+    console.log(data);
+    setTimeout(function () {
+      $('.download_image-link').css({'display':'inline-block'});
+      $('.download_image-loader').css({'display':'none'});
+    }, 1000);
+  });
 });
 
 // ========= FUNCTIONS =========
@@ -249,6 +265,9 @@ function calculation () {
   var nodeArr=$('.wallpaper_constructor-calc span');
   nodeArr[0].innerHTML=cost;
   nodeArr[1].innerHTML=Math.ceil(cost*(100-wallpaper.discount)/100);
+  wallpaper.amount=cost;
+  wallpaper.amountDiscount=Math.ceil(cost*(100-wallpaper.discount)/100);
+
 }
 function wallpaperWidth (values) {
   var section=$('.wall-horizontal_section');
@@ -263,7 +282,10 @@ function rollSizeBorder () {
   var rollWidth=0;
   var radio=$('input[name="wallpaper_roll"]');
   for (var i = 0; i < radio.length; i++) {
-    if (radio[i].checked) {rollWidth=radio[i].value;}
+    if (radio[i].checked) {
+      rollWidth=radio[i].value;
+      wallpaper.rollAbsSize=rollWidth;
+    }
   }
   var absoluteSize=$('input[name="input_size"]')[0].value;
   var relativeSize=$('.constructor_wallpaper-size_sensor')[0].offsetWidth;
@@ -273,8 +295,8 @@ function rollSizeBorder () {
   }else {
     $(roll).css({'display':'block',});
   }
-  var rollSize=rollWidth*relativeSize/absoluteSize;
-  $(roll).css({'width':rollSize+'px',});
+  wallpaper.rollSize=rollWidth*relativeSize/absoluteSize;
+  $(roll).css({'width':wallpaper.rollSize+'px',});
 }
 function rollSizeResset () {
  // $('.wallpaper_roll-item').css({'display':'none',});

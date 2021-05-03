@@ -388,6 +388,11 @@ input[name="texture_radio"]{
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top:200px;
+  line-height: 1em;
+}
+
+.wallpaper_constructor-button_block a{
+  padding: 15px;
 }
 .wallpaper_constructor-button_block button{
   padding: 10px;
@@ -397,6 +402,26 @@ input[name="texture_radio"]{
   border-radius: 5px;
 }
 
+@keyframes rotation {
+   0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+.download_image-loader{
+  display: inline-block;
+  display: none;
+  font-size: 30px;
+  color:grey;
+  animation-name: rotation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}.download_image-link{
+  display: none;
+}
 
 /*========= POPUP ==========*/
 
