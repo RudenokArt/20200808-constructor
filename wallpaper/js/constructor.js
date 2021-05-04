@@ -47,7 +47,13 @@ $('button[name="size_resset"]').click(function () {
 
 // ========= LISTENERS =========
 
-$('input[name="input_size"]').change(function () {
+$('input[name="input_size"]').bind('input',function () {
+  if (isNaN(Number(this.value))) {
+    this.value=10;
+  }
+  if (Number(this.value)>10000) {
+    this.value=10000;
+  }
   var range1, range2;
   var arr=$('input[name="input_size"]');
   if ((Number(arr[0].value)*500/750)>Number(arr[1].value)){
@@ -363,7 +369,7 @@ $( function () {
 
 // ========= MASK INPUT =========
 
-$("input[name='input_size']").mask("?999");
+//$("input[name='input_size']").mask("?999");
 
 
 // ========= SLICK UI SLIDER =========

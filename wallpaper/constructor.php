@@ -47,7 +47,7 @@
           <div class="constructor_wallpaper-size_sensor">
             <div class="wallpaper_roll-wrapper">
               <div class="wallpaper_roll">
-                <?php for ($i=0; $i < 10; $i++) {?>
+                <?php for ($i=0; $i < 100; $i++) {?>
                   <div class="wallpaper_roll-item"></div>
                 <?php } ?>
               </div>
