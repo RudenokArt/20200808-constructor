@@ -86,7 +86,7 @@
     Сохранить <br> изображение
   </button>
   <a href="user_download/design.jpg" download="download" class="download_image-link">
-    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    <i class="fa fa-cloud-download" aria-hidden="true"></i>
     Cкачать
   </a>
   <span class="download_image-loader">

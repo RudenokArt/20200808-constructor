@@ -48,8 +48,10 @@ $('button[name="size_resset"]').click(function () {
 // ========= LISTENERS =========
 
 $('input[name="input_size"]').bind('input',function () {
-  if (isNaN(Number(this.value))) {
-    this.value=10;
+  var str=this.value;
+  var lastSimbol=str.substring(str.length-1);
+  if (isNaN(Number(lastSimbol))) {
+    this.value=str.substring(0,str.length-1);
   }
   if (Number(this.value)>10000) {
     this.value=10000;
