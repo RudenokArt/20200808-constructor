@@ -35,6 +35,7 @@ $('input[type="radio"], input[type="checkbox"]').prop('checked',false);
 setTimeout(function () {
   $('.wallpaper_interior-tape_item')[0].click();
   $('input[name="wallpaper_roll"]').parent()[0].click();
+  $('input[name="image_container"]').parent()[0].click();
 }, 2000);
 $('button[name="size_resset"]').click(function () {
   $('input[name="input_size"]').prop('value','');

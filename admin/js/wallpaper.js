@@ -247,7 +247,21 @@ $('body').delegate('input[name="post-image"]','change',function() {
     } 
   }; 
 });
-
+$('button[name="texture-popup_hide"]').click(function(){
+  $('.texture-popup_wrapper').fadeOut();
+});
+$('button[name="texture_new"]').click(function(){
+  $('.texture-popup_wrapper').fadeIn();
+  $('.texture-popup_wrapper').css({'display':'flex'});
+});
+$('button[name="texture_add"]').click(function(){
+  $('#texture_add-form')[0].submit();
+});
+$('button[name="texture_delete"]').click(function () {
+  if (confirm('Фактура будет удалена!')) {
+    $(this).siblings('form')[0].submit();
+  }
+});
 // ===== FUNCTIONS =====
 function сategorySelectGetData () {
  var sql='SELECT * FROM `wallpaper_category`';
