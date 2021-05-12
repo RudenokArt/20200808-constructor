@@ -2,13 +2,14 @@
 
 <?php include_once 'header.php' ?>
 <?php include_once '../admin/php/select-simple.php' ?>
+<?php include_once '../admin/php/texture_list.php' ?>
 <?php $interiorArr=selectSimple('SELECT * FROM `wallpaper_interior`');?>
-<?php $textureArr=selectSimple('SELECT * FROM `wallpaper_texture`');?>
 <?php $rollArr=['105','137','150','160','260']; ?>
 <?php $rotateArr=[0,90,180,270] ?>
 <link rel="stylesheet" href="css/constructor.css?<?php echo time() ?>">
 <link rel="stylesheet" href="css/data-style.css?<?php echo time() ?>">
 <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
+
 
 <div class="wallpaper_constructor-container">
   <div class="option_button">
@@ -209,7 +210,7 @@
   <div id="tabs-2">
     <div class="wallpaper_texture-block_wrapper">
       <div class="wallpaper_texture-block">
-        <?php foreach ($textureArr as $key => $value) {?>
+        <?php foreach (textureListGet() as $key => $value) {?>
           <label class="wallpaper_texture-block_item" 
           style="background-image: url(img/texture/<?php echo $value['texture']; ?>);" >
           <span>
@@ -218,15 +219,14 @@
          <br>
          <input type="radio" name="texture_radio" 
          value="<?php echo $value['texture']; ?>">
-         <i class="fa fa-info-circle" aria-hidden="true" title="подробнее..."></i>    
+         <i class="fa fa-info-circle" id="texture<?php echo $value['id']?>" 
+         aria-hidden="true" title="подробнее..."></i>    
        </label>
      <?php }  ?>
    </div>
  </div>
 </div>
 </div>
-
-
 
 <div class="wallpaper_constructor-calc">
   <div>Стоимость: <span>0</span> руб.</div>
@@ -243,68 +243,7 @@
 </div>
 </div>
 
-
-<div class="wallpaper_constructor-popup_wrapper">
-  <div class="wallpaper_constructor-popup">
-    <div class="wallpaper_constructor-popup_img">
-      <div class="wallpaper_constructor-popup_textute"></div>
-    </div>
-    <div>
-      <div class="wallpaper_constructor-popup_textute"></div>
-      <div class="wallpaper_constructor-popup_info">
-        <div style="text-align: right;">
-          <button name="wallpaper_constructor-popup_close"
-          class="wallpaper_constructor-button">
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </button>
-      </div>
-      <div class="wallpaper_constructor-popup_title">
-        latte (винил)
-      </div>
-      <button name="video_button" class="wallpaper_constructor-button">
-        <i class="fa fa-video-camera" aria-hidden="true"></i>
-        Смотреть видео
-      </button>
-      <table>
-        <tr>
-          <th>Размеры</th>
-          <td>любые</td>
-        </tr>
-        <tr>
-          <th>Ширина рулона</th>
-          <td>любая</td>
-        </tr>
-        <tr>
-          <th>Длинна рулона</th>
-          <td>любая</td>
-        </tr>
-        <tr>
-          <th>Плотность</th>
-          <td>100 гр/м</td>
-        </tr>
-        <tr>
-          <th>Цветопередача</th>
-          <td>8 из 10</td>
-        </tr>
-        <tr>
-          <th>Основа</th>
-          <td>виниловая</td>
-        </tr>
-        <tr>
-          <th>Покрытие лаком</th>
-          <td>возможно</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="wallpaper_constructor-video_block">
-    <button name="video_button-close">
-      <i class="fa fa-times" aria-hidden="true"></i>
-    </button>
-    <iframe width="300" height="200" src="https://www.youtube.com/embed/SsFI40bXROs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</div>
-</div>
+<?php include_once 'includes/texture_popup.php' ?>
 <?php include_once 'cart.php' ?>
 <script src="js/constructor.js?<?php echo time() ?>"></script>
 <?php include_once 'footer.php' ?>

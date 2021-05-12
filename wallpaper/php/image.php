@@ -77,7 +77,10 @@ function imageMask(){
     $bottom=$top+380;
   }
   imagerectangle($page, $left+10, $top+10, $right+10, $bottom+10, $white);
-  imagerectangle($page, $left+10-1, $top+10-1, $right+10+1, $bottom+10+1, $red);
+  for ($i=1; $i < 100; $i++) { 
+    imagerectangle($page, $left+10-$i, $top+10-$i, $right+10+$i, $bottom+10+$i, $white);
+  }
+  
   rollSizeBorder($left,$top,$right,$bottom);
 }
 function rollSizeBorder($left,$top,$right,$bottom){

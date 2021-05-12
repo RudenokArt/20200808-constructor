@@ -262,6 +262,11 @@ $('button[name="texture_delete"]').click(function () {
     $(this).siblings('form')[0].submit();
   }
 });
+$('button[name="texture_edit"]').click(function(){
+  if (confirm('Данные будут изменены!')) {
+    $(this).parent().parent().siblings('form')[0].submit();
+  }
+});
 // ===== FUNCTIONS =====
 function сategorySelectGetData () {
  var sql='SELECT * FROM `wallpaper_category`';

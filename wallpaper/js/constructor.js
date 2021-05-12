@@ -189,7 +189,7 @@ $('input[name="texture_radio"]').change(function () {
   wallpaper.texture=this.value.trim();
 });
 $('.wallpaper_texture-block_item i').click(function () {
-  $('.wallpaper_constructor-popup_wrapper').css({
+  $('#popup_'+this.id).css({
     'display':'flex',
   });
 });
@@ -197,9 +197,11 @@ $('button[name="video_button"]').click(function () {
   $('.wallpaper_constructor-video_block').fadeIn();
 });
 $('button[name="video_button-close"]').click(function () {
-  $('.wallpaper_constructor-video_block').fadeOut();
+ stopVideo();
+ $('.wallpaper_constructor-video_block').fadeOut();
 });
 $('button[name="wallpaper_constructor-popup_close"]').click(function () {
+  stopVideo();
   $('.wallpaper_constructor-popup_wrapper').fadeOut();
 });
 $('.option_button button').click(function(){
@@ -329,7 +331,13 @@ function inputHeightValue(values) {
   var width=(values[1]-values[0])*relation;
   $('input[name="input_size"]')[1].value=Math.ceil(width);
 }
-
+function stopVideo(){
+  var iframe=$('.wallpaper_constructor-video_block iframe');
+  for (var i = 0; i < iframe.length; i++) {
+   var src=$(iframe[i]).attr('src');
+   $(iframe[i]).attr('src',src);
+ }
+}
 
 // ========= JQUERY UI SLIDER =========
 $( function() {

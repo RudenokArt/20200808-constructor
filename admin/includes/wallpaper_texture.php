@@ -11,7 +11,7 @@
    url(../wallpaper/img/texture/<?php echo $value['texture'];?>);">
    <div class="flex-wrapper">
      <div class="accordion_tab-item">
-       <button title="Сохранить"name="texture_edit">
+       <button title="Сохранить" name="texture_edit">
         <i class="fa fa-floppy-o" aria-hidden="true"></i>
       </button>
     </div>
@@ -27,7 +27,7 @@
       </button>
     </div>
   </div>
-  <form action="">
+  <form action="php/texture_edit.php" method="post">
     <?php foreach ($value as $subkey => $subvalue) { ?>
      <div class="accordion_tab-item">
        <input type="text" placeholder="<?php echo $textureOptionArr[$subkey] ?>" 
