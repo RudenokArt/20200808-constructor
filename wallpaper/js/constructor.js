@@ -37,13 +37,7 @@ setTimeout(function () {
   $('input[name="wallpaper_roll"]').parent()[0].click();
   $('input[name="image_container"]').parent()[0].click();
 }, 2000);
-$('button[name="size_resset"]').click(function () {
-  $('input[name="input_size"]').prop('value','');
-  $('.range_size').css({'display':'none'});
-  $('.constructor_curtain').css({'display':'none'});
-  $('.wallpaper_roll-item').css({'display':'none'});
-  $('.constructor_wallpaper-texture').css({'background-image':''});
-});
+
 
 
 // ========= LISTENERS =========
@@ -82,6 +76,7 @@ $('input[name="input_size"]').bind('input',function () {
     $('.range_size').css({'display':'block'});
     $('.constructor_curtain').css({'display':'block'});
   }
+  $('.constructor_wallpaper-size_sensor').css({'display':'block'});
   rollSizeBorder();
 });
 $('input[name="image_container"]').change(function () {
@@ -259,6 +254,14 @@ $('button[name="image_save"]').click(function(){
       $('.download_image-loader').css({'display':'none'});
     }, 1000);
   });
+});
+$('button[name="size_resset"]').click(function () {
+  $('input[name="input_size"]').prop('value','');
+  $('.range_size').css({'display':'none'});
+  $('.constructor_curtain').css({'display':'none'});
+  $('.wallpaper_roll-item').css({'display':'none'});
+  $('.constructor_wallpaper-texture').css({'background-image':''});
+  $('.constructor_wallpaper-size_sensor').css({'display':'none'});
 });
 
 // ========= FUNCTIONS =========

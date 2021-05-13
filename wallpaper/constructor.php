@@ -133,6 +133,7 @@
           </tr>
         </table>
         <table>
+          <tr><th></th></tr>
           <tr>
             <th colspan="2">Ширина рулона:</th>
           </tr>
@@ -151,39 +152,6 @@
       </div>
       <div>
         <table>
-          <tr><th colspan="2">Редактировать:</th></tr>
-          <tr>
-            <td>
-              <label class="radio-label">
-                <input type="radio" class="round_radio" name="image_container">
-              </label>
-            </td>
-            <td>Обрезать</td>
-          </tr>
-          <tr>
-            <td>
-              <label class="radio-label">
-                <input type="radio" name="image_container" class="round_radio">
-              </label>
-            </td>
-            <td>Вместить</td>
-          </tr>
-          <tr>
-            <th colspan="2">Поворот:</th>
-          </tr>
-          <?php for ($i=0; $i < sizeof($rotateArr); $i++) {  ?>
-            <tr>
-              <td>
-                <label class="radio-label">
-                  <input type="radio" name="image_rotate" class="round_radio"
-                  value="<?php echo $rotateArr[$i] ?>">
-                </label>
-              </td>
-              <td>
-                <?php echo $rotateArr[$i] ?><sup>0</sup>
-              </td>
-            </tr>
-          <?php } ?>
           <tr>
             <th colspan="2">Отражение:</th>
           </tr>
@@ -203,6 +171,44 @@
             </td>
             <td>по вертикали</td>
           </tr>
+          <tr><th></th></tr>
+          <tr><th></th></tr>
+          <tr>
+            <th colspan="2">Поворот:</th>
+          </tr>
+          <?php for ($i=0; $i < sizeof($rotateArr); $i++) {  ?>
+            <tr>
+              <td>
+                <label class="radio-label">
+                  <input type="radio" name="image_rotate" class="round_radio"
+                  value="<?php echo $rotateArr[$i] ?>">
+                </label>
+              </td>
+              <td>
+                <?php echo $rotateArr[$i] ?><sup>0</sup>
+              </td>
+            </tr>
+          <?php } ?>
+           <tr style="display: none">
+            <th colspan="2">Редактировать:</th>
+          </tr>
+          <tr style="display: none">
+            <td>
+              <label class="radio-label">
+                <input type="radio" class="round_radio" name="image_container">
+              </label>
+            </td>
+            <td>Обрезать</td>
+          </tr>
+          <tr style="display: none">
+            <td>
+              <label class="radio-label">
+                <input type="radio" name="image_container" class="round_radio">
+              </label>
+            </td>
+            <td>Вместить</td>
+          </tr>
+
         </table>
       </div>
     </div>
