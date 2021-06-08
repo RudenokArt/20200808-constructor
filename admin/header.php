@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/style.css?<?php echo time()?>">
   <link rel="stylesheet" href="../wallpaper/css/pagination.css">
   <link rel="stylesheet" href="css/jquery_ui.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
 
   <title>Document</title>
 </head>

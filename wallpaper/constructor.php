@@ -3,8 +3,12 @@
 <?php include_once 'header.php' ?>
 <?php include_once '../admin/php/select-simple.php' ?>
 <?php include_once '../admin/php/texture_list.php' ?>
+<?php include_once '../admin/php/roll_size_list.php' ?>
 <?php $interiorArr=selectSimple('SELECT * FROM `wallpaper_interior`');?>
-<?php $rollArr=['105','137','150','160','260']; ?>
+<?php $rollArr=[]; ?>
+<?php foreach (rollSizeList() as $key => $value): ?>
+  <?php array_push($rollArr, $value['roll']) ?>
+<?php endforeach ?>
 <?php $rotateArr=[0,90,180,270] ?>
 <link rel="stylesheet" href="css/constructor.css?<?php echo time() ?>">
 <link rel="stylesheet" href="css/data-style.css?<?php echo time() ?>">

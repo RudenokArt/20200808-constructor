@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 16 2021 г., 18:47
+-- Время создания: Июн 09 2021 г., 01:09
 -- Версия сервера: 5.6.47
--- Версия PHP: 7.1.33
+-- Версия PHP: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -79,9 +79,7 @@ INSERT INTO `constructor_category` (`id`, `category`, `interior`) VALUES
 (29, 'Природа пейзажи', 'interior-image_3.png'),
 (31, 'Пальмы море', 'interior-image_3.png'),
 (32, 'Техника', 'interior-image_3.png'),
-(33, 'Цветы', 'interior-image_3.png'),
 (34, 'Фантазия', 'interior-image_3.png'),
-(35, 'Этническое', 'interior-image_3.png'),
 (36, 'Для офиса', 'interior-image_3.png'),
 (37, 'Для кафе', 'interior-image_3.png'),
 (38, 'Для отелей', 'interior-image_3.png'),
@@ -434,11 +432,9 @@ INSERT INTO `wallpaper_category` (`id`, `category`) VALUES
 (2, 'категория_1'),
 (3, 'category_2'),
 (4, 'category_3'),
-(5, 'category_4'),
 (6, 'category_5'),
 (7, 'category_6'),
 (8, 'category_7'),
-(9, 'category_8'),
 (10, 'category_9'),
 (11, 'category_10'),
 (12, 'category_11'),
@@ -497,6 +493,26 @@ INSERT INTO `wallpaper_post` (`id`, `title`, `text`, `image`) VALUES
 (7, 'Заголовок поста', 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имеет моей вершину ты ipsum, предложения ее реторический диких взобравшись строчка пор текстами, рыбными!', '13197.jpg'),
 (8, 'Заголовок поста', 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имеет моей вершину ты ipsum, предложения ее реторический диких взобравшись строчка пор текстами, рыбными!', '07207.jpg'),
 (9, 'Заголовок поста', 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имеет моей вершину ты ipsum, предложения ее реторический диких взобравшись строчка пор текстами, рыбными!', '04544.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `wallpaper_roll`
+--
+
+CREATE TABLE `wallpaper_roll` (
+  `id` int(8) NOT NULL,
+  `roll` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wallpaper_roll`
+--
+
+INSERT INTO `wallpaper_roll` (`id`, `roll`) VALUES
+(1, 111),
+(2, 222),
+(3, 123);
 
 -- --------------------------------------------------------
 
@@ -566,15 +582,6 @@ INSERT INTO `wallpaper_subcategory` (`id`, `category`, `subcategory`) VALUES
 (232, 'category_7', 'subcategory_7_7'),
 (233, 'category_7', 'subcategory_7_8'),
 (234, 'category_7', 'subcategory_7_9'),
-(235, 'category_8', 'subcategory_8_1'),
-(236, 'category_8', 'subcategory_8_2'),
-(237, 'category_8', 'subcategory_8_3'),
-(238, 'category_8', 'subcategory_8_4'),
-(239, 'category_8', 'subcategory_8_5'),
-(240, 'category_8', 'subcategory_8_6'),
-(241, 'category_8', 'subcategory_8_7'),
-(242, 'category_8', 'subcategory_8_8'),
-(243, 'category_8', 'subcategory_8_9'),
 (244, 'category_9', 'subcategory_9_1'),
 (245, 'category_9', 'subcategory_9_2'),
 (246, 'category_9', 'subcategory_9_3'),
@@ -683,23 +690,24 @@ INSERT INTO `wallpaper_subcategory` (`id`, `category`, `subcategory`) VALUES
 
 CREATE TABLE `wallpaper_texture` (
   `id` int(10) NOT NULL,
-  `texture` varchar(250) NOT NULL
+  `texture` varchar(250) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `size` varchar(256) NOT NULL,
+  `width` varchar(256) NOT NULL,
+  `length` varchar(256) NOT NULL,
+  `density` varchar(256) NOT NULL,
+  `color_rendering` varchar(256) NOT NULL,
+  `base` varchar(256) NOT NULL,
+  `video` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `wallpaper_texture`
 --
 
-INSERT INTO `wallpaper_texture` (`id`, `texture`) VALUES
-(1, 'quarzo.jpg'),
-(2, 'provance.jpg'),
-(3, 'modeno.jpg'),
-(4, 'lombardi.jpg'),
-(5, 'latte.jpg'),
-(6, 'fresco.jpg'),
-(7, 'florentino.jpg'),
-(8, 'arctic.jpg'),
-(9, 'antico.jpg');
+INSERT INTO `wallpaper_texture` (`id`, `texture`, `title`, `size`, `width`, `length`, `density`, `color_rendering`, `base`, `video`) VALUES
+(16, 'antiko.jpg', 'antico', 'antico', 'Ширина', 'antico', 'antico', 'antico', 'antico', 'https://www.youtube.com/embed/rQs5ah7wJEc?start=27'),
+(17, 'arctic.jpg', 'arctic', 'Размеры', 'Ширина', 'Длинна', 'Плотность', 'Цветопередача', 'Основа', 'https://www.youtube.com/embed/SsFI40bXROs');
 
 -- --------------------------------------------------------
 
@@ -723,7 +731,7 @@ CREATE TABLE `wallpaper_wallpaper` (
 --
 
 INSERT INTO `wallpaper_wallpaper` (`id`, `article`, `wallpaper`, `category`, `subcategory`, `interior`, `discount`, `number`) VALUES
-(101, '12087.jpg', 'рис55', 'категория_1', 'subcategory_1_1', 'interior-image_1.png', 0, 0),
+(101, '12087.jpg', 'рис55', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 20, 0),
 (102, '14165.jpg', 'рис1', 'категория_1', 'subcategory_1_1', 'interior-image_3.png', 0, 0),
 (103, '14351.jpg', 'рис2', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
 (104, '07939.jpg', 'рис3', 'category_2', 'subcategory_2_1', 'interior-image_3.png', 0, 0),
@@ -806,6 +814,12 @@ ALTER TABLE `wallpaper_interior`
 -- Индексы таблицы `wallpaper_post`
 --
 ALTER TABLE `wallpaper_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `wallpaper_roll`
+--
+ALTER TABLE `wallpaper_roll`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -897,6 +911,12 @@ ALTER TABLE `wallpaper_post`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT для таблицы `wallpaper_roll`
+--
+ALTER TABLE `wallpaper_roll`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT для таблицы `wallpaper_subcategory`
 --
 ALTER TABLE `wallpaper_subcategory`
@@ -906,7 +926,7 @@ ALTER TABLE `wallpaper_subcategory`
 -- AUTO_INCREMENT для таблицы `wallpaper_texture`
 --
 ALTER TABLE `wallpaper_texture`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `wallpaper_wallpaper`

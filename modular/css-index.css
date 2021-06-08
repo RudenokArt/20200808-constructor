@@ -10,6 +10,7 @@
 /*===== SIDEBAR =====*/
 .modular-sidebar{
   line-height: 1em;
+  max-width: 300px;
 }
 .modular-sidebar_category,
 .modular-sidebar_subcategory{

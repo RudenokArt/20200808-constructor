@@ -21,11 +21,12 @@
     <div id="tabs">
 
       <ul>
-        <li><a href="#tabs-1">Фотообои</a></li>
-        <li><a href="#tabs-2">Управление категориями</a></li>
-        <li><a href="#tabs-3">Управление подкатегориями</a></li>
-        <li><a href="#tabs-4">Статьи (посты)</a></li>
-        <li><a href="#tabs-5">Управление фактурами</a></li>
+        <li><a href="#tabs-1"><br>Фотообои</a></li>
+        <li><a href="#tabs-2">Управление <br> категориями</a></li>
+        <li><a href="#tabs-3">Управление <br> подкатегориями</a></li>
+        <li><a href="#tabs-4">Статьи <br> (посты)</a></li>
+        <li><a href="#tabs-5">Управление <br> фактурами</a></li>
+        <li><a href="#tabs-6">Управление <br> размерами</a></li>
       </ul>
 
       <div id="tabs-1">
@@ -215,9 +216,11 @@
 
 <div id="tabs-5"><?php include_once 'includes/wallpaper_texture.php' ?></div>
 
+<div id="tabs-6"><?php include_once 'includes/wallpaper_size.php' ?></div>
+
 </div>
 
 
 <?php include_once 'includes/wallpaper_popups.php' ?>
-<script src="js/wallpaper.js?<?php echo time()?>"></script>
+<script src="js/wallpaper.js?<?php echo time();?>"></script>
 <?php include_once 'footer.php' ?>

@@ -267,7 +267,27 @@ $('button[name="texture_edit"]').click(function(){
     $(this).parent().parent().siblings('form')[0].submit();
   }
 });
+$('input[name="size"]').mask("999");
+$('button[name="roll_size_edit_button"]').click(function(e){
+  e.preventDefault();
+  $('form[name="roll_size_edit_form"]').fadeOut();
+  $(this).parent().siblings().children('form').fadeIn();
+});
+$('button[name="roll_size_save"]').click(function (e) {
+  e.preventDefault();
+  if (confirm('Размер будет изменен!')) {
+    this.parentNode.submit();
+  }
+});
+$('button[name="roll_size_delete_button"]').click(function(e){
+  e.preventDefault();
+  if (confirm('Размер будет удален!')) {
+    this.parentNode.submit();
+  }
+});
+
 // ===== FUNCTIONS =====
+
 function сategorySelectGetData () {
  var sql='SELECT * FROM `wallpaper_category`';
  $.post('../wallpaper/php/select.php',{data:sql}, categorySelectForm);

@@ -43,69 +43,82 @@
                   </div>
                   </div><?}
                   ?></div><? } ?>
-                </div>
-
-                <div class="modular-content">
-
-                  <div class="modular-navigation_wrapper">
-                    <div class="modular-navigation">
-                      <div class="modular-navigation_root">
-                        <span>Модульные картины</span>
-                      </div>
-                      <div class="modular-navigation_category">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                        <span>empty</span>
-                      </div>
-                      <div class="modular-navigation_subcategory">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                        <span>empty</span>
-                      </div>
+                  <?php $postArr=indexSelect('SELECT * FROM `constructor_post`');?>
+                  <div class="wallpaper-posts">
+                    <?php for ($i=0; $i < sizeof($postArr); $i++) { 
+                      ?><div class="wallpaper-posts_item">
+                        <img src="post-image/<?php echo $postArr[$i]['image_name'] ?>" 
+                        class="wallpaper-posts_image" alt=" ">
+                        <div class="wallpaper-posts_text">
+                          <?php echo $postArr[$i]['post_text'] ?>
+                        </div>
+                        </div><?
+                      } ?>
                     </div>
+
                   </div>
 
-                  <div class="filter-block">
-                    <div class="filter-block_half">
-                      <div>Фильтр по категориям:</div>
-                      <div class="filter-block_select-wrapper">
-                        <select class="category-select">
-                          <option value="all">Все...</option>
-                          <?php for ($i=0;$i<sizeof($categoryArr);$i++) { 
-                            ?><option>
-                              <?php echo $categoryArr[$i]['category']?>
-                              </option><?
-                            } ?>
-                          </select>
+                  <div class="modular-content">
+
+                    <div class="modular-navigation_wrapper">
+                      <div class="modular-navigation">
+                        <div class="modular-navigation_root">
+                          <span>Модульные картины</span>
                         </div>
-                      </div>
-                      <div class="filter-block_half">
-                        <div>Фильтр по подкатегориям:</div>
-                        <div class="filter-block_select-wrapper">
-                          <select class="subcategory-select">
-                            <option value="all">Все...</option>
-                            <?php for ($i=0; $i<100; $i++) { 
-                              ?><option class="subcategory-select_option">empty</option><?
-                            } ?>
-                          </select>
+                        <div class="modular-navigation_category">
+                          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                          <span>empty</span>
+                        </div>
+                        <div class="modular-navigation_subcategory">
+                          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                          <span>empty</span>
                         </div>
                       </div>
                     </div>
 
-                    <?php $galeryArr=indexSelect('
-                    SELECT * FROM `constructor_galеry` ORDER BY `40x70`'); ?>
-                    <div class="modular-galery">
-                      <?php for ($i=0;$i<sizeof($galeryArr);$i++) { 
-                        $categoryInterior=indexSelect('
-                          SELECT * FROM `constructor_category` 
-                          WHERE `category`="'.$galeryArr[$i]['category'].'"');
-                        if(isset($categoryInterior[0]['interior'])){
-                          $imageInterior=$categoryInterior[0]['interior'];
-                        };
-                        $subCategoryInterior=indexSelect('
-                          SELECT * FROM `constructor_subcategory` 
-                          WHERE `subcategory`="'.$galeryArr[$i]['subcategory'].'"');
-                        if(isset($subCategoryInterior[0]['interior'])){
-                          $imageInterior=$subCategoryInterior[0]['interior'];
-                        };
+                    <div class="filter-block">
+                      <div class="filter-block_half">
+                        <div>Фильтр по категориям:</div>
+                        <div class="filter-block_select-wrapper">
+                          <select class="category-select">
+                            <option value="all">Все...</option>
+                            <?php for ($i=0;$i<sizeof($categoryArr);$i++) { 
+                              ?><option>
+                                <?php echo $categoryArr[$i]['category']?>
+                                </option><?
+                              } ?>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter-block_half">
+                          <div>Фильтр по подкатегориям:</div>
+                          <div class="filter-block_select-wrapper">
+                            <select class="subcategory-select">
+                              <option value="all">Все...</option>
+                              <?php for ($i=0; $i<100; $i++) { 
+                                ?><option class="subcategory-select_option">empty</option><?
+                              } ?>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <?php $galeryArr=indexSelect('
+                      SELECT * FROM `constructor_galеry` ORDER BY `40x70`'); ?>
+                      <div class="modular-galery">
+                        <?php for ($i=0;$i<sizeof($galeryArr);$i++) { 
+                          $categoryInterior=indexSelect('
+                            SELECT * FROM `constructor_category` 
+                            WHERE `category`="'.$galeryArr[$i]['category'].'"');
+                          if(isset($categoryInterior[0]['interior'])){
+                            $imageInterior=$categoryInterior[0]['interior'];
+                          };
+                          $subCategoryInterior=indexSelect('
+                            SELECT * FROM `constructor_subcategory` 
+                            WHERE `subcategory`="'.$galeryArr[$i]['subcategory'].'"');
+                          if(isset($subCategoryInterior[0]['interior'])){
+                            $imageInterior=$subCategoryInterior[0]['interior'];
+                          };
                           ?>
                           <div class="modular-galery_item-wrapper"
                           id="<?php echo $galeryArr[$i]['image'].
