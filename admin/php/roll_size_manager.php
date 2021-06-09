@@ -34,13 +34,13 @@ function addSize(){
       VALUES ("'.trim($_POST['roll_size']).'")';
       $mysqli->query($sql);
       echo 'Размер добавлен в базу!';
-      echo '<meta http-equiv="refresh" content="2; url=../wallpaper.php#tabs-6" />';
     } else{
       echo 'Такой размер уже присутствует в базе';
     }
   } else {
     echo 'Укажите корректный размер в см!';
   }
+  echo '<meta http-equiv="refresh" content="2; url=../wallpaper.php#tabs-6" />';
 }
 
 function editSize(){

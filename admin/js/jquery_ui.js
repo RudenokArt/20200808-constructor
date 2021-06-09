@@ -1,3 +1,3 @@
 $( function() {$( "#tabs" ).tabs();});
 
-$( function() { $( "#accordion" ).accordion({ active: ''});} );
+$( function() { $( "#accordion" ).accordion({active:100});});

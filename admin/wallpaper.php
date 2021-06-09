@@ -27,6 +27,7 @@
         <li><a href="#tabs-4">Статьи <br> (посты)</a></li>
         <li><a href="#tabs-5">Управление <br> фактурами</a></li>
         <li><a href="#tabs-6">Управление <br> размерами</a></li>
+        <li><a href="#tabs-7">Управление <br> ценами</a></li>
       </ul>
 
       <div id="tabs-1">
@@ -217,6 +218,8 @@
 <div id="tabs-5"><?php include_once 'includes/wallpaper_texture.php' ?></div>
 
 <div id="tabs-6"><?php include_once 'includes/wallpaper_size.php' ?></div>
+
+<div id="tabs-7"><?php include_once 'includes/wallpaper_price.php' ?></div>
 
 </div>
 

@@ -60,6 +60,7 @@ td{
   top:0;
   right: 0;
 }
+select,
 .search-select,
 select[name="subcategory-manager_select"],
 .edit-popup select,
@@ -235,6 +236,8 @@ select[name="subcategory-manager_select"],
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  min-height: 50vh;
+  overflow: auto;
 }
 .accordion_tab-item{
   padding: 20px !important;
