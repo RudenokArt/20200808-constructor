@@ -3,12 +3,16 @@
 <?php include_once 'header.php' ?>
 <?php include_once '../admin/php/select-simple.php' ?>
 <?php include_once '../admin/php/texture_list.php' ?>
-<?php include_once '../admin/php/roll_size_list.php' ?>
+<?php include_once'../admin/php/price_list.php' ?>
 <?php $interiorArr=selectSimple('SELECT * FROM `wallpaper_interior`');?>
+
+
+<?php include_once '../admin/php/roll_size_list.php' ?>
 <?php $rollArr=[]; ?>
 <?php foreach (rollSizeList() as $key => $value): ?>
   <?php array_push($rollArr, $value['roll']) ?>
 <?php endforeach ?>
+
 <?php $rotateArr=[0,90,180,270] ?>
 <link rel="stylesheet" href="css/constructor.css?<?php echo time() ?>">
 <link rel="stylesheet" href="css/data-style.css?<?php echo time() ?>">
@@ -141,17 +145,33 @@
           <tr>
             <th colspan="2">Ширина рулона:</th>
           </tr>
+
           <?php for ($i=0; $i < count($rollArr); $i++) {  ?>
-            <tr>
+            <tr class="size_texture_all">
               <td>
                 <label class="radio-label">
                   <input type="radio" name="wallpaper_roll" class="round_radio"
                   value="<?php echo $rollArr[$i] ?>">
                 </label>
+                <input type="hidden" value="0">
               </td>
               <td><?php echo $rollArr[$i] ?> см.</td>
             </tr>
           <?php } ?>
+
+          <?php foreach (priceListGet() as $key => $value) : ?>
+            <tr class="size_texture size_texture_<?php echo $value['texture_id'];?>">
+              <td>
+                <label class="radio-label">
+                  <input type="radio" name="wallpaper_roll" class="round_radio"
+                  value="<?php echo sizeGet($value['size_id']) ?>">
+                </label>
+                <input type="hidden" value="<?php echo $value['price'] ?>">
+              </td>
+              <td><?php echo sizeGet($value['size_id']);?> см.</td>
+            </tr>
+          <?php endforeach ?>
+
         </table>
       </div>
       <div>
@@ -193,7 +213,7 @@
               </td>
             </tr>
           <?php } ?>
-           <tr style="display: none">
+          <tr style="display: none">
             <th colspan="2">Редактировать:</th>
           </tr>
           <tr style="display: none">
@@ -228,14 +248,15 @@
          </span>
          <br>
          <input type="radio" name="texture_radio" 
+         id="texture_<?php echo $value['id']; ?>"
          value="<?php echo $value['texture']; ?>">
          <i class="fa fa-info-circle" id="texture<?php echo $value['id']?>" 
-         aria-hidden="true" title="подробнее..."></i>    
-       </label>
-     <?php }  ?>
+           aria-hidden="true" title="подробнее..."></i>    
+         </label>
+       <?php }  ?>
+     </div>
    </div>
  </div>
-</div>
 </div>
 
 <div class="wallpaper_constructor-calc">

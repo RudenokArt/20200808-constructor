@@ -267,7 +267,8 @@ $('button[name="texture_edit"]').click(function(){
     $(this).parent().parent().siblings('form')[0].submit();
   }
 });
-$('input[name="size"]').mask("999");
+$('input[name="roll_size"]').mask("9?99");
+$('input[name="roll_size_edit"]').mask("9?99");
 $('button[name="roll_size_edit_button"]').click(function(e){
   e.preventDefault();
   $('form[name="roll_size_edit_form"]').fadeOut();
@@ -284,6 +285,17 @@ $('button[name="roll_size_delete_button"]').click(function(e){
   if (confirm('Размер будет удален!')) {
     this.parentNode.submit();
   }
+});
+$('input[name="price_value"]').mask("9?99999");
+$('input[name="price_edit"]').mask("9?99999");
+$('button[name="price_delete_button"]').click(function(e){
+  e.preventDefault();
+  if (confirm('Цена будет удалена!')) {}
+  $(this).parent('form')[0].submit();
+});
+$('button[name="price_edit_button"]').click(function(){
+  $('.price_edit_form').fadeOut();
+  $(this).parent('td').siblings('td').children('form').fadeIn();
 });
 
 // ===== FUNCTIONS =====

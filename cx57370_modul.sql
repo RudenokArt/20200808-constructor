@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 09 2021 г., 01:09
+-- Время создания: Июн 13 2021 г., 22:41
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.2.29
 
@@ -497,6 +497,28 @@ INSERT INTO `wallpaper_post` (`id`, `title`, `text`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `wallpaper_price`
+--
+
+CREATE TABLE `wallpaper_price` (
+  `id` int(8) NOT NULL,
+  `texture_id` int(8) NOT NULL,
+  `size_id` int(8) NOT NULL,
+  `price` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wallpaper_price`
+--
+
+INSERT INTO `wallpaper_price` (`id`, `texture_id`, `size_id`, `price`) VALUES
+(2, 17, 1, 333),
+(5, 16, 1, 222),
+(10, 16, 2, 444);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `wallpaper_roll`
 --
 
@@ -817,6 +839,12 @@ ALTER TABLE `wallpaper_post`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `wallpaper_price`
+--
+ALTER TABLE `wallpaper_price`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `wallpaper_roll`
 --
 ALTER TABLE `wallpaper_roll`
@@ -911,10 +939,16 @@ ALTER TABLE `wallpaper_post`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT для таблицы `wallpaper_price`
+--
+ALTER TABLE `wallpaper_price`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT для таблицы `wallpaper_roll`
 --
 ALTER TABLE `wallpaper_roll`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `wallpaper_subcategory`
@@ -926,7 +960,7 @@ ALTER TABLE `wallpaper_subcategory`
 -- AUTO_INCREMENT для таблицы `wallpaper_texture`
 --
 ALTER TABLE `wallpaper_texture`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT для таблицы `wallpaper_wallpaper`

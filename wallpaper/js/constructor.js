@@ -3,6 +3,7 @@ var wallpaper={
   container:0,
   rotate:0,
   miror:'n',
+  price:0,
 };
 var sidebarStatus=false;
 
@@ -36,7 +37,7 @@ setTimeout(function () {
   $('.wallpaper_interior-tape_item')[0].click();
   $('input[name="wallpaper_roll"]').parent()[0].click();
   $('input[name="image_container"]').parent()[0].click();
-}, 2000);
+}, 1000);
 
 
 
@@ -182,6 +183,7 @@ $('input[name="texture_radio"]').change(function () {
     'background-image':'url(img/texture/'+this.value.trim()+')'
   });
   wallpaper.texture=this.value.trim();
+  sizeFilter(this.id);
 });
 $('.wallpaper_texture-block_item i').click(function () {
   $('#popup_'+this.id).css({
@@ -260,8 +262,10 @@ $('button[name="size_resset"]').click(function () {
   $('.range_size').css({'display':'none'});
   $('.constructor_curtain').css({'display':'none'});
   $('.wallpaper_roll-item').css({'display':'none'});
-  $('.constructor_wallpaper-texture').css({'background-image':''});
+  //$('.constructor_wallpaper-texture').css({'background-image':''});
   $('.constructor_wallpaper-size_sensor').css({'display':'none'});
+  wallpaper.price=0;
+  calculation();
 });
 
 // ========= FUNCTIONS =========
@@ -275,13 +279,12 @@ function calculation () {
   var arr=$('input[name="input_size"]');
   var width=Number(arr[0].value);
   var height=Number(arr[1].value);
-  var cost=Math.round((height/100)*(width/100)*1000);
+  var cost=Math.round((height/100)*(width/100)*wallpaper.price);
   var nodeArr=$('.wallpaper_constructor-calc span');
   nodeArr[0].innerHTML=cost;
   nodeArr[1].innerHTML=Math.ceil(cost*(100-wallpaper.discount)/100);
   wallpaper.amount=cost;
   wallpaper.amountDiscount=Math.ceil(cost*(100-wallpaper.discount)/100);
-
 }
 function wallpaperWidth (values) {
   var section=$('.wall-horizontal_section');
@@ -290,7 +293,6 @@ function wallpaperWidth (values) {
   section[2].style.width=((1000-values[1])/10)+'%';
   rollSizeResset();
   calculation();
-  //rollSizeBorder();
 }
 function rollSizeBorder () {
   var rollWidth=0;
@@ -311,6 +313,7 @@ function rollSizeBorder () {
   }
   wallpaper.rollSize=rollWidth*relativeSize/absoluteSize;
   $(roll).css({'width':wallpaper.rollSize+'px',});
+  priceSet(this);
 }
 function rollSizeResset () {
  // $('.wallpaper_roll-item').css({'display':'none',});
@@ -340,6 +343,27 @@ function stopVideo(){
    var src=$(iframe[i]).attr('src');
    $(iframe[i]).attr('src',src);
  }
+}
+function sizeFilter(texture_id){
+  $('.size_texture').hide();
+  $('.size_texture_all').hide();
+  $('.size_'+texture_id).show();
+  //$('input[name="input_size"]').prop('value','');
+  //$('.range_size').css({'display':'none'});
+  //$('.constructor_curtain').css({'display':'none'});
+  $('.wallpaper_roll-item').css({'display':'none'});
+  //$('.constructor_wallpaper-size_sensor').css({'display':'none'});
+  wallpaper.price=0;
+  calculation();
+}
+function priceSet(radio){
+  var current_price =
+  Number($(radio).parent('label').siblings('input').prop('value'));
+  if (current_price!=undefined && !isNaN(current_price)) {
+    wallpaper.price=current_price;
+    calculation();
+  }
+  console.log(wallpaper.price);
 }
 
 // ========= JQUERY UI SLIDER =========

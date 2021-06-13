@@ -45,11 +45,16 @@ function addSize(){
 
 function editSize(){
  global $mysqli;
- $sql='UPDATE `wallpaper_roll` SET `roll`="'.$_POST['roll_size_edit'].'" 
- WHERE `id`='.$_POST['roll_size_save'];
- $mysqli->query($sql);
- echo 'Размер изменен!';
- echo '<meta http-equiv="refresh" content="2; url=../wallpaper.php#tabs-6" />';
+ if ($_POST['roll_size_edit']=='') {
+   echo 'Не указан размер!';
+   echo '<meta http-equiv="refresh" content="2; url=../wallpaper.php#tabs-6" />';
+ } else {
+   $sql='UPDATE `wallpaper_roll` SET `roll`="'.$_POST['roll_size_edit'].'" 
+   WHERE `id`='.$_POST['roll_size_save'];
+   $mysqli->query($sql);
+   echo 'Размер изменен!';
+   echo '<meta http-equiv="refresh" content="2; url=../wallpaper.php#tabs-6" />';
+ }
 }
 
 function deleteSize (){
