@@ -3,7 +3,9 @@
 <?php include_once '../admin/php/select-simple.php' ?>
 <?php $wallpaperArr=selectSimple('SELECT * FROM `wallpaper_wallpaper` 
 ORDER BY `number`');?>
+<?php $minPrice=selectSimple('SELECT MIN(`price`) FROM wallpaper_price') ?>
 <?php $categoryArr=selectSimple('SELECT * FROM `wallpaper_category`');?>
+
 
 <div class="wallpaper-container">
 
@@ -157,10 +159,10 @@ ORDER BY `number`');?>
                       </div>
                       <div class="flex-wrapper">
                         <div class="wallpaper-galery_new-price">
-                         от 300 р/м <sup>2</sup>
+                         от <?php echo $minPrice[0][0];?> р/м <sup>2</sup>
                        </div>
                        <div class="wallpaper-galery_old-price">
-                        от 400 р/м <sup>2</sup>
+                        от <?php echo round($minPrice[0][0]*1.5);?> р/м <sup>2</sup>
                       </div>
                     </div>
                     <div class="flex-wrapper">

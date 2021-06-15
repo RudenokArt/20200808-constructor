@@ -267,6 +267,13 @@ $('button[name="size_resset"]').click(function () {
   wallpaper.price=0;
   calculation();
 });
+$('button[name="user_upload_popup_close"]').click(function(){
+  $('.user_upload_popup_wrapper').fadeOut();
+});
+$('button[name="user_image_upload"]').click(function(){
+  $('.user_upload_popup_wrapper').css({'display':'flex'});
+});
+$('input[name="user_upload_image"]').change(wallPaperImageUpload);
 
 // ========= FUNCTIONS =========
 
@@ -363,8 +370,23 @@ function priceSet(radio){
     wallpaper.price=current_price;
     calculation();
   }
-  console.log(wallpaper.price);
 }
+function wallPaperImageUpload () {
+  var image=$('input[name="user_upload_image"]')[0];
+  var formData = new FormData();
+  formData.append(image.name,image.files[0]);
+  var request = new XMLHttpRequest();
+  request.open('POST','php/functions.php');
+  request.send(formData);
+  request.onreadystatechange=function (){
+    if (request.readyState==4 && request.status==200){
+      console.log(request.responseText);} 
+      $('.user_upload_popup_wrapper').fadeOut();
+      $('.constructor_wallpaper img').attr('src','img/wallpaper/'+request.responseText);
+      wallpaper.image=request.responseText;
+    };    
+  }
+
 
 // ========= JQUERY UI SLIDER =========
 $( function() {

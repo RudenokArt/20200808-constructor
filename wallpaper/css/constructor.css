@@ -120,9 +120,11 @@ button{
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  display: flex;
 }
 .constructor_wallpaper img{
   height: 100%;
+  margin:auto;
   /*width: 100%;*/
 }
 .constructor_wallpaper-interior_wrapper{
@@ -512,6 +514,47 @@ input[name="texture_radio"]{
 .size_texture{
   display: none;
 }
+.user_upload_popup_wrapper{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+}
+.user_upload_popup{
+  padding: 20px;
+  background: white;
+  margin:auto;
+  position: relative;
+}
+.user_upload_popup i{
+  line-height: 100%;
+  font-size: 200px;
+  color:grey;
+}
+.user_upload_popup input{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border:1px solid red;
+  opacity: 0;
+}
+.user_upload_popup button {
+  padding: 5px;
+  border:none;
+  background: transparent;
+  position: absolute;
+  top:0;
+  right: 0;
+}
+.user_upload_popup button i{
+  font-size: 24px;
+}
+
 
 @media screen and (max-width: 1100px){
   .option_button{
