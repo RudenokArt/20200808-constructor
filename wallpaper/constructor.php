@@ -89,25 +89,32 @@
 </div>
 <div class="wallpaper_constructor-button_block">
   <div>
-  <button name="user_image_upload" 
-  class="wallpaper_constructor-button">
-    <i class="fa fa-upload" aria-hidden="true"></i>
-    Загрузить <br> свое фото
+    <button name="image_mail_send" 
+    class="wallpaper_constructor-button">
+    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+    Получить <br> на почту
   </button>
 </div>
-  <div>
-    <button name="image_save" title="сохранить" 
-    class="wallpaper_constructor-button">
-    <i class="fa fa-download" aria-hidden="true"></i>
-    Сохранить <br> изображение
-  </button>
-  <a href="user_download/design.jpg" download="download" class="download_image-link">
-    <i class="fa fa-cloud-download" aria-hidden="true"></i>
-    Cкачать
-  </a>
-  <span class="download_image-loader">
-    <i class="fa fa-cog" aria-hidden="true"></i>
-  </span>
+<div>
+  <button name="user_image_upload" 
+  class="wallpaper_constructor-button">
+  <i class="fa fa-upload" aria-hidden="true"></i>
+  Загрузить <br> свое фото
+</button>
+</div>
+<div>
+  <button name="image_save" title="сохранить" 
+  class="wallpaper_constructor-button">
+  <i class="fa fa-download" aria-hidden="true"></i>
+  Сохранить <br> изображение
+</button>
+<a href="user_download/design.jpg" download="download" class="download_image-link">
+  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+  Cкачать
+</a>
+<span class="download_image-loader">
+  <i class="fa fa-cog" aria-hidden="true"></i>
+</span>
 </div>
 </div>
 
@@ -284,11 +291,12 @@
 <div class="user_upload_popup_wrapper">
   <div class="user_upload_popup">
     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-     <input type="file" name="user_upload_image" multiple="multiple" >
-     <button name="user_upload_popup_close">
-       <i class="fa fa-times" aria-hidden="true"></i>
-     </button>
-  </div>
+    <input type="file" name="user_upload_image" multiple="multiple" >
+    <button class="wallpaper_constructor-button"
+     name="user_upload_popup_close">
+     <i class="fa fa-times" aria-hidden="true"></i>
+   </button>
+ </div>
 </div>
 
 <?php include_once 'includes/texture_popup.php' ?>

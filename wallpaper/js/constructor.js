@@ -212,41 +212,9 @@ $('.option_button button').click(function(){
     button[1].style.display='block';
   }
 });
+
 $('button[name="image_save"]').click(function(){
-  var data={};
-  var wall=$('.constructor_wall')[0];
-  var image=$('.constructor_wallpaper img');
-  var mask=$('.constructor_wallpaper-size_sensor')[0];
-  if (wallpaper.container==0) {
-    image=image[0];
-  }else{
-    image=image[1];
-  }
-  data.position=[
-  wall.getBoundingClientRect().left+pageYOffset,
-  wall.getBoundingClientRect().top+pageYOffset, 
-  image.getBoundingClientRect().left+pageYOffset,
-  image.getBoundingClientRect().top+pageYOffset, 
-  mask.getBoundingClientRect().left+pageYOffset,
-  mask.getBoundingClientRect().top+pageYOffset,];
-  data.size=[
-  wall.offsetWidth,
-  wall.offsetHeight,
-  image.offsetWidth,
-  image.offsetHeight,
-  mask.offsetWidth,
-  mask.offsetHeight,];
-  data.image=wallpaper.image;
-  data.rotate=wallpaper.rotate;
-  data.miror=wallpaper.miror;
-  data.container=wallpaper.container;
-  data.rollSize=wallpaper.rollSize;
-  data.imageName=wallpaper.imageName;
-  data.rollAbsSize=wallpaper.rollAbsSize;
-  data.texture=wallpaper.texture;
-  data.amount=wallpaper.amount;
-  data.amountDiscount=wallpaper.amountDiscount;
-  var str=JSON.stringify(data);
+  var str=imageDataGet();
   $('.download_image-link').css({'display':'none'});
   $('.download_image-loader').css({'display':'inline-block'});
   $.post('php/image.php',{data:str}, function(data){
@@ -257,6 +225,7 @@ $('button[name="image_save"]').click(function(){
     }, 1000);
   });
 });
+
 $('button[name="size_resset"]').click(function () {
   $('input[name="input_size"]').prop('value','');
   $('.range_size').css({'display':'none'});
@@ -274,6 +243,16 @@ $('button[name="user_image_upload"]').click(function(){
   $('.user_upload_popup_wrapper').css({'display':'flex'});
 });
 $('input[name="user_upload_image"]').change(wallPaperImageUpload);
+$('button[name="image_mail_send"]').click(function(){
+  var email = prompt('Ваш email:');
+  if (email=='') {alert('Не указан email!');}
+  else {
+    var str=imageDataGet();
+    $.post('php/image.php',{data:str}, function(data){
+      imageMailSend(email);
+    });
+  }
+});
 
 // ========= FUNCTIONS =========
 
@@ -380,13 +359,55 @@ function wallPaperImageUpload () {
   request.send(formData);
   request.onreadystatechange=function (){
     if (request.readyState==4 && request.status==200){
-      console.log(request.responseText);} 
-      $('.user_upload_popup_wrapper').fadeOut();
-      $('.constructor_wallpaper img').attr('src','img/wallpaper/'+request.responseText);
-      wallpaper.image=request.responseText;
-    };    
+      console.log(request.responseText);
+    } 
+    $('.user_upload_popup_wrapper').fadeOut();
+    $('.constructor_wallpaper img').attr('src','img/wallpaper/'+request.responseText);
+    wallpaper.image=request.responseText;
+  };    
+}
+function imageDataGet(){
+  var data={};
+  var wall=$('.constructor_wall')[0];
+  var image=$('.constructor_wallpaper img');
+  var mask=$('.constructor_wallpaper-size_sensor')[0];
+  if (wallpaper.container==0) {
+    image=image[0];
+  }else{
+    image=image[1];
   }
-
+  data.position=[
+  wall.getBoundingClientRect().left+pageYOffset,
+  wall.getBoundingClientRect().top+pageYOffset, 
+  image.getBoundingClientRect().left+pageYOffset,
+  image.getBoundingClientRect().top+pageYOffset, 
+  mask.getBoundingClientRect().left+pageYOffset,
+  mask.getBoundingClientRect().top+pageYOffset,];
+  data.size=[
+  wall.offsetWidth,
+  wall.offsetHeight,
+  image.offsetWidth,
+  image.offsetHeight,
+  mask.offsetWidth,
+  mask.offsetHeight,];
+  data.image=wallpaper.image;
+  data.rotate=wallpaper.rotate;
+  data.miror=wallpaper.miror;
+  data.container=wallpaper.container;
+  data.rollSize=wallpaper.rollSize;
+  data.imageName=wallpaper.imageName;
+  data.rollAbsSize=wallpaper.rollAbsSize;
+  data.texture=wallpaper.texture;
+  data.amount=wallpaper.amount;
+  data.amountDiscount=wallpaper.amountDiscount;
+  var str=JSON.stringify(data);
+  return str;
+}
+function imageMailSend(email){
+  $.post('php_mail/index.php',{data:email}, function(data){
+    console.log(data);
+  });
+}
 
 // ========= JQUERY UI SLIDER =========
 $( function() {

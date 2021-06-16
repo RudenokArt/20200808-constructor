@@ -546,13 +546,13 @@ input[name="texture_radio"]{
 .user_upload_popup button {
   padding: 5px;
   border:none;
-  background: transparent;
   position: absolute;
   top:0;
   right: 0;
 }
 .user_upload_popup button i{
   font-size: 24px;
+  color:white;
 }
 
 
