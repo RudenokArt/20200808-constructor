@@ -13,13 +13,14 @@ var sidebarStatus=false;
 $('.constructor_wallpaper img')[1].style.display='none';
 $('input[name="input_size"]').prop('value','');
 $('input[name="image_container"]')[0].checked=true;
-$(function imageGetData () {
+$(function imageSetData () {
   var data=localStorage.getItem('wallpaper_constructor');
   var arr=[];
   if (data!=''&&data!=null&&data!=undefined) {
     arr=data.split('|');
   }
   wallpaper.image=arr[1];
+  wallpaper.intialImage=arr[1];
   wallpaper.imageName=arr[2];
   wallpaper.discount=Number(arr[6]);
   $('.constructor_wallpaper img').attr('src','img/wallpaper/'+wallpaper.image);
@@ -231,9 +232,13 @@ $('button[name="size_resset"]').click(function () {
   $('.range_size').css({'display':'none'});
   $('.constructor_curtain').css({'display':'none'});
   $('.wallpaper_roll-item').css({'display':'none'});
-  //$('.constructor_wallpaper-texture').css({'background-image':''});
   $('.constructor_wallpaper-size_sensor').css({'display':'none'});
+  wallpaper.image=wallpaper.intialImage;
+  $('.constructor_wallpaper img').attr('src','img/wallpaper/'+wallpaper.image);
   wallpaper.price=0;
+  $('input[name="texture_radio"]').attr('checked','false');
+   $('.constructor_wallpaper-texture').css({'background-image':''});
+  wallpaper.texture='';
   calculation();
 });
 $('button[name="user_upload_popup_close"]').click(function(){
@@ -362,7 +367,8 @@ function wallPaperImageUpload () {
       console.log(request.responseText);
     } 
     $('.user_upload_popup_wrapper').fadeOut();
-    $('.constructor_wallpaper img').attr('src','img/wallpaper/'+request.responseText);
+    $('.constructor_wallpaper img').attr('src','img/wallpaper/'
+      +request.responseText+'?'+new Date().getTime());
     wallpaper.image=request.responseText;
   };    
 }
@@ -406,6 +412,7 @@ function imageDataGet(){
 function imageMailSend(email){
   $.post('php_mail/index.php',{data:email}, function(data){
     console.log(data);
+    alert('Эскиз отправлен на почту '+email);
   });
 }
 
