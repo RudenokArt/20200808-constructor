@@ -35,15 +35,25 @@ th{
 button{
   color:white;
 }
-.wallpaper_constructor-container{
+button[name="size_resset"]{
   padding: 5px;
+  font-weight: bold;
+  border-radius: 5px;
+  line-height: 1em;
+  margin:10px;
+}
+.flex_wrapper{
   display: flex;
+}
+.wallpaper_constructor-container{
+  display: flex;
+  padding: 5px;
   position: relative;
 }
 .option_button{
  position: absolute;
  z-index: 10;
- top:0px;
+ top:0;
  right: 0;
  padding: 10px;
  display: none;

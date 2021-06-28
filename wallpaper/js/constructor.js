@@ -237,7 +237,7 @@ $('button[name="size_resset"]').click(function () {
   $('.constructor_wallpaper img').attr('src','img/wallpaper/'+wallpaper.image);
   wallpaper.price=0;
   $('input[name="texture_radio"]').attr('checked','false');
-   $('.constructor_wallpaper-texture').css({'background-image':''});
+  $('.constructor_wallpaper-texture').css({'background-image':''});
   wallpaper.texture='';
   calculation();
 });
@@ -287,24 +287,28 @@ function wallpaperWidth (values) {
 }
 function rollSizeBorder () {
   var rollWidth=0;
+  var flag=false;
   var radio=$('input[name="wallpaper_roll"]');
   for (var i = 0; i < radio.length; i++) {
     if (radio[i].checked) {
       rollWidth=radio[i].value;
       wallpaper.rollAbsSize=rollWidth;
+      flag=true;
     }
   }
-  var absoluteSize=$('input[name="input_size"]')[0].value;
-  var relativeSize=$('.constructor_wallpaper-size_sensor')[0].offsetWidth;
-  var roll=$('.wallpaper_roll-item');
-  if (Number(absoluteSize)<Number(rollWidth)) {
+  if(flag){
+   var absoluteSize=$('input[name="input_size"]')[0].value;
+   var relativeSize=$('.constructor_wallpaper-size_sensor')[0].offsetWidth;
+   var roll=$('.wallpaper_roll-item');
+   if (Number(absoluteSize)<Number(rollWidth)) {
     $(roll).css({'display':'none',});
   }else {
     $(roll).css({'display':'block',});
   }
   wallpaper.rollSize=rollWidth*relativeSize/absoluteSize;
   $(roll).css({'width':wallpaper.rollSize+'px',});
-  priceSet(this);
+  priceSet(this); }
+
 }
 function rollSizeResset () {
  // $('.wallpaper_roll-item').css({'display':'none',});
@@ -346,6 +350,7 @@ function sizeFilter(texture_id){
   //$('.constructor_wallpaper-size_sensor').css({'display':'none'});
   wallpaper.price=0;
   calculation();
+   $('input[name="wallpaper_roll"]').prop('checked',false);
 }
 function priceSet(radio){
   var current_price =
