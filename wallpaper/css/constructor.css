@@ -362,10 +362,23 @@ input[name="texture_radio"]{
   opacity: 0;
   
 }
-.wallpaper_texture-block{
-  display: flex;
-  flex-wrap: wrap;
+.wallpaper_texture-tape_wrapper{
+  background: rgba(0,0,0,0.4);
+  width: 750px;
 }
+.wallpaper_texture-tape{
+  /*margin-left: 40px;
+  margin-right: 40px;*/
+  margin:auto;
+  width: 85%;
+}
+.wallpaper_texture-tape_item{
+  padding: 0;
+  margin:0;
+  /*border: 1px solid red;*/
+}
+
+
 .wallpaper_texture-block_item{
   position: relative;
   width: 75px;
@@ -582,6 +595,7 @@ input[name="texture_radio"]{
     width: 600px;
     height: 400px;
   }
+  .wallpaper_texture-tape_wrapper,
   .wallpaper_interior-tape_wrapper{
     width: 600px;
   }
@@ -597,6 +611,7 @@ input[name="texture_radio"]{
     width: 450px;
     height: 300px;
   }
+  .wallpaper_texture-tape_wrapper,
   .wallpaper_interior-tape_wrapper{
     width: 450px;
   }
@@ -606,6 +621,7 @@ input[name="texture_radio"]{
     width: 300px;
     height: 200px;
   }
+  .wallpaper_texture-tape_wrapper,
   .wallpaper_interior-tape_wrapper{
     width: 300px;
   }

@@ -239,6 +239,8 @@ $('button[name="size_resset"]').click(function () {
   $('input[name="texture_radio"]').attr('checked','false');
   $('.constructor_wallpaper-texture').css({'background-image':''});
   wallpaper.texture='';
+  $('.size_texture').hide();
+  $('.size_texture_all').show();
   calculation();
 });
 $('button[name="user_upload_popup_close"]').click(function(){
@@ -282,7 +284,6 @@ function wallpaperWidth (values) {
   section[0].style.width=(values[0]/10)+'%';
   section[1].style.width=((values[1]-values[0])/10)+'%';
   section[2].style.width=((1000-values[1])/10)+'%';
-  rollSizeResset();
   calculation();
 }
 function rollSizeBorder () {
@@ -308,12 +309,6 @@ function rollSizeBorder () {
   wallpaper.rollSize=rollWidth*relativeSize/absoluteSize;
   $(roll).css({'width':wallpaper.rollSize+'px',});
   priceSet(this); }
-
-}
-function rollSizeResset () {
- // $('.wallpaper_roll-item').css({'display':'none',});
- // $('input[name="wallpaper_roll"]').prop('checked',false);
- // $('input[name="wallpaper_roll"]').parent().prop('className','radio-label');
 }
 function wallpaperHeight (values) {
   var section=$('.wall-vertical_section');
@@ -350,7 +345,7 @@ function sizeFilter(texture_id){
   //$('.constructor_wallpaper-size_sensor').css({'display':'none'});
   wallpaper.price=0;
   calculation();
-   $('input[name="wallpaper_roll"]').prop('checked',false);
+  $('input[name="wallpaper_roll"]').prop('checked',false);
 }
 function priceSet(radio){
   var current_price =
@@ -467,6 +462,7 @@ $( function () {
 
 // ========= SLICK UI SLIDER =========
 
+
 $(document).ready(function(){
   $('.wallpaper_interior-tape').slick({ 
       //dots: true, 
@@ -493,6 +489,33 @@ $(document).ready(function(){
       },
       ],
     });
+
+  $('.wallpaper_texture-tape').slick({ 
+      //dots: true, 
+      slidesToShow: 8, 
+      slidesToScroll: 1, 
+      responsive:[
+      {
+        breakpoint:750,
+        settings:{
+          slidesToShow:6,
+        }
+      },
+      {
+        breakpoint:600,
+        settings:{
+          slidesToShow:4,
+        }
+      },
+      {
+        breakpoint:450,
+        settings:{
+          slidesToShow:3,
+        }
+      },
+      ],
+    });
+
 });
 
 // ========= TABS =========

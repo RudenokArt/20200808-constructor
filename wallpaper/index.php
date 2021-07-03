@@ -197,7 +197,7 @@ ORDER BY `number`');?>
             } ?>
           </div>
           <?php include_once 'pagination.php' ?>
-          <?php include_once 'cart.php' ?>
+          <?php include_once 'cart_icon.php' ?>
         </div>
 
       </div>

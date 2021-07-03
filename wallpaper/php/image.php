@@ -106,7 +106,8 @@ function textWrite(){
   $text=imagecreate(300, 300);
   $white=imagecolorallocate($text,250,250,250);
   $black=imagecolorallocate($text,0,0,0);
-  $path='D:\OpenServer\domains\localhost\20200808-constructor\modular/fonts/arial-narrow.ttf';
+  $path=
+  'D:\OpenServer\domains\localhost\20200808-constructor\modular/fonts/arial-narrow.ttf';
   $path2='D:\OpenServer\domains\localhost\20200808-constructor\modular/fonts/times-bold.ttf';
  $path='/home/c/cx57370/wordpress/public_html/constructor/modular/fonts/arial-narrow.ttf';
  $path2='/home/c/cx57370/wordpress/public_html/constructor/modular/fonts/times-bold.ttf';

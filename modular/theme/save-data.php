@@ -60,7 +60,17 @@ $wallpaperStyle='
 }
 .radio-label,.checkbox-label{
  border-color:'.$dataArr["themeColor"].';
+}
+.text_color{
+  color:'.$dataArr["themeColor"].';
+}
+.hover_color:hover{
+  background-color: '.$dataArr["hoverColor"].';
+}
+.layout_color{
+  background-color: '.$dataArr["themeColor"].';
 }';
+
 file_put_contents('css/data-style.css', $dataStyle);
 file_put_contents('css/favorite-style.css', $favoriteStyle);
 file_put_contents('../../wallpaper/css/data-style.css',$wallpaperStyle);

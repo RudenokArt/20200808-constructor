@@ -20,6 +20,7 @@
 
 
 <div class="wallpaper_constructor-container">
+
   <div class="option_button">
     <button class="wallpaper_constructor-button">
      <i class="fa fa-cog" aria-hidden="true"></i> 
@@ -28,6 +29,7 @@
      <i class="fa fa-times" aria-hidden="true"></i> 
    </button>
  </div>
+
  <div class="wallpaper_constructor-content">
 
   <div class="constractor-navigation_wrapper">
@@ -42,50 +44,74 @@
     </div>
   </div>
 
-  <div class="constructor_wall">
-    <div class="constructor_wallpaper">
-      <img src=" " alt=" ">
-    </div>
-    <div class="constructor_wallpaper-texture"></div>
-    <div class="wall-vertical_section constructor_curtain"></div>
-    <div class="wall-vertical_section">
-      <div class="wall-horizontal_section constructor_curtain"></div>
-      <div class="wall-horizontal_section">
-        <div class="constructor_wallpaper">
-          <img src=" " alt=" ">
-          <div class="constructor_wallpaper-size_sensor">
-            <div class="wallpaper_roll-wrapper">
-              <div class="wallpaper_roll">
-                <?php for ($i=0; $i < 100; $i++) {?>
-                  <div class="wallpaper_roll-item"></div>
-                <?php } ?>
-              </div>
+
+  
+
+  <div class="wallpaper_texture-tape_wrapper">
+    <div class="wallpaper_texture-tape">
+      <?php foreach (textureListGet() as $key => $value) {?>
+        <div class="wallpaper_texture-tape_item">
+          <label class="wallpaper_texture-block_item" 
+          style="background-image: url(img/texture/<?php echo $value['texture']; ?>);" >
+          <span>
+           <?php echo explode('.',$value['texture'])[0]; ?>
+         </span>
+         <br>
+         <input type="radio" name="texture_radio" 
+         id="texture_<?php echo $value['id']; ?>"
+         value="<?php echo $value['texture']; ?>">
+         <i class="fa fa-info-circle" id="texture<?php echo $value['id']?>" 
+           aria-hidden="true" title="подробнее..."></i>    
+         </label>
+       </div>
+     <?php }  ?>
+   </div>
+ </div>
+
+ <div class="constructor_wall">
+  <div class="constructor_wallpaper">
+    <img src=" " alt=" ">
+  </div>
+  <div class="constructor_wallpaper-texture"></div>
+  <div class="wall-vertical_section constructor_curtain"></div>
+  <div class="wall-vertical_section">
+    <div class="wall-horizontal_section constructor_curtain"></div>
+    <div class="wall-horizontal_section">
+      <div class="constructor_wallpaper">
+        <img src=" " alt=" ">
+        <div class="constructor_wallpaper-size_sensor">
+          <div class="wallpaper_roll-wrapper">
+            <div class="wallpaper_roll">
+              <?php for ($i=0; $i < 100; $i++) {?>
+                <div class="wallpaper_roll-item"></div>
+              <?php } ?>
             </div>
           </div>
         </div>
       </div>
-      <div class="wall-horizontal_section  constructor_curtain"></div>
     </div>
-    <div class="wall-vertical_section constructor_curtain"></div>
-    <div class="constructor_wallpaper-interior_wrapper">
-      <div class="constructor_wallpaper-interior"></div>
-      <div class="wallpaper_interior-tape_wrapper">
-        <div class="wallpaper_interior-tape">
-          <?php foreach ($interiorArr as $key => $value) {?>
-            <div class="wallpaper_interior-tape_item" 
-            style="background-image: url(img/interior/<?php echo $value['interior'] ?>);">
-            <?php echo $value['interior'] ?>
-          </div>
-        <?php } ?>
-      </div>
+    <div class="wall-horizontal_section  constructor_curtain"></div>
+  </div>
+  <div class="wall-vertical_section constructor_curtain"></div>
+  <div class="constructor_wallpaper-interior_wrapper">
+    <div class="constructor_wallpaper-interior"></div>
+    <div class="wallpaper_interior-tape_wrapper">
+      <div class="wallpaper_interior-tape">
+        <?php foreach ($interiorArr as $key => $value) {?>
+          <div class="wallpaper_interior-tape_item" 
+          style="background-image: url(img/interior/<?php echo $value['interior'] ?>);">
+          <?php echo $value['interior'] ?>
+        </div>
+      <?php } ?>
     </div>
   </div>
-  <div class="range_vertical-wrapper">
-    <div id="range_vertical" class="range_size"></div>
-  </div>
-  <div class="range_horisontal-wrapper">
-    <div id="range_horisontal" class="range_size"></div>
-  </div>
+</div>
+<div class="range_vertical-wrapper">
+  <div id="range_vertical" class="range_size"></div>
+</div>
+<div class="range_horisontal-wrapper">
+  <div id="range_horisontal" class="range_size"></div>
+</div>
 </div>
 <div class="wallpaper_constructor-button_block">
   <div>
@@ -122,7 +148,6 @@
 
 <div class="wallpaper_constructor-sidebar">
 
-<div class="flex_wrapper">
   <div class="wallpaper_constructor-sidebar_options">
     <div>
       <table>
@@ -246,26 +271,6 @@
   </div>
 </div>
 
-<div class="wallpaper_texture-block_wrapper">
-  <div class="wallpaper_texture-block">
-    <?php foreach (textureListGet() as $key => $value) {?>
-      <label class="wallpaper_texture-block_item" 
-      style="background-image: url(img/texture/<?php echo $value['texture']; ?>);" >
-      <span>
-       <?php echo explode('.',$value['texture'])[0]; ?>
-     </span>
-     <br>
-     <input type="radio" name="texture_radio" 
-     id="texture_<?php echo $value['id']; ?>"
-     value="<?php echo $value['texture']; ?>">
-     <i class="fa fa-info-circle" id="texture<?php echo $value['id']?>" 
-       aria-hidden="true" title="подробнее..."></i>    
-     </label>
-   <?php }  ?>
- </div>
-</div>
-</div>
-
 <div class="wallpaper_constructor-calc">
   <div>Стоимость: <span>0</span> руб.</div>
   <div>Сo скидкой: <span>0</span> руб. </div>
@@ -293,6 +298,6 @@
 </div>
 
 <?php include_once 'includes/texture_popup.php' ?>
-<?php include_once 'cart.php' ?>
+<?php include_once 'cart_icon.php' ?>
 <script src="js/constructor.js?<?php echo time() ?>"></script>
 <?php include_once 'footer.php' ?>

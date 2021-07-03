@@ -57,7 +57,7 @@ $('.subcategory-select').change(subCategorySelect);
 $('.wallpaper-navigation span').click(navigationClick);
 $('.wallpaper-galery_item-wrapper').click(consructorTrznzit);
 $('.button-search').click(imageSearch);
-$('.wallpaper-galery_item-cart').click((e)=>{e.stopPropagation()});
+$('.wallpaper-galery_item-cart').click(function(e){e.stopPropagation();});
 $('.wallpaper-galery_item-check').change(itemCart);
 $('.wallpaper-galery_item-check').change(cartAnime);
 $('.number-page').click(function () {
@@ -231,6 +231,7 @@ function cartCounter (checkbox) {
   $('.wallpaper-cart_counter').html(counter);
   var json=JSON.stringify(arr);
   localStorage.setItem('wallpaper', json);
+  console.log(localStorage.wallpaper);
 }
 function cartAnime () {
   var node=$('.wallpaper-cart_image');

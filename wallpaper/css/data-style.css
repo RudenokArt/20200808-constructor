@@ -19,3 +19,12 @@
 .radio-label,.checkbox-label{
  border-color:#51C8FF;
 }
+.text_color{
+  color:#51C8FF;
+}
+.hover_color:hover{
+  background-color: #5F56FF;
+}
+.layout_color{
+  background-color: #51C8FF;
+}
